@@ -31,8 +31,6 @@ export default function HeroSlider() {
   // Sync-readable ref mirrors (used inside rAF callbacks to avoid stale closures)
   const currentSlideRef = useRef(0);
   const nextSlideRef = useRef(null);
-  const isPausedRef = useRef(false);
-
   // Animation state refs
   const rafRef = useRef(null);
   const wipeStartRef = useRef(null);
@@ -42,9 +40,6 @@ export default function HeroSlider() {
   // DOM refs for imperative style writes (avoids 60fps React re-renders)
   const topImageClipRef = useRef(null);
   const scanBarRef = useRef(null);
-
-  // Flag: true while a manual (button/dot) navigation is in progress — bypasses hover-pause
-  const isManualNavRef = useRef(false);
 
   // Direction: 1 = left-to-right (forward), -1 = right-to-left (backward)
   const wipeDirectionRef = useRef(1);
@@ -61,9 +56,6 @@ export default function HeroSlider() {
   // Bootstrap animation loop once on mount
   useEffect(() => {
     animateWipeRef.current = function animateWipe(timestamp) {
-      // Allow manual (button/dot) navigation to bypass hover-pause
-      if (isPausedRef.current && !isManualNavRef.current) return;
-
       // Safety: wait for React to mount the top-layer DOM nodes
       if (!topImageClipRef.current || !scanBarRef.current) {
         rafRef.current = requestAnimationFrame(animateWipeRef.current);
@@ -93,7 +85,6 @@ export default function HeroSlider() {
         rafRef.current = requestAnimationFrame(animateWipeRef.current);
       } else {
         // Wipe complete — settle and start hold phase
-        isManualNavRef.current = false;
         const settled = nextSlideRef.current;
         currentSlideRef.current = settled;
         setCurrentSlide(settled);
@@ -105,10 +96,8 @@ export default function HeroSlider() {
 
     scheduleHoldRef.current = function scheduleHold() {
       holdTimerRef.current = setTimeout(() => {
-        if (!isPausedRef.current) {
-          const next = (currentSlideRef.current + 1) % SLIDES.length;
-          startWipeRef.current(next);
-        }
+        const next = (currentSlideRef.current + 1) % SLIDES.length;
+        startWipeRef.current(next);
       }, HOLD_DURATION_MS);
     };
 
@@ -120,9 +109,7 @@ export default function HeroSlider() {
       wipeStartRef.current = null;
       nextSlideRef.current = targetIndex;
       setNextSlide(targetIndex);
-      if (!isPausedRef.current) {
-        rafRef.current = requestAnimationFrame(animateWipeRef.current);
-      }
+      rafRef.current = requestAnimationFrame(animateWipeRef.current);
     };
 
     // Kick off the first hold
@@ -150,8 +137,6 @@ export default function HeroSlider() {
     wipeStartRef.current = null;
     nextSlideRef.current = targetIndex;
     setNextSlide(targetIndex);
-    // Always animate on explicit navigation — bypasses hover-pause via isManualNavRef
-    isManualNavRef.current = true;
     rafRef.current = requestAnimationFrame(animateWipeRef.current);
   }, []);
 
@@ -170,34 +155,11 @@ export default function HeroSlider() {
     jumpToSlide(index);
   }, [jumpToSlide]);
 
-  // ── Pause / resume on hover ─────────────────────────────────────────────────
-
-  const handleMouseEnter = useCallback(() => {
-    isPausedRef.current = true;
-    cancelAnimationFrame(rafRef.current);
-    clearTimeout(holdTimerRef.current);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    isPausedRef.current = false;
-    if (nextSlideRef.current !== null) {
-      // Resume wipe from saved progress point (cancel first to avoid duplicate rAF loops)
-      cancelAnimationFrame(rafRef.current);
-      wipeStartRef.current = null;
-      rafRef.current = requestAnimationFrame(animateWipeRef.current);
-    } else {
-      // Resume hold phase
-      scheduleHoldRef.current();
-    }
-  }, []);
-
   // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
     <section
-      className="relative w-full h-screen overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className="relative w-full h-[80vh] overflow-hidden"
     >
       {/* ── Image Stack ───────────────────────────────────────────────────────── */}
       <div className="absolute inset-0">
@@ -267,7 +229,7 @@ export default function HeroSlider() {
       {/* ── Navigation Arrows (bottom-right diamond) ──────────────────────────── */}
       <div className="absolute bottom-16 right-8 z-20 w-36 h-36 flex items-center justify-center">
         {/* Diamond border */}
-        <div className="absolute w-[96px] h-[96px] border border-white/40 rotate-45" />
+        <div className="absolute w-[96px] h-[96px] border border-sunshine-yellow/70 rotate-45" />
 
         {/* Arrows */}
         <div className="relative flex items-center gap-2">
@@ -285,7 +247,7 @@ export default function HeroSlider() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#FFFFFF"
+              stroke="#FFC72C"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -297,7 +259,7 @@ export default function HeroSlider() {
 
           {/* Divider */}
           <span
-            className="text-white/50 select-none text-base leading-none"
+            className="text-sunshine-yellow/60 select-none text-base leading-none"
             style={{ fontWeight: 100 }}
           >
             /
@@ -317,7 +279,7 @@ export default function HeroSlider() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#FFFFFF"
+              stroke="#FFC72C"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"

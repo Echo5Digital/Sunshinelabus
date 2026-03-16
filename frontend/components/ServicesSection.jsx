@@ -18,132 +18,237 @@ const services = [
   {
     id: 'hematology',
     title: 'Hematology',
-    description:
-      'Complete blood count, differential analysis, and specialized blood disorder testing with high precision.',
     Icon: Droplets,
-    href: '#hematology',
+    href: '/services/hematology',
   },
   {
     id: 'chemistry',
     title: 'Chemistry',
-    description:
-      'Comprehensive metabolic panels, liver function, kidney function, and electrolyte testing.',
     Icon: FlaskConical,
-    href: '#chemistry',
+    href: '/services/chemistry',
   },
   {
     id: 'immunochemistry',
     title: 'Immunochemistry',
-    description:
-      'Hormone panels, tumor markers, allergy testing, and advanced immunoassay diagnostics.',
     Icon: Shield,
-    href: '#immunochemistry',
+    href: '/services/immunochemistry',
   },
   {
     id: 'coagulation',
     title: 'Coagulation Service',
-    description:
-      'PT, PTT, INR, fibrinogen, and advanced coagulation factor analysis for bleeding disorders.',
     Icon: Activity,
-    href: '#coagulation',
+    href: '/services/coagulation',
   },
   {
     id: 'drug-testing',
     title: 'Drug Testing',
-    description:
-      'Urine, hair follicle, and oral fluid drug screening panels for workplace and clinical needs.',
     Icon: TestTube,
-    href: '#drug-testing',
+    href: '/services/drug-testing',
   },
   {
     id: 'molecular',
     title: 'Molecular Testing',
-    description:
-      'PCR-based infectious disease detection and genetic mutation testing with rapid results.',
     Icon: Dna,
-    href: '#molecular',
+    href: '/services/molecular',
   },
   {
     id: 'phlebotomy',
     title: 'Phlebotomy Service',
-    description:
-      'Professional blood draw services available at our facility or via mobile phlebotomy visits.',
     Icon: Syringe,
-    href: '#phlebotomy',
+    href: '/services/phlebotomy',
   },
   {
     id: 'dna-testing',
     title: 'DNA Testing',
-    description:
-      'Paternity, ancestry, and forensic DNA analysis services using state-of-the-art technology.',
     Icon: Microscope,
-    href: '#dna-testing',
+    href: '/services/dna-testing',
     highlight: true,
   },
 ];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
+const headerVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const svc = (id) => services.find((s) => s.id === id);
+
+/*
+  Desktop grid layout (4 cols × 4 rows):
+  Row 1: [empty]      [Coagulation]  [Molecular]    [empty]
+  Row 2: [DNA Testing] [── CENTER ──────────────]  [Drug Testing]
+  Row 3: [Phlebotomy]  [── TEXT  ───────────────]  [Hematology]
+  Row 4: [empty]      [Immunochem]   [Chemistry]    [empty]
+
+  SVG connector line coordinates (viewBox 0 0 100 100, preserveAspectRatio none):
+  Card heights ≈ 172px, gap = 24px, 4 rows → total ≈ 760px
+  Row centers:  R1=11.3%, R2=37.1%, R3=62.9%, R4=88.7%
+  Col centers:  C1=12.5%, C2=37.5%, C3=62.5%, C4=87.5%
+  Center block: top=25.8%, bottom=74.2%, left=25%, right=75%
+*/
+
+function ConnectorLines() {
+  const lineProps = {
+    stroke: '#94A3B8',
+    strokeWidth: '1.5',
+    strokeDasharray: '5 4',
+    vectorEffect: 'non-scaling-stroke',
+  };
+  return (
+    <svg
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+    >
+      {/* Top: Coagulation → center */}
+      <line x1="37.5" y1="13" x2="37.5" y2="26" {...lineProps} />
+      {/* Top: Molecular → center */}
+      <line x1="62.5" y1="13" x2="62.5" y2="26" {...lineProps} />
+      {/* Left: DNA Testing → center */}
+      <line x1="14" y1="37" x2="25" y2="37" {...lineProps} />
+      {/* Left: Phlebotomy → center */}
+      <line x1="14" y1="63" x2="25" y2="63" {...lineProps} />
+      {/* Right: Drug Testing → center */}
+      <line x1="86" y1="37" x2="75" y2="37" {...lineProps} />
+      {/* Right: Hematology → center */}
+      <line x1="86" y1="63" x2="75" y2="63" {...lineProps} />
+      {/* Bottom: Immunochemistry → center */}
+      <line x1="37.5" y1="87" x2="37.5" y2="74" {...lineProps} />
+      {/* Bottom: Chemistry → center */}
+      <line x1="62.5" y1="87" x2="62.5" y2="74" {...lineProps} />
+    </svg>
+  );
+}
+
 export default function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-sunshine-light" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center mb-14"
-        >
-          {/* Decorative lines + badge */}
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="flex-1 max-w-[60px] h-px bg-sunshine-yellow" />
-            <span className="inline-block bg-sunshine-sky/20 text-sunshine-blue text-sm font-semibold px-4 py-1.5 rounded-full">
-              Our Services
-            </span>
-            <span className="flex-1 max-w-[60px] h-px bg-sunshine-yellow" />
-          </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-sunshine-dark mb-4">
-            Comprehensive Laboratory Testing Services
-          </h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            We offer a full spectrum of clinical laboratory services with industry-leading
-            accuracy and rapid turnaround times.
-          </p>
-        </motion.div>
+        {/* ── Desktop layout (lg+) ── */}
+        <div className="hidden lg:block relative">
+          <ConnectorLines />
+          <div className="grid grid-cols-4 gap-6">
 
-        {/* Cards Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {services.map((service) => (
-            <motion.div key={service.id} variants={cardVariants}>
-              <ServiceCard
-                title={service.title}
-                description={service.description}
-                Icon={service.Icon}
-                href={service.href}
-                highlight={service.highlight}
-              />
+            {/* Row 1: top-center cards */}
+            <div className="col-start-2">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.10 }}>
+                <ServiceCard {...svc('coagulation')} />
+              </motion.div>
+            </div>
+            <div className="col-start-3">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.20 }}>
+                <ServiceCard {...svc('molecular')} />
+              </motion.div>
+            </div>
+
+            {/* Row 2: DNA | center text | Drug Testing */}
+            <div className="col-start-1 row-start-2">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.15 }}>
+                <ServiceCard {...svc('dna-testing')} />
+              </motion.div>
+            </div>
+
+            {/* Center hub — spans cols 2–3, rows 2–3 */}
+            <motion.div
+              className="col-start-2 col-span-2 row-start-2 row-span-2 flex flex-col items-center justify-center text-center px-8 rounded-3xl bg-white/50 border border-dashed border-slate-300"
+              variants={headerVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+            >
+              <p className="text-xs font-semibold uppercase tracking-widest text-sunshine-blue mb-3">
+                What We Do
+              </p>
+              <h2 className="text-3xl xl:text-4xl font-bold text-sunshine-dark mb-4">
+                Services We Provide
+              </h2>
+              <p className="text-gray-500 text-base leading-relaxed max-w-xs">
+                A comprehensive suite of cutting-edge diagnostics tailored to your needs — precise results,
+                proactive healthcare decisions.
+              </p>
             </motion.div>
-          ))}
-        </motion.div>
+
+            <div className="col-start-4 row-start-2">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.25 }}>
+                <ServiceCard {...svc('drug-testing')} />
+              </motion.div>
+            </div>
+
+            {/* Row 3: Phlebotomy | center text continues | Hematology */}
+            <div className="col-start-1 row-start-3">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.30 }}>
+                <ServiceCard {...svc('phlebotomy')} />
+              </motion.div>
+            </div>
+            <div className="col-start-4 row-start-3">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.35 }}>
+                <ServiceCard {...svc('hematology')} />
+              </motion.div>
+            </div>
+
+            {/* Row 4: bottom-center cards */}
+            <div className="col-start-2 row-start-4">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.40 }}>
+                <ServiceCard {...svc('immunochemistry')} />
+              </motion.div>
+            </div>
+            <div className="col-start-3 row-start-4">
+              <motion.div variants={cardVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'} transition={{ delay: 0.45 }}>
+                <ServiceCard {...svc('chemistry')} />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Mobile / tablet layout (< lg) ── */}
+        <div className="lg:hidden">
+          <motion.div
+            variants={headerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="text-center mb-12"
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-sunshine-blue mb-3">
+              What We Do
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-sunshine-dark mb-4">
+              Services We Provide
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
+              A comprehensive suite of cutting-edge diagnostics tailored to your needs — precise results,
+              proactive healthcare decisions.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {services.map((service, i) => (
+              <motion.div
+                key={service.id}
+                variants={cardVariants}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
+                transition={{ delay: i * 0.08 }}
+              >
+                <ServiceCard
+                  title={service.title}
+                  Icon={service.Icon}
+                  href={service.href}
+                  highlight={service.highlight}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

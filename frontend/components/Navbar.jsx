@@ -7,14 +7,14 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 const servicesItems = [
-  { label: 'Hematology', href: '/#services' },
-  { label: 'Chemistry', href: '/#services' },
-  { label: 'Immunochemistry', href: '/#services' },
-  { label: 'Coagulation Service', href: '/#services' },
-  { label: 'Drug Testing', href: '/#services' },
-  { label: 'Molecular Testing', href: '/#services' },
-  { label: 'Phlebotomy Service', href: '/#services' },
-  { label: 'DNA Testing', href: '/#services', highlight: true },
+  { label: 'Hematology', href: '/services/hematology' },
+  { label: 'Chemistry', href: '/services/chemistry' },
+  { label: 'Immunochemistry', href: '/services/immunochemistry' },
+  { label: 'Coagulation Service', href: '/services/coagulation' },
+  { label: 'Drug Testing', href: '/services/drug-testing' },
+  { label: 'Molecular Testing', href: '/services/molecular' },
+  { label: 'Phlebotomy Service', href: '/services/phlebotomy' },
+  { label: 'DNA Testing', href: '/services/dna-testing', highlight: true },
 ];
 
 const joinTeamItems = [
@@ -126,7 +126,7 @@ export default function Navbar() {
             </DropdownItem>
 
             <NavLink href="/#contact" label="Referrals" />
-            <NavLink href="/#appointment" label="Schedule" />
+            <NavLink href="/book-appointment" label="Schedule" />
 
             <DropdownItem
               label="Protocol"
@@ -154,7 +154,7 @@ export default function Navbar() {
           {/* CTA Button — far right */}
           <div className="hidden lg:flex flex-shrink-0">
             <Link
-              href="/#appointment"
+              href="/book-appointment"
               className="bg-sunshine-yellow text-sunshine-dark px-5 py-2.5 rounded-full font-semibold hover:brightness-105 transition-all duration-200 text-sm whitespace-nowrap shadow-sm"
             >
               Book Appointment
@@ -232,7 +232,7 @@ export default function Navbar() {
               </MobileDropdown>
 
               <MobileNavLink href="/#contact" label="Referrals" onClick={() => setMobileOpen(false)} />
-              <MobileNavLink href="/#appointment" label="Schedule" onClick={() => setMobileOpen(false)} />
+              <MobileNavLink href="/book-appointment" label="Schedule" onClick={() => setMobileOpen(false)} />
 
               <MobileDropdown
                 label="Protocol"
@@ -255,7 +255,7 @@ export default function Navbar() {
 
               <div className="pt-2 pb-1">
                 <Link
-                  href="/#appointment"
+                  href="/book-appointment"
                   className="block w-full text-center bg-sunshine-yellow text-sunshine-dark px-5 py-3 rounded-full font-semibold hover:brightness-105 transition-all"
                   onClick={() => setMobileOpen(false)}
                 >
