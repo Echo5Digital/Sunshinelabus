@@ -13,7 +13,7 @@ export default function AppointmentCTASection() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="appointment" className="py-20 bg-white">
+    <section id="appointment" className="py-20 bg-sunshine-light border-t border-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

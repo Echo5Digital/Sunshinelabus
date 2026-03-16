@@ -11,6 +11,8 @@ const config = {
           sky:    '#6BB6E8',
           yellow: '#FFC72C',
           light:  '#F4F9FF',
+          soft:   '#F9FCFF',
+          mist:   '#F1F7FF',
           dark:   '#1E2A38',
         },
       },
