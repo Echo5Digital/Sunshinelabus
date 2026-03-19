@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import Logo from '@/components/Logo';
 
 const companyLinks = [
   { label: 'About Us', href: '/about' },
@@ -12,7 +12,7 @@ const quickLinks = [
   { label: 'Services', href: '/#services' },
   { label: 'Referrals', href: '/#contact' },
   { label: 'Schedule', href: '/#appointment' },
-  { label: 'Protocol', href: '#' },
+  { label: 'Do Not Sell/Share My Personal Information', href: '#' },
 ];
 
 export default function Footer() {
@@ -24,7 +24,7 @@ export default function Footer() {
 
           {/* Column 0: Logo + tagline */}
           <div className="md:col-span-1">
-            <Logo variant="white" className="mb-4" />
+            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={48} width={160} className="object-contain mb-4" />
             <p className="text-white/70 text-sm leading-relaxed mt-3">
               Accurate, reliable, and timely diagnostic services — bringing sunshine to your health.
             </p>

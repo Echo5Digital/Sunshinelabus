@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 // ─── Slide Data ───────────────────────────────────────────────────────────────
 
@@ -159,7 +161,7 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="relative w-full h-[80vh] overflow-hidden"
+      className="relative w-full h-[95vh] overflow-hidden"
     >
       {/* ── Image Stack ───────────────────────────────────────────────────────── */}
       <div className="absolute inset-0">
@@ -226,8 +228,54 @@ export default function HeroSlider() {
 
       </div>
 
+      {/* ── Dark Overlay ──────────────────────────────────────────────────────── */}
+      <div className="absolute inset-0 z-10 bg-black/40 pointer-events-none" />
+
+      {/* ── Hero Text Content ─────────────────────────────────────────────────── */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center px-4 pointer-events-none">
+        <div className="text-center max-w-3xl pointer-events-auto">
+
+          {/* Heading — fade + slide up */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg"
+          >
+            Empowering Wellness Through Advanced Testing Solutions
+          </motion.h1>
+
+          {/* Subtext — delay 0.2s */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+            className="mt-5 text-base md:text-lg text-white/90 leading-relaxed drop-shadow"
+          >
+            Incorporating cutting-edge technology, we deliver precise diagnoses and personalized
+            treatment plans, ensuring unparalleled accuracy and tailored care for each patient&apos;s
+            unique health needs.
+          </motion.p>
+
+          {/* CTA Button — delay 0.4s + scale effect */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+            className="mt-8"
+          >
+            <Link href="/about">
+              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-base px-8 py-3 rounded-full font-semibold shadow-md">
+                <span>Find Out More →</span>
+              </ShimmerButton>
+            </Link>
+          </motion.div>
+
+        </div>
+      </div>
+
       {/* ── Navigation Arrows (bottom-right diamond) ──────────────────────────── */}
-      <div className="absolute bottom-16 right-8 z-20 w-36 h-36 flex items-center justify-center">
+      <div className="absolute bottom-16 right-8 z-30 w-36 h-36 flex items-center justify-center">
         {/* Diamond border */}
         <div className="absolute w-[96px] h-[96px] border border-sunshine-yellow/70 rotate-45" />
 
@@ -292,7 +340,7 @@ export default function HeroSlider() {
       </div>
 
       {/* ── Pagination Dots ────────────────────────────────────────────────────── */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {SLIDES.map((s, index) => (
           <button
             key={s.id}
@@ -307,20 +355,6 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* ── Wave Divider ──────────────────────────────────────────────────────── */}
-      <div className="absolute bottom-0 w-full z-10" style={{ height: '80px' }}>
-        <svg
-          viewBox="0 0 1440 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 w-full h-full"
-        >
-          <path
-            d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-            fill="#F4F9FF"
-          />
-        </svg>
-      </div>
     </section>
   );
 }

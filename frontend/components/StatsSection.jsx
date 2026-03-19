@@ -43,7 +43,39 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="py-16 bg-gradient-to-r from-sunshine-blue to-sunshine-sky">
+    <section ref={ref} className="relative py-16 bg-gradient-to-r from-sunshine-blue to-sunshine-sky overflow-hidden">
+
+      {/* ── Decorative SVG background ── */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        {/* Dot grid — white on blue */}
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="stats-dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.3" fill="#ffffff" fillOpacity="0.10"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#stats-dots)"/>
+        </svg>
+        {/* Large ring — right */}
+        <svg className="absolute -right-20 -top-20 w-80 h-80 opacity-[0.12]" viewBox="0 0 320 320" fill="none">
+          <circle cx="320" cy="0" r="200" stroke="white" strokeWidth="1.5" strokeDasharray="8 5"/>
+          <circle cx="320" cy="0" r="130" stroke="white" strokeWidth="1" strokeDasharray="4 3"/>
+        </svg>
+        {/* Large ring — left */}
+        <svg className="absolute -left-20 -bottom-20 w-80 h-80 opacity-[0.10]" viewBox="0 0 320 320" fill="none">
+          <circle cx="0" cy="320" r="180" stroke="white" strokeWidth="1.5" strokeDasharray="6 4"/>
+        </svg>
+        {/* Horizontal lines — subtle */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="stats-lines" x="0" y="0" width="1" height="48" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="10000" y2="0" stroke="white" strokeWidth="0.8"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#stats-lines)"/>
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

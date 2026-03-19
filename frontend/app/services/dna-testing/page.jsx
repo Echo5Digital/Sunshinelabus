@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Microscope, CheckCircle, ArrowRight } from 'lucide-react';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
   title: 'DNA Testing | Sunshine Clinical Lab',
@@ -26,9 +27,6 @@ export default function DNATestingPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl mb-4">
             <Microscope className="w-8 h-8" />
           </div>
-          <span className="inline-block bg-sunshine-yellow text-sunshine-dark text-xs font-bold px-3 py-1 rounded-full mb-4">
-            ⭐ Featured Service
-          </span>
           <p className="text-sm font-semibold uppercase tracking-widest text-white/70 mb-3">Our Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">DNA Testing</h1>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
@@ -68,11 +66,11 @@ export default function DNATestingPage() {
           <div className="rounded-2xl p-8 text-white text-center" style={{ background: 'linear-gradient(135deg, #2B7DBF 0%, #1a5a8f 100%)' }}>
             <h3 className="text-2xl font-bold mb-3">Get Your DNA Test Today</h3>
             <p className="text-white/80 mb-6">Confidential, accurate, and fast results for peace of mind or legal needs.</p>
-            <Link
-              href="/book-appointment"
-              className="inline-flex items-center gap-2 bg-sunshine-yellow text-sunshine-dark font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all"
-            >
-              Book Appointment <ArrowRight className="w-4 h-4" />
+            <Link href="/book-appointment">
+              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white font-semibold px-6 py-3 rounded-full shadow-xl">
+                <span>Book Appointment</span>
+                <ArrowRight className="w-4 h-4" />
+              </ShimmerButton>
             </Link>
           </div>
         </div>

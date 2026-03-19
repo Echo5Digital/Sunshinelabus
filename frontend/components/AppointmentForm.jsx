@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { submitAppointment } from '@/lib/api';
 import { Calendar, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const SERVICES = [
   'Hematology',
@@ -175,23 +176,23 @@ export default function AppointmentForm() {
       </div>
 
       {/* Submit */}
-      <button
+      <ShimmerButton
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full flex items-center justify-center gap-2 bg-sunshine-yellow text-sunshine-dark px-6 py-3.5 rounded-full font-semibold hover:brightness-105 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
+        className="w-full justify-center bg-[#FFC72C] text-[#1E2A38] text-base px-6 py-3.5 rounded-full font-semibold shadow-md"
       >
         {status === 'submitting' ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            Booking...
+            <span>Booking...</span>
           </>
         ) : (
           <>
             <Calendar className="w-4 h-4" />
-            Book Appointment
+            <span>Book Appointment</span>
           </>
         )}
-      </button>
+      </ShimmerButton>
     </form>
   );
 }

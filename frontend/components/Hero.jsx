@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Microscope, FlaskConical, Activity, Shield } from 'lucide-react';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const containerVariants = {
   hidden: {},
@@ -82,18 +83,19 @@ export default function Hero() {
 
               {/* CTA Buttons */}
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-                <Link
-                  href="/#appointment"
-                  className="inline-flex items-center gap-2 bg-sunshine-yellow text-sunshine-dark px-7 py-3.5 rounded-full font-semibold text-base hover:brightness-105 hover:shadow-lg transition-all duration-200 shadow-md"
-                >
-                  Book Appointment
-                  <ArrowRight className="w-4 h-4" />
+                <Link href="/#appointment">
+                  <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-base px-7 py-3.5 rounded-full font-semibold shadow-xl">
+                    <span>Book Appointment</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </ShimmerButton>
                 </Link>
-                <Link
-                  href="/#services"
-                  className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white border border-white/40 px-7 py-3.5 rounded-full font-semibold text-base hover:bg-white/25 transition-all duration-200"
-                >
-                  Our Services
+                <Link href="/#services">
+                  <ShimmerButton
+                    className="border border-white/40 bg-white/15 backdrop-blur-sm text-white text-base px-7 py-3.5 rounded-full font-semibold"
+                    shimmerColor="rgba(255,255,255,0.25)"
+                  >
+                    <span>Our Services</span>
+                  </ShimmerButton>
                 </Link>
               </motion.div>
 
@@ -188,7 +190,7 @@ export default function Hero() {
         >
           <path
             d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
-            fill="#F4F9FF"
+            fill="#FEF5D9"
           />
         </svg>
       </div>

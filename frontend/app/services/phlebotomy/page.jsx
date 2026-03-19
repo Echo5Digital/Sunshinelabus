@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Syringe, CheckCircle, ArrowRight } from 'lucide-react';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
   title: 'Phlebotomy Service | Sunshine Clinical Lab',
@@ -65,11 +66,11 @@ export default function PhlebotomyPage() {
           <div className="bg-sunshine-blue rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-3">Schedule a Draw</h3>
             <p className="text-white/80 mb-6">Book in-lab or request a mobile visit — we come to you.</p>
-            <Link
-              href="/book-appointment"
-              className="inline-flex items-center gap-2 bg-sunshine-yellow text-sunshine-dark font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all"
-            >
-              Book Appointment <ArrowRight className="w-4 h-4" />
+            <Link href="/book-appointment">
+              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white font-semibold px-6 py-3 rounded-full shadow-xl">
+                <span>Book Appointment</span>
+                <ArrowRight className="w-4 h-4" />
+              </ShimmerButton>
             </Link>
           </div>
         </div>

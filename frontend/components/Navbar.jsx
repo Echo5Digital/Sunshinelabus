@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import Logo from '@/components/Logo';
+import Image from 'next/image';
+import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const servicesItems = [
   { label: 'Hematology', href: '/services/hematology' },
@@ -20,11 +21,6 @@ const servicesItems = [
 const joinTeamItems = [
   { label: 'Careers', href: '/about#careers' },
   { label: 'Lab Professionals', href: '/about#lab-professionals' },
-];
-
-const protocolItems = [
-  { label: 'Resource', href: '#' },
-  { label: 'Privacy Rights', href: '#' },
 ];
 
 const dropdownVariants = {
@@ -67,7 +63,7 @@ export default function Navbar() {
         <div className="flex items-center h-20">
           {/* Logo — far left */}
           <Link href="/" className="flex-shrink-0">
-            <Logo variant="color" />
+            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={36} width={120} className="object-contain" />
           </Link>
 
           {/* Desktop Nav — centered */}
@@ -88,18 +84,12 @@ export default function Navbar() {
                     href={item.href}
                     className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors ${
                       item.highlight
-                        ? 'text-sunshine-blue font-medium hover:bg-sunshine-yellow/10'
+                        ? 'text-sunshine-yellow font-semibold hover:bg-sunshine-yellow/10'
                         : 'text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue'
                     }`}
                     onClick={() => setActiveDropdown(null)}
                   >
-                    {item.highlight && <span>⭐</span>}
                     {item.label}
-                    {item.highlight && (
-                      <span className="ml-auto bg-sunshine-yellow text-sunshine-dark text-xs font-semibold px-2 py-0.5 rounded-full">
-                        Featured
-                      </span>
-                    )}
                   </Link>
                 ))}
               </div>
@@ -127,37 +117,15 @@ export default function Navbar() {
 
             <NavLink href="/#contact" label="Referrals" />
             <NavLink href="/book-appointment" label="Schedule" />
-
-            <DropdownItem
-              label="Protocol"
-              isOpen={activeDropdown === 'protocol'}
-              onEnter={() => setActiveDropdown('protocol')}
-              onLeave={() => setActiveDropdown(null)}
-            >
-              <div className="py-2">
-                {protocolItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="block px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </DropdownItem>
-
             <NavLink href="/contact" label="Contact" />
           </div>
 
           {/* CTA Button — far right */}
           <div className="hidden lg:flex flex-shrink-0">
-            <Link
-              href="/book-appointment"
-              className="bg-sunshine-yellow text-sunshine-dark px-5 py-2.5 rounded-full font-semibold hover:brightness-105 transition-all duration-200 text-sm whitespace-nowrap shadow-sm"
-            >
-              Book Appointment
+            <Link href="/book-appointment">
+              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-5 py-2.5 rounded-full font-semibold whitespace-nowrap shadow-sm">
+                <span>Book Appointment</span>
+              </ShimmerButton>
             </Link>
           </div>
 
@@ -198,18 +166,12 @@ export default function Navbar() {
                     href={item.href}
                     className={`flex items-center gap-2 pl-4 pr-2 py-2 text-sm transition-colors ${
                       item.highlight
-                        ? 'text-sunshine-blue font-medium'
+                        ? 'text-sunshine-yellow font-semibold'
                         : 'text-sunshine-dark/80 hover:text-sunshine-blue'
                     }`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    {item.highlight && <span>⭐</span>}
                     {item.label}
-                    {item.highlight && (
-                      <span className="ml-auto bg-sunshine-yellow text-sunshine-dark text-xs font-semibold px-2 py-0.5 rounded-full">
-                        Featured
-                      </span>
-                    )}
                   </Link>
                 ))}
               </MobileDropdown>
@@ -233,33 +195,13 @@ export default function Navbar() {
 
               <MobileNavLink href="/#contact" label="Referrals" onClick={() => setMobileOpen(false)} />
               <MobileNavLink href="/book-appointment" label="Schedule" onClick={() => setMobileOpen(false)} />
-
-              <MobileDropdown
-                label="Protocol"
-                isOpen={mobileExpanded === 'protocol'}
-                onToggle={() => toggleMobileDropdown('protocol')}
-              >
-                {protocolItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="block pl-4 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </MobileDropdown>
-
               <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
 
               <div className="pt-2 pb-1">
-                <Link
-                  href="/book-appointment"
-                  className="block w-full text-center bg-sunshine-yellow text-sunshine-dark px-5 py-3 rounded-full font-semibold hover:brightness-105 transition-all"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Book Appointment
+                <Link href="/book-appointment" onClick={() => setMobileOpen(false)}>
+                  <ShimmerButton className="w-full justify-center bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-5 py-3 rounded-full font-semibold shadow-sm">
+                    <span>Book Appointment</span>
+                  </ShimmerButton>
                 </Link>
               </div>
             </div>
