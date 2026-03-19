@@ -1,4 +1,5 @@
 import { Phone } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata = {
@@ -12,17 +13,20 @@ export default function AboutPage() {
     <div className="pt-16">
 
       {/* Banner */}
-      <section className="bg-gradient-to-br from-sunshine-blue to-sunshine-dark py-20 text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="inline-block bg-white/15 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+      <section className="relative w-full h-[95vh] overflow-hidden">
+        <Image
+          src="/about-bnr.png"
+          alt="About Us Banner"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-widest uppercase drop-shadow-lg">
             About Us
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-snug">
-            Precision. Trust. Care.
           </h1>
-          <p className="text-sunshine-sky text-lg">
-            Over 35 years of trusted diagnostic excellence across Texas, New York, and New Jersey.
-          </p>
         </div>
       </section>
 

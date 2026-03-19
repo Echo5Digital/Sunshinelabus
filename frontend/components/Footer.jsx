@@ -10,7 +10,7 @@ const companyLinks = [
 
 const quickLinks = [
   { label: 'Services', href: '/#services' },
-  { label: 'Referrals', href: '/#contact' },
+  { label: 'Referrals', href: '/referrals' },
   { label: 'Schedule', href: '/#appointment' },
   { label: 'Do Not Sell/Share My Personal Information', href: '#' },
 ];

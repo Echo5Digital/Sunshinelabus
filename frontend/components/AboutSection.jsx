@@ -9,7 +9,7 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const actionCards = [
   { Icon: Users,         label: 'Lab Professionals',    href: '#' },
-  { Icon: UserPlus,      label: 'Send Your Referrals',  href: '#' },
+  { Icon: UserPlus,      label: 'Send Your Referrals',  href: '/referrals' },
   { Icon: CalendarClock, label: 'Laboratory Schedules', href: '#' },
 ];
 

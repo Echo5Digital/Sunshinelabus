@@ -12,7 +12,7 @@ export default function AppointmentCTASection() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="appointment" className="relative py-20 bg-gradient-to-br from-[#dbeeff] to-white border-t border-gray-100 overflow-hidden">
+    <section id="appointment" className="relative py-20 bg-gradient-to-br from-[#9dc8e8] to-[#dbeeff] border-t border-gray-100 overflow-hidden">
 
       {/* ── Decorative SVG background ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">

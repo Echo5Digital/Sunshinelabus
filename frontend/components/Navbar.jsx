@@ -23,6 +23,11 @@ const joinTeamItems = [
   { label: 'Lab Professionals', href: '/about#lab-professionals' },
 ];
 
+const protocolsItems = [
+  { label: 'Resources', href: '#' },
+  { label: 'Privacy Policy', href: '#' },
+];
+
 const dropdownVariants = {
   hidden: { opacity: 0, y: -8, scale: 0.97 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.18, ease: 'easeOut' } },
@@ -115,8 +120,29 @@ export default function Navbar() {
               </div>
             </DropdownItem>
 
-            <NavLink href="/#contact" label="Referrals" />
+            <NavLink href="/referrals" label="Referrals" />
             <NavLink href="/book-appointment" label="Schedule" />
+
+            <DropdownItem
+              label="Protocols"
+              isOpen={activeDropdown === 'protocols'}
+              onEnter={() => setActiveDropdown('protocols')}
+              onLeave={() => setActiveDropdown(null)}
+            >
+              <div className="py-2">
+                {protocolsItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="block px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </DropdownItem>
+
             <NavLink href="/contact" label="Contact" />
           </div>
 
@@ -193,8 +219,26 @@ export default function Navbar() {
                 ))}
               </MobileDropdown>
 
-              <MobileNavLink href="/#contact" label="Referrals" onClick={() => setMobileOpen(false)} />
+              <MobileNavLink href="/referrals" label="Referrals" onClick={() => setMobileOpen(false)} />
               <MobileNavLink href="/book-appointment" label="Schedule" onClick={() => setMobileOpen(false)} />
+
+              <MobileDropdown
+                label="Protocols"
+                isOpen={mobileExpanded === 'protocols'}
+                onToggle={() => toggleMobileDropdown('protocols')}
+              >
+                {protocolsItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="block pl-4 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </MobileDropdown>
+
               <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
 
               <div className="pt-2 pb-1">
