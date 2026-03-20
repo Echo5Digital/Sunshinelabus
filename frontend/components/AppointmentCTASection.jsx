@@ -69,7 +69,7 @@ export default function AppointmentCTASection() {
             transition={{ duration: 2.8, ease: 'easeOut', delay: 0.1 }}
           >
             <Image
-              src="/main-img.webp"
+              src="/main-img2.jpg"
               alt="Sunshine Clinical Lab"
               width={600}
               height={700}

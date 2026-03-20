@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import MagicCard from './ui/MagicCard';
 
-export default function ServiceCard({ title, Icon, href, highlight = false }) {
+export default function ServiceCard({ title, Icon, href }) {
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.02 }}
@@ -13,19 +13,15 @@ export default function ServiceCard({ title, Icon, href, highlight = false }) {
       className="h-full"
     >
       <MagicCard
-        gradientColor={highlight ? '#FFC72C33' : '#D9D9D955'}
-        borderGlowColor={highlight ? '#FFC72C' : '#6BB6E8'}
+        gradientColor="#D9D9D955"
+        borderGlowColor="#6BB6E8"
         gradientSize={200}
         className="group shadow-md hover:shadow-xl"
       >
         <div className="p-6 flex flex-col items-center text-center h-full">
           {/* Icon */}
           <div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-              highlight
-                ? 'bg-sunshine-yellow/20 text-sunshine-blue'
-                : 'bg-sunshine-blue/10 text-sunshine-blue'
-            }`}
+            className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-sunshine-blue/10 text-sunshine-blue"
           >
             <Icon className="w-6 h-6" />
           </div>

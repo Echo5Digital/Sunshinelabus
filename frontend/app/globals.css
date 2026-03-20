@@ -5,10 +5,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply text-sunshine-dark bg-sunshine-light;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
   }
 }
 
