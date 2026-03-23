@@ -103,7 +103,7 @@ export default function TRTSection() {
                   Book Your TRT Panel — (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/trt-blood-test-new-port-richey" aria-label="Full details on TRT blood testing">
+              <Link href="/trt-blood-test-pasco-county" aria-label="Full details on TRT blood testing">
                 <ShimmerButton className="border border-white/30 text-white px-6 py-4 rounded-full font-semibold gap-2">
                   Full TRT Testing Details
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />

@@ -8,14 +8,9 @@ import Image from 'next/image';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const servicesItems = [
-  { label: 'Hematology', href: '/services/hematology' },
-  { label: 'Chemistry', href: '/services/chemistry' },
-  { label: 'Immunochemistry', href: '/services/immunochemistry' },
-  { label: 'Coagulation Service', href: '/services/coagulation' },
-  { label: 'Drug Testing', href: '/services/drug-testing' },
-  { label: 'Molecular Testing', href: '/services/molecular' },
-  { label: 'Phlebotomy Service', href: '/services/phlebotomy' },
-  { label: 'DNA Testing', href: '/services/dna-testing', highlight: true },
+  { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
+  { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
+  { label: 'DNA Testing', href: '#', highlight: true },
 ];
 
 const joinTeamItems = [
@@ -78,6 +73,7 @@ export default function Navbar() {
 
             <DropdownItem
               label="Services"
+              href="#"
               isOpen={activeDropdown === 'services'}
               onEnter={() => setActiveDropdown('services')}
               onLeave={() => setActiveDropdown(null)}
@@ -87,11 +83,7 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors ${
-                      item.highlight
-                        ? 'text-sunshine-yellow font-semibold hover:bg-sunshine-yellow/10'
-                        : 'text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue'
-                    }`}
+                    className="flex items-center gap-2 px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
                     onClick={() => setActiveDropdown(null)}
                   >
                     {item.label}
@@ -190,11 +182,7 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`flex items-center gap-2 pl-4 pr-2 py-2 text-sm transition-colors ${
-                      item.highlight
-                        ? 'text-sunshine-yellow font-semibold'
-                        : 'text-sunshine-dark/80 hover:text-sunshine-blue'
-                    }`}
+                    className="flex items-center gap-2 pl-4 pr-2 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
@@ -267,13 +255,23 @@ function NavLink({ href, label }) {
   );
 }
 
-function DropdownItem({ label, isOpen, onEnter, onLeave, children }) {
+function DropdownItem({ label, href, isOpen, onEnter, onLeave, children }) {
   return (
     <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
-      <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200">
-        {label}
-        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
+      {href ? (
+        <Link
+          href={href}
+          className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200"
+        >
+          {label}
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </Link>
+      ) : (
+        <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200">
+          {label}
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+      )}
       <AnimatePresence>
         {isOpen && (
           <motion.div

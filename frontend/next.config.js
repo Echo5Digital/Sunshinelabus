@@ -5,6 +5,20 @@ const nextConfig = {
     qualities: [100, 75],
     remotePatterns: [],
   },
+  async redirects() {
+    return [
+      {
+        source: '/mobile-blood-draw-new-port-richey',
+        destination: '/mobile-blood-draw-pasco-county',
+        permanent: true,
+      },
+      {
+        source: '/trt-blood-test-new-port-richey',
+        destination: '/trt-blood-test-pasco-county',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
