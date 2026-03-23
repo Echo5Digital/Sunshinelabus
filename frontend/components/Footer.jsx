@@ -11,12 +11,10 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { label: 'Routine Blood Work', href: '/services/hematology' },
-  { label: 'TRT Monitoring Panels', href: '/services/chemistry' },
-  { label: 'DNA Testing', href: '/services/dna-testing' },
-  { label: 'Gender Reveal Test', href: '/services/molecular' },
-  { label: 'Mobile Blood Draw', href: '/services/phlebotomy' },
-  { label: 'Drug Testing', href: '/services/drug-testing' },
+  { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
+  { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
+  { label: 'DNA Testing', href: '/dna-testing-pasco-county' },
+  { label: 'Gender Reveal Test', href: '#' },
 ];
 
 export default function Footer() {

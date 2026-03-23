@@ -8,20 +8,16 @@ import {
   Phone,
   MapPin,
   Clock,
-  CheckCircle,
   ChevronDown,
   ArrowRight,
   CalendarDays,
   HelpCircle,
-  Dna,
   ShieldCheck,
   Scale,
   FileText,
   FileCheck,
   Heart,
-  Globe,
   Users,
-  Lock,
 } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 import MagicCard from '@/components/ui/MagicCard';
@@ -232,8 +228,17 @@ export default function DNATestingPage() {
 
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="relative w-full min-h-[65vh] flex items-center overflow-hidden">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sunshine-dark via-[#1a3a5c] to-sunshine-blue" />
+        {/* Banner image with gradient overlay */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/dna-bnr.jpg"
+            alt="DNA Testing at Sunshine Clinical Lab in Trinity, FL"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-sunshine-dark/85 via-[#1a3a5c]/80 to-sunshine-blue/75" />
+        </div>
         {/* Decorative rings */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-white/5" />
@@ -247,7 +252,7 @@ export default function DNATestingPage() {
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl ml-auto text-right"
+            className="max-w-2xl text-left"
           >
             <motion.div variants={heroItemVariants}>
               <p className="text-white/75 text-sm font-semibold tracking-widest mb-6">
@@ -272,7 +277,7 @@ export default function DNATestingPage() {
 
             <motion.p
               variants={heroItemVariants}
-              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl ml-auto"
+              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl"
             >
               Sunshine Clinical Lab provides professional DNA testing for paternity, immigration, and
               legal purposes — with strict chain-of-custody protocols and compassionate, confidential
@@ -281,7 +286,7 @@ export default function DNATestingPage() {
 
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-end"
+              className="flex flex-col sm:flex-row flex-wrap gap-4"
             >
               <a href="tel:+17272335223">
                 <ShimmerButton className="bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
@@ -338,20 +343,30 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ PROFESSIONAL DNA TESTING SERVICES ════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0d1b2a' }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ opacity: 0.2 }}
+        >
+          <source src="/dna1.mp4" type="video/mp4" />
+        </video>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
                 Comprehensive DNA Services
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
                 Professional DNA Testing Services in Trinity, FL &amp; Pasco County
               </h2>
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed"
+              className="bg-transparent rounded-2xl p-8 space-y-4 text-gray-300 leading-relaxed"
             >
               <p>
                 DNA testing is rarely casual. Whether you&apos;re establishing paternity for family
@@ -366,7 +381,7 @@ export default function DNATestingPage() {
                 when legal admissibility is required, ensuring that your results hold up in court,
                 immigration proceedings, and official government processes.
               </p>
-              <p className="font-bold text-sunshine-dark text-lg">
+              <p className="font-bold text-white text-lg">
                 We understand the sensitivity involved. Every DNA test we process is handled with
                 complete professionalism and discretion.
               </p>
@@ -539,21 +554,8 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ WHAT TO EXPECT ═══════════════════════════════════════ */}
-      <section className="py-20 relative overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/res-bg.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            style={{ opacity: 0.5, objectPosition: 'center 40%' }}
-            sizes="100vw"
-            quality={85}
-          />
-        </div>
-
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="mb-8">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
@@ -701,7 +703,7 @@ export default function DNATestingPage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/trt-faq.jpg"
+            src="/dna-faq.jpg"
             alt=""
             fill
             className="object-cover"
@@ -709,7 +711,6 @@ export default function DNATestingPage() {
             sizes="100vw"
           />
         </div>
-
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="text-center mb-12">
@@ -851,39 +852,6 @@ export default function DNATestingPage() {
             </motion.div>
           </Section>
         </div>
-      </section>
-
-      {/* ══ INTERNAL LINKS ══════════════════════════════════════ */}
-      <section className="py-14 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Section>
-          <motion.div variants={itemVariants}>
-            <div className="bg-white rounded-2xl shadow-md p-7">
-              <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-4 block">
-                Explore More
-              </span>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { href: '/', label: 'Home' },
-                  { href: '/clinical-lab-services-trinity-fl', label: 'View All Lab Services' },
-                  { href: '/insurance-accepted', label: 'Insurance Accepted' },
-                  { href: '/faq', label: 'FAQ' },
-                  { href: '/clinical-lab-new-port-richey', label: 'Clinical Lab — New Port Richey' },
-                  { href: '/clinical-lab-land-o-lakes-fl', label: "Clinical Lab — Land O' Lakes" },
-                  { href: '/clinical-lab-tarpon-springs-fl', label: 'Clinical Lab — Tarpon Springs' },
-                ].map(({ href, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="inline-flex items-center gap-1.5 bg-sunshine-soft text-sunshine-dark text-sm font-semibold px-4 py-2 rounded-full border border-sunshine-sky/40 hover:bg-sunshine-sky/40 hover:border-sunshine-blue/40 transition-colors"
-                  >
-                    {label}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </Section>
       </section>
 
     </div>

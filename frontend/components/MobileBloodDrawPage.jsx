@@ -926,43 +926,6 @@ export default function MobileBloodDrawPage() {
         </div>
       </section>
 
-      {/* ══ INTERNAL LINKS ══════════════════════════════════════ */}
-      <section className="py-14 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Section>
-          <motion.div variants={itemVariants}>
-            <div className="bg-white rounded-2xl shadow-md p-7">
-              <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-4 block">
-                Explore More
-              </span>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { href: '/', label: 'Home' },
-                  { href: '/clinical-lab-services-trinity-fl', label: 'View All Lab Services' },
-                  { href: '/trt-blood-test-new-port-richey', label: 'TRT Blood Testing' },
-                  { href: '/insurance-accepted', label: 'Insurance Accepted' },
-                  { href: '/clinical-lab-trinity-fl', label: 'Clinical Lab — Trinity' },
-                  { href: '/clinical-lab-new-port-richey', label: 'Clinical Lab — New Port Richey' },
-                  { href: '/clinical-lab-land-o-lakes-fl', label: "Clinical Lab — Land O' Lakes" },
-                  {
-                    href: '/clinical-lab-tarpon-springs-fl',
-                    label: 'Clinical Lab — Tarpon Springs',
-                  },
-                ].map(({ href, label }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="inline-flex items-center gap-1.5 bg-sunshine-soft text-sunshine-dark text-sm font-semibold px-4 py-2 rounded-full border border-sunshine-sky/40 hover:bg-sunshine-sky/40 hover:border-sunshine-blue/40 transition-colors"
-                  >
-                    {label}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </Section>
-      </section>
-
     </div>
   );
 }
