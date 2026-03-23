@@ -17,6 +17,16 @@ const nextConfig = {
         destination: '/trt-blood-test-pasco-county',
         permanent: true,
       },
+      {
+        source: '/dna-testing-new-port-richey',
+        destination: '/dna-testing-pasco-county',
+        permanent: true,
+      },
+      {
+        source: '/services/dna-testing',
+        destination: '/dna-testing-pasco-county',
+        permanent: true,
+      },
     ];
   },
 };

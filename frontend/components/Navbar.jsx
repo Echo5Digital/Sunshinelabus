@@ -10,7 +10,7 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 const servicesItems = [
   { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
-  { label: 'DNA Testing', href: '#', highlight: true },
+  { label: 'DNA Testing', href: '/dna-testing-pasco-county', highlight: true },
 ];
 
 const joinTeamItems = [
