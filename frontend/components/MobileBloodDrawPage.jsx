@@ -341,26 +341,53 @@ export default function MobileBloodDrawPage() {
       <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="border-l-4 border-sunshine-blue pl-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
-                What Is a Mobile Blood Draw Service?
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-base">
-                A mobile blood draw (also called mobile phlebotomy or home blood draw) is a
-                service where a licensed, experienced phlebotomist travels to a patient's home,
-                office, or care facility to perform blood collection. Sunshine Clinical Lab offers
-                mobile blood draw services throughout Pasco County, including Trinity, New Port
-                Richey, Land O&apos; Lakes, Tarpon Springs, Holiday, and Hudson. The service is
-                available for routine blood work, TRT monitoring, hormone panels, and most
-                physician-ordered tests. Call{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>{' '}
-                to schedule.
-              </p>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              {/* Top accent bar */}
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                {/* Badge */}
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <Home className="w-3.5 h-3.5" />
+                    Mobile Phlebotomy — Pasco County
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
+                  What Is a Mobile Blood Draw Service?
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-base mb-7">
+                  A mobile blood draw (also called mobile phlebotomy or home blood draw) is a
+                  service where a licensed, experienced phlebotomist travels to a patient's home,
+                  office, or care facility to perform blood collection. Sunshine Clinical Lab offers
+                  mobile blood draw services throughout Pasco County, including Trinity, New Port
+                  Richey, Land O&apos; Lakes, Tarpon Springs, Holiday, and Hudson. The service is
+                  available for routine blood work, TRT monitoring, hormone panels, and most
+                  physician-ordered tests. Call{' '}
+                  <a
+                    href="tel:+17272335223"
+                    className="text-sunshine-blue font-semibold hover:underline"
+                  >
+                    (727) 233-5223
+                  </a>{' '}
+                  to schedule.
+                </p>
+                {/* Quick stats strip */}
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {[
+                    { icon: MapPin, label: 'All of Pasco County' },
+                    { icon: Clock, label: '15–30 Min Draw' },
+                    { icon: CheckCircle, label: 'Next-Day Results' },
+                  ].map(({ icon: Icon, label }) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full"
+                    >
+                      <Icon className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         </Section>
@@ -380,21 +407,34 @@ export default function MobileBloodDrawPage() {
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed"
+              className="bg-sunshine-soft rounded-2xl mb-4 shadow-sm overflow-hidden"
             >
-              <p>
-                Not everyone can sit in a waiting room — and honestly, nobody wants to. Sunshine
-                Clinical Lab's mobile blood draw service eliminates the drive, the wait, and the
-                hassle by sending one of our experienced phlebotomists directly to you.
-              </p>
-              <p>
-                This isn't a third-party courier drawing your blood with a weekend certification.
-                Our mobile team consists of the same seasoned professionals who staff our Trinity
-                laboratory — phlebotomists with over 35 years of combined experience who
-                specialize in difficult veins, pediatric draws, geriatric patients, and
-                high-volume clinical blood work.
-              </p>
-              <p className="font-bold text-sunshine-dark text-lg">
+              <div className="flex items-start gap-5 p-7 sm:p-8">
+                <div className="w-12 h-12 rounded-2xl bg-sunshine-blue flex items-center justify-center flex-shrink-0 shadow-md">
+                  <ArrowRight className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-gray-600 leading-relaxed space-y-3">
+                  <p>
+                    Not everyone can sit in a waiting room — and honestly, nobody wants to. Sunshine
+                    Clinical Lab's mobile blood draw service eliminates the drive, the wait, and the
+                    hassle by sending one of our experienced phlebotomists directly to you.
+                  </p>
+                  <p>
+                    This isn't a third-party courier drawing your blood with a weekend certification.
+                    Our mobile team consists of the same seasoned professionals who staff our Trinity
+                    laboratory — phlebotomists with over 35 years of combined experience who
+                    specialize in difficult veins, pediatric draws, geriatric patients, and
+                    high-volume clinical blood work.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              variants={itemVariants}
+              className="bg-sunshine-blue rounded-2xl px-7 py-5 flex items-center gap-4"
+            >
+              <Heart className="w-6 h-6 text-white flex-shrink-0" />
+              <p className="text-white font-semibold text-base leading-relaxed">
                 We bring lab-quality precision to your living room.
               </p>
             </motion.div>
@@ -537,59 +577,73 @@ export default function MobileBloodDrawPage() {
       </section>
 
       {/* ══ SERVICE AREA ════════════════════════════════════════ */}
-      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Section>
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
-              Coverage Area
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
-              Mobile Blood Draw Service Area — Pasco County &amp; Beyond
-            </h2>
-          </motion.div>
+      <section className="py-20 bg-[#EBF5FB] overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Section>
+            <motion.div variants={itemVariants} className="mb-8">
+              <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
+                Coverage Area
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
+                Mobile Blood Draw Service Area — Pasco County &amp; Beyond
+              </h2>
+            </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <div className="bg-white rounded-2xl shadow-md p-7">
-              <h3 className="text-lg font-bold text-sunshine-blue mb-4">Where We Go</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Our mobile phlebotomy team currently serves patients in Trinity, New Port Richey,
-                Land O&apos; Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, Lutz,
-                East Lake, Elfers, and surrounding communities throughout Pasco County and the
-                greater Tampa Bay region.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                If you're unsure whether we serve your area, call us at{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>
-                . We're constantly expanding to accommodate patients across the region.
-              </p>
-              <div className="flex flex-wrap gap-x-4 gap-y-2">
-                {[
-                  'Trinity',
-                  'New Port Richey',
-                  "Land O' Lakes",
-                  'Tarpon Springs',
-                  'Holiday',
-                  'Hudson',
-                  'Port Richey',
-                  'Odessa',
-                  'Lutz',
-                  'East Lake',
-                  'Elfers',
-                ].map((city) => (
-                  <span key={city} className="flex items-center gap-1 text-gray-500 text-sm group">
-                    <MapPin className="w-3 h-3 text-sunshine-blue/50 flex-shrink-0 group-hover:text-sunshine-blue transition-colors duration-200" />
-                    <span className="group-hover:text-sunshine-dark transition-colors duration-200">{city}</span>
-                  </span>
-                ))}
+            <motion.div variants={itemVariants}>
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+                {/* Card header with icon badge */}
+                <div className="flex items-center gap-4 px-7 pt-7 pb-4">
+                  <div className="w-10 h-10 rounded-xl bg-sunshine-blue flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-sunshine-dark">Where We Go</h3>
+                </div>
+                <div className="px-7 pb-7 space-y-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    Our mobile phlebotomy team currently serves patients in Trinity, New Port Richey,
+                    Land O&apos; Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, Lutz,
+                    East Lake, Elfers, and surrounding communities throughout Pasco County and the
+                    greater Tampa Bay region.
+                  </p>
+                  {/* City pill chips */}
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      'Trinity',
+                      'New Port Richey',
+                      "Land O' Lakes",
+                      'Tarpon Springs',
+                      'Holiday',
+                      'Hudson',
+                      'Port Richey',
+                      'Odessa',
+                      'Lutz',
+                      'East Lake',
+                      'Elfers',
+                    ].map((city) => (
+                      <span
+                        key={city}
+                        className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full"
+                      >
+                        <MapPin className="w-3 h-3 text-sunshine-blue flex-shrink-0" />
+                        {city}
+                      </span>
+                    ))}
+                  </div>
+                  {/* Expanding callout */}
+                  <div className="flex items-start gap-3 bg-sunshine-blue/5 border-l-4 border-sunshine-blue rounded-r-xl p-4">
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      We&apos;re constantly expanding — call{' '}
+                      <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
+                        (727) 233-5223
+                      </a>{' '}
+                      to confirm coverage in your area.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </Section>
+            </motion.div>
+          </Section>
+        </div>
       </section>
 
       {/* ══ HOW IT WORKS ════════════════════════════════════════ */}
@@ -745,24 +799,35 @@ export default function MobileBloodDrawPage() {
       <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="border-l-4 border-sunshine-blue pl-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
-                How Do I Schedule a Mobile Blood Draw Near Me in Pasco County?
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-base">
-                To schedule a mobile blood draw in Pasco County, call Sunshine Clinical Lab at{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>
-                . The lab's mobile phlebotomy service covers Trinity, New Port Richey, Land
-                O&apos; Lakes, Tarpon Springs, Holiday, Hudson, and surrounding areas. Patients
-                need a physician's order for most tests. The phlebotomist will travel to the
-                patient's home, office, or care facility. Results for many routine tests are
-                available the next business day.
-              </p>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              {/* Top accent bar */}
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                {/* Badge */}
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <Phone className="w-3.5 h-3.5" />
+                    Schedule Your Mobile Draw
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
+                  How Do I Schedule a Mobile Blood Draw Near Me in Pasco County?
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-base">
+                  To schedule a mobile blood draw in Pasco County, call Sunshine Clinical Lab at{' '}
+                  <a
+                    href="tel:+17272335223"
+                    className="text-sunshine-blue font-semibold hover:underline"
+                  >
+                    (727) 233-5223
+                  </a>
+                  . The lab's mobile phlebotomy service covers Trinity, New Port Richey, Land
+                  O&apos; Lakes, Tarpon Springs, Holiday, Hudson, and surrounding areas. Patients
+                  need a physician's order for most tests. The phlebotomist will travel to the
+                  patient's home, office, or care facility. Results for many routine tests are
+                  available the next business day.
+                </p>
+              </div>
             </div>
           </motion.div>
         </Section>

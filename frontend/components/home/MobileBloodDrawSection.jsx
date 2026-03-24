@@ -21,7 +21,7 @@ export default function MobileBloodDrawSection() {
 
   return (
     <section
-      className="py-20 bg-white overflow-hidden"
+      className="py-20 bg-sunshine-soft overflow-hidden"
       aria-labelledby="mobile-draw-heading"
       ref={ref}
     >
@@ -73,10 +73,13 @@ export default function MobileBloodDrawSection() {
               draws convenient and stress-free.
             </p>
 
-            <ul className="space-y-3 mb-8" aria-label="Mobile blood draw benefits">
+            <ul className="space-y-2 mb-8" aria-label="Mobile blood draw benefits">
               {checklistItems.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-gray-600 text-sm">
-                  <CheckCircle className="w-5 h-5 text-sunshine-blue flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <li
+                  key={item}
+                  className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm text-sunshine-dark text-sm font-medium"
+                >
+                  <CheckCircle className="w-5 h-5 text-sunshine-blue flex-shrink-0" aria-hidden="true" />
                   {item}
                 </li>
               ))}

@@ -21,6 +21,8 @@ import {
   HeartPulse,
   Dna,
   TestTube2,
+  Zap,
+  DollarSign,
 } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 import MagicCard from '@/components/ui/MagicCard';
@@ -234,8 +236,17 @@ export default function TRTBloodTestPage() {
 
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="relative w-full min-h-[65vh] flex items-center overflow-hidden">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sunshine-dark via-[#1a3a5c] to-sunshine-blue" />
+        {/* Banner image with gradient overlay */}
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/trt-bnr.jpg"
+            alt="TRT Blood Testing at Sunshine Clinical Lab in Trinity, FL"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-sunshine-dark/85 via-[#1a3a5c]/80 to-sunshine-blue/75" />
+        </div>
         {/* Decorative rings */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-white/5" />
@@ -249,7 +260,7 @@ export default function TRTBloodTestPage() {
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl ml-auto text-right"
+            className="max-w-2xl mx-auto sm:ml-auto text-center sm:text-right"
           >
             <motion.div variants={heroItemVariants}>
               <p className="text-white/75 text-sm font-semibold tracking-widest mb-6">
@@ -274,7 +285,7 @@ export default function TRTBloodTestPage() {
 
             <motion.p
               variants={heroItemVariants}
-              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl ml-auto"
+              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto sm:ml-auto"
             >
               Sunshine Clinical Lab offers complete testosterone replacement therapy blood panels
               with next-day results for many tests — at prices the chain labs can&apos;t touch.
@@ -283,7 +294,7 @@ export default function TRTBloodTestPage() {
 
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-end"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center sm:justify-end"
             >
               <a href="tel:+17272335223">
                 <ShimmerButton className="bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
@@ -316,25 +327,52 @@ export default function TRTBloodTestPage() {
       <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="border-l-4 border-sunshine-blue pl-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
-                Where Can I Get Affordable TRT Blood Work in Pasco County?
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-base">
-                Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 offers affordable TRT
-                blood testing with next-day results for many hormone panels. The lab provides total
-                and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and
-                FSH testing. Walk-ins are welcome, and mobile blood draws are available throughout
-                Pasco County. The lab accepts most major insurance plans and offers competitive
-                self-pay pricing. Call{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>{' '}
-                for current rates.
-              </p>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              {/* Top accent bar */}
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                {/* Badge */}
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <FlaskConical className="w-3.5 h-3.5" />
+                    TRT Monitoring Lab — Trinity, FL
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
+                  Where Can I Get Affordable TRT Blood Work in Pasco County?
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-base mb-7">
+                  Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 offers affordable TRT
+                  blood testing with next-day results for many hormone panels. The lab provides total
+                  and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and
+                  FSH testing. Walk-ins are welcome, and mobile blood draws are available throughout
+                  Pasco County. The lab accepts most major insurance plans and offers competitive
+                  self-pay pricing. Call{' '}
+                  <a
+                    href="tel:+17272335223"
+                    className="text-sunshine-blue font-semibold hover:underline"
+                  >
+                    (727) 233-5223
+                  </a>{' '}
+                  for current rates.
+                </p>
+                {/* Quick stats strip */}
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {[
+                    { icon: CheckCircle, label: 'Walk-Ins Welcome' },
+                    { icon: Clock, label: 'Next-Day Results' },
+                    { icon: DollarSign, label: 'No Corporate Markup' },
+                  ].map(({ icon: Icon, label }) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full"
+                    >
+                      <Icon className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         </Section>
@@ -354,29 +392,48 @@ export default function TRTBloodTestPage() {
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed"
+              className="bg-sunshine-soft rounded-2xl shadow-sm overflow-hidden mb-4"
             >
-              <p>
-                If you&apos;re on testosterone replacement therapy, you already know the drill:
-                regular blood work is non-negotiable. Your provider needs consistent, accurate labs
-                to monitor your levels, adjust your protocol, and make sure your health markers stay
-                where they should be.
-              </p>
-              <p>
-                What you probably didn&apos;t sign up for is paying $300+ at a chain lab, waiting
-                an hour to get drawn, and then waiting another five days for results. That&apos;s
-                the reality for a lot of men on TRT in the Tampa Bay area — and it&apos;s exactly
-                why Sunshine Clinical Lab exists.
-              </p>
-              <p className="font-bold text-sunshine-dark text-lg">
-                We built our TRT blood testing program around the three things men on testosterone
-                therapy actually care about: speed, accuracy, and cost.
-              </p>
-              <p>
-                Our Trinity, FL location is purpose-built for this — walk in, get drawn by an
-                experienced phlebotomist, and have results in hand for many tests by the next
-                business day.
-              </p>
+              <div className="flex items-start gap-5 p-7 sm:p-8">
+                <div className="w-12 h-12 rounded-2xl bg-sunshine-blue flex items-center justify-center flex-shrink-0 shadow-md">
+                  <ShieldCheck className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-gray-600 leading-relaxed space-y-3">
+                  <p>
+                    If you&apos;re on testosterone replacement therapy, you already know the drill:
+                    regular blood work is non-negotiable. Your provider needs consistent, accurate labs
+                    to monitor your levels, adjust your protocol, and make sure your health markers stay
+                    where they should be.
+                  </p>
+                  <p>
+                    What you probably didn&apos;t sign up for is paying $300+ at a chain lab, waiting
+                    an hour to get drawn, and then waiting another five days for results. That&apos;s
+                    the reality for a lot of men on TRT in the Tampa Bay area — and it&apos;s exactly
+                    why Sunshine Clinical Lab exists.
+                  </p>
+                  <p>
+                    Our Trinity, FL location is purpose-built for this — walk in, get drawn by an
+                    experienced phlebotomist, and have results in hand for many tests by the next
+                    business day.
+                  </p>
+                  {/* 3 highlight chips */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {[
+                      { icon: Zap, label: 'Speed' },
+                      { icon: Microscope, label: 'Accuracy' },
+                      { icon: DollarSign, label: 'Cost' },
+                    ].map(({ icon: Icon, label }) => (
+                      <span
+                        key={label}
+                        className="inline-flex items-center gap-1.5 bg-sunshine-blue text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                      >
+                        <Icon className="w-3.5 h-3.5 flex-shrink-0" />
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </Section>
         </div>
@@ -426,11 +483,11 @@ export default function TRTBloodTestPage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/res-bg.jpg"
+            src="/trt-fast.jpg"
             alt=""
             fill
             className="object-cover"
-            style={{ opacity: 0.5, objectPosition: 'center 40%' }}
+            style={{ opacity: 0.2, objectPosition: 'center 40%' }}
             sizes="100vw"
             quality={85}
           />
@@ -448,22 +505,20 @@ export default function TRTBloodTestPage() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <MagicCard className="shadow-md hover:shadow-lg">
-                <div className="p-7 text-gray-600 leading-relaxed space-y-4">
-                  <p>
-                    Here&apos;s where the chain labs really fall behind. At Sunshine Clinical Lab,
-                    results for many of our most common TRT-related blood tests are available the
-                    next business day. That means you&apos;re not sitting around for a week
-                    wondering if your levels are off — you&apos;re getting actionable data fast so
-                    you and your provider can make timely decisions.
-                  </p>
-                  <p>
-                    Turnaround times vary by test type, but for standard panels including
-                    testosterone, CBC, CMP, and estradiol, next-day results are the norm at our
-                    Trinity lab — not the exception.
-                  </p>
-                </div>
-              </MagicCard>
+              <div className="bg-white/40 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg p-7 leading-relaxed space-y-4">
+                <p className="text-sunshine-dark font-medium">
+                  Here&apos;s where the chain labs really fall behind. At Sunshine Clinical Lab,
+                  results for many of our most common TRT-related blood tests are available the
+                  next business day. That means you&apos;re not sitting around for a week
+                  wondering if your levels are off — you&apos;re getting actionable data fast so
+                  you and your provider can make timely decisions.
+                </p>
+                <p className="text-sunshine-dark/80">
+                  Turnaround times vary by test type, but for standard panels including
+                  testosterone, CBC, CMP, and estradiol, next-day results are the norm at our
+                  Trinity lab — not the exception.
+                </p>
+              </div>
             </motion.div>
           </Section>
         </div>
@@ -483,34 +538,59 @@ export default function TRTBloodTestPage() {
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed"
+              className="bg-sunshine-soft rounded-2xl shadow-sm overflow-hidden"
             >
-              <p>
-                Large national labs charge premium prices because they can. Corporate overhead,
-                massive facilities, and stockholder expectations drive those costs straight to your
-                bill — whether you&apos;re paying out of pocket or dealing with insurance copays.
-              </p>
-              <p className="font-bold text-sunshine-dark">
-                Sunshine Clinical Lab operates differently. As an independent, locally owned lab in
-                Trinity, FL, our overhead is lower, our pricing is leaner, and we pass that directly
-                to you.
-              </p>
-              <p>
-                Contact our team at{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>{' '}
-                for current TRT panel pricing. Many of our patients are genuinely surprised at the
-                difference compared to what they were paying at chain facilities.
-              </p>
-              <p>
-                We accept most major insurance plans, and for self-pay patients, our rates are
-                designed to make regular monitoring sustainable — not something you skip because of
-                cost.
-              </p>
+              <div className="flex items-start gap-5 p-7 sm:p-8">
+                <div className="w-12 h-12 rounded-2xl bg-sunshine-blue flex items-center justify-center flex-shrink-0 shadow-md">
+                  <DollarSign className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-gray-600 leading-relaxed space-y-3 flex-1">
+                  <p>
+                    Large national labs charge premium prices because they can. Corporate overhead,
+                    massive facilities, and stockholder expectations drive those costs straight to your
+                    bill — whether you&apos;re paying out of pocket or dealing with insurance copays.
+                  </p>
+                  <p>
+                    Contact our team at{' '}
+                    <a
+                      href="tel:+17272335223"
+                      className="text-sunshine-blue font-semibold hover:underline"
+                    >
+                      (727) 233-5223
+                    </a>{' '}
+                    for current TRT panel pricing. We accept most major insurance plans, and self-pay
+                    rates are designed to make regular monitoring sustainable.
+                  </p>
+
+                  {/* Comparison grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+                    {/* Chain Labs */}
+                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                      <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Chain Labs</p>
+                      <ul className="space-y-2">
+                        {['High prices', 'Long wait times', 'Corporate overhead', '5-day result delays'].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-sm text-gray-500">
+                            <span className="text-gray-400 font-bold">✕</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Sunshine Lab */}
+                    <div className="bg-sunshine-blue/5 rounded-xl p-4 border border-sunshine-blue/20">
+                      <p className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3">Sunshine Lab</p>
+                      <ul className="space-y-2">
+                        {['Transparent pricing', 'Faster turnaround', 'Independent & local', 'Next-day results'].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-sm text-sunshine-dark">
+                            <CheckCircle className="w-4 h-4 text-sunshine-blue flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </Section>
         </div>
@@ -651,34 +731,58 @@ export default function TRTBloodTestPage() {
       <section className="py-20 overflow-hidden" style={{ backgroundColor: '#CCE9F7' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
-            <motion.div variants={itemVariants} className="mb-10">
+            <motion.div variants={itemVariants} className="mb-8 text-center">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
                 Men&apos;s Health
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
                 Built for Men Who Take Their Health Seriously
               </h2>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed shadow-md"
-            >
-              <p>
+              <p className="mt-4 text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 Sunshine Clinical Lab isn&apos;t just a lab that happens to offer TRT blood tests.
                 We&apos;ve invested in understanding the TRT community because we serve it daily —
                 from guys on their first cycle of prescribed testosterone to veterans who&apos;ve
                 been optimizing their protocols for years.
               </p>
-              <p>
-                We know the difference between a standard testosterone test and the comprehensive
-                panel your provider actually needs. We know why sensitive estradiol matters versus
-                the standard assay. And we know that when you need labs, you need them done right,
-                done fast, and done without draining your bank account.
-              </p>
-              <p className="font-bold text-sunshine-dark text-lg">
-                That&apos;s the Sunshine Clinical Lab difference for men&apos;s health in Pasco
-                County.
-              </p>
+            </motion.div>
+
+            {/* 3 pillar cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+              {[
+                {
+                  icon: Zap,
+                  title: 'Speed',
+                  body: 'Next-day results for many tests — no waiting five days to know if your levels are off.',
+                },
+                {
+                  icon: Microscope,
+                  title: 'Accuracy',
+                  body: 'Same experienced phlebotomy team, same precise protocols used for clinical and TRT monitoring.',
+                },
+                {
+                  icon: DollarSign,
+                  title: 'Cost',
+                  body: 'Affordable, no corporate markup. We pass our lower overhead directly to you.',
+                },
+              ].map(({ icon: Icon, title, body }, i) => (
+                <motion.div key={title} variants={cardVariants} custom={i}>
+                  <div className="bg-white rounded-2xl p-7 shadow-sm flex flex-col gap-4 h-full border border-sunshine-blue/10">
+                    <div className="w-12 h-12 rounded-2xl bg-sunshine-blue/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-sunshine-blue" />
+                    </div>
+                    <h3 className="text-lg font-bold text-sunshine-dark">{title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div variants={itemVariants} className="text-center text-gray-600 text-sm leading-relaxed">
+              That&apos;s the Sunshine Clinical Lab difference for men&apos;s health in Pasco County.{' '}
+              <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
+                Call (727) 233-5223
+              </a>{' '}
+              to schedule your TRT panel today.
             </motion.div>
           </Section>
         </div>

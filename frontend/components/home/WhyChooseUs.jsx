@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-20 bg-white overflow-hidden" aria-labelledby="why-choose-us-heading">
+    <section className="py-20 bg-[#EBF5FB] overflow-hidden" aria-labelledby="why-choose-us-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
@@ -78,6 +78,11 @@ export default function WhyChooseUs() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           ref={ref}
         >
+          <div className="flex justify-center mb-4" aria-hidden="true">
+            <div className="w-14 h-14 rounded-2xl bg-sunshine-blue flex items-center justify-center shadow-lg">
+              <Zap className="w-7 h-7 text-white" />
+            </div>
+          </div>
           <span className="text-sunshine-blue text-xs font-bold uppercase tracking-widest mb-3 block">
             Why Choose Us
           </span>
@@ -118,9 +123,9 @@ export default function WhyChooseUs() {
           ))}
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA strip */}
         <motion.div
-          className="text-center mt-12"
+          className="bg-white rounded-2xl p-6 mt-10 text-center shadow-sm"
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}

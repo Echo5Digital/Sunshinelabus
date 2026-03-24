@@ -9,7 +9,6 @@ import {
   MapPin,
   Clock,
   ChevronDown,
-  ArrowRight,
   CalendarDays,
   HelpCircle,
   ShieldCheck,
@@ -18,6 +17,12 @@ import {
   FileCheck,
   Heart,
   Users,
+  Lock,
+  CheckCircle2,
+  ClipboardList,
+  FlaskConical,
+  BadgeCheck,
+  Fingerprint,
 } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 import MagicCard from '@/components/ui/MagicCard';
@@ -288,14 +293,14 @@ export default function DNATestingPage() {
               variants={heroItemVariants}
               className="flex flex-col sm:flex-row flex-wrap gap-4"
             >
-              <a href="tel:+17272335223">
-                <ShimmerButton className="bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
+              <a href="tel:+17272335223" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
                   <Phone className="w-5 h-5" />
                   Schedule DNA Testing — (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/book-appointment">
-                <ShimmerButton className="bg-sunshine-blue border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base gap-2">
+              <Link href="/book-appointment" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base gap-2">
                   <CalendarDays className="w-4 h-4" />
                   Book Appointment
                 </ShimmerButton>
@@ -316,27 +321,55 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ DIRECT ANSWER (AEO/GEO) ══════════════════════════════ */}
-      <section className="py-12 bg-[#EBF5FB]">
+      <section className="py-14 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="border-l-4 border-sunshine-blue pl-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
-                Where Can I Get Legal DNA Testing in Pasco County, Florida?
-              </h2>
-              <p className="text-gray-700 leading-relaxed text-base">
-                Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 provides legal DNA testing,
-                immigration DNA testing (USCIS), paternity testing, and relationship DNA testing. All
-                legal and immigration tests are conducted under chain-of-custody protocols for court
-                admissibility and government acceptance. DNA collection is non-invasive (cheek swab) and
-                typically takes 15 to 30 minutes. Appointments are recommended. Call{' '}
-                <a
-                  href="tel:+17272335223"
-                  className="text-sunshine-blue font-semibold hover:underline"
-                >
-                  (727) 233-5223
-                </a>{' '}
-                to schedule.
-              </p>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              {/* Top accent bar */}
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                {/* Location badge */}
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <MapPin className="w-3.5 h-3.5" />
+                    Trinity, FL 34655 — Pasco County
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
+                  Where Can I Get Legal DNA Testing in Pasco County, Florida?
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-base mb-7">
+                  Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 provides legal DNA testing,
+                  immigration DNA testing (USCIS), paternity testing, and relationship DNA testing. All
+                  legal and immigration tests are conducted under chain-of-custody protocols for court
+                  admissibility and government acceptance. DNA collection is non-invasive (cheek swab) and
+                  typically takes 15 to 30 minutes. Appointments are recommended. Call{' '}
+                  <a
+                    href="tel:+17272335223"
+                    className="text-sunshine-blue font-semibold hover:underline"
+                  >
+                    (727) 233-5223
+                  </a>{' '}
+                  to schedule.
+                </p>
+                {/* Quick stats strip */}
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { icon: CheckCircle2, label: 'Non-Invasive Cheek Swab' },
+                    { icon: Clock, label: '15–30 Min Appointment' },
+                    { icon: BadgeCheck, label: 'USCIS Accepted' },
+                    { icon: ShieldCheck, label: 'Court-Admissible' },
+                  ].map(({ icon: Icon, label }) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full"
+                    >
+                      <Icon className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         </Section>
@@ -344,16 +377,18 @@ export default function DNATestingPage() {
 
       {/* ══ PROFESSIONAL DNA TESTING SERVICES ════════════════════ */}
       <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0d1b2a' }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={{ opacity: 0.2 }}
-        >
-          <source src="/dna1.mp4" type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-left sm:object-center pointer-events-none"
+            style={{ opacity: 0.2 }}
+          >
+            <source src="/dna1.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
@@ -405,19 +440,26 @@ export default function DNATestingPage() {
 
             <motion.div
               variants={itemVariants}
-              className="bg-white rounded-2xl p-8 mb-10 text-gray-600 leading-relaxed space-y-4 shadow-sm"
+              className="bg-white rounded-2xl mb-10 shadow-sm overflow-hidden"
             >
-              <p>
-                Legal DNA testing requires strict sample collection protocols, verified identification,
-                proper documentation, and chain-of-custody procedures that ensure the results are
-                admissible in court. This isn&apos;t something you can reliably accomplish with an
-                at-home kit from the internet.
-              </p>
-              <p>
-                At Sunshine Clinical Lab in Trinity, FL, our legal DNA collections are performed by
-                trained professionals who follow all required procedures. Legal DNA testing is commonly
-                needed for:
-              </p>
+              <div className="flex items-start gap-5 p-7 sm:p-8">
+                <div className="w-12 h-12 rounded-2xl bg-sunshine-blue flex items-center justify-center flex-shrink-0 shadow-md">
+                  <ShieldCheck className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-gray-600 leading-relaxed space-y-3">
+                  <p>
+                    Legal DNA testing requires strict sample collection protocols, verified identification,
+                    proper documentation, and chain-of-custody procedures that ensure the results are
+                    admissible in court. This isn&apos;t something you can reliably accomplish with an
+                    at-home kit from the internet.
+                  </p>
+                  <p>
+                    At Sunshine Clinical Lab in Trinity, FL, our legal DNA collections are performed by
+                    trained professionals who follow all required procedures. Legal DNA testing is commonly
+                    needed for:
+                  </p>
+                </div>
+              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
@@ -438,11 +480,17 @@ export default function DNATestingPage() {
 
             <motion.div
               variants={itemVariants}
-              className="bg-white rounded-2xl p-6 border border-sunshine-sky/30 shadow-sm"
+              className="flex items-start gap-4 bg-sunshine-blue/5 rounded-2xl p-6 border-l-4 border-sunshine-blue"
             >
+              <div className="w-9 h-9 rounded-xl bg-sunshine-blue/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Phone className="w-4.5 h-4.5 text-sunshine-blue" />
+              </div>
               <p className="text-gray-600 leading-relaxed">
-                If your attorney or the court has ordered a DNA test, contact our office. We&apos;ll
-                coordinate the collection to meet all legal requirements.
+                If your attorney or the court has ordered a DNA test,{' '}
+                <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
+                  contact our office
+                </a>
+                . We&apos;ll coordinate the collection to meet all legal requirements.
               </p>
             </motion.div>
           </Section>
@@ -450,7 +498,7 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ IMMIGRATION DNA TESTING ══════════════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-[#F7FBFF] overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
@@ -461,10 +509,9 @@ export default function DNATestingPage() {
                 Immigration DNA Testing (USCIS)
               </h2>
             </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed"
-            >
+
+            {/* Intro paragraph */}
+            <motion.div variants={itemVariants} className="text-gray-600 leading-relaxed mb-8">
               <p>
                 Immigration DNA testing is often required by USCIS (U.S. Citizenship and Immigration
                 Services) to verify a biological relationship as part of a visa or immigration petition.
@@ -472,13 +519,56 @@ export default function DNATestingPage() {
                 collection, documentation, and laboratory processing must meet strict federal
                 requirements.
               </p>
-              <p>
-                Sunshine Clinical Lab is experienced in immigration DNA testing and understands the
-                urgency and complexity involved. We handle the entire process with care, including proper
-                identification verification, photographic documentation, chain-of-custody packaging, and
-                coordination with AABB-accredited laboratories for processing.
-              </p>
-              <p className="font-bold text-sunshine-dark">
+            </motion.div>
+
+            {/* 3-step process cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+              {[
+                {
+                  icon: Fingerprint,
+                  step: '01',
+                  title: 'Identity Verification',
+                  body: 'All participants are verified with valid government-issued photo ID and photographic documentation.',
+                },
+                {
+                  icon: ClipboardList,
+                  step: '02',
+                  title: 'Chain-of-Custody Packaging',
+                  body: 'Samples are collected and sealed under strict federal chain-of-custody protocols required by USCIS.',
+                },
+                {
+                  icon: FlaskConical,
+                  step: '03',
+                  title: 'AABB-Accredited Lab',
+                  body: 'Processing is coordinated with AABB-accredited laboratories to ensure federal acceptance.',
+                },
+              ].map(({ icon: Icon, step, title, body }) => (
+                <motion.div
+                  key={step}
+                  variants={itemVariants}
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-sunshine-blue/10 flex flex-col gap-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-sunshine-blue flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-xs font-black tabular-nums text-sunshine-blue/40 tracking-widest">
+                      {step}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-sunshine-dark text-base">{title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Highlighted callout */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-sunshine-blue rounded-2xl px-7 py-6 flex items-start gap-4"
+            >
+              <BadgeCheck className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+              <p className="text-white/90 leading-relaxed font-medium">
                 If you&apos;ve been instructed by USCIS or the U.S. Embassy to complete a DNA test, our
                 team at our Trinity, FL location can guide you through every step — from scheduling to
                 sample collection to results.
@@ -489,7 +579,8 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ PATERNITY TESTING ════════════════════════════════════ */}
-      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-sunshine-soft overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Section>
           <motion.div variants={itemVariants} className="mb-10">
             <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
@@ -500,11 +591,20 @@ export default function DNATestingPage() {
             </h2>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mb-10 text-gray-600 leading-relaxed">
-            <p>
+          {/* Intro + type badges */}
+          <motion.div variants={itemVariants} className="bg-white rounded-2xl p-6 mb-8 shadow-sm flex flex-col sm:flex-row sm:items-center gap-5">
+            <p className="text-gray-600 leading-relaxed flex-1">
               Paternity testing determines whether a specific individual is the biological father of a
               child. At Sunshine Clinical Lab, we offer both options:
             </p>
+            <div className="flex flex-col sm:flex-row gap-2 flex-shrink-0">
+              <span className="inline-flex items-center gap-1.5 bg-sunshine-blue text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">
+                <ShieldCheck className="w-3.5 h-3.5" /> Legal Testing
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/20 text-sunshine-dark text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">
+                <Heart className="w-3.5 h-3.5 text-sunshine-blue" /> Informational Testing
+              </span>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
@@ -523,6 +623,7 @@ export default function DNATestingPage() {
             ))}
           </div>
         </Section>
+        </div>
       </section>
 
       {/* ══ RELATIONSHIP DNA TESTING ═════════════════════════════ */}
@@ -537,9 +638,10 @@ export default function DNATestingPage() {
                 Relationship DNA Testing
               </h2>
             </motion.div>
+
             <motion.div
               variants={itemVariants}
-              className="bg-sunshine-soft rounded-2xl p-8 text-gray-600 leading-relaxed"
+              className="bg-sunshine-soft rounded-2xl p-7 sm:p-8 space-y-6 text-gray-600 leading-relaxed"
             >
               <p>
                 Beyond paternity, Sunshine Clinical Lab also accommodates relationship DNA testing,
@@ -548,16 +650,49 @@ export default function DNATestingPage() {
                 immigration or legal proceedings where paternity testing alone is not sufficient to
                 establish the required biological connection.
               </p>
+
+              {/* Relationship type chips */}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3">
+                  Relationships We Can Test
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { icon: Users, label: 'Siblings' },
+                    { icon: Users, label: 'Grandparent / Grandchild' },
+                    { icon: Users, label: 'Aunt / Uncle' },
+                    { icon: Users, label: 'Extended Family' },
+                    { icon: Users, label: 'Biological Parents' },
+                  ].map(({ icon: Icon, label }) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 bg-white border border-sunshine-blue/20 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm"
+                    >
+                      <Icon className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Use-case callout */}
+              <div className="bg-white rounded-xl p-5 border-l-4 border-sunshine-blue shadow-sm">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  <span className="font-bold text-sunshine-dark">Common use cases:</span>{' '}
+                  Immigration petitions requiring non-parent biological proof, legal proceedings where
+                  a direct paternity test is not possible, and personal peace-of-mind confirmations.
+                </p>
+              </div>
             </motion.div>
           </Section>
         </div>
       </section>
 
       {/* ══ WHAT TO EXPECT ═══════════════════════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-[#EBF5FB] overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
-            <motion.div variants={itemVariants} className="mb-8">
+            <motion.div variants={itemVariants} className="mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
                 Your Appointment
               </span>
@@ -566,32 +701,44 @@ export default function DNATestingPage() {
               </h2>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <MagicCard className="shadow-md hover:shadow-lg">
-                <div className="p-7 text-gray-600 leading-relaxed space-y-4">
-                  <p>
-                    DNA sample collection is non-invasive and painless. In most cases, samples are
-                    collected using a simple buccal (cheek) swab — there&apos;s no blood draw involved
-                    for standard DNA testing.
-                  </p>
-                  <p>
-                    For legal and immigration DNA tests, all participants must bring valid
-                    government-issued photo identification. Our staff will verify identities, take
-                    required photographs, and complete all chain-of-custody documentation during the
-                    appointment. The process is straightforward, typically taking 15 to 30 minutes at
-                    our Trinity, FL office.
-                  </p>
-                  <p>
-                    Results timelines vary depending on the type of test and the processing laboratory,
-                    but our team will provide a clear estimated turnaround when you schedule.
-                  </p>
-                </div>
-              </MagicCard>
-            </motion.div>
+            {/* Numbered steps */}
+            <div className="space-y-4 mb-10">
+              {[
+                {
+                  num: '1',
+                  title: 'Non-Invasive Sample Collection',
+                  body: 'DNA samples are collected via a simple buccal (cheek) swab — painless and quick. No blood draw required for standard DNA testing.',
+                },
+                {
+                  num: '2',
+                  title: 'Identity Verification & Documentation',
+                  body: 'For legal and immigration tests, all participants must bring valid government-issued photo ID. Our staff verifies identities, takes required photographs, and completes all chain-of-custody paperwork on site at our Trinity, FL office.',
+                },
+                {
+                  num: '3',
+                  title: 'Results Turnaround',
+                  body: 'The full appointment typically takes 15 to 30 minutes. Results timelines vary by test type — our team will give you a clear estimated turnaround when you schedule.',
+                },
+              ].map(({ num, title, body }, i) => (
+                <motion.div
+                  key={num}
+                  variants={itemVariants}
+                  className="flex items-start gap-5 bg-white rounded-2xl p-6 shadow-sm"
+                >
+                  <div className="w-10 h-10 rounded-full bg-sunshine-blue flex items-center justify-center flex-shrink-0 shadow-md">
+                    <span className="text-white font-extrabold text-sm">{num}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-sunshine-dark text-base mb-1">{title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-            <motion.div variants={itemVariants} className="flex justify-center mt-10">
-              <a href="tel:+17272335223">
-                <ShimmerButton className="bg-sunshine-blue text-white px-9 py-4 rounded-full font-bold shadow-xl text-lg gap-2">
+            <motion.div variants={itemVariants} className="flex justify-center">
+              <a href="tel:+17272335223" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-9 py-4 rounded-full font-bold shadow-xl text-lg gap-2">
                   <Phone className="w-5 h-5" />
                   Schedule Your DNA Test — (727) 233-5223
                 </ShimmerButton>
@@ -605,28 +752,61 @@ export default function DNATestingPage() {
       <section className="py-20 overflow-hidden" style={{ backgroundColor: '#CCE9F7' }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
-            <motion.div variants={itemVariants} className="mb-10">
+            <motion.div variants={itemVariants} className="mb-10 text-center">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
                 Our Commitment
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
                 Confidential, Compassionate, Professional
               </h2>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-2xl p-8 space-y-4 text-gray-600 leading-relaxed shadow-md"
-            >
-              <p>
+              <p className="mt-4 text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 We recognize that DNA testing often happens during some of the most emotional and
                 consequential moments in a person&apos;s life. Our team treats every patient and every
                 family with the respect, empathy, and professionalism these situations demand.
               </p>
-              <p>
-                Your results and personal information are handled with complete confidentiality at our
-                Trinity, FL facility. If you have questions about the process, costs, or what to expect,
-                call us. We&apos;re here to help you navigate this as smoothly as possible.
-              </p>
+            </motion.div>
+
+            {/* 3-pillar cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+              {[
+                {
+                  icon: Lock,
+                  title: 'Confidential',
+                  body: 'Your results and personal information are fully protected. We never share your data without your consent.',
+                },
+                {
+                  icon: Heart,
+                  title: 'Compassionate',
+                  body: 'We understand the emotional weight of DNA testing and treat every family with empathy and care.',
+                },
+                {
+                  icon: ShieldCheck,
+                  title: 'Professional',
+                  body: 'Every test follows strict chain-of-custody and documentation protocols, performed by trained professionals.',
+                },
+              ].map(({ icon: Icon, title, body }, i) => (
+                <motion.div key={title} variants={cardVariants} custom={i}>
+                  <div className="bg-white rounded-2xl p-7 shadow-sm flex flex-col gap-4 h-full border border-sunshine-blue/10">
+                    <div className="w-12 h-12 rounded-2xl bg-sunshine-blue/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-sunshine-blue" />
+                    </div>
+                    <h3 className="text-lg font-bold text-sunshine-dark">{title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom note */}
+            <motion.div
+              variants={itemVariants}
+              className="text-center text-gray-600 text-sm leading-relaxed"
+            >
+              Questions about the process, costs, or what to expect?{' '}
+              <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
+                Call (727) 233-5223
+              </a>{' '}
+              — we&apos;re here to help you navigate this as smoothly as possible.
             </motion.div>
           </Section>
         </div>
@@ -672,8 +852,8 @@ export default function DNATestingPage() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
             >
-              <a href="tel:+17272335223">
-                <ShimmerButton className="bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
+              <a href="tel:+17272335223" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
                   <Phone className="w-6 h-6" />
                   Call (727) 233-5223 to Schedule
                 </ShimmerButton>
@@ -766,8 +946,8 @@ export default function DNATestingPage() {
               <p className="text-sunshine-dark/60 text-sm mb-5">
                 Can&apos;t find what you&apos;re looking for? Our team is happy to help.
               </p>
-              <a href="tel:+17272335223">
-                <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
+              <a href="tel:+17272335223" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
                   <Phone className="w-5 h-5" />
                   Still Have Questions? Call (727) 233-5223
                 </ShimmerButton>
@@ -822,14 +1002,14 @@ export default function DNATestingPage() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
             >
-              <a href="tel:+17272335223">
-                <ShimmerButton className="bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
+              <a href="tel:+17272335223" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
                   <Phone className="w-6 h-6" />
                   Call Now: (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/book-appointment">
-                <ShimmerButton className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
+              <Link href="/book-appointment" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
                   <CalendarDays className="w-5 h-5" />
                   Book Appointment
                 </ShimmerButton>
