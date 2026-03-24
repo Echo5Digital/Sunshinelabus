@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
@@ -13,14 +14,17 @@ const servicesItems = [
   { label: 'DNA Testing', href: '/dna-testing-pasco-county', highlight: true },
 ];
 
-const joinTeamItems = [
-  { label: 'Careers', href: '/about#careers' },
-  { label: 'Lab Professionals', href: '/about#lab-professionals' },
-];
-
 const protocolsItems = [
   { label: 'Resources', href: '#' },
   { label: 'Privacy Policy', href: '#' },
+  { label: 'FAQ', href: '/#faq' },
+];
+
+const moreItems = [
+  { label: 'Careers', href: '/about#careers' },
+  { label: 'Lab Professionals', href: '/about#lab-professionals' },
+  { label: 'Referrals', href: '/referrals' },
+  { label: 'Lab Schedule', href: '/book-appointment' },
 ];
 
 const dropdownVariants = {
@@ -40,6 +44,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -55,8 +60,8 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || mobileOpen
-          ? 'bg-white shadow-md'
-          : 'bg-white/50 backdrop-blur-md'
+          ? 'bg-white shadow-md border-b border-gray-100'
+          : 'bg-white/60 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -67,9 +72,9 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav — centered */}
-          <div className="hidden lg:flex flex-1 items-center justify-center gap-0.5">
-            <NavLink href="/" label="Home" />
-            <NavLink href="/about" label="About" />
+          <div className="hidden lg:flex flex-1 items-center justify-center gap-1">
+            <NavLink href="/" label="Home" pathname={pathname} />
+            <NavLink href="/about" label="About" pathname={pathname} />
 
             <DropdownItem
               label="Services"
@@ -83,37 +88,15 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-2 px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue hover:pl-5 transition-all duration-150"
                     onClick={() => setActiveDropdown(null)}
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
                     {item.label}
                   </Link>
                 ))}
               </div>
             </DropdownItem>
-
-            <DropdownItem
-              label="Join Our Team"
-              isOpen={activeDropdown === 'joinTeam'}
-              onEnter={() => setActiveDropdown('joinTeam')}
-              onLeave={() => setActiveDropdown(null)}
-            >
-              <div className="py-2">
-                {joinTeamItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="block px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </DropdownItem>
-
-            <NavLink href="/referrals" label="Referrals" />
-            <NavLink href="/book-appointment" label="Schedule" />
 
             <DropdownItem
               label="Protocols"
@@ -126,16 +109,39 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block px-4 py-2 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue transition-colors"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue hover:pl-5 transition-all duration-150"
                     onClick={() => setActiveDropdown(null)}
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
                     {item.label}
                   </Link>
                 ))}
               </div>
             </DropdownItem>
 
-            <NavLink href="/contact" label="Contact" />
+            <NavLink href="/contact" label="Contact" pathname={pathname} />
+
+            <DropdownItem
+              label="More"
+              isOpen={activeDropdown === 'more'}
+              onEnter={() => setActiveDropdown('more')}
+              onLeave={() => setActiveDropdown(null)}
+              isMore
+            >
+              <div className="py-2">
+                {moreItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm text-sunshine-dark hover:bg-sunshine-light hover:text-sunshine-blue hover:pl-5 transition-all duration-150"
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-yellow flex-shrink-0" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </DropdownItem>
           </div>
 
           {/* CTA Button — far right */}
@@ -169,9 +175,9 @@ export default function Navbar() {
             exit="exit"
             className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="px-4 py-3 space-y-1">
-              <MobileNavLink href="/" label="Home" onClick={() => setMobileOpen(false)} />
-              <MobileNavLink href="/about" label="About" onClick={() => setMobileOpen(false)} />
+            <div className="px-4 py-3 space-y-0.5">
+              <MobileNavLink href="/" label="Home" onClick={() => setMobileOpen(false)} pathname={pathname} />
+              <MobileNavLink href="/about" label="About" onClick={() => setMobileOpen(false)} pathname={pathname} />
 
               <MobileDropdown
                 label="Services"
@@ -182,33 +188,14 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-2 pl-4 pr-2 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
+                    className="flex items-center gap-2 pl-4 pr-2 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
                     {item.label}
                   </Link>
                 ))}
               </MobileDropdown>
-
-              <MobileDropdown
-                label="Join Our Team"
-                isOpen={mobileExpanded === 'joinTeam'}
-                onToggle={() => toggleMobileDropdown('joinTeam')}
-              >
-                {joinTeamItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="block pl-4 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </MobileDropdown>
-
-              <MobileNavLink href="/referrals" label="Referrals" onClick={() => setMobileOpen(false)} />
-              <MobileNavLink href="/book-appointment" label="Schedule" onClick={() => setMobileOpen(false)} />
 
               <MobileDropdown
                 label="Protocols"
@@ -219,15 +206,37 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block pl-4 py-2 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
+                    className="flex items-center gap-2 pl-4 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
                     {item.label}
                   </Link>
                 ))}
               </MobileDropdown>
 
-              <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} />
+              <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} pathname={pathname} />
+
+              <hr className="border-gray-100 my-1" />
+
+              <MobileDropdown
+                label="More"
+                isOpen={mobileExpanded === 'more'}
+                onToggle={() => toggleMobileDropdown('more')}
+                isMore
+              >
+                {moreItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-2 pl-4 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-yellow flex-shrink-0" />
+                    {item.label}
+                  </Link>
+                ))}
+              </MobileDropdown>
 
               <div className="pt-2 pb-1">
                 <Link href="/book-appointment" onClick={() => setMobileOpen(false)}>
@@ -244,30 +253,41 @@ export default function Navbar() {
   );
 }
 
-function NavLink({ href, label }) {
+function NavLink({ href, label, pathname }) {
+  const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className="px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200"
+      className={`px-3 py-2 text-[0.85rem] tracking-wide font-medium rounded-md transition-colors duration-200 ${
+        isActive
+          ? 'text-sunshine-blue bg-sunshine-light font-semibold border-b-2 border-sunshine-blue'
+          : 'text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light'
+      }`}
     >
       {label}
     </Link>
   );
 }
 
-function DropdownItem({ label, href, isOpen, onEnter, onLeave, children }) {
+function DropdownItem({ label, href, isOpen, onEnter, onLeave, children, isMore }) {
   return (
     <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
       {href ? (
         <Link
           href={href}
-          className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200"
+          className="flex items-center gap-1 px-3 py-2 text-[0.85rem] tracking-wide font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200"
         >
           {label}
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </Link>
       ) : (
-        <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-md transition-colors duration-200">
+        <button
+          className={`flex items-center gap-1 px-3 py-2 text-[0.85rem] tracking-wide font-medium rounded-md transition-colors duration-200 ${
+            isMore
+              ? 'text-sunshine-dark bg-sunshine-soft/30 hover:bg-sunshine-soft hover:text-sunshine-blue'
+              : 'text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light'
+          }`}
+        >
           {label}
           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -280,7 +300,7 @@ function DropdownItem({ label, href, isOpen, onEnter, onLeave, children }) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+            className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-gray-100 border-t-2 border-t-sunshine-blue overflow-hidden"
           >
             {children}
           </motion.div>
@@ -290,11 +310,16 @@ function DropdownItem({ label, href, isOpen, onEnter, onLeave, children }) {
   );
 }
 
-function MobileNavLink({ href, label, onClick }) {
+function MobileNavLink({ href, label, onClick, pathname }) {
+  const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className="block px-3 py-2.5 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-lg transition-colors"
+      className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+        isActive
+          ? 'text-sunshine-blue bg-sunshine-light font-semibold'
+          : 'text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light'
+      }`}
       onClick={onClick}
     >
       {label}
@@ -302,12 +327,16 @@ function MobileNavLink({ href, label, onClick }) {
   );
 }
 
-function MobileDropdown({ label, isOpen, onToggle, children }) {
+function MobileDropdown({ label, isOpen, onToggle, children, isMore }) {
   return (
     <div>
       <button
         onClick={onToggle}
-        className="flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light rounded-lg transition-colors"
+        className={`flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+          isMore
+            ? 'text-sunshine-dark bg-sunshine-soft/20 hover:bg-sunshine-soft/40 hover:text-sunshine-blue'
+            : 'text-sunshine-dark hover:text-sunshine-blue hover:bg-sunshine-light'
+        }`}
       >
         {label}
         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
@@ -319,7 +348,7 @@ function MobileDropdown({ label, isOpen, onToggle, children }) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden bg-sunshine-light rounded-lg ml-2 mt-1"
+            className="overflow-hidden bg-sunshine-light rounded-lg ml-2 mt-1 border-l-2 border-sunshine-blue"
           >
             {children}
           </motion.div>

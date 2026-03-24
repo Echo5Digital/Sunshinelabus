@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone } from 'lucide-react';
@@ -18,7 +17,7 @@ export default function IntroSection() {
   return (
     <section className="py-20 bg-[#EBF5FB] overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
 
           {/* Left: image */}
           <motion.div
@@ -27,15 +26,25 @@ export default function IntroSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65, ease: 'easeOut' }}
           >
-            <div className="relative h-full min-h-[420px] rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/main-img2.jpg"
-                alt="Experienced phlebotomist performing blood draw at Sunshine Clinical Lab Trinity Florida"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+            <div className="relative h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] rounded-3xl overflow-hidden shadow-2xl shadow-sunshine-blue/10">
+              <video
+                src="/main-img2.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                aria-label="Phlebotomist performing blood draw at Sunshine Clinical Lab"
               />
-              <div className="absolute inset-0 bg-sunshine-blue/10" />
+              {/* Gradient overlay for depth + brand tint */}
+              <div className="absolute inset-0 bg-gradient-to-br from-sunshine-blue/20 via-transparent to-sunshine-dark/40 pointer-events-none" />
+              {/* Subtle brand glow ring */}
+              <div className="absolute inset-0 ring-inset ring-2 ring-sunshine-blue/20 rounded-3xl pointer-events-none" />
+              {/* Live badge */}
+              <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-md pointer-events-none">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
+                <span className="text-xs font-semibold text-sunshine-dark tracking-wide">Live Lab · Trinity, FL</span>
+              </div>
             </div>
           </motion.div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Shield, ArrowRight, Phone } from 'lucide-react';
@@ -25,11 +26,21 @@ export default function InsuranceSection() {
 
   return (
     <section
-      className="py-16 bg-white border-t border-b border-gray-100"
+      className="relative overflow-hidden py-16 bg-white border-t border-b border-gray-100"
       aria-labelledby="insurance-heading"
       ref={ref}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src="/hm-ins.jpeg"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-white/60" />
+      </div>
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -52,7 +63,7 @@ export default function InsuranceSection() {
             We Accept Most Major Insurance Plans
           </h2>
 
-          <p className="text-gray-500 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             Don&apos;t let insurance confusion stop you from getting the testing you need.
             We work with most major carriers and can verify your benefits before your visit.
             Self-pay options also available with transparent pricing.

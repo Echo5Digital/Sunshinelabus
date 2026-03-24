@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -22,16 +21,16 @@ export default function HomeHero() {
       className="relative w-full min-h-screen flex items-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Background image with dark gradient overlay */}
+      {/* Background video with dark gradient overlay */}
       <div className="absolute inset-0">
-        <Image
-          src="/hm1.jpg"
-          alt="Sunshine Clinical Lab building exterior at 3600 Galileo Dr Trinity FL 34655"
-          fill
-          priority
-          quality={90}
-          className="object-cover object-center"
-          sizes="100vw"
+        <video
+          src="/hm1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-sunshine-dark/85 via-sunshine-dark/65 to-sunshine-dark/30" />
       </div>
