@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { Zap, Award, Truck, FlaskConical, DollarSign, Heart, Phone } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
@@ -68,8 +69,17 @@ export default function WhyChooseUs() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="py-20 bg-[#EBF5FB] overflow-hidden" aria-labelledby="why-choose-us-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 bg-[#EBF5FB] overflow-hidden" aria-labelledby="why-choose-us-heading">
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <Image
+          src="/hm-why.jpeg"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          sizes="100vw"
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
           className="text-center mb-14"
@@ -92,7 +102,7 @@ export default function WhyChooseUs() {
           >
             Why Choose Sunshine Clinical Lab in Trinity, FL
           </h2>
-          <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-base">
+          <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-base">
             Everything the big chains offer — and the personal touch they never will.
           </p>
         </motion.div>
@@ -109,14 +119,14 @@ export default function WhyChooseUs() {
               <MagicCard
                 gradientColor="#CCE9F740"
                 borderGlowColor="#6BB6E8"
-                className="shadow-md hover:shadow-xl h-full"
+                className="shadow-md hover:shadow-xl h-full bg-white/50 backdrop-blur-sm"
               >
                 <div className="p-7 flex flex-col gap-4 h-full">
                   <div className="w-12 h-12 rounded-2xl bg-sunshine-soft flex items-center justify-center flex-shrink-0">
                     <reason.Icon className="w-6 h-6 text-sunshine-blue" aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-bold text-sunshine-dark">{reason.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{reason.desc}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{reason.desc}</p>
                 </div>
               </MagicCard>
             </motion.div>
@@ -125,7 +135,7 @@ export default function WhyChooseUs() {
 
         {/* CTA strip */}
         <motion.div
-          className="bg-white rounded-2xl p-6 mt-10 text-center shadow-sm"
+          className="mt-10 text-center"
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -141,3 +151,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+

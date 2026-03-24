@@ -35,7 +35,7 @@ export default function InsuranceSection() {
           src="/hm-ins.jpeg"
           alt=""
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-40"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-white/60" />
