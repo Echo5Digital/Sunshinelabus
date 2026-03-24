@@ -478,16 +478,18 @@ export default function MobileBloodDrawPage() {
 
       {/* ══ WHAT TESTS ══════════════════════════════════════════ */}
       <section className="py-20 bg-white overflow-hidden relative">
-        {/* Background image */}
+        {/* Background video */}
         <div className="absolute inset-0">
-          <Image
-            src="/mbd-test.jpg"
-            alt=""
-            fill
-            className="object-cover"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
             style={{ opacity: 0.5 }}
-            sizes="100vw"
-          />
+          >
+            <source src="/mbd-test.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <Section>
@@ -647,8 +649,19 @@ export default function MobileBloodDrawPage() {
       </section>
 
       {/* ══ HOW IT WORKS ════════════════════════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white overflow-hidden relative">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/mbd-sp.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            style={{ opacity: 0.3 }}
+            sizes="100vw"
+          />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="text-center mb-14">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
@@ -678,7 +691,7 @@ export default function MobileBloodDrawPage() {
               ))}
             </div>
 
-            <motion.p variants={itemVariants} className="text-center text-gray-500 italic">
+            <motion.p variants={itemVariants} className="text-center text-gray-700 italic">
               There's no membership, no subscription, and no hidden fees. Just professional,
               convenient lab work done your way.
             </motion.p>

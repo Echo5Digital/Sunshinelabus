@@ -37,7 +37,7 @@ export default function ServiceAreaSection() {
 
   return (
     <section
-      className="py-16 relative overflow-hidden"
+      className="py-16 relative overflow-hidden bg-[#EBF5FB]"
       aria-labelledby="service-area-heading"
       ref={ref}
     >
@@ -50,7 +50,7 @@ export default function ServiceAreaSection() {
           priority={false}
         />
       </div>
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-sunshine-light/70 via-sunshine-yellow/10 to-white/80" aria-hidden="true" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#EBF5FB]/85 via-sunshine-soft/30 to-white/80" aria-hidden="true" />
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

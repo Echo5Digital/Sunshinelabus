@@ -227,6 +227,9 @@ export default function TRTBloodTestPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const toggleFaq = (i) => setOpenFaq((prev) => (prev === i ? null : i));
 
+  const pricingImgRef = useRef(null);
+  const pricingImgInView = useInView(pricingImgRef, { once: true, margin: '-100px' });
+
   // Split FAQ into 2 columns
   const col1 = TRT_FAQ_ITEMS.slice(0, 4);
   const col2 = TRT_FAQ_ITEMS.slice(4);
@@ -525,7 +528,24 @@ export default function TRTBloodTestPage() {
       </section>
 
       {/* ══ AFFORDABLE PRICING ════════════════════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-white overflow-hidden relative">
+        {/* Decorative image — desktop only, bottom-right, fade-in */}
+        <motion.div
+          ref={pricingImgRef}
+          initial={{ opacity: 0, y: 24 }}
+          animate={pricingImgInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.25 }}
+          className="hidden sm:block absolute bottom-0 right-0 w-56 lg:w-72 xl:w-80 pointer-events-none select-none"
+        >
+          <Image
+            src="/btm2-img.webp"
+            alt=""
+            width={320}
+            height={520}
+            className="w-full h-auto object-contain object-bottom"
+          />
+        </motion.div>
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
