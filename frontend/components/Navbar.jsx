@@ -20,12 +20,12 @@ const protocolsItems = [
   { label: 'FAQ', href: '/#faq' },
 ];
 
-const moreItems = [
-  { label: 'Careers', href: '/about#careers' },
-  { label: 'Lab Professionals', href: '/about#lab-professionals' },
-  { label: 'Referrals', href: '/referrals' },
-  { label: 'Lab Schedule', href: '/book-appointment' },
-];
+// const moreItems = [
+//   { label: 'Careers', href: '/about#careers' },
+//   { label: 'Lab Professionals', href: '/about#lab-professionals' },
+//   { label: 'Referrals', href: '/referrals' },
+//   { label: 'Lab Schedule', href: '/book-appointment' },
+// ];
 
 const dropdownVariants = {
   hidden: { opacity: 0, y: -8, scale: 0.97 },
@@ -125,7 +125,7 @@ export default function Navbar() {
 
             <NavLink href="/contact" label="Contact" pathname={pathname} />
 
-            <DropdownItem
+            {/* <DropdownItem
               label="More"
               isOpen={activeDropdown === 'more'}
               onEnter={() => setActiveDropdown('more')}
@@ -145,7 +145,7 @@ export default function Navbar() {
                   </Link>
                 ))}
               </div>
-            </DropdownItem>
+            </DropdownItem> */}
           </div>
 
           {/* CTA Button — far right */}
@@ -220,7 +220,7 @@ export default function Navbar() {
 
                 <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} pathname={pathname} />
 
-                <hr className="border-white/30 my-1" />
+                {/* <hr className="border-white/30 my-1" />
 
                 <MobileDropdown
                   label="More"
@@ -239,7 +239,7 @@ export default function Navbar() {
                       {item.label}
                     </Link>
                   ))}
-                </MobileDropdown>
+                </MobileDropdown> */}
 
                 <div className="pt-2 pb-1">
                   <Link href="/book-appointment" onClick={() => setMobileOpen(false)}>
