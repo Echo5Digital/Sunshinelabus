@@ -31,7 +31,7 @@ export const FAQ_DATA = [
   },
   {
     q: 'Is the Peekaboo gender reveal blood test available at Sunshine Clinical Lab?',
-    a: 'Yes. The Peekaboo Early Gender Reveal Test is a clinically validated, non-invasive blood test available at our Trinity, FL location. It can determine your baby\'s gender as early as 7 weeks of pregnancy — well before a traditional ultrasound.',
+    a: 'Yes. The Peekaboo Early Gender Reveal Test is a clinically validated, non-invasive blood test available at our Trinity, FL location. It can determine your baby\'s gender as early as 6 weeks of pregnancy — well before a traditional ultrasound.',
   },
   {
     q: 'Where is Sunshine Clinical Lab located?',

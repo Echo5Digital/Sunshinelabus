@@ -56,7 +56,7 @@ export default function GenderRevealSection() {
           >
             Gender Reveal Blood Test —{' '}
             <span className="bg-gradient-to-r from-sunshine-yellow to-sunshine-blue bg-clip-text text-transparent">
-              Find Out as Early as 7 Weeks
+              Find Out as Early as 6 Weeks
             </span>
           </motion.h2>
 
@@ -64,7 +64,7 @@ export default function GenderRevealSection() {
             Sunshine Clinical Lab is proud to offer the{' '}
             <strong>Peekaboo Early Gender Reveal Blood Test</strong> right here in Trinity, FL.
             This simple, non-invasive blood draw can reveal whether you&apos;re expecting a boy or
-            a girl as early as 7 weeks into pregnancy — long before a traditional ultrasound.
+            a girl as early as 6 weeks into pregnancy — long before a traditional ultrasound.
           </motion.p>
 
           <motion.p variants={itemVariants} className="text-gray-600 leading-relaxed mb-8">
