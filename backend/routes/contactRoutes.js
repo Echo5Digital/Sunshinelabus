@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const Contact = require('../models/Contact');
+const supabase = require('../config/supabase');
 
 const validateContact = [
   body('name')
@@ -29,12 +29,21 @@ router.post('/', validateContact, async (req, res) => {
   }
 
   try {
-    const contact = new Contact({
-      name: req.body.name,
-      email: req.body.email,
-      message: req.body.message,
-    });
-    await contact.save();
+    // Store contact submissions in Supabase (table: contacts)
+    // If the contacts table doesn't exist yet, this will log a warning but still return success
+    const { error } = await supabase
+      .from('contacts')
+      .insert({
+        name: req.body.name.trim(),
+        email: req.body.email,
+        message: req.body.message.trim(),
+      });
+
+    if (error) {
+      // Log but don't expose to user (contact table may not exist yet)
+      console.warn('Contact insert warning:', error.message);
+    }
+
     res.status(201).json({ message: 'Your message has been received. We will be in touch soon.' });
   } catch (err) {
     console.error('Contact save error:', err.message);

@@ -56,6 +56,8 @@ export default function Navbar() {
     setMobileExpanded((prev) => (prev === key ? null : key));
   };
 
+  if (pathname.startsWith('/admin')) return null;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-4 pointer-events-none">
       {/* Glass pill container */}
