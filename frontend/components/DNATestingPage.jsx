@@ -498,8 +498,20 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ IMMIGRATION DNA TESTING ══════════════════════════════ */}
-      <section className="py-20 bg-[#F7FBFF] overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-[#F7FBFF] relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ opacity: 0.3 }}
+          >
+            <source src="/dna-us.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
@@ -511,7 +523,7 @@ export default function DNATestingPage() {
             </motion.div>
 
             {/* Intro paragraph */}
-            <motion.div variants={itemVariants} className="text-gray-600 leading-relaxed mb-8">
+            <motion.div variants={itemVariants} className="text-gray-800 leading-relaxed mb-8">
               <p>
                 Immigration DNA testing is often required by USCIS (U.S. Citizenship and Immigration
                 Services) to verify a biological relationship as part of a visa or immigration petition.
@@ -542,22 +554,22 @@ export default function DNATestingPage() {
                   title: 'AABB-Accredited Lab',
                   body: 'Processing is coordinated with AABB-accredited laboratories to ensure federal acceptance.',
                 },
-              ].map(({ icon: Icon, step, title, body }) => (
-                <motion.div
-                  key={step}
-                  variants={itemVariants}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-sunshine-blue/10 flex flex-col gap-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-sunshine-blue flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-white" />
+              ].map(({ icon: Icon, step, title, body }, i) => (
+                <motion.div key={step} variants={cardVariants} custom={i}>
+                  <MagicCard gradientColor="#93C5FD60" borderGlowColor="#2B7DBF" className="shadow-md hover:shadow-xl">
+                    <div className="p-6 flex flex-col gap-4 h-full">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-sunshine-blue flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-xs font-black tabular-nums text-sunshine-blue/40 tracking-widest">
+                          {step}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-sunshine-dark text-base">{title}</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
                     </div>
-                    <span className="text-xs font-black tabular-nums text-sunshine-blue/40 tracking-widest">
-                      {step}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-sunshine-dark text-base">{title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{body}</p>
+                  </MagicCard>
                 </motion.div>
               ))}
             </div>
@@ -689,8 +701,20 @@ export default function DNATestingPage() {
       </section>
 
       {/* ══ WHAT TO EXPECT ═══════════════════════════════════════ */}
-      <section className="py-20 bg-[#EBF5FB] overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-[#EBF5FB] relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ opacity: 0.3 }}
+          >
+            <source src="/dna-ya.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">

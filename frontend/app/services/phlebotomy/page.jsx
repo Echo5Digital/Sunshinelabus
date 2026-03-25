@@ -13,8 +13,8 @@ const services = [
   'Difficult-Vein Specialist Draws',
   'Mobile / At-Home Phlebotomy Visits',
   'Point-of-Care Specimen Collection',
-  'Capillary Blood Collection (Fingerstick)',
-  'Arterial Blood Gas (ABG) Collection',
+  /*'Capillary Blood Collection (Fingerstick)',
+  'Arterial Blood Gas (ABG) Collection',*/
   'Specimen Processing & Transport',
 ];
 
