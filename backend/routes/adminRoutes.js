@@ -73,6 +73,28 @@ router.get('/calendar', async (req, res) => {
   }
 });
 
+// GET /api/admin/calendar/range?start=YYYY-MM-DD&end=YYYY-MM-DD — lightweight dot data
+router.get('/calendar/range', async (req, res) => {
+  try {
+    const { start, end } = req.query;
+    const dateRx = /^\d{4}-\d{2}-\d{2}$/;
+    if (!start || !end || !dateRx.test(start) || !dateRx.test(end)) {
+      return res.status(400).json({ error: 'Valid start and end dates required (YYYY-MM-DD)' });
+    }
+    const { data, error } = await supabase
+      .from('appointments')
+      .select('appointment_date, status')
+      .gte('appointment_date', start)
+      .lte('appointment_date', end)
+      .order('appointment_date');
+    if (error) throw error;
+    return res.json({ start, end, appointments: data || [] });
+  } catch (err) {
+    console.error('Calendar range error:', err.message);
+    return res.status(500).json({ error: 'Failed to fetch calendar range' });
+  }
+});
+
 // POST /api/admin/time-blocks — block a slot or full day
 router.post(
   '/time-blocks',

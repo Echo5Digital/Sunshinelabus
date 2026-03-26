@@ -25,33 +25,39 @@ export const SERVICE_ICONS = {
 export const STATUS_CONFIG = {
   booked: {
     label: 'Booked',
-    color: 'bg-blue-100 text-blue-700',
-    dot: 'bg-blue-500',
+    bg: 'rgba(59,130,246,0.18)',
+    text: '#93c5fd',
+    dotColor: '#60a5fa',
   },
   confirmed: {
     label: 'Confirmed',
-    color: 'bg-green-100 text-green-700',
-    dot: 'bg-green-500',
+    bg: 'rgba(34,197,94,0.18)',
+    text: '#86efac',
+    dotColor: '#4ade80',
   },
   checked_in: {
     label: 'Checked In',
-    color: 'bg-yellow-100 text-yellow-700',
-    dot: 'bg-yellow-500',
+    bg: 'rgba(234,179,8,0.18)',
+    text: '#fde047',
+    dotColor: '#facc15',
   },
   completed: {
     label: 'Completed',
-    color: 'bg-emerald-100 text-emerald-700',
-    dot: 'bg-emerald-500',
+    bg: 'rgba(16,185,129,0.18)',
+    text: '#6ee7b7',
+    dotColor: '#34d399',
   },
   no_show: {
     label: 'No Show',
-    color: 'bg-red-100 text-red-700',
-    dot: 'bg-red-500',
+    bg: 'rgba(239,68,68,0.18)',
+    text: '#fca5a5',
+    dotColor: '#f87171',
   },
   cancelled: {
     label: 'Cancelled',
-    color: 'bg-gray-100 text-gray-500',
-    dot: 'bg-gray-400',
+    bg: 'rgba(255,255,255,0.08)',
+    text: 'rgba(255,255,255,0.5)',
+    dotColor: 'rgba(255,255,255,0.35)',
   },
 };
 

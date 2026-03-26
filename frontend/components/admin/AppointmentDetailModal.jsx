@@ -19,9 +19,9 @@ function InfoRow({ icon: Icon, label, value }) {
   if (!value) return null;
   return (
     <div className="flex items-start gap-2.5 text-sm">
-      <Icon className="w-3.5 h-3.5 text-gray-400 mt-0.5 flex-shrink-0" />
-      <span className="text-gray-500 min-w-[80px] flex-shrink-0">{label}</span>
-      <span className="text-sunshine-dark font-medium break-words">{value}</span>
+      <Icon className="w-3.5 h-3.5 text-white/30 mt-0.5 flex-shrink-0" />
+      <span className="text-white/40 min-w-[80px] flex-shrink-0">{label}</span>
+      <span className="text-white font-medium break-words">{value}</span>
     </div>
   );
 }
@@ -80,7 +80,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-sunshine-dark/40 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -90,23 +90,23 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-            className="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-white shadow-2xl flex flex-col overflow-hidden"
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#1a2535] shadow-2xl shadow-black/50 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.07]">
               <div>
-                <h2 className="font-bold text-sunshine-dark text-base">
+                <h2 className="font-bold text-white text-base">
                   {loading ? 'Loading...' : appt?.patient_name}
                 </h2>
                 {appt && (
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-xs text-white/35 mt-0.5">
                     #{appt.id.slice(0, 8).toUpperCase()}
                   </p>
                 )}
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl text-gray-400 hover:text-sunshine-dark hover:bg-gray-100 transition-colors"
+                className="p-2 rounded-xl text-white/40 hover:text-white hover:bg-white/[0.08] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -121,7 +121,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
               )}
 
               {error && (
-                <div className="m-6 flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                <div className="m-6 flex items-center gap-2 bg-red-900/30 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-sm">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   {error}
                 </div>
@@ -130,13 +130,13 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
               {!loading && appt && (
                 <div className="px-6 py-5 space-y-6">
                   {/* Status control */}
-                  <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Status</p>
+                  <div className="bg-white/[0.04] rounded-2xl p-4 border border-white/[0.07]">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Status</p>
                     <div className="flex items-center gap-3">
                       <select
                         value={selectedStatus}
                         onChange={(e) => setSelectedStatus(e.target.value)}
-                        className="flex-1 border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-sunshine-dark focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white"
+                        className="flex-1 border border-white/[0.10] rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
                       >
                         {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
                           <option key={key} value={key}>{label}</option>
@@ -155,7 +155,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
 
                   {/* Appointment details */}
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Appointment</p>
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Appointment</p>
                     <div className="space-y-2">
                       <InfoRow icon={FileText} label="Service" value={appt.services?.name} />
                       <InfoRow icon={MapPin} label="Location" value={LOCATION_LABELS[appt.location_type]} />
@@ -167,7 +167,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
 
                   {/* Patient info */}
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Patient</p>
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Patient</p>
                     <div className="space-y-2">
                       <InfoRow icon={User} label="Name" value={appt.patient_name} />
                       <InfoRow icon={Calendar} label="DOB" value={appt.patient_dob} />
@@ -185,23 +185,23 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
 
                   {/* Documents */}
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Documents</p>
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Documents</p>
                     {(!appt.documents || appt.documents.length === 0) ? (
-                      <p className="text-sm text-gray-400">No documents uploaded.</p>
+                      <p className="text-sm text-white/40">No documents uploaded.</p>
                     ) : (
                       <div className="space-y-2">
                         {appt.documents.map((doc) => (
-                          <div key={doc.id} className="flex items-center gap-3 bg-gray-50 rounded-xl px-3 py-2.5 border border-gray-100">
+                          <div key={doc.id} className="flex items-center gap-3 bg-white/[0.04] rounded-xl px-3 py-2.5 border border-white/[0.07]">
                             <FileText className="w-4 h-4 text-sunshine-blue flex-shrink-0" />
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-sunshine-dark">{DOC_LABELS[doc.document_type] || doc.document_type}</p>
-                              <p className="text-xs text-gray-400 truncate">{doc.file_name}</p>
+                              <p className="text-sm font-medium text-white">{DOC_LABELS[doc.document_type] || doc.document_type}</p>
+                              <p className="text-xs text-white/35 truncate">{doc.file_name}</p>
                             </div>
                             <a
                               href={doc.file_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 rounded-lg text-sunshine-blue hover:bg-sunshine-soft transition-colors flex-shrink-0"
+                              className="p-1.5 rounded-lg text-sunshine-sky hover:bg-white/[0.08] transition-colors flex-shrink-0"
                               title="Download"
                             >
                               <Download className="w-4 h-4" />
@@ -214,17 +214,17 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
 
                   {/* Admin notes */}
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Admin Notes</p>
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Admin Notes</p>
                     <textarea
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       rows={4}
                       placeholder="Add internal notes about this appointment..."
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-sunshine-dark focus:outline-none focus:ring-2 focus:ring-sunshine-blue resize-none transition-colors"
+                      className="w-full border border-white/[0.10] rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-sunshine-blue resize-none transition-colors bg-white/[0.06]"
                       maxLength={2000}
                     />
                     <div className="flex items-center justify-between mt-2">
-                      <span className="text-xs text-gray-300">{notes.length}/2000</span>
+                      <span className="text-xs text-white/20">{notes.length}/2000</span>
                       <button
                         onClick={handleNotesSave}
                         className="flex items-center gap-2 px-4 py-2 bg-sunshine-blue text-white text-xs font-semibold rounded-lg hover:bg-sunshine-blue/90 transition-colors"

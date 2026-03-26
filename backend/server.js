@@ -24,13 +24,16 @@ app.use(
   })
 );
 
-// Rate limiter — 50 requests per 15 minutes per IP
+// Rate limiter for public endpoints only (skip JWT-protected admin routes)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 50,
+  max: 100,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests. Please try again later.' },
+  skip: (req) =>
+    req.path.startsWith('/admin') ||
+    req.path.startsWith('/appointments/admin'),
 });
 app.use('/api/', limiter);
 

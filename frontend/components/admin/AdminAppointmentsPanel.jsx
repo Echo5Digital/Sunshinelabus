@@ -11,15 +11,6 @@ import AppointmentDetailModal from './AppointmentDetailModal';
 
 const PAGE_SIZE = 20;
 
-function StatusBadge({ status }) {
-  const cfg = STATUS_CONFIG[status] || STATUS_CONFIG.booked;
-  return (
-    <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full ${cfg.color}`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-      {cfg.label}
-    </span>
-  );
-}
 
 export default function AdminAppointmentsPanel() {
   const [appointments, setAppointments] = useState([]);
@@ -95,30 +86,30 @@ export default function AdminAppointmentsPanel() {
   const totalPages = Math.ceil(total / PAGE_SIZE);
 
   const getRowBg = (status) => {
-    if (status === 'no_show') return 'bg-red-50/60';
+    if (status === 'no_show') return 'bg-red-900/20';
     if (status === 'cancelled') return 'opacity-60';
-    if (status === 'completed') return 'bg-emerald-50/20';
+    if (status === 'completed') return 'bg-emerald-900/10';
     return '';
   };
 
   return (
     <div className="space-y-4">
       {/* Filter bar */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+      <div className="bg-[#1a2535] rounded-2xl border border-white/[0.07] p-4 shadow-sm">
         <div className="flex flex-wrap gap-3 items-center">
           {/* Date filter */}
           <input
             type="date"
             value={dateFilter}
             onChange={(e) => { setDateFilter(e.target.value); setPage(0); }}
-            className="border border-gray-200 rounded-xl px-3 py-2 text-sm text-sunshine-dark focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white w-40"
+            className="border border-white/[0.10] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06] w-40 [color-scheme:dark]"
           />
 
           {/* Status filter */}
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); setPage(0); }}
-            className="border border-gray-200 rounded-xl px-3 py-2 text-sm text-sunshine-dark focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white"
+            className="border border-white/[0.10] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
           >
             <option value="">All Statuses</option>
             {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
@@ -128,20 +119,20 @@ export default function AdminAppointmentsPanel() {
 
           {/* Search */}
           <div className="relative flex-1 min-w-[180px]">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
             <input
               type="text"
               value={search}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search patient name or email..."
-              className="w-full border border-gray-200 rounded-xl pl-9 pr-3 py-2 text-sm text-sunshine-dark focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white"
+              className="w-full border border-white/[0.10] rounded-xl pl-9 pr-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06]"
             />
           </div>
 
           {hasFilters && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+              className="flex items-center gap-1.5 text-xs text-white/40 hover:text-white font-medium transition-colors"
             >
               <X className="w-3.5 h-3.5" /> Clear
             </button>
@@ -149,7 +140,7 @@ export default function AdminAppointmentsPanel() {
 
           <button
             onClick={load}
-            className="p-2 rounded-xl text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors ml-auto"
+            className="p-2 rounded-xl text-white/40 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors ml-auto"
             title="Refresh"
           >
             <RefreshCw className="w-4 h-4" />
@@ -158,9 +149,9 @@ export default function AdminAppointmentsPanel() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div className="bg-[#1a2535] rounded-2xl border border-white/[0.07] shadow-sm overflow-hidden">
         {error && (
-          <div className="flex items-center gap-2 m-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+          <div className="flex items-center gap-2 m-4 bg-red-900/20 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-sm">
             <AlertCircle className="w-4 h-4 flex-shrink-0" /> {error}
           </div>
         )}
@@ -168,34 +159,34 @@ export default function AdminAppointmentsPanel() {
         {loading ? (
           <div className="p-8 space-y-3">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-12 bg-gray-100 rounded-xl animate-pulse" />
+              <div key={i} className="h-12 bg-white/[0.06] rounded-xl animate-pulse" />
             ))}
           </div>
         ) : appointments.length === 0 ? (
           <div className="py-16 text-center">
-            <p className="text-gray-400 text-sm">No appointments found.</p>
+            <p className="text-white/50 text-sm">No appointments found.</p>
           </div>
         ) : (
           <>
             {/* Mobile card list */}
-            <div className="block md:hidden divide-y divide-gray-50">
+            <div className="block md:hidden divide-y divide-white/[0.05]">
               {appointments.map((appt) => (
                 <div key={appt.id} className={`p-4 ${getRowBg(appt.status)}`}>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
-                      <p className="font-medium text-sunshine-dark text-sm">{appt.patient_name}</p>
-                      <p className="text-xs text-gray-400">{appt.patient_phone}</p>
+                      <p className="font-medium text-white text-sm">{appt.patient_name}</p>
+                      <p className="text-xs text-white/55">{appt.patient_phone}</p>
                     </div>
                     <button
                       onClick={() => setSelectedId(appt.id)}
-                      className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors flex-shrink-0"
+                      className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors flex-shrink-0"
                       title="View details"
                     >
                       <Eye className="w-4 h-4" />
                     </button>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 mb-2">
-                    <span className="font-medium text-sunshine-dark">{appt.appointment_date}</span>
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-white/55 mb-2">
+                    <span className="font-medium text-white">{appt.appointment_date}</span>
                     <span>·</span>
                     <span>{appt.appointment_time?.slice(0, 5)}</span>
                     <span>·</span>
@@ -205,13 +196,13 @@ export default function AdminAppointmentsPanel() {
                     <select
                       value={appt.status}
                       onChange={(e) => handleStatusChange(appt.id, e.target.value)}
-                      className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-white text-sunshine-dark"
+                      className="text-xs border border-white/[0.10] rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-[#1a2535] text-white"
                     >
                       {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
                         <option key={key} value={key}>{label}</option>
                       ))}
                     </select>
-                    <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+                    <span className="inline-flex items-center gap-1 text-xs text-white/60">
                       <MapPin className="w-3 h-3" />
                       {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
                     </span>
@@ -224,29 +215,29 @@ export default function AdminAppointmentsPanel() {
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-100">
-                    <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Date & Time</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Patient</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Service</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Location</th>
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+                  <tr className="bg-white/[0.04] border-b border-white/[0.07]">
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Date & Time</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Patient</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Service</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Location</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Status</th>
                     <th className="px-4 py-3" />
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-white/[0.05]">
                   {appointments.map((appt) => (
-                    <tr key={appt.id} className={`hover:bg-gray-50/50 transition-colors ${getRowBg(appt.status)}`}>
+                    <tr key={appt.id} className={`hover:bg-white/[0.03] transition-colors ${getRowBg(appt.status)}`}>
                       <td className="px-5 py-3">
-                        <p className="font-medium text-sunshine-dark">{appt.appointment_date}</p>
-                        <p className="text-xs text-gray-400">{appt.appointment_time?.slice(0, 5)}</p>
+                        <p className="font-medium text-white">{appt.appointment_date}</p>
+                        <p className="text-xs text-white/55">{appt.appointment_time?.slice(0, 5)}</p>
                       </td>
                       <td className="px-4 py-3">
-                        <p className="font-medium text-sunshine-dark">{appt.patient_name}</p>
-                        <p className="text-xs text-gray-400">{appt.patient_phone}</p>
+                        <p className="font-medium text-white">{appt.patient_name}</p>
+                        <p className="text-xs text-white/55">{appt.patient_phone}</p>
                       </td>
-                      <td className="px-4 py-3 text-gray-600">{appt.services?.name || '—'}</td>
+                      <td className="px-4 py-3 text-white/70">{appt.services?.name || '—'}</td>
                       <td className="px-4 py-3">
-                        <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+                        <span className="inline-flex items-center gap-1 text-xs text-white/60">
                           <MapPin className="w-3 h-3" />
                           {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
                         </span>
@@ -255,7 +246,7 @@ export default function AdminAppointmentsPanel() {
                         <select
                           value={appt.status}
                           onChange={(e) => handleStatusChange(appt.id, e.target.value)}
-                          className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-white text-sunshine-dark"
+                          className="text-xs border border-white/[0.10] rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-[#1a2535] text-white"
                         >
                           {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
                             <option key={key} value={key}>{label}</option>
@@ -265,7 +256,7 @@ export default function AdminAppointmentsPanel() {
                       <td className="px-4 py-3">
                         <button
                           onClick={() => setSelectedId(appt.id)}
-                          className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors"
+                          className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
                           title="View details"
                         >
                           <Eye className="w-4 h-4" />
@@ -281,23 +272,23 @@ export default function AdminAppointmentsPanel() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100">
-            <p className="text-xs text-gray-400">
+          <div className="flex items-center justify-between px-5 py-3 border-t border-white/[0.07]">
+            <p className="text-xs text-white/50">
               Showing {page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, total)} of {total}
             </p>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-1.5 rounded-lg text-white/40 hover:text-sunshine-sky disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="text-xs text-gray-500">Page {page + 1} / {totalPages}</span>
+              <span className="text-xs text-white/50">Page {page + 1} / {totalPages}</span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
                 disabled={page >= totalPages - 1}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue disabled:opacity-30 disabled:cursor-not-allowed"
+                className="p-1.5 rounded-lg text-white/40 hover:text-sunshine-sky disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>

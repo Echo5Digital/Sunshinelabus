@@ -109,6 +109,13 @@ export const fetchCalendarDay = async (date) => {
   return res.data;
 };
 
+export const fetchCalendarRange = async (start, end) => {
+  const res = await adminApi.get('/api/admin/calendar/range', {
+    params: { start, end },
+  });
+  return res.data;
+};
+
 export const createTimeBlock = async (data) => {
   const res = await adminApi.post('/api/admin/time-blocks', data);
   return res.data;

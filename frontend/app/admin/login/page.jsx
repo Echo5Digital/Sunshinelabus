@@ -56,11 +56,11 @@ export default function AdminLoginPage() {
       {/* Logo */}
       <div className="mb-8">
         <Image
-          src="/logo2.webp"
-          alt="Sunshine Clinical Lab"
+          src="/main-logo.webp"
+          alt="Sunshine Clinical Laboratory"
           width={148}
           height={45}
-          className="object-contain brightness-0 invert"
+          className="object-contain"
           priority
         />
       </div>
@@ -150,7 +150,7 @@ export default function AdminLoginPage() {
       </div>
 
       <p className="text-white/20 text-xs mt-8">
-        Sunshine Clinical Lab LLC © {new Date().getFullYear()}
+        © 2026 Sunshine Clinical Laboratory LLC. All rights reserved.
       </p>
     </div>
   );

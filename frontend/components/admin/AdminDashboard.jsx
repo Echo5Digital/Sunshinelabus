@@ -50,7 +50,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-[#0f1624] overflow-hidden">
       {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-40 flex flex-col w-60 bg-sunshine-dark text-white shadow-xl transition-transform duration-300
@@ -59,7 +59,7 @@ export default function AdminDashboard() {
       >
         {/* Logo */}
         <div className="flex items-center gap-3 px-5 py-6 border-b border-white/10">
-          <Image src="/logo2.webp" alt="Sunshine Clinical Lab" width={110} height={34} className="object-contain brightness-0 invert" />
+          <Image src="/main-logo.webp" alt="Sunshine Clinical Laboratory" width={110} height={34} className="object-contain" />
         </div>
 
         {/* Role badge */}
@@ -115,16 +115,16 @@ export default function AdminDashboard() {
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top header */}
-        <header className="bg-white border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center gap-4 flex-shrink-0">
+        <header className="bg-[#1a2535] border-b border-white/[0.07] px-4 sm:px-6 py-4 flex items-center gap-4 flex-shrink-0">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden p-2 rounded-xl text-gray-500 hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-xl text-white/50 hover:bg-white/[0.06] transition-colors"
           >
             <Menu className="w-5 h-5" />
           </button>
           <div>
-            <h1 className="text-lg font-bold text-sunshine-dark">{PANEL_TITLES[activePanel]}</h1>
-            <p className="text-xs text-gray-400">
+            <h1 className="text-lg font-bold text-white">{PANEL_TITLES[activePanel]}</h1>
+            <p className="text-xs text-white/40">
               {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </div>
@@ -134,6 +134,11 @@ export default function AdminDashboard() {
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">
           {panels[activePanel]}
         </main>
+
+        {/* Footer */}
+        <footer className="flex-shrink-0 border-t border-white/[0.07] bg-[#1a2535] px-6 py-3 text-center">
+          <p className="text-white/30 text-xs">© 2026 Sunshine Clinical Laboratory LLC. All rights reserved.</p>
+        </footer>
       </div>
     </div>
   );
