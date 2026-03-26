@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, CalendarX, RefreshCw, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CalendarX, RefreshCw, Clock, Lock } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { fetchAvailability } from '@/lib/api';
-import { formatTimeSlot } from '@/lib/booking-constants';
+import { formatTimeSlot, generateTimeSlots } from '@/lib/booking-constants';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 function TimeSkeleton() {
@@ -20,6 +20,7 @@ function TimeSkeleton() {
 export default function Step4Time({ bookingData, updateBookingData, onNext, onPrev }) {
   const { date, timeSlot } = bookingData;
   const [slots, setSlots] = useState([]);
+  const [blockedSlots, setBlockedSlots] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
@@ -31,6 +32,7 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
     try {
       const data = await fetchAvailability(date);
       setSlots(data.slots || []);
+      setBlockedSlots(data.blockedSlots || []);
       if (data.message) setMessage(data.message);
     } catch {
       setError('Could not load available times. Please try again.');
@@ -86,26 +88,41 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
         </div>
       )}
 
-      {!loading && !error && slots.length > 0 && (
+      {!loading && !error && (slots.length > 0 || blockedSlots.length > 0) && (
         <>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-            {slots.map((slot) => {
-              const isSelected = timeSlot === slot;
-              return (
-                <button
-                  key={slot}
-                  onClick={() => updateBookingData({ timeSlot: slot })}
-                  className={`py-2.5 px-1 rounded-xl text-sm font-medium border-2 transition-all duration-150
-                    ${isSelected
-                      ? 'bg-sunshine-blue border-sunshine-blue text-white shadow-md shadow-sunshine-blue/25'
-                      : 'border-sunshine-sky/30 text-sunshine-dark hover:border-sunshine-blue hover:bg-sunshine-soft hover:text-sunshine-blue'
-                    }`}
-                >
-                  {formatTimeSlot(slot)}
-                </button>
-              );
-            })}
-          </div>
+          {(() => {
+            const ALL_SLOTS = generateTimeSlots('08:00', '17:00', 15);
+            const availableSet = new Set(slots);
+            const blockedSet = new Set(blockedSlots);
+            const displaySlots = ALL_SLOTS.filter((s) => availableSet.has(s) || blockedSet.has(s));
+            return (
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                {displaySlots.map((slot) => {
+                  const isSelected = timeSlot === slot;
+                  const isBlockedSlot = blockedSet.has(slot);
+                  return (
+                    <button
+                      key={slot}
+                      onClick={() => !isBlockedSlot && updateBookingData({ timeSlot: slot })}
+                      disabled={isBlockedSlot}
+                      className={`py-2.5 px-1 rounded-xl text-sm font-medium border-2 transition-all duration-150
+                        ${isBlockedSlot
+                          ? 'border-red-200 bg-red-50 text-red-400 cursor-not-allowed'
+                          : isSelected
+                          ? 'bg-sunshine-blue border-sunshine-blue text-white shadow-md shadow-sunshine-blue/25'
+                          : 'border-sunshine-sky/30 text-sunshine-dark hover:border-sunshine-blue hover:bg-sunshine-soft hover:text-sunshine-blue'
+                        }`}
+                    >
+                      <span className="flex items-center justify-center gap-1">
+                        {formatTimeSlot(slot)}
+                        {isBlockedSlot && <Lock className="w-3 h-3 opacity-60" />}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })()}
           <p className="text-xs text-gray-400 mt-3">
             {slots.length} time slot{slots.length !== 1 ? 's' : ''} available
           </p>

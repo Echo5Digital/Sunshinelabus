@@ -189,7 +189,7 @@ export default function Step7Review({
         <ShimmerButton
           onClick={submitBooking}
           disabled={isSubmitting}
-          className="bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md disabled:opacity-60"
+          className="bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-5 sm:px-8 py-3 rounded-full font-semibold text-sm shadow-md disabled:opacity-60"
         >
           {isSubmitting ? (
             <>

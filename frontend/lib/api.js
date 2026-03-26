@@ -52,6 +52,11 @@ export const fetchAvailability = async (date) => {
   return res.data;
 };
 
+export const fetchDateBlocks = async (start, end) => {
+  const res = await api.get(`/api/availability/blocks?start=${start}&end=${end}`);
+  return res.data;
+};
+
 export const submitBooking = async (data) => {
   const res = await api.post('/api/appointments', data);
   return res.data;

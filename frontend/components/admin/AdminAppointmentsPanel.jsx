@@ -176,61 +176,107 @@ export default function AdminAppointmentsPanel() {
             <p className="text-gray-400 text-sm">No appointments found.</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Date & Time</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Patient</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Service</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Location</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
-                  <th className="px-4 py-3" />
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {appointments.map((appt) => (
-                  <tr key={appt.id} className={`hover:bg-gray-50/50 transition-colors ${getRowBg(appt.status)}`}>
-                    <td className="px-5 py-3">
-                      <p className="font-medium text-sunshine-dark">{appt.appointment_date}</p>
-                      <p className="text-xs text-gray-400">{appt.appointment_time?.slice(0, 5)}</p>
-                    </td>
-                    <td className="px-4 py-3">
-                      <p className="font-medium text-sunshine-dark">{appt.patient_name}</p>
+          <>
+            {/* Mobile card list */}
+            <div className="block md:hidden divide-y divide-gray-50">
+              {appointments.map((appt) => (
+                <div key={appt.id} className={`p-4 ${getRowBg(appt.status)}`}>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div>
+                      <p className="font-medium text-sunshine-dark text-sm">{appt.patient_name}</p>
                       <p className="text-xs text-gray-400">{appt.patient_phone}</p>
-                    </td>
-                    <td className="px-4 py-3 text-gray-600">{appt.services?.name || '—'}</td>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-1 text-xs text-gray-500">
-                        <MapPin className="w-3 h-3" />
-                        {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <select
-                        value={appt.status}
-                        onChange={(e) => handleStatusChange(appt.id, e.target.value)}
-                        className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-white text-sunshine-dark"
-                      >
-                        {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
-                          <option key={key} value={key}>{label}</option>
-                        ))}
-                      </select>
-                    </td>
-                    <td className="px-4 py-3">
-                      <button
-                        onClick={() => setSelectedId(appt.id)}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors"
-                        title="View details"
-                      >
-                        <Eye className="w-4 h-4" />
-                      </button>
-                    </td>
+                    </div>
+                    <button
+                      onClick={() => setSelectedId(appt.id)}
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors flex-shrink-0"
+                      title="View details"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-gray-500 mb-2">
+                    <span className="font-medium text-sunshine-dark">{appt.appointment_date}</span>
+                    <span>·</span>
+                    <span>{appt.appointment_time?.slice(0, 5)}</span>
+                    <span>·</span>
+                    <span>{appt.services?.name || '—'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={appt.status}
+                      onChange={(e) => handleStatusChange(appt.id, e.target.value)}
+                      className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-white text-sunshine-dark"
+                    >
+                      {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
+                        <option key={key} value={key}>{label}</option>
+                      ))}
+                    </select>
+                    <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+                      <MapPin className="w-3 h-3" />
+                      {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-100">
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Date & Time</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Patient</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Service</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Location</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+                    <th className="px-4 py-3" />
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {appointments.map((appt) => (
+                    <tr key={appt.id} className={`hover:bg-gray-50/50 transition-colors ${getRowBg(appt.status)}`}>
+                      <td className="px-5 py-3">
+                        <p className="font-medium text-sunshine-dark">{appt.appointment_date}</p>
+                        <p className="text-xs text-gray-400">{appt.appointment_time?.slice(0, 5)}</p>
+                      </td>
+                      <td className="px-4 py-3">
+                        <p className="font-medium text-sunshine-dark">{appt.patient_name}</p>
+                        <p className="text-xs text-gray-400">{appt.patient_phone}</p>
+                      </td>
+                      <td className="px-4 py-3 text-gray-600">{appt.services?.name || '—'}</td>
+                      <td className="px-4 py-3">
+                        <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+                          <MapPin className="w-3 h-3" />
+                          {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3">
+                        <select
+                          value={appt.status}
+                          onChange={(e) => handleStatusChange(appt.id, e.target.value)}
+                          className="text-xs border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-sunshine-blue bg-white text-sunshine-dark"
+                        >
+                          {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
+                            <option key={key} value={key}>{label}</option>
+                          ))}
+                        </select>
+                      </td>
+                      <td className="px-4 py-3">
+                        <button
+                          onClick={() => setSelectedId(appt.id)}
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-sunshine-blue hover:bg-sunshine-soft transition-colors"
+                          title="View details"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
 
         {/* Pagination */}

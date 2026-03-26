@@ -25,6 +25,47 @@ function generateTimeSlots(start, end, intervalMin) {
   return slots;
 }
 
+// GET /api/availability/blocks?start=YYYY-MM-DD&end=YYYY-MM-DD
+// Returns fully-blocked and partially-blocked dates in range (public, no auth)
+router.get('/blocks', async (req, res) => {
+  try {
+    const { start, end } = req.query;
+    if (
+      !start || !end ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(start) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(end)
+    ) {
+      return res.status(400).json({ error: 'Valid start and end dates required (YYYY-MM-DD).' });
+    }
+
+    const { data, error } = await supabase
+      .from('time_blocks')
+      .select('block_date, block_time')
+      .gte('block_date', start)
+      .lte('block_date', end);
+
+    if (error) throw error;
+
+    const byDate = {};
+    for (const row of data || []) {
+      if (!byDate[row.block_date]) byDate[row.block_date] = [];
+      byDate[row.block_date].push(row.block_time);
+    }
+
+    const fullyBlocked = [];
+    const partiallyBlocked = [];
+    for (const [date, times] of Object.entries(byDate)) {
+      if (times.includes(null)) fullyBlocked.push(date);
+      else partiallyBlocked.push(date);
+    }
+
+    return res.json({ fullyBlocked, partiallyBlocked });
+  } catch (err) {
+    console.error('Blocks range error:', err.message);
+    return res.status(500).json({ error: 'Failed to fetch block info' });
+  }
+});
+
 // GET /api/availability?date=YYYY-MM-DD
 // Returns available 15-minute time slots for a given weekday date (public, no auth)
 router.get('/', async (req, res) => {
@@ -85,8 +126,9 @@ router.get('/', async (req, res) => {
 
     const allSlots = generateTimeSlots(BUSINESS_START, BUSINESS_END, SLOT_INTERVAL);
     const available = allSlots.filter((slot) => !bookedTimes.has(slot) && !blockedTimes.has(slot));
+    const blockedSlotsArr = [...blockedTimes];
 
-    return res.json({ date, slots: available });
+    return res.json({ date, slots: available, blockedSlots: blockedSlotsArr });
   } catch (err) {
     console.error('Availability error:', err.message);
     return res.status(500).json({ error: 'Failed to fetch availability' });

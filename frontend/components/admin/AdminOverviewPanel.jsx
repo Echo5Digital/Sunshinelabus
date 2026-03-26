@@ -103,36 +103,61 @@ export default function AdminOverviewPanel({ onViewAll }) {
         {recent.length === 0 ? (
           <p className="text-center text-gray-400 text-sm py-10">No appointments yet.</p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Patient</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Service</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Date & Time</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {recent.map((appt) => (
-                  <tr key={appt.id} className="hover:bg-gray-50/60 transition-colors">
-                    <td className="px-6 py-3">
-                      <p className="font-medium text-sunshine-dark">{appt.patient_name}</p>
+          <>
+            {/* Mobile card list */}
+            <div className="block md:hidden divide-y divide-gray-50">
+              {recent.map((appt) => (
+                <div key={appt.id} className="p-4 hover:bg-gray-50/60 transition-colors">
+                  <div className="flex items-start justify-between gap-2 mb-1.5">
+                    <div>
+                      <p className="font-medium text-sunshine-dark text-sm">{appt.patient_name}</p>
                       <p className="text-xs text-gray-400">{appt.patient_email}</p>
-                    </td>
-                    <td className="px-4 py-3 text-gray-600">{appt.services?.name || '—'}</td>
-                    <td className="px-4 py-3 text-gray-600">
-                      <p>{appt.appointment_date}</p>
-                      <p className="text-xs text-gray-400">{appt.appointment_time?.slice(0, 5)}</p>
-                    </td>
-                    <td className="px-4 py-3">
-                      <StatusBadge status={appt.status} />
-                    </td>
+                    </div>
+                    <StatusBadge status={appt.status} />
+                  </div>
+                  <div className="flex flex-wrap items-center gap-1.5 text-xs text-gray-500">
+                    <span className="font-medium text-sunshine-dark">{appt.appointment_date}</span>
+                    <span>·</span>
+                    <span>{appt.appointment_time?.slice(0, 5)}</span>
+                    <span>·</span>
+                    <span>{appt.services?.name || '—'}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop table */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-50 border-b border-gray-100">
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Patient</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Service</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Date & Time</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {recent.map((appt) => (
+                    <tr key={appt.id} className="hover:bg-gray-50/60 transition-colors">
+                      <td className="px-6 py-3">
+                        <p className="font-medium text-sunshine-dark">{appt.patient_name}</p>
+                        <p className="text-xs text-gray-400">{appt.patient_email}</p>
+                      </td>
+                      <td className="px-4 py-3 text-gray-600">{appt.services?.name || '—'}</td>
+                      <td className="px-4 py-3 text-gray-600">
+                        <p>{appt.appointment_date}</p>
+                        <p className="text-xs text-gray-400">{appt.appointment_time?.slice(0, 5)}</p>
+                      </td>
+                      <td className="px-4 py-3">
+                        <StatusBadge status={appt.status} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
     </div>

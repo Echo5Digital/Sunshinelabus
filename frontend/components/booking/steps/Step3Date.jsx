@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   startOfMonth, endOfMonth, eachDayOfInterval,
   format, addMonths, subMonths, isWeekend,
@@ -9,8 +9,9 @@ import {
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 import { MIN_ADVANCE_HOURS } from '@/lib/booking-constants';
+import { fetchDateBlocks } from '@/lib/api';
 
-const WEEKDAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const ALL_DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export default function Step3Date({ bookingData, updateBookingData, onNext, onPrev, onGoToStep }) {
   const today = new Date();
@@ -20,24 +21,31 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
 
   const minAllowedDate = addHours(today, MIN_ADVANCE_HOURS);
   const selectedDate = bookingData.date;
+  const [fullyBlockedDates, setFullyBlockedDates] = useState(new Set());
 
-  // Build the calendar grid (only Mon–Fri visible)
+  useEffect(() => {
+    const start = format(startOfMonth(displayMonth), 'yyyy-MM-dd');
+    const end = format(endOfMonth(displayMonth), 'yyyy-MM-dd');
+    fetchDateBlocks(start, end)
+      .then((data) => setFullyBlockedDates(new Set(data.fullyBlocked || [])))
+      .catch(() => {});
+  }, [displayMonth]);
+
+  // Build the calendar grid (all days Mon–Sun)
   const calendarDays = useMemo(() => {
-    const days = eachDayOfInterval({
+    return eachDayOfInterval({
       start: startOfMonth(displayMonth),
       end: endOfMonth(displayMonth),
     });
-    // Filter to weekdays only
-    return days.filter((d) => !isWeekend(d));
   }, [displayMonth]);
 
-  // Get the ISO week-day offset for the first weekday of the month
-  // to pad the grid correctly (Mon=0, Tue=1, ..., Fri=4)
+  // Get the offset for the first day of the month in a Mon-first 7-col grid
+  // Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
   const firstDayOffset = useMemo(() => {
-    const firstWeekday = calendarDays[0];
-    if (!firstWeekday) return 0;
-    const day = getDay(firstWeekday); // 0=Sun,1=Mon,...,5=Fri
-    return day === 0 ? 4 : day - 1; // Map to Mon=0
+    const firstDay = calendarDays[0];
+    if (!firstDay) return 0;
+    const day = getDay(firstDay); // 0=Sun,1=Mon,...,6=Sat
+    return day === 0 ? 6 : day - 1;
   }, [calendarDays]);
 
   // Disable a date only if its last bookable slot (16:45) is within the advance window.
@@ -48,8 +56,9 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
   };
 
   const handleSelect = (date) => {
-    if (isPast(date)) return;
-    updateBookingData({ date: format(date, 'yyyy-MM-dd'), timeSlot: '' });
+    const dateStr = format(date, 'yyyy-MM-dd');
+    if (isPast(date) || isWeekend(date) || fullyBlockedDates.has(dateStr)) return;
+    updateBookingData({ date: dateStr, timeSlot: '' });
   };
 
   const canGoPrev =
@@ -87,20 +96,24 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
           </button>
         </div>
 
-        {/* Weekday header */}
-        <div className="grid grid-cols-5 gap-1 mb-2">
-          {WEEKDAY_LABELS.map((d) => (
+        {/* Day header */}
+        <div className="grid grid-cols-7 gap-1 mb-2">
+          {ALL_DAY_LABELS.map((d) => (
             <div
               key={d}
-              className="text-center text-xs font-semibold text-sunshine-blue/70 uppercase tracking-wide py-1"
+              className={`text-center text-xs font-semibold uppercase tracking-wide py-1 ${
+                d === 'Sat' || d === 'Sun'
+                  ? 'text-gray-300'
+                  : 'text-sunshine-blue/70'
+              }`}
             >
               {d}
             </div>
           ))}
         </div>
 
-        {/* Date grid — 5 columns (Mon–Fri) */}
-        <div className="grid grid-cols-5 gap-1">
+        {/* Date grid — 7 columns (Mon–Sun) */}
+        <div className="grid grid-cols-7 gap-1">
           {/* Offset padding */}
           {[...Array(firstDayOffset)].map((_, i) => (
             <div key={`pad-${i}`} />
@@ -108,7 +121,10 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
 
           {calendarDays.map((date) => {
             const dateStr = format(date, 'yyyy-MM-dd');
+            const weekend = isWeekend(date);
             const past = isPast(date);
+            const isBlocked = !past && !weekend && fullyBlockedDates.has(dateStr);
+            const isDisabled = past || isBlocked || weekend;
             const isToday = isSameDay(date, today);
             const isSelected = selectedDate === dateStr;
 
@@ -116,10 +132,15 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
               <button
                 key={dateStr}
                 onClick={() => handleSelect(date)}
-                className={`relative aspect-square flex items-center justify-center rounded-xl text-sm font-medium
+                disabled={isDisabled}
+                className={`relative aspect-square flex flex-col items-center justify-center rounded-xl text-sm font-medium
                   transition-all duration-150
-                  ${past
+                  ${weekend
+                    ? 'text-gray-300 cursor-not-allowed bg-gray-50/40'
+                    : past
                     ? 'text-gray-400 line-through cursor-not-allowed bg-gray-50/60'
+                    : isBlocked
+                    ? 'text-gray-400 cursor-not-allowed bg-gray-50/60'
                     : isSelected
                     ? 'bg-sunshine-blue text-white font-bold shadow-md shadow-sunshine-blue/30'
                     : isToday
@@ -127,7 +148,10 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
                     : 'text-sunshine-dark bg-white hover:bg-sunshine-soft hover:text-sunshine-blue shadow-sm'
                   }`}
               >
-                {format(date, 'd')}
+                <span>{format(date, 'd')}</span>
+                {isBlocked && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-0.5" />
+                )}
               </button>
             );
           })}
@@ -138,6 +162,10 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
       <div className="flex items-start gap-2 mt-4 px-1 text-xs text-gray-400">
         <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
         <span>We operate Monday–Friday, 8:00 AM – 5:00 PM. Bookings require {MIN_ADVANCE_HOURS}h advance notice.</span>
+      </div>
+      <div className="flex items-center gap-1.5 mt-2 px-1 text-xs text-gray-400">
+        <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block flex-shrink-0" />
+        <span>Dates marked with a red dot are fully unavailable.</span>
       </div>
 
       <div className="mt-6 flex items-center justify-between">

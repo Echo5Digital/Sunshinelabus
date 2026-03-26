@@ -124,7 +124,7 @@ export default function AdminCalendarPanel() {
             </div>
 
             {/* Appointments column */}
-            <div className="flex-1 min-w-0 relative">
+            <div className="flex-1 min-w-[220px] relative">
               {/* Header */}
               <div className="h-10 border-b border-gray-100 flex items-center px-4">
                 <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">

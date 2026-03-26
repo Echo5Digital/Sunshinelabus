@@ -35,7 +35,7 @@ export default function WizardProgressBar({ currentStep, onStepClick }) {
                 )}
               </button>
               <span
-                className={`mt-1 text-[10px] font-medium leading-tight text-center w-12 truncate ${
+                className={`hidden sm:inline-block mt-1 text-[10px] font-medium leading-tight text-center w-12 truncate ${
                   isActive
                     ? 'text-sunshine-blue font-semibold'
                     : isCompleted
