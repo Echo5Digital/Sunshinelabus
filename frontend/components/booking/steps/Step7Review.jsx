@@ -74,7 +74,7 @@ export default function Step7Review({
 
         <h2 className="text-2xl font-bold text-sunshine-dark mb-1">Appointment Confirmed!</h2>
         <p className="text-gray-500 text-sm mb-1">
-          A confirmation will be sent to <span className="text-sunshine-dark font-medium">{patientEmail}</span>
+          A confirmation email has been sent to <span className="text-sunshine-dark font-medium">{patientEmail}</span>
         </p>
         <span className="inline-block bg-sunshine-soft text-sunshine-dark text-xs font-bold px-3 py-1 rounded-full border border-sunshine-sky/30 mb-6">
           Ref: #{confirmedAppointmentId.slice(0, 8).toUpperCase()}

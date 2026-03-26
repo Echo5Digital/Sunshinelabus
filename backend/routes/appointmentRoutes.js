@@ -3,6 +3,7 @@ const router = express.Router();
 const { body, param, validationResult } = require('express-validator');
 const supabase = require('../config/supabase');
 const { verifyAdmin } = require('../middleware/auth');
+const { sendConfirmationEmail } = require('../utils/mailer');
 
 const MIN_ADVANCE_HOURS = 24;
 
@@ -139,9 +140,27 @@ router.post(
 
       if (error) throw error;
 
+      // Fire-and-forget: fetch service name then send confirmation email
+      supabase
+        .from('services')
+        .select('name')
+        .eq('id', service_id)
+        .single()
+        .then(({ data: svc }) => {
+          sendConfirmationEmail({
+            patientEmail,
+            patientName: patient_name.trim(),
+            serviceName: svc?.name || 'Lab Service',
+            appointmentDate: appointment_date,
+            appointmentTime: appointment_time,
+            locationType: location_type,
+          });
+        })
+        .catch((err) => console.error('Service lookup for email failed:', err.message));
+
       return res.status(201).json({
         id: data.id,
-        message: 'Appointment booked successfully. We will confirm it shortly.',
+        message: 'Appointment booked successfully. A confirmation email has been sent.',
       });
     } catch (err) {
       console.error('Booking error:', err.message);
