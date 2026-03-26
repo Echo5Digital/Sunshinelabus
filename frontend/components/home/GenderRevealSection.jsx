@@ -22,6 +22,7 @@ export default function GenderRevealSection() {
 
   return (
     <section
+      id="gender-reveal"
       className="py-20 relative overflow-hidden"
       aria-labelledby="gender-reveal-heading"
       ref={ref}
