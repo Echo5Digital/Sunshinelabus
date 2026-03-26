@@ -148,7 +148,7 @@ router.post(
         .single()
         .then(({ data: svc }) => {
           sendConfirmationEmail({
-            patientEmail,
+            patientEmail: patient_email,
             patientName: patient_name.trim(),
             serviceName: svc?.name || 'Lab Service',
             appointmentDate: appointment_date,
