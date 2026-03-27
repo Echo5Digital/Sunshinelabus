@@ -119,14 +119,14 @@ export default function DNATestingSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="tel:7272335223" aria-label="Inquire about DNA testing">
-              <ShimmerButton className="bg-sunshine-blue text-white px-8 py-4 rounded-full font-semibold shadow-lg gap-2">
+            <a href="tel:7272335223" aria-label="Inquire about DNA testing" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-4 rounded-full font-semibold shadow-lg gap-2">
                 <Phone className="w-4 h-4" aria-hidden="true" />
                 Inquire About DNA Testing — (727) 233-5223
               </ShimmerButton>
             </a>
-            <Link href="/dna-testing-new-port-richey" aria-label="Full DNA testing details and FAQs">
-              <ShimmerButton className="border border-sunshine-blue/30 text-sunshine-blue bg-white px-6 py-4 rounded-full font-semibold gap-2">
+            <Link href="/dna-testing-new-port-richey" aria-label="Full DNA testing details and FAQs" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto border border-sunshine-blue/30 text-sunshine-blue bg-white px-6 py-4 rounded-full font-semibold gap-2">
                 Full DNA Testing Details &amp; FAQs
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>

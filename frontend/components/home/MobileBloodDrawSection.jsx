@@ -86,14 +86,14 @@ export default function MobileBloodDrawSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/mobile-blood-draw-new-port-richey" aria-label="Learn more about mobile blood draws">
-                <ShimmerButton className="bg-sunshine-blue text-white px-7 py-4 rounded-full font-semibold shadow-lg gap-2">
+              <Link href="/mobile-blood-draw-new-port-richey" aria-label="Learn more about mobile blood draws" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-7 py-4 rounded-full font-semibold shadow-lg gap-2">
                   Request a Mobile Blood Draw
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </ShimmerButton>
               </Link>
-              <a href="tel:7272335223" aria-label="Call to schedule a mobile blood draw">
-                <ShimmerButton className="border-2 border-sunshine-blue text-sunshine-blue bg-white px-7 py-4 rounded-full font-semibold gap-2">
+              <a href="tel:7272335223" aria-label="Call to schedule a mobile blood draw" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto border-2 border-sunshine-blue text-sunshine-blue bg-white px-7 py-4 rounded-full font-semibold gap-2">
                   <Phone className="w-4 h-4" aria-hidden="true" />
                   (727) 233-5223
                 </ShimmerButton>

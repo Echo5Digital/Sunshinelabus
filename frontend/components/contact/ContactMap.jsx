@@ -96,14 +96,10 @@ export default function ContactMap() {
                   <div className="space-y-1.5 text-sm">
                     <div className="flex justify-between gap-4">
                       <span className="text-gray-500">Monday – Friday</span>
-                      <span className="font-medium text-sunshine-dark whitespace-nowrap">7:00 AM – 6:00 PM</span>
+                      <span className="font-medium text-sunshine-dark whitespace-nowrap">8:00 AM – 5:00 PM</span>
                     </div>
                     <div className="flex justify-between gap-4">
-                      <span className="text-gray-500">Saturday</span>
-                      <span className="font-medium text-sunshine-dark whitespace-nowrap">8:00 AM – 2:00 PM</span>
-                    </div>
-                    <div className="flex justify-between gap-4">
-                      <span className="text-gray-500">Sunday</span>
+                      <span className="text-gray-500">Saturday – Sunday</span>
                       <span className="font-medium text-gray-400">Closed</span>
                     </div>
                   </div>

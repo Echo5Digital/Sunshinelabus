@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Heart, CheckCircle, ArrowRight, Phone } from 'lucide-react';
+import { Heart, ArrowRight, Phone } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const containerVariants = {
@@ -77,14 +77,14 @@ export default function GenderRevealSection() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-            <a href="tel:7272335223" aria-label="Schedule your gender reveal blood test">
-              <ShimmerButton className="bg-sunshine-blue text-white px-8 py-4 rounded-full font-bold shadow-xl gap-2">
+            <a href="tel:7272335223" aria-label="Schedule your gender reveal blood test" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                 <Phone className="w-5 h-5" aria-hidden="true" />
                 Schedule Your Gender Reveal Blood Test — (727) 233-5223
               </ShimmerButton>
             </a>
-            <Link href="/gender-reveal-testing-florida" aria-label="Learn more about gender reveal testing in Florida">
-              <ShimmerButton className="border border-sunshine-blue/30 text-sunshine-blue bg-white px-6 py-4 rounded-full font-semibold gap-2">
+            <Link href="/gender-reveal-testing-florida" aria-label="Learn more about gender reveal testing in Florida" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto border border-sunshine-blue/30 text-sunshine-blue bg-white px-6 py-4 rounded-full font-semibold gap-2">
                 Learn More About Gender Reveal Testing
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>

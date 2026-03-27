@@ -80,22 +80,22 @@ export default function HomeHero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row flex-wrap gap-4"
           >
-            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223">
-              <ShimmerButton className="bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
+            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
                 <Phone className="w-5 h-5" aria-hidden="true" />
                 Schedule Your Visit — (727) 233-5223
               </ShimmerButton>
             </a>
 
-            <Link href="/mobile-blood-draw-pasco-county" aria-label="Request a mobile blood draw">
-              <ShimmerButton className="bg-sunshine-blue text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base border border-white/20 gap-2">
+            <Link href="/mobile-blood-draw-pasco-county" aria-label="Request a mobile blood draw" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base border border-white/20 gap-2">
                 Request a Mobile Blood Draw
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>
             </Link>
 
-            <Link href="/clinical-lab-services-trinity-fl" aria-label="View all our lab services">
-              <ShimmerButton className="border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white px-7 py-3.5 rounded-full font-semibold text-base gap-2">
+            <Link href="/clinical-lab-services-trinity-fl" aria-label="View all our lab services" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white px-7 py-3.5 rounded-full font-semibold text-base gap-2">
                 View All Services
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>

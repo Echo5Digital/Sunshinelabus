@@ -264,11 +264,11 @@ export default function ContactForm() {
               </label>
 
               {/* Submit */}
-              <div className="pt-1">
+              <div className="pt-1 flex">
                 <ShimmerButton
                   type="submit"
                   disabled={isSubmitting || !consentChecked}
-                  className="bg-sunshine-blue text-white text-sm px-10 py-3 rounded-full font-semibold shadow-md hover:bg-sunshine-blue/90"
+                  className="w-full sm:w-auto bg-sunshine-blue text-white text-sm px-10 py-3 rounded-full font-semibold shadow-md hover:bg-sunshine-blue/90"
                 >
                   {isSubmitting ? (
                     <>

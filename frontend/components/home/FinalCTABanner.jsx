@@ -45,7 +45,7 @@ export default function FinalCTABanner() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 bg-white/20 border border-white/30 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
           >
-            New Port Richey&apos;s Local Lab
+            Your Local Lab in Trinity, FL
           </motion.span>
 
           <motion.h2
@@ -71,22 +71,22 @@ export default function FinalCTABanner() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
           >
-            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223">
-              <ShimmerButton className="bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
+            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
                 <Phone className="w-6 h-6" aria-hidden="true" />
                 Call Now: (727) 233-5223
               </ShimmerButton>
             </a>
 
-            <Link href="/book-appointment" aria-label="Book an appointment online">
-              <ShimmerButton className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
+            <Link href="/book-appointment" aria-label="Book an appointment online" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
                 <CalendarDays className="w-5 h-5" aria-hidden="true" />
                 Book Appointment
               </ShimmerButton>
             </Link>
 
-            <Link href="/mobile-blood-draw-new-port-richey" aria-label="Request a mobile blood draw">
-              <ShimmerButton className="bg-white/15 backdrop-blur-sm border border-white/40 text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
+            <Link href="/mobile-blood-draw-new-port-richey" aria-label="Request a mobile blood draw" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white/15 backdrop-blur-sm border border-white/40 text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
                 Request Mobile Draw
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>

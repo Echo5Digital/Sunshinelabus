@@ -17,7 +17,7 @@ const errorClass = 'flex items-center gap-1 text-red-500 text-xs mt-1';
 
 function ReferralBanner() {
   return (
-    <section className="relative bg-sunshine-blue text-white py-20 pt-36 overflow-hidden">
+    <section className="relative bg-sunshine-blue text-white py-20 pt-28 sm:pt-36 overflow-hidden">
       {/* Decorative circles */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <svg className="absolute -top-20 -right-20 w-96 h-96 opacity-[0.10]" viewBox="0 0 380 380" fill="none">

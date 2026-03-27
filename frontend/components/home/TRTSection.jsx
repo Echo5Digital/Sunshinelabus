@@ -97,14 +97,14 @@ export default function TRTSection() {
             </motion.ul>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-              <a href="tel:7272335223" aria-label="Call to book your TRT panel">
-                <ShimmerButton className="bg-white text-sunshine-dark px-8 py-4 rounded-full font-bold shadow-xl gap-2">
+              <a href="tel:7272335223" aria-label="Call to book your TRT panel" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                   <Phone className="w-4 h-4" aria-hidden="true" />
                   Book Your TRT Panel — (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/trt-blood-test-pasco-county" aria-label="Full details on TRT blood testing">
-                <ShimmerButton className="border border-white/30 text-white px-6 py-4 rounded-full font-semibold gap-2">
+              <Link href="/trt-blood-test-pasco-county" aria-label="Full details on TRT blood testing" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto border border-white/30 text-white px-6 py-4 rounded-full font-semibold gap-2">
                   Full TRT Testing Details
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </ShimmerButton>
@@ -114,7 +114,7 @@ export default function TRTSection() {
 
           {/* Right: panel test cards */}
           <motion.div
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}

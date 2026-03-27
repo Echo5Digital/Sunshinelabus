@@ -136,7 +136,7 @@ export default function AdminDashboard() {
         <div className="px-3 pb-3 border-t border-white/10 pt-3">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-red-500/30 transition-all duration-150"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/20 transition-all duration-150"
           >
             <LogOut className="w-4 h-4 text-red-400" />
             Sign Out

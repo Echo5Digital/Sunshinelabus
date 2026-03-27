@@ -18,7 +18,11 @@ export default function ServiceCard({ title, Icon, href }) {
         gradientSize={200}
         className="group shadow-md hover:shadow-xl"
       >
-        <div className="p-6 flex flex-col items-center text-center h-full">
+        <Link
+          href={href}
+          aria-label={`Learn more about ${title}`}
+          className="p-6 flex flex-col items-center text-center h-full"
+        >
           {/* Icon */}
           <div
             className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-sunshine-blue/10 text-sunshine-blue"
@@ -32,14 +36,10 @@ export default function ServiceCard({ title, Icon, href }) {
           </h3>
 
           {/* Arrow — slides right on hover */}
-          <Link
-            href={href}
-            className="inline-flex items-center text-sunshine-blue group-hover:translate-x-1 transition-transform duration-200"
-            aria-label={`Learn more about ${title}`}
-          >
+          <span className="inline-flex items-center text-sunshine-blue group-hover:translate-x-1 transition-transform duration-200">
             <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
+          </span>
+        </Link>
       </MagicCard>
     </motion.div>
   );
