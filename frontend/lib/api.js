@@ -132,3 +132,13 @@ export const fetchTimeBlocks = async (startDate, endDate) => {
   });
   return res.data;
 };
+
+export const fetchAdminContacts = async (params = {}) => {
+  const res = await adminApi.get('/api/admin/contacts', { params });
+  return res.data;
+};
+
+export const markContactAsRead = async (id) => {
+  const res = await adminApi.patch(`/api/admin/contacts/${id}/read`);
+  return res.data;
+};

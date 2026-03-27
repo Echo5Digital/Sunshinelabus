@@ -12,7 +12,7 @@ router.get('/stats', async (req, res) => {
   try {
     const today = new Date().toISOString().split('T')[0];
 
-    const [totalResult, todayResult, pendingResult, noShowResult] = await Promise.all([
+    const [totalResult, todayResult, pendingResult, noShowResult, unreadMsgResult] = await Promise.all([
       supabase.from('appointments').select('id', { count: 'exact', head: true }),
       supabase
         .from('appointments')
@@ -26,6 +26,10 @@ router.get('/stats', async (req, res) => {
         .from('appointments')
         .select('id', { count: 'exact', head: true })
         .eq('status', 'no_show'),
+      supabase
+        .from('contacts')
+        .select('id', { count: 'exact', head: true })
+        .eq('is_read', false),
     ]);
 
     return res.json({
@@ -33,12 +37,63 @@ router.get('/stats', async (req, res) => {
       today: todayResult.count || 0,
       pending: pendingResult.count || 0,
       no_shows: noShowResult.count || 0,
+      unread_messages: unreadMsgResult.count || 0,
     });
   } catch (err) {
     console.error('Stats error:', err.message);
     return res.status(500).json({ error: 'Failed to fetch stats' });
   }
 });
+
+// GET /api/admin/contacts?limit=20&offset=0&search=
+router.get('/contacts', async (req, res) => {
+  try {
+    const limit  = Math.min(Number(req.query.limit) || 20, 100);
+    const offset = Number(req.query.offset) || 0;
+    const search = req.query.search?.trim() || '';
+
+    let q = supabase
+      .from('contacts')
+      .select('id, name, email, phone, address, message, is_read, created_at', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
+
+    if (search) {
+      q = q.or(`name.ilike.%${search}%,email.ilike.%${search}%,message.ilike.%${search}%`);
+    }
+
+    const { data, error, count } = await q;
+    if (error) throw error;
+
+    return res.json({ data: data || [], total: count || 0, limit, offset });
+  } catch (err) {
+    console.error('Admin contacts error:', err.message);
+    return res.status(500).json({ error: 'Failed to fetch messages' });
+  }
+});
+
+// PATCH /api/admin/contacts/:id/read — mark a contact message as read
+router.patch(
+  '/contacts/:id/read',
+  [param('id').isUUID()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .update({ is_read: true })
+        .eq('id', req.params.id);
+
+      if (error) throw error;
+      return res.json({ message: 'Message marked as read' });
+    } catch (err) {
+      console.error('Mark read error:', err.message);
+      return res.status(500).json({ error: 'Failed to mark message as read' });
+    }
+  }
+);
 
 // GET /api/admin/calendar?date=YYYY-MM-DD — day view appointments
 router.get('/calendar', async (req, res) => {

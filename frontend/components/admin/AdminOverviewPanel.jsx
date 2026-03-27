@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { CalendarDays, Clock, AlertCircle, UserX, RefreshCw, ChevronRight } from 'lucide-react';
+import { CalendarDays, Clock, AlertCircle, UserX, RefreshCw, ChevronRight, Bell, MessageSquare } from 'lucide-react';
 import { fetchAdminStats, fetchAdminAppointments } from '@/lib/api';
 import { STATUS_CONFIG } from '@/lib/booking-constants';
 
@@ -30,7 +30,7 @@ function StatusBadge({ status }) {
   );
 }
 
-export default function AdminOverviewPanel({ onViewAll }) {
+export default function AdminOverviewPanel({ onViewAll, onViewMessages, unreadMessages = 0 }) {
   const [stats, setStats] = useState(null);
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -90,6 +90,28 @@ export default function AdminOverviewPanel({ onViewAll }) {
         <StatCard icon={AlertCircle} label="Pending" value={stats?.pending} color="bg-sunshine-yellow/20 text-sunshine-yellow" />
         <StatCard icon={UserX} label="No Shows" value={stats?.no_shows} color="bg-red-500/20 text-red-400" />
       </div>
+
+      {/* New messages notification banner */}
+      {unreadMessages > 0 && (
+        <div className="flex items-center gap-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl px-5 py-4">
+          <div className="w-9 h-9 rounded-xl bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+            <Bell className="w-4.5 h-4.5 text-amber-400" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-amber-300">
+              {unreadMessages === 1 ? '1 new message' : `${unreadMessages} new messages`}
+            </p>
+            <p className="text-xs text-amber-400/70 mt-0.5">You have unread contact form submissions</p>
+          </div>
+          <button
+            onClick={onViewMessages}
+            className="flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-100 bg-amber-500/20 hover:bg-amber-500/30 px-3 py-1.5 rounded-lg transition-colors flex-shrink-0"
+          >
+            <MessageSquare className="w-3.5 h-3.5" />
+            View Messages
+          </button>
+        </div>
+      )}
 
       {/* Recent appointments */}
       <div className="bg-[#1a2535] rounded-2xl border border-white/[0.07] shadow-sm overflow-hidden">

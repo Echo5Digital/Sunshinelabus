@@ -1,23 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
-  LayoutDashboard, CalendarDays, Calendar, Ban,
-  LogOut, Menu, X, ChevronRight,
+  LayoutDashboard, CalendarDays, Calendar, Ban, MessageSquare,
+  LogOut, Menu, ChevronRight,
 } from 'lucide-react';
-import { clearAdminToken } from '@/lib/api';
+import { clearAdminToken, fetchAdminStats } from '@/lib/api';
 import AdminOverviewPanel from './AdminOverviewPanel';
 import AdminAppointmentsPanel from './AdminAppointmentsPanel';
 import AdminCalendarPanel from './AdminCalendarPanel';
 import AdminTimeBlocksPanel from './AdminTimeBlocksPanel';
+import AdminMessagesPanel from './AdminMessagesPanel';
 
 const NAV_ITEMS = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard },
   { id: 'appointments', label: 'Appointments', icon: CalendarDays },
   { id: 'calendar', label: 'Calendar', icon: Calendar },
   { id: 'time-blocks', label: 'Time Blocking', icon: Ban },
+  { id: 'messages', label: 'Messages', icon: MessageSquare },
 ];
 
 const PANEL_TITLES = {
@@ -25,12 +27,33 @@ const PANEL_TITLES = {
   appointments: 'Appointments',
   calendar: 'Calendar',
   'time-blocks': 'Time Blocking',
+  messages: 'Messages',
 };
 
 export default function AdminDashboard() {
   const router = useRouter();
   const [activePanel, setActivePanel] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  const refreshUnread = useCallback(async () => {
+    try {
+      const stats = await fetchAdminStats();
+      setUnreadCount(stats.unread_messages ?? 0);
+    } catch {
+      // silent — sidebar badge is non-critical
+    }
+  }, []);
+
+  useEffect(() => {
+    refreshUnread();
+    const interval = setInterval(refreshUnread, 60000);
+    return () => clearInterval(interval);
+  }, [refreshUnread]);
+
+  const handleMarkRead = useCallback(() => {
+    setUnreadCount((prev) => Math.max(0, prev - 1));
+  }, []);
 
   const handleLogout = () => {
     clearAdminToken();
@@ -43,10 +66,21 @@ export default function AdminDashboard() {
   };
 
   const panels = {
-    overview: <AdminOverviewPanel onViewAll={() => setActivePanel('appointments')} />,
+    overview: (
+      <AdminOverviewPanel
+        onViewAll={() => setActivePanel('appointments')}
+        onViewMessages={() => setActivePanel('messages')}
+        unreadMessages={unreadCount}
+      />
+    ),
     appointments: <AdminAppointmentsPanel />,
     calendar: <AdminCalendarPanel />,
     'time-blocks': <AdminTimeBlocksPanel />,
+    messages: (
+      <AdminMessagesPanel
+        onMarkRead={handleMarkRead}
+      />
+    ),
   };
 
   return (
@@ -74,6 +108,7 @@ export default function AdminDashboard() {
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
             const isActive = activePanel === id;
+            const showBadge = id === 'messages' && unreadCount > 0;
             return (
               <button
                 key={id}
@@ -84,21 +119,26 @@ export default function AdminDashboard() {
                     : 'text-white/60 hover:text-white hover:bg-white/10'
                   }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-sunshine-sky' : ''}`} />
-                {label}
-                {isActive && <ChevronRight className="w-3.5 h-3.5 ml-auto text-sunshine-sky" />}
+                <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-sunshine-sky' : ''}`} />
+                <span className="flex-1 text-left">{label}</span>
+                {showBadge && (
+                  <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px] font-bold leading-none">
+                    {unreadCount > 99 ? '99+' : unreadCount}
+                  </span>
+                )}
+                {isActive && !showBadge && <ChevronRight className="w-3.5 h-3.5 text-sunshine-sky" />}
               </button>
             );
           })}
         </nav>
 
-        {/* Logout */}
-        <div className="px-3 pb-5 border-t border-white/10 pt-4">
+        {/* Sign Out */}
+        <div className="px-3 pb-3 border-t border-white/10 pt-3">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/60 hover:text-white hover:bg-red-500/20 transition-all duration-150"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-red-500/30 transition-all duration-150"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-4 h-4 text-red-400" />
             Sign Out
           </button>
         </div>
@@ -122,8 +162,8 @@ export default function AdminDashboard() {
           >
             <Menu className="w-5 h-5" />
           </button>
-          <div>
-            <h1 className="text-lg font-bold text-white">{PANEL_TITLES[activePanel]}</h1>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg font-bold text-white truncate">{PANEL_TITLES[activePanel]}</h1>
             <p className="text-xs text-white/40">
               {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
@@ -136,7 +176,7 @@ export default function AdminDashboard() {
         </main>
 
         {/* Footer */}
-        <footer className="flex-shrink-0 border-t border-white/[0.07] bg-[#1a2535] px-6 py-3 text-center">
+        <footer className="flex-shrink-0 border-t border-white/[0.07] bg-[#1a2535] px-4 py-3 text-center">
           <p className="text-white/30 text-xs">© 2026 Sunshine Clinical Laboratory LLC. All rights reserved.</p>
         </footer>
       </div>

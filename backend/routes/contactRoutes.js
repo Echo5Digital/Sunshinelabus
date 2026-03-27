@@ -20,6 +20,15 @@ const validateContact = [
     .withMessage('Message is required')
     .isLength({ max: 1000 })
     .withMessage('Message cannot exceed 1000 characters'),
+  body('address')
+    .optional({ nullable: true, checkFalsy: true })
+    .trim()
+    .isLength({ max: 300 })
+    .withMessage('Address cannot exceed 300 characters'),
+  body('phone')
+    .optional({ nullable: true, checkFalsy: true })
+    .matches(/^\+?[\d\s\-().]{0,25}$/)
+    .withMessage('Invalid phone format'),
 ];
 
 router.post('/', validateContact, async (req, res) => {
@@ -37,6 +46,8 @@ router.post('/', validateContact, async (req, res) => {
         name: req.body.name.trim(),
         email: req.body.email,
         message: req.body.message.trim(),
+        address: req.body.address?.trim() || null,
+        phone: req.body.phone?.trim() || null,
       });
 
     if (error) {

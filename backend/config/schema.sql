@@ -103,8 +103,21 @@ CREATE TABLE IF NOT EXISTS contacts (
   name TEXT NOT NULL,
   email TEXT NOT NULL,
   message TEXT NOT NULL,
+  address TEXT,
+  phone TEXT,
+  is_read BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON contacts(created_at DESC);
+
+-- ============================================================
+-- Migration: run once in Supabase SQL editor if table already exists
+-- ALTER TABLE contacts ADD COLUMN IF NOT EXISTS address TEXT;
+-- ALTER TABLE contacts ADD COLUMN IF NOT EXISTS phone TEXT;
+-- ALTER TABLE contacts ADD COLUMN IF NOT EXISTS is_read BOOLEAN DEFAULT FALSE;
+-- CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON contacts(created_at DESC);
+-- ============================================================
 
 -- ============================================================
 -- Storage bucket: appointment-docs
