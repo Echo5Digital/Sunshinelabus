@@ -100,14 +100,14 @@ export default function FinalCTABanner() {
             aria-label="Location and hours information"
           >
             <a
-              href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+New+Port+Richey+FL+34655"
+              href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-white transition-colors"
-              aria-label="Get directions to 3600 Galileo Dr Suite 104 New Port Richey FL"
+              aria-label="Get directions to 3600 Galileo Dr Trinity FL"
             >
               <MapPin className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-              3600 Galileo Dr, Suite 104, New Port Richey, FL 34655
+              3600 Galileo Dr, Trinity, FL 34655, USA
             </a>
 
             <span className="hidden sm:block text-white/30" aria-hidden="true">|</span>

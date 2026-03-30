@@ -113,7 +113,7 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
         </div>
 
         {/* Date grid — 7 columns (Mon–Sun) */}
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-0.5 sm:gap-1">
           {/* Offset padding */}
           {[...Array(firstDayOffset)].map((_, i) => (
             <div key={`pad-${i}`} />
@@ -133,7 +133,7 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
                 key={dateStr}
                 onClick={() => handleSelect(date)}
                 disabled={isDisabled}
-                className={`relative aspect-square flex flex-col items-center justify-center rounded-xl text-sm font-medium
+                className={`relative aspect-square flex flex-col items-center justify-center rounded-xl text-xs sm:text-sm font-medium
                   transition-all duration-150
                   ${weekend
                     ? 'text-gray-300 cursor-not-allowed bg-gray-50/40'
@@ -168,14 +168,14 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
         <span>Dates marked with a red dot are fully unavailable.</span>
       </div>
 
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
         <button
           onClick={() => {
             const { service } = bookingData;
             const locationAutoSkipped = service?.requires_address || (service && !service.allows_home_visit);
             locationAutoSkipped ? onGoToStep(1) : onPrev();
           }}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+          className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -183,7 +183,7 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
         <ShimmerButton
           onClick={onNext}
           disabled={!selectedDate}
-          className={`bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
+          className={`w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
             !selectedDate ? 'opacity-40 cursor-not-allowed' : ''
           }`}
         >

@@ -213,18 +213,18 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
           )}
         </AnimatePresence>
 
-        <div className="pt-4 flex items-center justify-between">
+        <div className="pt-4 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
           <button
             type="button"
             onClick={onPrev}
-            className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+            className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
           >
             <ChevronLeft className="w-4 h-4" /> Back
           </button>
 
           <ShimmerButton
             type="submit"
-            className="bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md"
+            className="w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md"
           >
             Continue
             <ChevronRight className="w-4 h-4 ml-1" />

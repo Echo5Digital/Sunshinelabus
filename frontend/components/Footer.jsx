@@ -14,7 +14,7 @@ const serviceLinks = [
   { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
   { label: 'DNA Testing', href: '/dna-testing-pasco-county' },
-  { label: 'Gender Reveal Test', href: '/#gender-reveal' },
+  { label: 'Gender Reveal Test', href: '/gender-reveal-testing-florida' },
 ];
 
 export default function Footer() {
@@ -105,14 +105,14 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-sunshine-yellow mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <a
-                  href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+New+Port+Richey+FL+34655"
+                  href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  3600 Galileo Dr, Suite 104
+                  3600 Galileo Dr
                   <br />
-                  New Port Richey, FL 34655
+                  Trinity, FL 34655, USA
                 </a>
               </li>
               <li className="flex items-start gap-3">

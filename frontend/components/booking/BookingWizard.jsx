@@ -76,7 +76,7 @@ export default function BookingWizard() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="p-6 sm:p-10"
+            className="p-4 sm:p-10"
           >
             <CurrentStep
               {...state}

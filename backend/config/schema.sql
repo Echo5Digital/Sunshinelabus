@@ -34,6 +34,9 @@ CREATE TABLE IF NOT EXISTS appointments (
   address_state TEXT,
   address_zip TEXT,
   admin_notes TEXT,
+  booking_token UUID DEFAULT gen_random_uuid(),
+  reminder_24_sent BOOLEAN DEFAULT FALSE,
+  reminder_2hr_sent BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -117,6 +120,14 @@ CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON contacts(created_at DESC);
 -- ALTER TABLE contacts ADD COLUMN IF NOT EXISTS phone TEXT;
 -- ALTER TABLE contacts ADD COLUMN IF NOT EXISTS is_read BOOLEAN DEFAULT FALSE;
 -- CREATE INDEX IF NOT EXISTS idx_contacts_created_at ON contacts(created_at DESC);
+-- ============================================================
+
+-- ============================================================
+-- Migration: reminder system — run once in Supabase SQL editor if appointments table already exists
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS booking_token UUID DEFAULT gen_random_uuid();
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS reminder_24_sent BOOLEAN DEFAULT FALSE;
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS reminder_2hr_sent BOOLEAN DEFAULT FALSE;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_appointments_booking_token ON appointments(booking_token);
 -- ============================================================
 
 -- ============================================================

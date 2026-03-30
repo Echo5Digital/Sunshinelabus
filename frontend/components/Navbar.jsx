@@ -9,15 +9,11 @@ import Image from 'next/image';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const servicesItems = [
+  { label: 'General Testing', href: '/clinical-lab-services-trinity-fl' },
   { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
-  { label: 'DNA Testing', href: '/dna-testing-pasco-county', highlight: true },
-];
-
-const protocolsItems = [
-  { label: 'Resources', href: '#' },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Gender Reveal Testing', href: '/gender-reveal-testing-florida' },
+  { label: 'DNA Testing', href: '/dna-testing-pasco-county' },
 ];
 
 // const moreItems = [
@@ -71,10 +67,10 @@ export default function Navbar() {
         }`}
       >
         {/* Header row */}
-        <div className="flex items-center h-20 px-4 sm:px-6">
+        <div className="flex items-center h-[60px] lg:h-20 px-4 lg:px-6">
           {/* Logo — far left */}
-          <Link href="/" className="flex-shrink-0">
-            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={40} width={132} className="object-contain [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.18))]" />
+          <Link href="/" className="flex-shrink-0 overflow-hidden">
+            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={40} width={132} className="h-8 lg:h-10 w-auto object-contain [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.18))]" />
           </Link>
 
           {/* Desktop Nav — centered */}
@@ -84,7 +80,6 @@ export default function Navbar() {
 
             <DropdownItem
               label="Services"
-              href="#"
               isOpen={activeDropdown === 'services'}
               onEnter={() => setActiveDropdown('services')}
               onLeave={() => setActiveDropdown(null)}
@@ -104,27 +99,8 @@ export default function Navbar() {
               </div>
             </DropdownItem>
 
-            <DropdownItem
-              label="Protocols"
-              isOpen={activeDropdown === 'protocols'}
-              onEnter={() => setActiveDropdown('protocols')}
-              onLeave={() => setActiveDropdown(null)}
-            >
-              <div className="py-2">
-                {protocolsItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-2 mx-2 my-0.5 px-3 py-2.5 text-sm text-sunshine-dark/80 rounded-xl hover:bg-sunshine-sky/15 hover:text-sunshine-blue transition-all duration-150"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </DropdownItem>
-
+            <NavLink href="/insurance-accepted" label="Insurance" pathname={pathname} />
+            <NavLink href="/#faq" label="FAQ" pathname={pathname} />
             <NavLink href="/contact" label="Contact" pathname={pathname} />
 
             {/* <DropdownItem
@@ -202,24 +178,8 @@ export default function Navbar() {
                   ))}
                 </MobileDropdown>
 
-                <MobileDropdown
-                  label="Protocols"
-                  isOpen={mobileExpanded === 'protocols'}
-                  onToggle={() => toggleMobileDropdown('protocols')}
-                >
-                  {protocolsItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-center gap-2 pl-4 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-white/40 rounded-lg transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
-                      {item.label}
-                    </Link>
-                  ))}
-                </MobileDropdown>
-
+                <MobileNavLink href="/insurance-accepted" label="Insurance" onClick={() => setMobileOpen(false)} pathname={pathname} />
+                <MobileNavLink href="/#faq" label="FAQ" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} pathname={pathname} />
 
                 {/* <hr className="border-white/30 my-1" />

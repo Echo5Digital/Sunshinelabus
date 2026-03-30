@@ -105,7 +105,7 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
                       key={slot}
                       onClick={() => !isBlockedSlot && updateBookingData({ timeSlot: slot })}
                       disabled={isBlockedSlot}
-                      className={`py-2.5 px-1 rounded-xl text-sm font-medium border-2 transition-all duration-150
+                      className={`py-2.5 sm:py-3 px-1 rounded-xl text-sm font-medium border-2 transition-all duration-150
                         ${isBlockedSlot
                           ? 'border-red-200 bg-red-50 text-red-400 cursor-not-allowed'
                           : isSelected
@@ -129,10 +129,10 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
         </>
       )}
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="mt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
         <button
           onClick={onPrev}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+          className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -140,7 +140,7 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
         <ShimmerButton
           onClick={onNext}
           disabled={!timeSlot}
-          className={`bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
+          className={`w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
             !timeSlot ? 'opacity-40 cursor-not-allowed' : ''
           }`}
         >

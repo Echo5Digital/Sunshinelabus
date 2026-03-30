@@ -9,8 +9,8 @@ const LOCATION_OPTIONS = [
     key: 'on_site',
     icon: Building2,
     title: 'Visit Our Clinic',
-    subtitle: '3600 Galileo Dr, Suite 104',
-    detail: 'New Port Richey, FL 34655',
+    subtitle: '3600 Galileo Dr',
+    detail: 'Trinity, FL 34655, USA',
     badges: ['Free parking', 'Walk-ins welcome', 'Mon–Fri 8AM–5PM'],
     iconBg: 'bg-sunshine-blue/10 text-sunshine-blue',
     iconBgActive: 'bg-sunshine-blue text-white',
@@ -113,10 +113,10 @@ export default function Step2Location({
         })}
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="mt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
         <button
           onClick={onPrev}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+          className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -124,7 +124,7 @@ export default function Step2Location({
         <ShimmerButton
           onClick={onNext}
           disabled={!locationType}
-          className={`bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
+          className={`w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
             !locationType ? 'opacity-40 cursor-not-allowed' : ''
           }`}
         >

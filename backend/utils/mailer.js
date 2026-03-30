@@ -70,8 +70,8 @@ async function sendConfirmationEmail({
       <p style="color:#555;font-size:13px">
         Thank you,<br/>
         <strong>Sunshine Clinical Lab</strong><br/>
-        3600 Galileo Dr, Suite 104<br/>
-        New Port Richey, FL 34655
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
       </p>
     </div>
   `;
@@ -89,4 +89,136 @@ async function sendConfirmationEmail({
   }
 }
 
-module.exports = { sendConfirmationEmail };
+/**
+ * Sends 24-hour reminder email with cancel/reschedule link. Never throws.
+ */
+async function sendReminder24Email({
+  patientEmail,
+  patientName,
+  serviceName,
+  appointmentDate,
+  appointmentTime,
+  locationType,
+  manageUrl,
+}) {
+  const displayDate = formatDate(appointmentDate);
+  const displayTime = formatTime(appointmentTime);
+  const displayLocation = locationType === 'home_visit' ? 'Home Visit' : 'On-Site Visit (Clinic)';
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
+      <h2 style="color:#1B5E9B">Appointment Reminder &#8211; Tomorrow</h2>
+      <p>Hello ${patientName},</p>
+      <p>This is a friendly reminder that you have an appointment scheduled for <strong>tomorrow</strong>.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr>
+          <td style="padding:8px 0;color:#555;width:120px"><strong>Service</strong></td>
+          <td>${serviceName}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Date</strong></td>
+          <td>${displayDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Time</strong></td>
+          <td>${displayTime}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Location</strong></td>
+          <td>${displayLocation}</td>
+        </tr>
+      </table>
+      <p>Need to make changes? You can cancel or reschedule using the link below:</p>
+      <p style="margin:24px 0">
+        <a href="${manageUrl}"
+           style="background:#1B5E9B;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block">
+          Manage My Appointment
+        </a>
+      </p>
+      <p>If you need immediate assistance, call us at <strong>(727) 233-5223</strong>.</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="color:#555;font-size:13px">
+        Thank you,<br/>
+        <strong>Sunshine Clinical Lab</strong><br/>
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
+      </p>
+    </div>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: patientEmail,
+      subject: 'Appointment Reminder \u2013 Tomorrow',
+      html,
+    });
+    console.log(`24h reminder email sent to ${patientEmail}`);
+  } catch (err) {
+    console.error('24h reminder email failed:', err.message);
+  }
+}
+
+/**
+ * Sends 2-hour final reminder email. Never throws.
+ */
+async function sendReminder2HrEmail({
+  patientEmail,
+  patientName,
+  serviceName,
+  appointmentDate,
+  appointmentTime,
+  locationType,
+}) {
+  const displayDate = formatDate(appointmentDate);
+  const displayTime = formatTime(appointmentTime);
+  const displayLocation = locationType === 'home_visit' ? 'Home Visit' : 'On-Site Visit (Clinic)';
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
+      <h2 style="color:#1B5E9B">Upcoming Appointment Reminder</h2>
+      <p>Hello ${patientName},</p>
+      <p>Your appointment is coming up in approximately <strong>2 hours</strong>. We look forward to seeing you!</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr>
+          <td style="padding:8px 0;color:#555;width:120px"><strong>Service</strong></td>
+          <td>${serviceName}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Date</strong></td>
+          <td>${displayDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Time</strong></td>
+          <td>${displayTime}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Location</strong></td>
+          <td>${displayLocation}</td>
+        </tr>
+      </table>
+      <p>If you need to reach us, please call <strong>(727) 233-5223</strong>.</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="color:#555;font-size:13px">
+        Thank you,<br/>
+        <strong>Sunshine Clinical Lab</strong><br/>
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
+      </p>
+    </div>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: patientEmail,
+      subject: 'Upcoming Appointment Reminder',
+      html,
+    });
+    console.log(`2h reminder email sent to ${patientEmail}`);
+  } catch (err) {
+    console.error('2h reminder email failed:', err.message);
+  }
+}
+
+module.exports = { sendConfirmationEmail, sendReminder24Email, sendReminder2HrEmail };

@@ -130,11 +130,11 @@ export default function Step1Service({ bookingData, updateBookingData, onNext })
 
       {/* CTA */}
       {!loading && !error && (
-        <div className="mt-8 flex justify-end">
+        <div className="mt-8 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
           <ShimmerButton
             onClick={onNext}
             disabled={!selected}
-            className={`bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
+            className={`w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md transition-opacity ${
               !selected ? 'opacity-40 cursor-not-allowed' : ''
             }`}
           >

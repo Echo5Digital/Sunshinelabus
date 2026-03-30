@@ -18,7 +18,7 @@ export default function WizardProgressBar({ currentStep, onStepClick }) {
               <button
                 onClick={() => isCompleted && onStepClick(step.id)}
                 disabled={!isCompleted}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-bold
                   transition-all duration-200 ${
                   isCompleted
                     ? 'bg-sunshine-blue text-white cursor-pointer hover:opacity-80 shadow-md'
@@ -49,7 +49,7 @@ export default function WizardProgressBar({ currentStep, onStepClick }) {
 
             {/* Connector line */}
             {!isLast && (
-              <div className="flex-1 mx-1 mb-4">
+              <div className="flex-1 mx-0.5 sm:mx-1 mb-4">
                 <div
                   className={`h-0.5 w-full rounded-full transition-all duration-300 ${
                     isCompleted ? 'bg-sunshine-blue' : 'bg-gray-200'

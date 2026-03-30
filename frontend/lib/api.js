@@ -70,6 +70,23 @@ export const uploadDocuments = async (appointmentId, formData) => {
   return res.data;
 };
 
+// ── Booking management (token-based, no auth) ────────────────────────────────
+
+export const getBookingByToken = async (token) => {
+  const res = await api.get(`/api/appointments/manage?token=${token}`);
+  return res.data;
+};
+
+export const cancelBooking = async (token) => {
+  const res = await api.post('/api/appointments/cancel', { token });
+  return res.data;
+};
+
+export const rescheduleBooking = async (token, appointment_date, appointment_time) => {
+  const res = await api.post('/api/appointments/reschedule', { token, appointment_date, appointment_time });
+  return res.data;
+};
+
 // ── Admin auth ────────────────────────────────────────────────────────────────
 
 export const adminLogin = async ({ email, password }) => {

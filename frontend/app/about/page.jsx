@@ -304,14 +304,14 @@ export default function AboutPage() {
           {/* Address & hours */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-white/75 text-sm">
             <a
-              href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+New+Port+Richey+FL+34655"
+              href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-white transition-colors"
               aria-label="Get directions to Sunshine Clinical Lab"
             >
               <MapPin className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-              3600 Galileo Dr, Suite 104, New Port Richey, FL 34655
+              3600 Galileo Dr, Trinity, FL 34655, USA
             </a>
             <span className="hidden sm:block text-white/30" aria-hidden="true">|</span>
             <span className="flex items-center gap-2">

@@ -71,10 +71,10 @@ export default function ContactMap() {
                 <div>
                   <p className="font-bold text-sunshine-dark mb-1">Address</p>
                   <p className="text-gray-600 text-sm">Sunshine Clinical Laboratory</p>
-                  <p className="text-gray-600 text-sm">3600 Galileo Dr, Suite 104</p>
-                  <p className="text-gray-600 text-sm mb-2">New Port Richey, FL 34655</p>
+                  <p className="text-gray-600 text-sm">3600 Galileo Dr</p>
+                  <p className="text-gray-600 text-sm mb-2">Trinity, FL 34655, USA</p>
                   <a
-                    href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+New+Port+Richey+FL+34655"
+                    href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-sunshine-blue hover:underline font-medium"

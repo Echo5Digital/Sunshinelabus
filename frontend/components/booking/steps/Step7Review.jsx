@@ -177,11 +177,11 @@ export default function Step7Review({
         </div>
       )}
 
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
         <button
           onClick={onPrev}
           disabled={isSubmitting}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors disabled:opacity-40"
+          className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors disabled:opacity-40"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -189,7 +189,7 @@ export default function Step7Review({
         <ShimmerButton
           onClick={submitBooking}
           disabled={isSubmitting}
-          className="bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-5 sm:px-8 py-3 rounded-full font-semibold text-sm shadow-md disabled:opacity-60"
+          className="w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-5 sm:px-8 py-3 rounded-full font-semibold text-sm shadow-md disabled:opacity-60"
         >
           {isSubmitting ? (
             <>

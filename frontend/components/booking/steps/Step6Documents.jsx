@@ -150,24 +150,24 @@ export default function Step6Documents({ bookingData, updateBookingData, onNext,
         ))}
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="mt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
         <button
           onClick={onPrev}
-          className="flex items-center gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
+          className="flex items-center justify-center sm:justify-start gap-2 text-sm text-gray-500 hover:text-sunshine-dark font-medium transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center gap-3">
           <button
             onClick={onNext}
-            className="text-sm text-gray-400 hover:text-sunshine-dark font-medium transition-colors"
+            className="text-sm text-gray-400 hover:text-sunshine-dark font-medium transition-colors text-center"
           >
             Skip this step
           </button>
           <ShimmerButton
             onClick={onNext}
-            className="bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md"
+            className="w-full sm:w-auto bg-gradient-to-r from-sunshine-sky to-sunshine-blue text-white px-8 py-3 rounded-full font-semibold text-sm shadow-md"
           >
             Continue
             <ChevronRight className="w-4 h-4 ml-1" />

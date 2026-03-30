@@ -33,9 +33,9 @@ const INFO_CARDS = [
   {
     Icon: MapPin,
     title: 'Visit Us',
-    primary: '3600 Galileo Dr, Suite 104',
-    secondary: 'New Port Richey, FL 34655',
-    href: 'https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+New+Port+Richey+FL+34655',
+    primary: '3600 Galileo Dr',
+    secondary: 'Trinity, FL 34655, USA',
+    href: 'https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655',
   },
 ];
 
