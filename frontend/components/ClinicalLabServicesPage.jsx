@@ -254,7 +254,7 @@ export default function ClinicalLabServicesPage() {
     <div className="bg-sunshine-soft min-h-screen">
 
       {/* ══ HERO ════════════════════════════════════════════════ */}
-      <section className="relative w-full min-h-[65vh] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <Image
             src="/gt-bnr.jpg"
@@ -271,7 +271,7 @@ export default function ClinicalLabServicesPage() {
           <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-white/[0.03]" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-28">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 pt-36">
           <motion.div
             variants={heroContainerVariants}
             initial="hidden"
@@ -332,7 +332,7 @@ export default function ClinicalLabServicesPage() {
       </section>
 
       {/* ══ DIRECT ANSWER (AEO/GEO) 1 ════════════════════════════ */}
-      <section className="py-14 bg-[#EBF5FB]">
+      <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
@@ -344,7 +344,7 @@ export default function ClinicalLabServicesPage() {
                     Trinity, FL 34655 — Pasco County
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4 drop-shadow-sm">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
                   What Lab Services Does Sunshine Clinical Lab Offer in Trinity, FL?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
@@ -374,6 +374,9 @@ export default function ClinicalLabServicesPage() {
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0d1b2a' }}>
+        <div className="absolute inset-0 overflow-hidden">
+          <Image src="/gt-sd.jpg" alt="" fill className="object-cover" style={{ opacity: 0.3 }} aria-hidden="true" />
+        </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10 text-center">
@@ -445,6 +448,9 @@ export default function ClinicalLabServicesPage() {
 
       {/* ══ HORMONE & SPECIALTY TESTING ══════════════════════════ */}
       <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image src="/gt-adv.jpg" alt="" fill className="object-cover" style={{ opacity: 0.3 }} aria-hidden="true" />
+        </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="mb-10">
@@ -582,30 +588,36 @@ export default function ClinicalLabServicesPage() {
       </section>
 
       {/* ══ DIRECT ANSWER (AEO/GEO) 2 ════════════════════════════ */}
-      <section className="py-14 bg-white border-y border-sunshine-sky/20">
+      <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#EBF5FB] rounded-2xl shadow-sm overflow-hidden border border-sunshine-blue/10">
-              <div className="p-7 sm:p-9 flex flex-col md:flex-row gap-8 items-center">
-                <div className="flex-1">
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4 drop-shadow-sm">
-                    Is There a Walk-In Lab Near Me in Trinity, FL?
-                  </h2>
-                  <p className="text-gray-700 leading-relaxed text-base mb-4">
-                    Yes. Sunshine Clinical Lab at <strong className="text-sunshine-dark">3600 Galileo Dr, Trinity, FL 34655, USA</strong> is a walk-in clinical laboratory that accepts patients without appointments for most routine blood work.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed text-sm mb-4">
-                    The lab offers CBC, CMP, lipid panels, thyroid testing, hormone panels, TRT blood tests, and many other services. Results for many tests are available the next business day. The lab <Link className="text-sunshine-blue hover:underline" href="/insurance-accepted">accepts most major insurance plans</Link> and serves patients of all ages from <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-trinity-fl">Trinity</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-new-port-richey">New Port Richey</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-land-o-lakes-fl">Land O' Lakes</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-tarpon-springs-fl">Tarpon Springs</Link>, and surrounding Pasco County communities.
-                  </p>
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <Clock className="w-3.5 h-3.5" />
+                    Walk-In Services
+                  </span>
                 </div>
-                <div className="flex-shrink-0 w-full md:w-auto flex flex-col items-center">
-                  <div className="bg-white p-5 rounded-2xl shadow-sm border border-sunshine-sky/30 text-center w-full max-w-[250px]">
-                    <Clock className="w-8 h-8 text-sunshine-blue mx-auto mb-3" />
-                    <p className="text-sm font-semibold text-sunshine-dark mb-4 drop-shadow-sm">Call for Hours or Walk In Today</p>
-                    <a href="tel:+17272335223" className="inline-flex w-full items-center justify-center gap-2 bg-sunshine-blue hover:bg-sunshine-blue-hover transition-colors text-white py-2.5 px-4 rounded-full font-bold text-sm shadow-md">
-                      <Phone className="w-4 h-4" /> (727) 233-5223
-                    </a>
-                  </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
+                  Is There a Walk-In Lab Near Me in Trinity, FL?
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-base mb-4">
+                  Yes. Sunshine Clinical Lab at <strong className="text-sunshine-dark">3600 Galileo Dr, Trinity, FL 34655, USA</strong> is a walk-in clinical laboratory that accepts patients without appointments for most routine blood work.
+                </p>
+                <p className="text-gray-700 leading-relaxed text-sm mb-7">
+                  The lab offers CBC, CMP, lipid panels, thyroid testing, hormone panels, TRT blood tests, and many other services. Results for many tests are available the next business day. The lab <Link className="text-sunshine-blue hover:underline" href="/insurance-accepted">accepts most major insurance plans</Link> and serves patients of all ages from <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-trinity-fl">Trinity</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-new-port-richey">New Port Richey</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-land-o-lakes-fl">Land O' Lakes</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-tarpon-springs-fl">Tarpon Springs</Link>, and surrounding Pasco County communities.
+                </p>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full">
+                    <Clock className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                    Walk-Ins Welcome
+                  </span>
+                  <a href="tel:+17272335223" className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full hover:border-sunshine-blue transition-colors">
+                    <Phone className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
+                    (727) 233-5223
+                  </a>
                 </div>
               </div>
             </div>
@@ -621,7 +633,7 @@ export default function ClinicalLabServicesPage() {
             alt="Clinical lab services waiting area at Sunshine Clinical Lab Pasco County"
             fill
             className="object-cover"
-            style={{ opacity: 0.15 }}
+            style={{ opacity: 0.5 }}
             sizes="100vw"
           />
         </div>
@@ -637,6 +649,14 @@ export default function ClinicalLabServicesPage() {
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
                 Clinical Lab Services — Frequently Asked Questions
               </h2>
+              <p className="text-sunshine-dark/60 mt-4 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Everything you need to know before visiting Sunshine Clinical Lab in Pasco County.
+              </p>
+              <div className="mt-3">
+                <Link href="/faq" className="text-sunshine-blue font-semibold hover:underline text-sm">
+                  View our full FAQ →
+                </Link>
+              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 lg:items-start mb-8">
@@ -667,16 +687,33 @@ export default function ClinicalLabServicesPage() {
                 ))}
               </div>
             </div>
+
+            {/* CTA card below FAQ */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white rounded-3xl border border-sunshine-sky/30 shadow-sm px-6 py-8 text-center"
+            >
+              <p className="text-sunshine-dark/60 text-sm mb-5">
+                Can&apos;t find what you&apos;re looking for? Our team is happy to help.
+              </p>
+              <a href="tel:+17272335223">
+                <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
+                  <Phone className="w-5 h-5" aria-hidden="true" />
+                  Still Have Questions? Call (727) 233-5223
+                </ShimmerButton>
+              </a>
+            </motion.div>
           </Section>
         </div>
       </section>
 
       {/* ══ FINAL CTA ═══════════════════════════════════════════ */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-r from-sunshine-blue to-[#2B7DBF]">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-r from-sunshine-blue to-sunshine-sky">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full border border-white/10" />
           <div className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full border border-white/10" />
           <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full bg-white/[0.04]" />
+          <div className="absolute top-1/4 right-1/3 w-24 h-24 rounded-full bg-white/[0.06]" />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

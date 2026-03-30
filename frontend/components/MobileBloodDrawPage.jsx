@@ -875,6 +875,11 @@ export default function MobileBloodDrawPage() {
               <p className="text-sunshine-dark/60 mt-4 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
                 Everything you need to know before scheduling your mobile draw in Pasco County.
               </p>
+              <div className="mt-3">
+                <Link href="/faq" className="text-sunshine-blue font-semibold hover:underline text-sm">
+                  View our full FAQ →
+                </Link>
+              </div>
             </motion.div>
 
             {/* 2-column accordion grid */}

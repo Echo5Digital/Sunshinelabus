@@ -524,8 +524,17 @@ export default function GenderRevealPage() {
       </section>
 
       {/* ══ WHY FAMILIES LOVE THIS TEST ═══════════════════════════ */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white overflow-hidden relative">
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/grt-chs.jpg"
+            alt=""
+            fill
+            className="object-cover object-center opacity-30"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Section>
             <motion.div variants={itemVariants} className="text-center mb-14">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
@@ -805,7 +814,16 @@ export default function GenderRevealPage() {
 
       {/* ══ FAQ SECTION ════════════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden bg-[#D6EAF8]">
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background image */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/grt-faq.jpg"
+            alt=""
+            fill
+            className="object-cover object-center opacity-30"
+          />
+        </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants} className="text-center mb-12">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sunshine-blue shadow-lg mb-5">

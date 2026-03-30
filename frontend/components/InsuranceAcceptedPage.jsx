@@ -10,6 +10,7 @@ import {
   Clock,
   CheckCircle,
   ChevronDown,
+  HelpCircle,
   ShieldCheck,
   DollarSign,
   Activity,
@@ -214,12 +215,13 @@ export default function InsuranceAcceptedPage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a]/70 via-[#1a3a5c]/60 to-sunshine-blue/50" />
+          <div className="absolute inset-0 bg-gradient-to-l from-sunshine-dark/95 via-[#1a3a5c]/80 to-sunshine-blue/65" />
         </div>
         
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-white/5" />
           <div className="absolute bottom-20 -left-20 w-80 h-80 rounded-full border border-white/5" />
+          <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-white/[0.03]" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 pt-36">
@@ -231,7 +233,7 @@ export default function InsuranceAcceptedPage() {
           >
             <motion.h1
               variants={heroItemVariants}
-              className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-white leading-tight mb-4"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4"
             >
               Insurance Accepted at Sunshine Clinical Lab — Trinity, FL
             </motion.h1>
@@ -482,15 +484,19 @@ export default function InsuranceAcceptedPage() {
       <section className="py-12 bg-[#EBF5FB]">
         <Section>
           <motion.div variants={itemVariants} className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-sunshine-blue/10 flex flex-col sm:flex-row items-center gap-6 p-7 sm:p-9">
-              <div className="w-16 h-16 rounded-full bg-sunshine-blue/10 flex items-center justify-center flex-shrink-0">
-                <DollarSign className="w-8 h-8 text-sunshine-blue" />
-              </div>
-              <div>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-sunshine-dark mb-3">
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              <div className="h-1 w-full bg-gradient-to-r from-sunshine-blue to-sunshine-sky" />
+              <div className="p-7 sm:p-9">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="inline-flex items-center gap-1.5 bg-sunshine-blue/10 text-sunshine-blue text-xs font-bold tracking-wide px-3 py-1.5 rounded-full">
+                    <DollarSign className="w-3.5 h-3.5" />
+                    Self-Pay Pricing
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
                   How Much Does Blood Work Cost Without Insurance in Pasco County?
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-700 leading-relaxed text-base">
                   Self-pay pricing for blood work at Sunshine Clinical Lab in Trinity, FL varies by test type.
                   As an independent clinical lab, Sunshine Clinical Lab offers competitive self-pay rates that
                   are often more affordable than large national chain labs. For current pricing on specific
@@ -504,30 +510,86 @@ export default function InsuranceAcceptedPage() {
       </section>
 
       {/* ══ FAQ SECTION ═════════════════════════════════════════ */}
-      <section className="py-20 bg-white">
-        <Section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariants} className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
-              Clear Answers
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
-              Insurance &amp; Billing — Frequently Asked Questions
-            </h2>
-          </motion.div>
+      <section className="py-20 relative overflow-hidden bg-[#D6EAF8]">
+        <div className="absolute inset-0">
+          <Image
+            src="/dna-faq.jpg"
+            alt="Insurance and billing FAQ at Sunshine Clinical Lab Pasco County"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.5 }}
+            sizes="100vw"
+          />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Section>
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sunshine-blue shadow-lg mb-5">
+                <HelpCircle className="w-7 h-7 text-white" aria-hidden="true" />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
+                Got Questions?
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
+                Insurance &amp; Billing — Frequently Asked Questions
+              </h2>
+              <p className="text-sunshine-dark/60 mt-4 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+                Everything you need to know about insurance coverage and billing at Sunshine Clinical Lab.
+              </p>
+              <div className="mt-3">
+                <Link href="/faq" className="text-sunshine-blue font-semibold hover:underline text-sm">
+                  View our full FAQ →
+                </Link>
+              </div>
+            </motion.div>
 
-          <motion.div variants={itemVariants} className="space-y-4">
-            {FAQ_ITEMS.map((item, idx) => (
-              <FaqItem
-                key={idx}
-                index={idx}
-                q={item.q}
-                a={item.a}
-                isOpen={openFaq === idx}
-                onToggle={() => toggleFaq(idx)}
-              />
-            ))}
-          </motion.div>
-        </Section>
+            {/* 2-column accordion grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 lg:items-start mb-8">
+              <div className="space-y-3">
+                {FAQ_ITEMS.slice(0, 4).map((item, i) => (
+                  <motion.div key={item.q} variants={itemVariants}>
+                    <FaqItem
+                      q={item.q}
+                      a={item.a}
+                      index={i}
+                      isOpen={openFaq === i}
+                      onToggle={() => toggleFaq(i)}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+              <div className="space-y-3">
+                {FAQ_ITEMS.slice(4).map((item, i) => (
+                  <motion.div key={item.q} variants={itemVariants}>
+                    <FaqItem
+                      q={item.q}
+                      a={item.a}
+                      index={i + 4}
+                      isOpen={openFaq === i + 4}
+                      onToggle={() => toggleFaq(i + 4)}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA card below FAQ */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white rounded-3xl border border-sunshine-sky/30 shadow-sm px-6 py-8 text-center"
+            >
+              <p className="text-sunshine-dark/60 text-sm mb-5">
+                Can&apos;t find what you&apos;re looking for? Our team is happy to help.
+              </p>
+              <a href="tel:+17272335223">
+                <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
+                  <Phone className="w-5 h-5" aria-hidden="true" />
+                  Still Have Questions? Call (727) 233-5223
+                </ShimmerButton>
+              </a>
+            </motion.div>
+          </Section>
+        </div>
       </section>
 
       {/* ══ RELATED SERVICES ═════════════════════════════════════ */}
@@ -556,10 +618,12 @@ export default function InsuranceAcceptedPage() {
       </section>
 
       {/* ══ FINAL CTA ═══════════════════════════════════════════ */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-r from-[#1e3a8a] to-sunshine-blue">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-r from-sunshine-blue to-sunshine-sky">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full border border-white/10" />
           <div className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full border border-white/10" />
+          <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full bg-white/[0.04]" />
+          <div className="absolute top-1/4 right-1/3 w-24 h-24 rounded-full bg-white/[0.06]" />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -593,9 +657,9 @@ export default function InsuranceAcceptedPage() {
                 </ShimmerButton>
               </a>
               <Link href="/book-appointment">
-                <button className="px-8 py-3.5 border border-white/40 hover:bg-white/10 text-white rounded-full font-semibold transition-colors">
+                <ShimmerButton className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-3.5 rounded-full font-semibold text-base gap-2">
                   View All Services
-                </button>
+                </ShimmerButton>
               </Link>
             </motion.div>
 
