@@ -28,6 +28,11 @@ const nextConfig = {
         destination: '/dna-testing-pasco-county',
         permanent: true,
       },
+      {
+        source: '/clinical-lab-services-new-port-richey',
+        destination: '/clinical-lab-services-trinity-fl',
+        permanent: true,
+      },
     ];
   },
 };

@@ -221,7 +221,7 @@ export default function GenderRevealPage() {
         {/* Banner image with gradient overlay */}
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/gender-reveal-bnr.jpg"
+            src="/grt-bnr.jpg"
             alt="Expecting couple holding gender reveal results at Sunshine Clinical Lab Trinity FL"
             fill
             className="object-cover object-center"
@@ -646,18 +646,18 @@ export default function GenderRevealPage() {
 
       {/* ══ PARTY / EMOTIONAL SECTION ══════════════════════════════ */}
       <section className="py-20 relative overflow-hidden">
-        {/* Brand gradient background matching GenderRevealSection.jsx */}
-        <div className="absolute inset-0 bg-gradient-to-br from-sunshine-light via-white to-sunshine-soft" aria-hidden="true" />
+        {/* Brand gradient background matching hero banner */}
+        <div className="absolute inset-0 bg-sunshine-dark bg-gradient-to-br from-sunshine-dark/85 via-[#2d1040]/80 to-[#a21caf]/40" aria-hidden="true" />
         {/* Decorative blur circles */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-sunshine-yellow/20 blur-3xl" />
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-sunshine-sky/25 blur-3xl" />
+          <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-[#f9a8d4]/20 blur-3xl" />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section>
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 bg-sunshine-soft border border-sunshine-sky text-sunshine-blue px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
                 <Gift className="w-4 h-4" aria-hidden="true" />
                 Gender Reveal Party Planning
               </span>
@@ -665,12 +665,12 @@ export default function GenderRevealPage() {
 
             <motion.h2
               variants={itemVariants}
-              className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark mb-6 leading-tight"
+              className="text-3xl sm:text-4xl font-extrabold text-white mb-6 leading-tight"
             >
               Planning a Gender Reveal Party? We&apos;ll Help You Keep the Secret.
             </motion.h2>
 
-            <motion.div variants={itemVariants} className="space-y-4 text-gray-600 leading-relaxed">
+            <motion.div variants={itemVariants} className="space-y-4 text-white/85 leading-relaxed">
               <p>
                 Many of our patients use their Peekaboo results to plan gender reveal celebrations — and we are
                 absolutely here for it. Whether it&apos;s a backyard bash with 50 people or a FaceTime call with the
@@ -689,7 +689,7 @@ export default function GenderRevealPage() {
 
             <motion.div variants={itemVariants} className="mt-8">
               <a href="tel:+17272335223" className="w-full sm:w-auto inline-block">
-                <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-4 rounded-full font-bold shadow-xl gap-2">
+                <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                   <Phone className="w-5 h-5" aria-hidden="true" />
                   Call to Schedule — (727) 233-5223
                 </ShimmerButton>

@@ -11,6 +11,7 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
+  { label: 'General Lab Testing', href: '/clinical-lab-services-trinity-fl' },
   { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
   { label: 'DNA Testing', href: '/dna-testing-pasco-county' },
