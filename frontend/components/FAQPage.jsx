@@ -646,7 +646,7 @@ export default function FAQPage() {
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl mx-auto text-center"
+            className="max-w-2xl ml-auto text-right"
           >
             <motion.div variants={heroItemVariants}>
               <p className="text-white/75 text-sm font-semibold tracking-widest mb-6">
@@ -666,14 +666,14 @@ export default function FAQPage() {
 
             <motion.h2
               variants={heroItemVariants}
-              className="text-2xl sm:text-3xl font-bold text-white/90 mb-6"
+              className="text-2xl sm:text-3xl font-bold leading-snug text-white/90 mb-6"
             >
               Your Questions, Answered — From Appointments to Results to Pricing
             </motion.h2>
 
             <motion.p
               variants={heroItemVariants}
-              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto"
+              className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl ml-auto"
             >
               We know that lab testing comes with a lot of questions — about costs, timing,
               preparation, and what to expect. This page covers the most common questions our
@@ -689,7 +689,7 @@ export default function FAQPage() {
 
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-end"
             >
               <a href="tel:+17272335223" className="w-full sm:w-auto">
                 <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
