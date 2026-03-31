@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
-  Ban, Trash2, Plus, Lightbulb, Loader2, Check, AlertCircle, RefreshCw,
+  Ban, Trash2, Plus, Lightbulb, Loader2, Check, AlertCircle, RefreshCw, ChevronDown,
 } from 'lucide-react';
 import { format, addDays } from 'date-fns';
 import { fetchTimeBlocks, createTimeBlock, deleteTimeBlock } from '@/lib/api';
@@ -10,16 +10,136 @@ import { generateTimeSlots, formatTimeSlot } from '@/lib/booking-constants';
 
 const ALL_SLOTS = generateTimeSlots('08:00', '17:00', 15);
 
+const timeToMinutes = (t) => {
+  const [h, m] = t.split(':').map(Number);
+  return h * 60 + m;
+};
+
+function groupConsecutiveBlocks(blocks) {
+  if (!blocks.length) return [];
+
+  const allDay = blocks.filter((b) => b.block_time === null);
+  const timed = blocks
+    .filter((b) => b.block_time !== null)
+    .sort((a, b) => a.block_time.localeCompare(b.block_time));
+
+  const result = [];
+
+  if (allDay.length) {
+    result.push({
+      label: 'All Day',
+      reason: allDay[0].reason,
+      ids: allDay.map((b) => b.id),
+    });
+  }
+
+  if (!timed.length) return result;
+
+  let start = timed[0];
+  let end = timed[0];
+  let ids = [timed[0].id];
+
+  for (let i = 1; i < timed.length; i++) {
+    const prevMin = timeToMinutes(end.block_time.slice(0, 5));
+    const currMin = timeToMinutes(timed[i].block_time.slice(0, 5));
+    if (currMin - prevMin === 15) {
+      end = timed[i];
+      ids.push(timed[i].id);
+    } else {
+      const startFmt = formatTimeSlot(start.block_time.slice(0, 5));
+      const endFmt = formatTimeSlot(end.block_time.slice(0, 5));
+      result.push({
+        label: start.id === end.id ? startFmt : `${startFmt} – ${endFmt}`,
+        reason: start.reason,
+        ids: [...ids],
+      });
+      start = timed[i];
+      end = timed[i];
+      ids = [timed[i].id];
+    }
+  }
+
+  const startFmt = formatTimeSlot(start.block_time.slice(0, 5));
+  const endFmt = formatTimeSlot(end.block_time.slice(0, 5));
+  result.push({
+    label: start.id === end.id ? startFmt : `${startFmt} – ${endFmt}`,
+    reason: start.reason,
+    ids: [...ids],
+  });
+
+  return result;
+}
+
+// Custom dropdown — avoids native <select> dark-theme rendering issues
+function TimeSelect({ value, onChange, options, placeholder, disabled = false }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  const selected = options.find((o) => o.value === value);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        disabled={disabled}
+        onClick={() => setOpen((v) => !v)}
+        className={`w-full flex items-center justify-between gap-2 border rounded-xl px-3 py-2.5 text-sm transition-colors
+          bg-white/[0.06] border-white/[0.10]
+          focus:outline-none focus:ring-2 focus:ring-sunshine-blue
+          ${disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:border-white/20'}
+          ${open ? 'ring-2 ring-sunshine-blue border-sunshine-blue/60' : ''}`}
+      >
+        <span className={selected ? 'text-white' : 'text-white/35'}>
+          {selected ? selected.label : placeholder}
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 text-white/40 flex-shrink-0 transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute z-50 top-full mt-1 w-full bg-[#1a2d42] border border-white/[0.12] rounded-xl shadow-2xl overflow-hidden">
+          <div className="max-h-52 overflow-y-auto">
+            {options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => { onChange(opt.value); setOpen(false); }}
+                className={`w-full text-left px-3 py-2 text-sm transition-colors
+                  ${opt.value === value
+                    ? 'bg-sunshine-blue text-white font-medium'
+                    : 'text-white/80 hover:bg-white/[0.08] hover:text-white'
+                  }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AdminTimeBlocksPanel() {
   const [blocks, setBlocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Create form state
   const [blockDate, setBlockDate] = useState('');
   const [allDay, setAllDay] = useState(true);
-  const [blockTime, setBlockTime] = useState('');
+  const [blockTimeFrom, setBlockTimeFrom] = useState('');
+  const [blockTimeTo, setBlockTimeTo] = useState('');
   const [blockReason, setBlockReason] = useState('');
   const [creating, setCreating] = useState(false);
 
@@ -41,27 +161,39 @@ export default function AdminTimeBlocksPanel() {
   useEffect(() => { load(); }, [load]);
 
   const handleCreate = async () => {
-    if (!blockDate) {
-      setError('Please select a date.');
-      return;
-    }
-    if (!allDay && !blockTime) {
-      setError('Please select a time or enable All Day.');
-      return;
+    if (!blockDate) { setError('Please select a date.'); return; }
+    if (!allDay) {
+      if (!blockTimeFrom || !blockTimeTo) {
+        setError('Please select both from and to times.');
+        return;
+      }
+      if (timeToMinutes(blockTimeFrom) >= timeToMinutes(blockTimeTo)) {
+        setError('"To" time must be after "From" time.');
+        return;
+      }
     }
 
     setCreating(true);
     setError('');
     try {
-      await createTimeBlock({
-        block_date: blockDate,
-        block_time: allDay ? null : blockTime,
-        reason: blockReason.trim() || null,
-      });
+      if (allDay) {
+        await createTimeBlock({ block_date: blockDate, block_time: null, reason: blockReason.trim() || null });
+      } else {
+        const fromMin = timeToMinutes(blockTimeFrom);
+        const toMin = timeToMinutes(blockTimeTo);
+        const slotsToBlock = ALL_SLOTS.filter((s) => {
+          const m = timeToMinutes(s);
+          return m >= fromMin && m <= toMin;
+        });
+        for (const slot of slotsToBlock) {
+          await createTimeBlock({ block_date: blockDate, block_time: slot, reason: blockReason.trim() || null });
+        }
+      }
       setSuccess('Time block created.');
       setTimeout(() => setSuccess(''), 3000);
       setBlockDate('');
-      setBlockTime('');
+      setBlockTimeFrom('');
+      setBlockTimeTo('');
       setBlockReason('');
       setAllDay(true);
       load();
@@ -72,17 +204,17 @@ export default function AdminTimeBlocksPanel() {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm('Remove this time block?')) return;
+  const handleDelete = async (ids) => {
+    const label = ids.length > 1 ? `this time range (${ids.length} slots)` : 'this time block';
+    if (!confirm(`Remove ${label}?`)) return;
     try {
-      await deleteTimeBlock(id);
-      setBlocks((prev) => prev.filter((b) => b.id !== id));
+      for (const id of ids) await deleteTimeBlock(id);
+      setBlocks((prev) => prev.filter((b) => !ids.includes(b.id)));
     } catch {
       setError('Failed to delete time block.');
     }
   };
 
-  // Group blocks by date
   const grouped = blocks.reduce((acc, block) => {
     const d = block.block_date;
     if (!acc[d]) acc[d] = [];
@@ -91,6 +223,11 @@ export default function AdminTimeBlocksPanel() {
   }, {});
 
   const inputBase = 'border border-white/[0.10] rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06]';
+
+  const fromOptions = ALL_SLOTS.map((s) => ({ value: s, label: formatTimeSlot(s) }));
+  const toOptions = ALL_SLOTS
+    .filter((s) => !blockTimeFrom || timeToMinutes(s) > timeToMinutes(blockTimeFrom))
+    .map((s) => ({ value: s, label: formatTimeSlot(s) }));
 
   return (
     <div className="space-y-5">
@@ -110,7 +247,7 @@ export default function AdminTimeBlocksPanel() {
           Block a Time Slot
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-end">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 items-end ${allDay ? 'lg:grid-cols-3' : 'lg:grid-cols-5'}`}>
           {/* Date */}
           <div>
             <label className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Date *</label>
@@ -129,7 +266,7 @@ export default function AdminTimeBlocksPanel() {
             <div className="flex items-center gap-3 h-10">
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <div
-                  onClick={() => setAllDay(!allDay)}
+                  onClick={() => { setAllDay(!allDay); setBlockTimeFrom(''); setBlockTimeTo(''); }}
                   className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer flex-shrink-0
                     ${allDay ? 'bg-sunshine-blue' : 'bg-white/20'}`}
                 >
@@ -142,25 +279,33 @@ export default function AdminTimeBlocksPanel() {
             </div>
           </div>
 
-          {/* Specific time */}
+          {/* From / To custom dropdowns */}
           {!allDay && (
-            <div>
-              <label className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Time *</label>
-              <select
-                value={blockTime}
-                onChange={(e) => setBlockTime(e.target.value)}
-                className={`${inputBase} w-full`}
-              >
-                <option value="">Select time...</option>
-                {ALL_SLOTS.map((slot) => (
-                  <option key={slot} value={slot}>{formatTimeSlot(slot)}</option>
-                ))}
-              </select>
-            </div>
+            <>
+              <div>
+                <label className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">From *</label>
+                <TimeSelect
+                  value={blockTimeFrom}
+                  onChange={(v) => { setBlockTimeFrom(v); setBlockTimeTo(''); }}
+                  options={fromOptions}
+                  placeholder="From time..."
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">To *</label>
+                <TimeSelect
+                  value={blockTimeTo}
+                  onChange={setBlockTimeTo}
+                  options={toOptions}
+                  placeholder="To time..."
+                  disabled={!blockTimeFrom}
+                />
+              </div>
+            </>
           )}
 
           {/* Reason */}
-          <div className={!allDay ? '' : 'sm:col-span-1'}>
+          <div>
             <label className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wide">Reason</label>
             <input
               type="text"
@@ -213,33 +358,34 @@ export default function AdminTimeBlocksPanel() {
           <div className="divide-y divide-white/[0.05]">
             {Object.entries(grouped)
               .sort(([a], [b]) => a.localeCompare(b))
-              .map(([date, dateBlocks]) => (
-                <div key={date} className="px-5 py-3">
-                  <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">{date}</p>
-                  <div className="space-y-2">
-                    {dateBlocks.map((block) => (
-                      <div key={block.id} className="flex items-center gap-3 bg-red-900/20 rounded-xl px-3 py-2 border border-red-500/20">
-                        <Ban className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
-                        <div className="flex-1 min-w-0">
-                          <span className="text-sm font-medium text-white">
-                            {block.block_time ? formatTimeSlot(block.block_time.slice(0, 5)) : 'All Day'}
-                          </span>
-                          {block.reason && (
-                            <span className="text-xs text-white/40 ml-2">— {block.reason}</span>
-                          )}
+              .map(([date, dateBlocks]) => {
+                const ranges = groupConsecutiveBlocks(dateBlocks);
+                return (
+                  <div key={date} className="px-5 py-3">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-2">{date}</p>
+                    <div className="space-y-2">
+                      {ranges.map((range, idx) => (
+                        <div key={idx} className="flex items-center gap-3 bg-red-900/20 rounded-xl px-3 py-2 border border-red-500/20">
+                          <Ban className="w-3.5 h-3.5 text-red-400 flex-shrink-0" />
+                          <div className="flex-1 min-w-0">
+                            <span className="text-sm font-medium text-white">{range.label}</span>
+                            {range.reason && (
+                              <span className="text-xs text-white/40 ml-2">— {range.reason}</span>
+                            )}
+                          </div>
+                          <button
+                            onClick={() => handleDelete(range.ids)}
+                            className="p-1.5 rounded-lg text-white/30 hover:text-red-400 hover:bg-red-900/20 transition-colors flex-shrink-0"
+                            title="Remove block"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
                         </div>
-                        <button
-                          onClick={() => handleDelete(block.id)}
-                          className="p-1.5 rounded-lg text-white/30 hover:text-red-400 hover:bg-red-900/20 transition-colors flex-shrink-0"
-                          title="Remove block"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
           </div>
         )}
       </div>
