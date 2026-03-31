@@ -82,7 +82,7 @@ export default function ContactForm() {
         {/* Bottom wave */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
           <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-16 sm:h-20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#EBF5FB" />
+            <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#1E2A38" />
           </svg>
         </div>
       </section>
@@ -288,7 +288,7 @@ export default function ContactForm() {
       {/* Bottom wave: transition to #EBF5FB (ContactMap) */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" aria-hidden="true">
         <svg viewBox="0 0 1440 72" preserveAspectRatio="none" className="w-full h-16 sm:h-20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#EBF5FB" />
+          <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#1E2A38" />
         </svg>
       </div>
     </section>

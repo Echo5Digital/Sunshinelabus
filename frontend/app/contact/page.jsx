@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import ContactForm from '@/components/contact/ContactForm';
-import ContactMap from '@/components/contact/ContactMap';
 import ContactInfo from '@/components/contact/ContactInfo';
 import ContactCTA from '@/components/contact/ContactCTA';
 
@@ -49,9 +48,6 @@ export default function ContactPage() {
 
       {/* Contact Form */}
       <ContactForm />
-
-      {/* Map */}
-      <ContactMap />
 
       {/* CTA */}
       <ContactCTA />
