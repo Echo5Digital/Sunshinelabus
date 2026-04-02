@@ -16,4 +16,16 @@ const verifyAdmin = (req, res, next) => {
   }
 };
 
-module.exports = { verifyAdmin };
+// Normalise legacy 'superadmin' (old single-user system) to 'super_admin'
+const normaliseRole = (role) => (role === 'superadmin' ? 'super_admin' : role);
+
+const verifyRole = (roles) => (req, res, next) => {
+  if (!req.admin) return res.status(401).json({ error: 'Not authenticated' });
+  const role = normaliseRole(req.admin.role);
+  if (!roles.includes(role)) {
+    return res.status(403).json({ error: 'Insufficient permissions' });
+  }
+  next();
+};
+
+module.exports = { verifyAdmin, verifyRole };

@@ -5,29 +5,46 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   LayoutDashboard, CalendarDays, Calendar, Ban, MessageSquare,
-  LogOut, Menu, ChevronRight,
+  LogOut, Menu, ChevronRight, Users,
 } from 'lucide-react';
-import { clearAdminToken, fetchAdminStats } from '@/lib/api';
+import { clearAdminToken, fetchAdminStats, getAdminRole } from '@/lib/api';
 import AdminOverviewPanel from './AdminOverviewPanel';
 import AdminAppointmentsPanel from './AdminAppointmentsPanel';
 import AdminCalendarPanel from './AdminCalendarPanel';
 import AdminTimeBlocksPanel from './AdminTimeBlocksPanel';
 import AdminMessagesPanel from './AdminMessagesPanel';
+import AdminUsersPanel from './AdminUsersPanel';
 
-const NAV_ITEMS = [
-  { id: 'overview', label: 'Overview', icon: LayoutDashboard },
-  { id: 'appointments', label: 'Appointments', icon: CalendarDays },
-  { id: 'calendar', label: 'Calendar', icon: Calendar },
-  { id: 'time-blocks', label: 'Time Blocking', icon: Ban },
-  { id: 'messages', label: 'Messages', icon: MessageSquare },
+const ALL_NAV_ITEMS = [
+  { id: 'overview',    label: 'Overview',      icon: LayoutDashboard },
+  { id: 'appointments',label: 'Appointments',  icon: CalendarDays },
+  { id: 'calendar',    label: 'Calendar',       icon: Calendar },
+  { id: 'time-blocks', label: 'Time Blocking',  icon: Ban },
+  { id: 'messages',    label: 'Messages',       icon: MessageSquare },
+  // Visible only to super_admin and admin
+  { id: 'users',       label: 'Users',          icon: Users, roles: ['super_admin', 'admin'] },
 ];
 
 const PANEL_TITLES = {
-  overview: 'Overview',
-  appointments: 'Appointments',
-  calendar: 'Calendar',
+  overview:      'Overview',
+  appointments:  'Appointments',
+  calendar:      'Calendar',
   'time-blocks': 'Time Blocking',
-  messages: 'Messages',
+  messages:      'Messages',
+  users:         'User Management',
+};
+
+const ROLE_LABELS = {
+  super_admin: 'Super Admin',
+  admin:       'Admin',
+  staff:       'Staff',
+};
+
+// Role badge colors for the sidebar
+const ROLE_BADGE_COLORS = {
+  super_admin: 'bg-sunshine-blue/30 text-sunshine-sky',
+  admin:       'bg-violet-500/30 text-violet-300',
+  staff:       'bg-emerald-500/30 text-emerald-300',
 };
 
 export default function AdminDashboard() {
@@ -35,6 +52,14 @@ export default function AdminDashboard() {
   const [activePanel, setActivePanel] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+
+  // Derive role once — stable across renders since token doesn't change mid-session
+  const adminRole = getAdminRole();
+
+  // Filter nav items based on role
+  const navItems = ALL_NAV_ITEMS.filter(
+    (item) => !item.roles || (adminRole && item.roles.includes(adminRole))
+  );
 
   const refreshUnread = useCallback(async () => {
     try {
@@ -81,7 +106,11 @@ export default function AdminDashboard() {
         onMarkRead={handleMarkRead}
       />
     ),
+    users: <AdminUsersPanel adminRole={adminRole} />,
   };
+
+  const roleBadgeColor = ROLE_BADGE_COLORS[adminRole] || ROLE_BADGE_COLORS.staff;
+  const roleLabel = ROLE_LABELS[adminRole] || 'Admin';
 
   return (
     <div className="flex h-screen bg-[#0f1624] overflow-hidden">
@@ -98,15 +127,15 @@ export default function AdminDashboard() {
 
         {/* Role badge */}
         <div className="px-5 py-3 border-b border-white/10">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold bg-sunshine-blue/30 text-sunshine-sky px-3 py-1 rounded-full uppercase tracking-wide">
-            <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky animate-pulse" />
-            Super Admin
+          <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide ${roleBadgeColor}`}>
+            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+            {roleLabel}
           </span>
         </div>
 
         {/* Nav items */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-          {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
+          {navItems.map(({ id, label, icon: Icon }) => {
             const isActive = activePanel === id;
             const showBadge = id === 'messages' && unreadCount > 0;
             return (

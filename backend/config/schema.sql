@@ -135,3 +135,23 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_appointments_booking_token ON appointments
 -- Create manually in Supabase Dashboard → Storage → New Bucket
 -- Name: appointment-docs, Private (not public)
 -- ============================================================
+
+-- ============================================================
+-- ADMIN USERS TABLE (role-based access control)
+-- Run once in Supabase SQL editor
+-- ============================================================
+CREATE TABLE IF NOT EXISTS admin_users (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name          TEXT NOT NULL,
+  email         TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  role          TEXT NOT NULL DEFAULT 'staff'
+                  CHECK (role IN ('super_admin', 'admin', 'staff')),
+  is_active     BOOLEAN DEFAULT TRUE,
+  created_by    UUID REFERENCES admin_users(id) ON DELETE SET NULL,
+  created_at    TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_admin_users_email ON admin_users(email);
+CREATE INDEX IF NOT EXISTS idx_admin_users_role  ON admin_users(role);
+-- ============================================================

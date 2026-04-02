@@ -12,6 +12,7 @@ const appointmentRoutes = require('./routes/appointmentRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -53,6 +54,9 @@ app.use('/api/appointments', appointmentRoutes);
 
 // Admin routes: stats, calendar, time-blocks
 app.use('/api/admin', adminRoutes);
+
+// User management (RBAC)
+app.use('/api/users', userRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -94,6 +94,26 @@ export const adminLogin = async ({ email, password }) => {
   return res.data;
 };
 
+// Decode JWT payload (base64url-safe) — returns { id, name, email, role } or null
+export const getAdminUser = () => {
+  const token = getAdminToken();
+  if (!token) return null;
+  try {
+    const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    return JSON.parse(atob(payload));
+  } catch {
+    return null;
+  }
+};
+
+// Returns normalised role string: 'super_admin' | 'admin' | 'staff' | null
+export const getAdminRole = () => {
+  const user = getAdminUser();
+  if (!user) return null;
+  // Normalise legacy single-user token that used 'superadmin'
+  return user.role === 'superadmin' ? 'super_admin' : user.role;
+};
+
 // ── Admin dashboard endpoints ─────────────────────────────────────────────────
 
 export const fetchAdminStats = async () => {
@@ -157,5 +177,27 @@ export const fetchAdminContacts = async (params = {}) => {
 
 export const markContactAsRead = async (id) => {
   const res = await adminApi.patch(`/api/admin/contacts/${id}/read`);
+  return res.data;
+};
+
+// ── User management ───────────────────────────────────────────────────────────
+
+export const fetchUsers = async (params = {}) => {
+  const res = await adminApi.get('/api/users', { params });
+  return res.data;
+};
+
+export const createUser = async (data) => {
+  const res = await adminApi.post('/api/users', data);
+  return res.data;
+};
+
+export const changeUserPassword = async (id, password) => {
+  const res = await adminApi.patch(`/api/users/${id}/password`, { password });
+  return res.data;
+};
+
+export const deleteUser = async (id) => {
+  const res = await adminApi.delete(`/api/users/${id}`);
   return res.data;
 };
