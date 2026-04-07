@@ -95,6 +95,7 @@ export default function AdminDashboard() {
       <AdminOverviewPanel
         onViewAll={() => setActivePanel('appointments')}
         onViewMessages={() => setActivePanel('messages')}
+        onCardClick={() => setActivePanel('appointments')}
         unreadMessages={unreadCount}
       />
     ),

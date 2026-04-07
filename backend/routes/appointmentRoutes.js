@@ -343,7 +343,7 @@ router.get('/admin', verifyAdmin, async (req, res) => {
       .from('appointments')
       .select(
         `id, appointment_date, appointment_time, status, location_type,
-         patient_name, patient_email, patient_phone,
+         patient_name, patient_email, patient_phone, created_at,
          services(name, slug, duration_minutes)`,
         { count: 'exact' }
       )
