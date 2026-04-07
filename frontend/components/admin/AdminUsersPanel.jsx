@@ -531,7 +531,7 @@ export default function AdminUsersPanel({ adminRole }) {
                             title="Change password"
                           >
                             <KeyRound className="w-3.5 h-3.5" />
-                            <span className="hidden xs:inline">Password</span>
+                            <span>Password</span>
                           </button>
                           {currentUser?.id !== u.id && (
                             <button

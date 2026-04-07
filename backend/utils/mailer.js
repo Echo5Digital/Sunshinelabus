@@ -221,4 +221,128 @@ async function sendReminder2HrEmail({
   }
 }
 
-module.exports = { sendConfirmationEmail, sendReminder24Email, sendReminder2HrEmail };
+/**
+ * Sends notification email when admin edits an appointment. Never throws.
+ */
+async function sendAppointmentUpdatedEmail({
+  patientEmail,
+  patientName,
+  serviceName,
+  appointmentDate,
+  appointmentTime,
+  locationType,
+}) {
+  const displayDate = formatDate(appointmentDate);
+  const displayTime = formatTime(appointmentTime);
+  const displayLocation = locationType === 'home_visit' ? 'Home Visit' : 'On-Site Visit (Clinic)';
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
+      <h2 style="color:#1B5E9B">Appointment Updated &#8211; Sunshine Clinical Lab</h2>
+      <p>Hello ${patientName},</p>
+      <p>Your appointment details have been updated by our staff. Please review the new details below.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr>
+          <td style="padding:8px 0;color:#555;width:120px"><strong>Service</strong></td>
+          <td>${serviceName}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Date</strong></td>
+          <td>${displayDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Time</strong></td>
+          <td>${displayTime}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Location</strong></td>
+          <td>${displayLocation}</td>
+        </tr>
+      </table>
+      <p>If you have any questions or need further changes, please call us at <strong>(727) 233-5223</strong>.</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="color:#555;font-size:13px">
+        Thank you,<br/>
+        <strong>Sunshine Clinical Lab</strong><br/>
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
+      </p>
+    </div>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: patientEmail,
+      subject: 'Appointment Updated \u2013 Sunshine Clinical Lab',
+      html,
+    });
+    console.log(`Appointment updated email sent to ${patientEmail}`);
+  } catch (err) {
+    console.error('Appointment updated email failed:', err.message);
+  }
+}
+
+/**
+ * Sends rejection/cancellation email when admin deletes an appointment. Never throws.
+ */
+async function sendAppointmentRejectedEmail({
+  patientEmail,
+  patientName,
+  serviceName,
+  appointmentDate,
+  appointmentTime,
+}) {
+  const displayDate = formatDate(appointmentDate);
+  const displayTime = formatTime(appointmentTime);
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
+      <h2 style="color:#1B5E9B">Appointment Cancelled &#8211; Sunshine Clinical Lab</h2>
+      <p>Hello ${patientName},</p>
+      <p>We regret to inform you that your upcoming appointment has been cancelled by our staff.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr>
+          <td style="padding:8px 0;color:#555;width:120px"><strong>Service</strong></td>
+          <td>${serviceName}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Date</strong></td>
+          <td>${displayDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Time</strong></td>
+          <td>${displayTime}</td>
+        </tr>
+      </table>
+      <p>We apologise for any inconvenience. To rebook or for further assistance, please call us at <strong>(727) 233-5223</strong>.</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="color:#555;font-size:13px">
+        Thank you,<br/>
+        <strong>Sunshine Clinical Lab</strong><br/>
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
+      </p>
+    </div>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: patientEmail,
+      subject: 'Appointment Cancelled \u2013 Sunshine Clinical Lab',
+      html,
+    });
+    console.log(`Appointment rejected email sent to ${patientEmail}`);
+  } catch (err) {
+    console.error('Appointment rejected email failed:', err.message);
+  }
+}
+
+module.exports = {
+  sendConfirmationEmail,
+  sendReminder24Email,
+  sendReminder2HrEmail,
+  sendAppointmentUpdatedEmail,
+  sendAppointmentRejectedEmail,
+};

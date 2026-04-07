@@ -26,7 +26,7 @@ function InfoRow({ icon: Icon, label, value }) {
   );
 }
 
-export default function AppointmentDetailModal({ appointmentId, onClose }) {
+export default function AppointmentDetailModal({ appointmentId, onClose, onSaved }) {
   const [appt, setAppt] = useState(null);
   const [loading, setLoading] = useState(true);
   const [statusSaving, setStatusSaving] = useState(false);
@@ -54,6 +54,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
     try {
       await updateAppointmentStatus(appt.id, selectedStatus);
       setAppt((prev) => ({ ...prev, status: selectedStatus }));
+      onSaved?.();
     } catch {
       setError('Failed to update status.');
     } finally {
@@ -132,11 +133,11 @@ export default function AppointmentDetailModal({ appointmentId, onClose }) {
                   {/* Status control */}
                   <div className="bg-white/[0.04] rounded-2xl p-4 border border-white/[0.07]">
                     <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Status</p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center flex-wrap gap-3">
                       <select
                         value={selectedStatus}
                         onChange={(e) => setSelectedStatus(e.target.value)}
-                        className="flex-1 border border-white/[0.10] rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
+                        className="flex-1 min-w-[140px] border border-white/[0.10] rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
                       >
                         {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
                           <option key={key} value={key}>{label}</option>

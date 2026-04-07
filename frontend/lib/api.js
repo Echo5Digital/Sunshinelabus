@@ -141,6 +141,16 @@ export const updateAppointmentNotes = async (id, notes) => {
   return res.data;
 };
 
+export const updateAppointment = async (id, data) => {
+  const res = await adminApi.patch(`/api/appointments/admin/${id}`, data);
+  return res.data;
+};
+
+export const deleteAppointment = async (id) => {
+  const res = await adminApi.delete(`/api/appointments/admin/${id}`);
+  return res.data;
+};
+
 export const fetchCalendarDay = async (date) => {
   const res = await adminApi.get(`/api/admin/calendar?date=${date}`);
   return res.data;

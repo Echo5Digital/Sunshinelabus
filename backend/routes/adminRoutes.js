@@ -138,7 +138,7 @@ router.get('/calendar/range', async (req, res) => {
     }
     const { data, error } = await supabase
       .from('appointments')
-      .select('appointment_date, status')
+      .select('appointment_date, status, services(name)')
       .gte('appointment_date', start)
       .lte('appointment_date', end)
       .order('appointment_date');

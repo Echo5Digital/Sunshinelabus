@@ -76,6 +76,13 @@ export default function AdminMessagesPanel({ onMarkRead }) {
   useEffect(() => { load(); }, [load]);
   useEffect(() => { setExpandedId(null); }, [page]);
 
+  // Auto-refresh every 30s — skip when a message is expanded to avoid collapsing it
+  useEffect(() => {
+    if (expandedId !== null) return;
+    const interval = setInterval(load, 30000);
+    return () => clearInterval(interval);
+  }, [load, expandedId]);
+
   const clearSearch = () => {
     setSearch('');
     setDebouncedSearch('');

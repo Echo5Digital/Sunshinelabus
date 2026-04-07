@@ -332,7 +332,7 @@ export default function AdminTimeBlocksPanel() {
         <button
           onClick={handleCreate}
           disabled={creating}
-          className="mt-4 flex items-center gap-2 bg-sunshine-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-sunshine-blue/90 disabled:opacity-60 transition-all shadow-sm"
+          className="mt-4 flex items-center justify-center gap-2 w-full sm:w-auto bg-sunshine-blue text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-sunshine-blue/90 disabled:opacity-60 transition-all shadow-sm"
         >
           {creating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Ban className="w-4 h-4" />}
           Block Slot

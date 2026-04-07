@@ -3,11 +3,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Search, X, ChevronLeft, ChevronRight, Eye,
-  RefreshCw, AlertCircle, MapPin,
+  RefreshCw, AlertCircle, MapPin, Pencil, Trash2, Loader2,
 } from 'lucide-react';
-import { fetchAdminAppointments, updateAppointmentStatus } from '@/lib/api';
+import { fetchAdminAppointments, updateAppointmentStatus, deleteAppointment } from '@/lib/api';
 import { STATUS_CONFIG } from '@/lib/booking-constants';
 import AppointmentDetailModal from './AppointmentDetailModal';
+import AppointmentEditModal from './AppointmentEditModal';
 
 const PAGE_SIZE = 20;
 
@@ -19,6 +20,10 @@ export default function AdminAppointmentsPanel() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [deleteTarget, setDeleteTarget] = useState(null); // { id, patient_name }
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   // Filters
   const [dateFilter, setDateFilter] = useState('');
@@ -62,6 +67,14 @@ export default function AdminAppointmentsPanel() {
     load();
   }, [load]);
 
+  // Auto-refresh every 30s — pause while any modal is open to avoid disrupting interactions
+  const isModalOpen = !!(selectedId || editId || deleteTarget);
+  useEffect(() => {
+    if (isModalOpen) return;
+    const interval = setInterval(load, 30000);
+    return () => clearInterval(interval);
+  }, [load, isModalOpen]);
+
   const handleStatusChange = async (id, newStatus) => {
     // Optimistic update
     setAppointments((prev) =>
@@ -71,6 +84,20 @@ export default function AdminAppointmentsPanel() {
       await updateAppointmentStatus(id, newStatus);
     } catch {
       load(); // Revert on failure
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!deleteTarget) return;
+    setDeleting(true);
+    setDeleteError('');
+    try {
+      await deleteAppointment(deleteTarget.id);
+      setDeleteTarget(null);
+      load();
+    } catch {
+      setDeleteError('Failed to delete appointment. Please try again.');
+      setDeleting(false);
     }
   };
 
@@ -109,7 +136,7 @@ export default function AdminAppointmentsPanel() {
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); setPage(0); }}
-            className="border border-white/[0.10] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
+            className="shrink-0 border border-white/[0.10] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-[#1a2535]"
           >
             <option value="">All Statuses</option>
             {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
@@ -173,17 +200,33 @@ export default function AdminAppointmentsPanel() {
               {appointments.map((appt) => (
                 <div key={appt.id} className={`p-4 ${getRowBg(appt.status)}`}>
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <div>
-                      <p className="font-medium text-white text-sm">{appt.patient_name}</p>
-                      <p className="text-xs text-white/55">{appt.patient_phone}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-white text-sm truncate">{appt.patient_name}</p>
+                      <p className="text-xs text-white/55 truncate">{appt.patient_phone}</p>
                     </div>
-                    <button
-                      onClick={() => setSelectedId(appt.id)}
-                      className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors flex-shrink-0"
-                      title="View details"
-                    >
-                      <Eye className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => setSelectedId(appt.id)}
+                        className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
+                        title="View details"
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setEditId(appt.id)}
+                        className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
+                        title="Edit appointment"
+                      >
+                        <Pencil className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setDeleteTarget({ id: appt.id, patient_name: appt.patient_name })}
+                        className="p-1.5 rounded-lg text-white/55 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        title="Delete appointment"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5 text-xs text-white/55 mb-2">
                     <span className="font-medium text-white">{appt.appointment_date}</span>
@@ -254,13 +297,29 @@ export default function AdminAppointmentsPanel() {
                         </select>
                       </td>
                       <td className="px-4 py-3">
-                        <button
-                          onClick={() => setSelectedId(appt.id)}
-                          className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
-                          title="View details"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => setSelectedId(appt.id)}
+                            className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
+                            title="View details"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => setEditId(appt.id)}
+                            className="p-1.5 rounded-lg text-white/55 hover:text-sunshine-sky hover:bg-white/[0.08] transition-colors"
+                            title="Edit appointment"
+                          >
+                            <Pencil className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => setDeleteTarget({ id: appt.id, patient_name: appt.patient_name })}
+                            className="p-1.5 rounded-lg text-white/55 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                            title="Delete appointment"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -301,7 +360,51 @@ export default function AdminAppointmentsPanel() {
       <AppointmentDetailModal
         appointmentId={selectedId}
         onClose={() => setSelectedId(null)}
+        onSaved={load}
       />
+
+      {/* Edit modal */}
+      <AppointmentEditModal
+        appointmentId={editId}
+        onClose={() => setEditId(null)}
+        onSaved={load}
+      />
+
+      {/* Delete confirmation dialog */}
+      {deleteTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => { if (!deleting) { setDeleteTarget(null); setDeleteError(''); } }}
+          />
+          <div className="relative bg-[#1a2535] border border-white/[0.10] rounded-2xl shadow-2xl p-6 w-full max-w-sm">
+            <h3 className="font-bold text-white text-base mb-2">Delete Appointment</h3>
+            <p className="text-sm text-white/60 mb-5">
+              Delete appointment for <span className="text-white font-medium">{deleteTarget.patient_name}</span>? This cannot be undone.
+            </p>
+            {deleteError && (
+              <p className="text-xs text-red-400 bg-red-900/20 border border-red-500/30 rounded-xl px-3 py-2 mb-4">{deleteError}</p>
+            )}
+            <div className="flex items-center justify-end gap-3">
+              <button
+                onClick={() => { setDeleteTarget(null); setDeleteError(''); }}
+                disabled={deleting}
+                className="px-4 py-2 text-sm text-white/50 hover:text-white transition-colors disabled:opacity-40"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {deleting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

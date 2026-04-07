@@ -3,7 +3,11 @@ const router = express.Router();
 const { body, param, query, validationResult } = require('express-validator');
 const supabase = require('../config/supabase');
 const { verifyAdmin } = require('../middleware/auth');
-const { sendConfirmationEmail } = require('../utils/mailer');
+const {
+  sendConfirmationEmail,
+  sendAppointmentUpdatedEmail,
+  sendAppointmentRejectedEmail,
+} = require('../utils/mailer');
 
 const MIN_ADVANCE_HOURS = 24;
 
@@ -422,6 +426,132 @@ router.patch(
   }
 );
 
+// PATCH /api/appointments/admin/:id — update appointment core fields
+router.patch(
+  '/admin/:id',
+  verifyAdmin,
+  [
+    param('id').isUUID(),
+    body('service_id').optional().isUUID().withMessage('Valid service ID required'),
+    body('location_type')
+      .isIn(['on_site', 'home_visit'])
+      .withMessage('Location type must be on_site or home_visit'),
+    body('appointment_date')
+      .matches(/^\d{4}-\d{2}-\d{2}$/)
+      .withMessage('Date must be YYYY-MM-DD format'),
+    body('appointment_time')
+      .matches(/^\d{2}:\d{2}$/)
+      .withMessage('Time must be HH:MM format'),
+    body('patient_name').trim().notEmpty().isLength({ max: 100 }).withMessage('Full name is required'),
+    body('patient_phone')
+      .matches(/^\+?[\d\s\-().]{7,20}$/)
+      .withMessage('Valid phone number required'),
+    body('patient_email').isEmail().normalizeEmail().withMessage('Valid email required'),
+    body('patient_dob')
+      .optional({ nullable: true, checkFalsy: true })
+      .isISO8601()
+      .withMessage('Date of birth must be a valid date'),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const {
+        service_id,
+        location_type,
+        appointment_date,
+        appointment_time,
+        patient_name,
+        patient_dob,
+        patient_phone,
+        patient_email,
+        address_street,
+        address_city,
+        address_state,
+        address_zip,
+      } = req.body;
+
+      // Fetch existing appointment to detect date/time changes
+      const { data: existing, error: fetchErr } = await supabase
+        .from('appointments')
+        .select('appointment_date, appointment_time, service_id')
+        .eq('id', req.params.id)
+        .single();
+
+      if (fetchErr || !existing) return res.status(404).json({ error: 'Appointment not found' });
+
+      // Check slot availability if date/time changed (exclude current appointment)
+      const dateChanged = appointment_date !== existing.appointment_date;
+      const timeChanged = appointment_time !== existing.appointment_time;
+      if (dateChanged || timeChanged) {
+        const { data: conflicts } = await supabase
+          .from('appointments')
+          .select('id')
+          .eq('appointment_date', appointment_date)
+          .eq('appointment_time', appointment_time)
+          .not('status', 'eq', 'cancelled')
+          .neq('id', req.params.id);
+
+        if (conflicts && conflicts.length > 0) {
+          return res.status(409).json({ error: 'That time slot is already booked. Please choose another.' });
+        }
+      }
+
+      const updatePayload = {
+        location_type,
+        appointment_date,
+        appointment_time,
+        patient_name: patient_name.trim(),
+        patient_dob: patient_dob || null,
+        patient_phone,
+        patient_email,
+        address_street: address_street?.trim() || null,
+        address_city: address_city?.trim() || null,
+        address_state: address_state?.trim() || null,
+        address_zip: address_zip || null,
+      };
+
+      if (service_id) updatePayload.service_id = service_id;
+      if (dateChanged || timeChanged) {
+        updatePayload.reminder_24_sent = false;
+        updatePayload.reminder_2hr_sent = false;
+      }
+
+      const { error: updateErr } = await supabase
+        .from('appointments')
+        .update(updatePayload)
+        .eq('id', req.params.id);
+
+      if (updateErr) throw updateErr;
+
+      // Fire-and-forget: send updated email
+      const resolvedServiceId = service_id || existing.service_id;
+      supabase
+        .from('services')
+        .select('name')
+        .eq('id', resolvedServiceId)
+        .single()
+        .then(({ data: svc }) => {
+          sendAppointmentUpdatedEmail({
+            patientEmail: patient_email,
+            patientName: patient_name.trim(),
+            serviceName: svc?.name || 'Lab Service',
+            appointmentDate: appointment_date,
+            appointmentTime: appointment_time,
+            locationType: location_type,
+          });
+        })
+        .catch((err) => console.error('Service lookup for update email failed:', err.message));
+
+      return res.json({ message: 'Appointment updated' });
+    } catch (err) {
+      console.error('Appointment update error:', err.message);
+      return res.status(500).json({ error: 'Failed to update appointment' });
+    }
+  }
+);
+
 // PATCH /api/admin/appointments/:id/notes
 router.patch(
   '/admin/:id/notes',
@@ -442,6 +572,55 @@ router.patch(
     } catch (err) {
       console.error('Notes update error:', err.message);
       return res.status(500).json({ error: 'Failed to save notes' });
+    }
+  }
+);
+
+// DELETE /api/appointments/admin/:id — delete appointment, email patient if active
+router.delete(
+  '/admin/:id',
+  verifyAdmin,
+  [param('id').isUUID()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const { data: appt, error: fetchErr } = await supabase
+        .from('appointments')
+        .select(`
+          id, status, patient_email, patient_name,
+          appointment_date, appointment_time, service_id,
+          services(name)
+        `)
+        .eq('id', req.params.id)
+        .single();
+
+      if (fetchErr || !appt) return res.status(404).json({ error: 'Appointment not found' });
+
+      const { error: deleteErr } = await supabase
+        .from('appointments')
+        .delete()
+        .eq('id', req.params.id);
+
+      if (deleteErr) throw deleteErr;
+
+      // Send rejection email only for active (non-terminal) statuses
+      const noEmailStatuses = ['cancelled', 'completed', 'checked_in'];
+      if (!noEmailStatuses.includes(appt.status)) {
+        sendAppointmentRejectedEmail({
+          patientEmail: appt.patient_email,
+          patientName: appt.patient_name,
+          serviceName: appt.services?.name || 'Lab Service',
+          appointmentDate: appt.appointment_date,
+          appointmentTime: appt.appointment_time,
+        });
+      }
+
+      return res.json({ message: 'Appointment deleted' });
+    } catch (err) {
+      console.error('Appointment delete error:', err.message);
+      return res.status(500).json({ error: 'Failed to delete appointment' });
     }
   }
 );
