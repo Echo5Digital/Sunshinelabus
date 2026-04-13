@@ -83,7 +83,7 @@ export default function ContactCTA() {
               </ShimmerButton>
             </Link>
 
-            <Link href="/services">
+            <Link href="/all-services">
               <ShimmerButton className="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-base gap-2">
                 Browse Services
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />

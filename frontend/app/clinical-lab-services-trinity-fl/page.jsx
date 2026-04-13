@@ -35,7 +35,7 @@ const medicalBusinessSchema = {
   image: 'https://sunshineclinicallab.com/main-logo.webp',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',
@@ -59,7 +59,7 @@ const localBusinessSchema = {
   url: 'https://sunshineclinicallab.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',
@@ -88,7 +88,7 @@ const serviceSchema = {
     telephone: '(727) 233-5223',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '3600 Galileo Dr',
+      streetAddress: '3600 Galileo Dr, Suite 104',
       addressLocality: 'Trinity',
       addressRegion: 'FL',
       postalCode: '34655',
@@ -166,7 +166,7 @@ const faqSchema = {
       name: 'Do you offer blood work on a walk-in basis near New Port Richey?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our Trinity, FL location at 3600 Galileo Dr is minutes from New Port Richey and welcomes walk-in patients for most routine blood work during business hours.',
+        text: 'Yes. Our Trinity, FL location at 3600 Galileo Dr, Suite 104 is minutes from New Port Richey and welcomes walk-in patients for most routine blood work during business hours.',
       },
     },
     {

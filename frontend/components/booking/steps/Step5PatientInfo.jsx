@@ -8,6 +8,13 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 const inputBase =
   'w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sunshine-blue transition-colors bg-white disabled:bg-gray-50';
 
+function formatDob(value) {
+  const digits = value.replace(/\D/g, '');
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`;
+  return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4, 8)}`;
+}
+
 function Field({ label, error, required, children }) {
   return (
     <div>
@@ -39,7 +46,19 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
     },
   });
 
-  const today = new Date().toISOString().split('T')[0];
+  const { onChange: dobOnChange, ...dobRest } = register('patientDob', {
+    validate: (v) => {
+      if (!v) return true;
+      if (!/^\d{2}\/\d{2}\/\d{4}$/.test(v)) return 'Enter date as MM/DD/YYYY';
+      const [mm, dd, yyyy] = v.split('/').map(Number);
+      const dob = new Date(yyyy, mm - 1, dd);
+      if (dob.getMonth() !== mm - 1 || dob.getDate() !== dd) return 'Invalid date';
+      const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+      if (age < 0) return 'Date of birth cannot be in the future';
+      if (age < 13) return 'Patient must be at least 13 years old';
+      return true;
+    },
+  });
 
   const onValid = (data) => {
     updateBookingData({
@@ -83,19 +102,15 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
 
           <Field label="Date of Birth" error={errors.patientDob}>
             <input
-              type="date"
-              max={today}
+              type="text"
+              placeholder="MM/DD/YYYY"
+              maxLength={10}
               className={`${inputBase} ${errors.patientDob ? 'border-red-400 bg-red-50' : 'border-gray-200'}`}
-              {...register('patientDob', {
-                validate: (v) => {
-                  if (!v) return true;
-                  const dob = new Date(v);
-                  const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-                  if (age < 0) return 'Date of birth cannot be in the future';
-                  if (age < 13) return 'Patient must be at least 13 years old';
-                  return true;
-                },
-              })}
+              onChange={(e) => {
+                e.target.value = formatDob(e.target.value);
+                dobOnChange(e);
+              }}
+              {...dobRest}
             />
           </Field>
         </div>

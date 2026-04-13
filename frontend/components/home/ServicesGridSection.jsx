@@ -151,7 +151,7 @@ export default function ServicesGridSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Link href="/clinical-lab-services-trinity-fl" aria-label="See all our lab services">
+          <Link href="/all-services" aria-label="See all our lab services">
             <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
               See All Services →
             </ShimmerButton>

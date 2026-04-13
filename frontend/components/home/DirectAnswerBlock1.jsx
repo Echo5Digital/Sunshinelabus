@@ -48,7 +48,7 @@ export default function DirectAnswerBlock1() {
             </h2>
             <p className="text-gray-700 leading-relaxed text-base mb-7">
               Sunshine Clinical Lab LLC is an independent clinical laboratory located at{' '}
-              <strong>3600 Galileo Dr, Trinity, FL 34655</strong>. The lab provides fast, affordable
+              <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>. The lab provides fast, affordable
               blood work, specialty testing, mobile phlebotomy, TRT monitoring panels, DNA testing,
               and gender reveal blood tests to patients throughout Pasco County and the Tampa Bay
               region. Walk-ins are welcome for many services, and results for many routine tests are

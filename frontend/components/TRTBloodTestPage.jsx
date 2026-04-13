@@ -345,7 +345,7 @@ export default function TRTBloodTestPage() {
                   Where Can I Get Affordable TRT Blood Work in Pasco County?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 offers affordable TRT
+                  Sunshine Clinical Lab at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 offers affordable TRT
                   blood testing with next-day results for many hormone panels. The lab provides total
                   and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and
                   FSH testing. Walk-ins are welcome, and mobile blood draws are available throughout
@@ -641,7 +641,7 @@ export default function TRTBloodTestPage() {
                   <p className="text-gray-500 text-sm leading-relaxed">
                     Need your TRT labs drawn today? Walk in at{' '}
                     <span className="font-semibold text-sunshine-dark">
-                      3600 Galileo Dr, Trinity, FL 34655
+                      3600 Galileo Dr, Suite 104, Trinity, FL 34655
                     </span>
                     . We welcome walk-ins for most blood work, and many patients are in and out
                     within minutes.
@@ -735,7 +735,7 @@ export default function TRTBloodTestPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                3600 Galileo Dr, Trinity, FL 34655
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
@@ -958,7 +958,7 @@ export default function TRTBloodTestPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">

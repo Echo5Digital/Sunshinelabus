@@ -36,7 +36,7 @@ const localBusinessSchema = {
   url: 'https://sunshineclinicallab.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',
@@ -78,7 +78,7 @@ const serviceSchema = {
     telephone: '(727) 233-5223',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '3600 Galileo Dr',
+      streetAddress: '3600 Galileo Dr, Suite 104',
       addressLocality: 'Trinity',
       addressRegion: 'FL',
       postalCode: '34655',
@@ -165,7 +165,7 @@ const faqSchema = {
       name: 'Where is Sunshine Clinical Lab located for the gender reveal test?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Our lab is located at 3600 Galileo Dr, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay. Free parking is on site.",
+        text: "Our lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay. Free parking is on site.",
       },
     },
   ],
@@ -188,7 +188,7 @@ const productSchema = {
     telephone: '(727) 233-5223',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '3600 Galileo Dr',
+      streetAddress: '3600 Galileo Dr, Suite 104',
       addressLocality: 'Trinity',
       addressRegion: 'FL',
       postalCode: '34655',

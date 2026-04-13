@@ -83,7 +83,7 @@ export default function IntroSection() {
               transition={{ delay: 0.15 }}
               className="text-gray-600 leading-relaxed mb-4"
             >
-              Located at <strong>3600 Galileo Dr, Trinity, FL 34655</strong>, Sunshine Clinical
+              Located at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>, Sunshine Clinical
               Lab is an independent, patient-centered clinical laboratory proudly serving Trinity,
               New Port Richey, and communities across Pasco County and the greater Tampa Bay area.
               Our phlebotomy team brings over 35 years of combined experience to every draw — and

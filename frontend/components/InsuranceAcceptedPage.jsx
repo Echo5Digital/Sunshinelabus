@@ -291,7 +291,7 @@ export default function InsuranceAcceptedPage() {
                   Does Sunshine Clinical Lab Accept Insurance?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Yes. Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 accepts most major
+                  Yes. Sunshine Clinical Lab at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 accepts most major
                   insurance plans for clinical lab testing. Coverage varies by plan, provider, and test
                   type. Patients are encouraged to call{' '}
                   <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
@@ -501,7 +501,7 @@ export default function InsuranceAcceptedPage() {
                   As an independent clinical lab, Sunshine Clinical Lab offers competitive self-pay rates that
                   are often more affordable than large national chain labs. For current pricing on specific
                   tests including routine blood panels, TRT monitoring, DNA testing, and gender reveal
-                  blood tests, call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>. The lab is located at 3600 Galileo Dr, Trinity, FL 34655.
+                  blood tests, call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>. The lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655.
                 </p>
               </div>
             </div>
@@ -656,7 +656,7 @@ export default function InsuranceAcceptedPage() {
                   Verify Coverage Now — (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/book-appointment">
+              <Link href="/all-services">
                 <ShimmerButton className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-8 py-3.5 rounded-full font-semibold text-base gap-2">
                   View All Services
                 </ShimmerButton>
@@ -668,7 +668,7 @@ export default function InsuranceAcceptedPage() {
               className="flex items-center justify-center gap-2 text-white/75 text-sm font-medium"
             >
               <MapPin className="w-5 h-5 text-white/90 flex-shrink-0" />
-              <span>3600 Galileo Dr, Trinity, FL 34655, USA</span>
+              <span>3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA</span>
             </motion.div>
           </Section>
         </div>

@@ -139,13 +139,13 @@ export default function ServiceAreaSection() {
         >
           Main Lab:{' '}
           <a
-            href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
+            href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sunshine-blue hover:underline font-medium"
             aria-label="Get directions to Sunshine Clinical Lab"
           >
-            3600 Galileo Dr, Trinity, FL 34655
+            3600 Galileo Dr, Suite 104, Trinity, FL 34655
           </a>
         </motion.p>
       </div>

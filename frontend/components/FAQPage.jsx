@@ -138,7 +138,7 @@ const GENERAL_FAQS = [
     q: 'Where is Sunshine Clinical Lab located?',
     a: (
       <>
-        We&apos;re located at 3600 Galileo Dr, Trinity, FL 34655, USA. Our office is easily
+        We&apos;re located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. Our office is easily
         accessible from US-19, the Suncoast Parkway, SR-54, and Little Road, with free parking
         on-site. We serve patients from{' '}
         <Link href="/clinical-lab-trinity-fl" className="text-sunshine-blue font-semibold hover:underline">
@@ -827,7 +827,7 @@ export default function FAQPage() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
                   Before visiting Sunshine Clinical Lab at{' '}
-                  <strong>3600 Galileo Dr, Trinity, FL 34655</strong>, patients should bring
+                  <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>, patients should bring
                   their physician&apos;s lab order (if applicable), a valid photo ID, and their
                   insurance card. Fasting may be required for certain tests — your doctor or the
                   lab team will advise. Walk-ins are welcome for most routine blood work. For{' '}
@@ -933,7 +933,7 @@ export default function FAQPage() {
             >
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span>sunshinelabus.com</span>
@@ -950,7 +950,7 @@ export default function FAQPage() {
                 </ShimmerButton>
               </a>
               <a
-                href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
+                href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -960,7 +960,7 @@ export default function FAQPage() {
                   Walk In Today
                 </ShimmerButton>
               </a>
-              <Link href="/clinical-lab-services-trinity-fl" className="w-full sm:w-auto">
+              <Link href="/all-services" className="w-full sm:w-auto">
                 <ShimmerButton className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
                   View All Services
                 </ShimmerButton>
@@ -973,7 +973,7 @@ export default function FAQPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">

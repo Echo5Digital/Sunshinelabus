@@ -7,7 +7,7 @@
 export const FAQ_DATA = [
   {
     q: 'Do I need an appointment for blood work at Sunshine Clinical Lab in Trinity, FL?',
-    a: 'For many of our services, walk-ins are welcome — no appointment necessary. Our Trinity location at 3600 Galileo Dr accepts walk-in patients for most routine blood work during business hours. For specialty tests such as DNA testing or gender reveal blood tests, we recommend calling ahead at (727) 233-5223 to ensure availability and proper preparation.',
+    a: 'For many of our services, walk-ins are welcome — no appointment necessary. Our Trinity location at 3600 Galileo Dr, Suite 104 accepts walk-in patients for most routine blood work during business hours. For specialty tests such as DNA testing or gender reveal blood tests, we recommend calling ahead at (727) 233-5223 to ensure availability and proper preparation.',
   },
   {
     q: 'How fast will I get my lab results?',
@@ -35,6 +35,6 @@ export const FAQ_DATA = [
   },
   {
     q: 'Where is Sunshine Clinical Lab located?',
-    a: 'Sunshine Clinical Lab is located at 3600 Galileo Dr, Trinity, FL 34655, USA. We are easily accessible from New Port Richey, Land O\' Lakes, Tarpon Springs, and communities throughout Pasco County via US-19, the Suncoast Parkway, SR-54, and Little Road. Free parking is available on-site.',
+    a: 'Sunshine Clinical Lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. We are easily accessible from New Port Richey, Land O\' Lakes, Tarpon Springs, and communities throughout Pasco County via US-19, the Suncoast Parkway, SR-54, and Little Road. Free parking is available on-site.',
   },
 ];

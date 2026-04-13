@@ -996,7 +996,7 @@ export default function MobileBloodDrawPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                Based out of 3600 Galileo Dr, Trinity, FL 34655 — Serving all of Pasco County
+                Based out of 3600 Galileo Dr, Suite 104, Trinity, FL 34655 — Serving all of Pasco County
                 &amp; Tampa Bay
               </span>
               <span className="hidden sm:block text-white/30">|</span>

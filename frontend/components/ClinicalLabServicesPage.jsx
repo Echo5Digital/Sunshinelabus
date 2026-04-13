@@ -164,7 +164,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Do you offer blood work on a walk-in basis near New Port Richey?',
-    a: 'Yes. Our Trinity, FL location at 3600 Galileo Dr is minutes from New Port Richey and welcomes walk-in patients for most routine blood work during business hours.',
+    a: 'Yes. Our Trinity, FL location at 3600 Galileo Dr, Suite 104 is minutes from New Port Richey and welcomes walk-in patients for most routine blood work during business hours.',
   },
   {
     q: 'What specialty tests does Sunshine Clinical Lab offer beyond routine blood work?',
@@ -348,7 +348,7 @@ export default function ClinicalLabServicesPage() {
                   What Lab Services Does Sunshine Clinical Lab Offer in Trinity, FL?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Sunshine Clinical Lab at <span className="font-semibold text-sunshine-dark">3600 Galileo Dr, Trinity, FL 34655</span> offers comprehensive clinical laboratory services including CBC, CMP, lipid panels, A1C, thyroid testing, liver and kidney function panels, hormone testing, testosterone panels, TRT monitoring, PSA testing, estradiol, SHBG, LH/FSH, legal and immigration DNA testing, paternity testing, and Peekaboo gender reveal blood tests. Walk-ins are welcome for most routine tests, and results for many services are available the next business day. The lab accepts most major insurance plans and offers competitive self-pay pricing. Call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>.
+                  Sunshine Clinical Lab at <span className="font-semibold text-sunshine-dark">3600 Galileo Dr, Suite 104, Trinity, FL 34655</span> offers comprehensive clinical laboratory services including CBC, CMP, lipid panels, A1C, thyroid testing, liver and kidney function panels, hormone testing, testosterone panels, TRT monitoring, PSA testing, estradiol, SHBG, LH/FSH, legal and immigration DNA testing, paternity testing, and Peekaboo gender reveal blood tests. Walk-ins are welcome for most routine tests, and results for many services are available the next business day. The lab accepts most major insurance plans and offers competitive self-pay pricing. Call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {[
@@ -398,7 +398,7 @@ export default function ClinicalLabServicesPage() {
                 Or you can walk into Sunshine Clinical Lab in Trinity, FL.
               </p>
               <p>
-                Our laboratory at <strong className="text-white">3600 Galileo Dr, Trinity, FL 34655, USA</strong> offers the full range of clinical lab testing services that physicians, specialists, and patients across Pasco County rely on — processed by experienced professionals with over 35 years of combined phlebotomy expertise, and returned with some of the fastest turnaround times in the area.
+                Our laboratory at <strong className="text-white">3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA</strong> offers the full range of clinical lab testing services that physicians, specialists, and patients across Pasco County rely on — processed by experienced professionals with over 35 years of combined phlebotomy expertise, and returned with some of the fastest turnaround times in the area.
               </p>
               <p className="font-bold text-white text-lg pt-4">
                 Walk-ins are welcome for most services. All ages are welcome — pediatric through geriatric.
@@ -520,7 +520,7 @@ export default function ClinicalLabServicesPage() {
                     </ShimmerButton>
                   </a>
                   <p className="text-sunshine-dark text-sm font-semibold ml-2">
-                    Walk In Today at 3600 Galileo Dr, Trinity, FL 34655, USA
+                    Walk In Today at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
                   </p>
                 </div>
               </motion.div>
@@ -604,7 +604,7 @@ export default function ClinicalLabServicesPage() {
                   Is There a Walk-In Lab Near Me in Trinity, FL?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-4">
-                  Yes. Sunshine Clinical Lab at <strong className="text-sunshine-dark">3600 Galileo Dr, Trinity, FL 34655, USA</strong> is a walk-in clinical laboratory that accepts patients without appointments for most routine blood work.
+                  Yes. Sunshine Clinical Lab at <strong className="text-sunshine-dark">3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA</strong> is a walk-in clinical laboratory that accepts patients without appointments for most routine blood work.
                 </p>
                 <p className="text-gray-700 leading-relaxed text-sm mb-7">
                   The lab offers CBC, CMP, lipid panels, thyroid testing, hormone panels, TRT blood tests, and many other services. Results for many tests are available the next business day. The lab <Link className="text-sunshine-blue hover:underline" href="/insurance-accepted">accepts most major insurance plans</Link> and serves patients of all ages from <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-trinity-fl">Trinity</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-new-port-richey">New Port Richey</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-land-o-lakes-fl">Land O' Lakes</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-tarpon-springs-fl">Tarpon Springs</Link>, and surrounding Pasco County communities.
@@ -769,7 +769,7 @@ export default function ClinicalLabServicesPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white/90" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">

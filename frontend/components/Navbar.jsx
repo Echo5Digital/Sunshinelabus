@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const servicesItems = [
+  { label: 'All Services', href: '/all-services', isAll: true },
   { label: 'General Testing', href: '/clinical-lab-services-trinity-fl' },
   { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
@@ -67,10 +68,10 @@ export default function Navbar() {
         }`}
       >
         {/* Header row */}
-        <div className="flex items-center h-[60px] lg:h-20 px-4 lg:px-6">
+        <div className="flex items-center h-[68px] lg:h-[88px] px-5 lg:px-8">
           {/* Logo — far left */}
           <Link href="/" className="flex-shrink-0 overflow-hidden">
-            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={40} width={132} className="h-8 lg:h-10 w-auto object-contain [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.18))]" />
+            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={48} width={158} className="h-10 lg:h-12 w-auto object-contain [filter:drop-shadow(0_2px_8px_rgba(0,0,0,0.22))_drop-shadow(0_0_6px_rgba(255,255,255,0.5))]" />
           </Link>
 
           {/* Desktop Nav — centered */}
@@ -85,16 +86,31 @@ export default function Navbar() {
               onLeave={() => setActiveDropdown(null)}
             >
               <div className="py-2">
-                {servicesItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="flex items-center gap-2 mx-2 my-0.5 px-3 py-2.5 text-sm text-sunshine-dark/80 rounded-xl hover:bg-sunshine-sky/15 hover:text-sunshine-blue transition-all duration-150"
-                    onClick={() => setActiveDropdown(null)}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
-                    {item.label}
-                  </Link>
+                {servicesItems.map((item, i) => (
+                  <div key={item.label}>
+                    {item.isAll ? (
+                      <>
+                        <Link
+                          href={item.href}
+                          className="flex items-center gap-2 mx-2 my-0.5 px-3 py-2.5 text-sm font-semibold text-sunshine-blue rounded-xl hover:bg-sunshine-blue/10 transition-all duration-150 uppercase tracking-[0.03em]"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-sunshine-blue flex-shrink-0" />
+                          {item.label}
+                        </Link>
+                        <hr className="mx-3 my-1 border-sunshine-sky/30" />
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-2 mx-2 my-0.5 px-3 py-2.5 text-sm text-sunshine-dark/80 rounded-xl hover:bg-sunshine-sky/15 hover:text-sunshine-blue transition-all duration-150 uppercase tracking-[0.03em]"
+                        onClick={() => setActiveDropdown(null)}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
+                        {item.label}
+                      </Link>
+                    )}
+                  </div>
                 ))}
               </div>
             </DropdownItem>
@@ -129,7 +145,7 @@ export default function Navbar() {
           {/* CTA Button — far right */}
           <div className="hidden lg:flex flex-shrink-0">
             <Link href="/book-appointment">
-              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-5 py-2.5 rounded-full font-semibold whitespace-nowrap shadow-sm">
+              <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-6 py-3 rounded-full font-semibold whitespace-nowrap shadow-sm uppercase tracking-wider">
                 <span>Book Appointment</span>
               </ShimmerButton>
             </Link>
@@ -166,15 +182,30 @@ export default function Navbar() {
                   onToggle={() => toggleMobileDropdown('services')}
                 >
                   {servicesItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="flex items-center gap-2 pl-4 pr-2 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-white/40 rounded-lg transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
-                      {item.label}
-                    </Link>
+                    <div key={item.label}>
+                      {item.isAll ? (
+                        <>
+                          <Link
+                            href={item.href}
+                            className="flex items-center gap-2 pl-4 pr-2 py-2.5 text-sm font-semibold text-sunshine-blue hover:bg-white/40 rounded-lg transition-colors uppercase tracking-[0.03em]"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-sunshine-blue flex-shrink-0" />
+                            {item.label}
+                          </Link>
+                          <hr className="mx-3 my-0.5 border-sunshine-sky/30" />
+                        </>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="flex items-center gap-2 pl-4 pr-2 py-2.5 text-sm text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-white/40 rounded-lg transition-colors uppercase tracking-[0.03em]"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-sunshine-sky flex-shrink-0" />
+                          {item.label}
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </MobileDropdown>
 
@@ -205,7 +236,7 @@ export default function Navbar() {
 
                 <div className="pt-2 pb-1">
                   <Link href="/book-appointment" onClick={() => setMobileOpen(false)}>
-                    <ShimmerButton className="w-full justify-center bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-5 py-3 rounded-full font-semibold shadow-sm">
+                    <ShimmerButton className="w-full justify-center bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-5 py-3 rounded-full font-semibold shadow-sm uppercase tracking-wider">
                       <span>Book Appointment</span>
                     </ShimmerButton>
                   </Link>
@@ -224,7 +255,7 @@ function NavLink({ href, label, pathname }) {
   return (
     <Link
       href={href}
-      className={`px-3.5 py-1.5 text-[0.85rem] tracking-wide font-medium rounded-full transition-all duration-200 ${
+      className={`px-4 py-2 text-[0.9rem] tracking-wider font-medium rounded-full transition-all duration-200 uppercase ${
         isActive
           ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue font-semibold shadow-md shadow-sunshine-blue/25'
           : 'text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-sunshine-sky/15'
@@ -241,7 +272,7 @@ function DropdownItem({ label, href, isOpen, onEnter, onLeave, children, isMore 
       {href ? (
         <Link
           href={href}
-          className={`flex items-center gap-1 px-3.5 py-1.5 text-[0.85rem] tracking-wide font-medium rounded-full transition-all duration-200 ${
+          className={`flex items-center gap-1 px-4 py-2 text-[0.9rem] tracking-wider font-medium rounded-full transition-all duration-200 uppercase ${
             isOpen
               ? 'text-sunshine-blue bg-sunshine-sky/15'
               : 'text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-sunshine-sky/15'
@@ -252,7 +283,7 @@ function DropdownItem({ label, href, isOpen, onEnter, onLeave, children, isMore 
         </Link>
       ) : (
         <button
-          className={`flex items-center gap-1 px-3.5 py-1.5 text-[0.85rem] tracking-wide font-medium rounded-full transition-all duration-200 ${
+          className={`flex items-center gap-1 px-4 py-2 text-[0.9rem] tracking-wider font-medium rounded-full transition-all duration-200 uppercase ${
             isOpen
               ? 'text-sunshine-blue bg-sunshine-sky/15 font-semibold'
               : isMore
@@ -287,7 +318,7 @@ function MobileNavLink({ href, label, onClick, pathname }) {
   return (
     <Link
       href={href}
-      className={`block px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 ${
+      className={`block px-3 py-3 text-[0.9rem] font-medium rounded-xl transition-all duration-200 uppercase tracking-wider ${
         isActive
           ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue font-semibold shadow-sm'
           : 'text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-sunshine-sky/15'
@@ -304,7 +335,7 @@ function MobileDropdown({ label, isOpen, onToggle, children, isMore }) {
     <div>
       <button
         onClick={onToggle}
-        className={`flex items-center justify-between w-full px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 ${
+        className={`flex items-center justify-between w-full px-3 py-3 text-[0.9rem] font-medium rounded-xl transition-all duration-200 uppercase tracking-wider ${
           isOpen
             ? 'text-sunshine-blue bg-sunshine-sky/15 font-semibold'
             : isMore

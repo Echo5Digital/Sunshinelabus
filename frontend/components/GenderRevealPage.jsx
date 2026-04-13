@@ -128,7 +128,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Where is Sunshine Clinical Lab located for the gender reveal test?',
-    a: "Our lab is located at 3600 Galileo Dr, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay. Free parking is on site.",
+    a: "Our lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay. Free parking is on site.",
   },
 ];
 
@@ -330,7 +330,7 @@ export default function GenderRevealPage() {
                   <strong>7 weeks</strong> into pregnancy through a simple, non-invasive blood draw from the mother&apos;s arm.
                   The test detects cell-free fetal DNA circulating in the mother&apos;s bloodstream and identifies the presence
                   or absence of Y-chromosome markers. Sunshine Clinical Lab at{' '}
-                  <strong>3600 Galileo Dr, Trinity, FL 34655</strong> offers this test to expecting families throughout
+                  <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong> offers this test to expecting families throughout
                   Pasco County and the Tampa Bay region. Results are typically available within a few business days.{' '}
                   <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
                     Call (727) 233-5223
@@ -596,7 +596,7 @@ export default function GenderRevealPage() {
                 </div>
                 <div className="text-gray-600 leading-relaxed space-y-3 min-w-0">
                   <p>
-                    When you arrive at Sunshine Clinical Lab at <strong>3600 Galileo Dr, Trinity, FL 34655</strong>,
+                    When you arrive at Sunshine Clinical Lab at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>,
                     our team will confirm your information, answer any questions, and perform a quick, comfortable
                     blood draw. The entire visit is typically completed in <strong>under 20 minutes</strong>.
                   </p>
@@ -775,7 +775,7 @@ export default function GenderRevealPage() {
                   Where Can I Get a Gender Reveal Blood Test Near Me in Pasco County?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Sunshine Clinical Lab at <strong>3600 Galileo Dr, Trinity, FL 34655</strong> offers the{' '}
+                  Sunshine Clinical Lab at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong> offers the{' '}
                   <strong>Peekaboo Early Gender Reveal Blood Test</strong> to expecting families throughout Pasco County
                   and the Tampa Bay area. The test can determine baby gender as early as <strong>7 weeks</strong> of
                   pregnancy through a non-invasive blood draw. Results are available within a few business days and
@@ -953,7 +953,7 @@ export default function GenderRevealPage() {
                 </ShimmerButton>
               </a>
               <a
-                href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
+                href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -971,7 +971,7 @@ export default function GenderRevealPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">

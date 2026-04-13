@@ -9,7 +9,7 @@ const LOCATION_OPTIONS = [
     key: 'on_site',
     icon: Building2,
     title: 'Visit Our Clinic',
-    subtitle: '3600 Galileo Dr',
+    subtitle: '3600 Galileo Dr, Suite 104',
     detail: 'Trinity, FL 34655, USA',
     badges: ['Free parking', 'Walk-ins welcome', 'Mon–Fri 8AM–5PM'],
     iconBg: 'bg-sunshine-blue/10 text-sunshine-blue',

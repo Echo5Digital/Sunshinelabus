@@ -339,7 +339,7 @@ export default function DNATestingPage() {
                   Where Can I Get Legal DNA Testing in Pasco County, Florida?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Sunshine Clinical Lab at 3600 Galileo Dr, Trinity, FL 34655 provides legal DNA testing,
+                  Sunshine Clinical Lab at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 provides legal DNA testing,
                   immigration DNA testing (USCIS), paternity testing, and relationship DNA testing. All
                   legal and immigration tests are conducted under chain-of-custody protocols for court
                   admissibility and government acceptance. DNA collection is non-invasive (cheek swab) and
@@ -890,7 +890,7 @@ export default function DNATestingPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                3600 Galileo Dr, Trinity, FL 34655
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
@@ -1051,7 +1051,7 @@ export default function DNATestingPage() {
             >
               <span className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                3600 Galileo Dr, Trinity, FL 34655, USA
+                3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
               </span>
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">

@@ -47,7 +47,7 @@ export default function DirectAnswerBlock3() {
               Where Can I Find a Walk-In Lab Near Me in Pasco County?
             </h2>
             <p className="text-gray-700 leading-relaxed text-base mb-7">
-              Sunshine Clinical Lab at <strong>3600 Galileo Dr, Trinity, FL 34655</strong> is a
+              Sunshine Clinical Lab at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong> is a
               walk-in clinical laboratory serving Pasco County and the Tampa Bay region. Walk-ins are
               welcome for most routine blood work, and the lab offers specialty services including TRT
               blood testing, DNA testing, gender reveal blood tests, and mobile phlebotomy. The lab is
@@ -63,7 +63,7 @@ export default function DirectAnswerBlock3() {
                 { icon: CalendarDays, label: 'Walk-Ins Welcome' },
                 { icon: Shield, label: 'Most Insurance Accepted' },
                 { icon: CheckCircle2, label: 'All Ages Welcome' },
-                { icon: MapPin, label: '3600 Galileo Dr, Trinity' },
+                { icon: MapPin, label: '3600 Galileo Dr, Suite 104, Trinity' },
               ].map(({ icon: Icon, label }) => (
                 <span
                   key={label}

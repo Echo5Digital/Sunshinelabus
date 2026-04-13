@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  { label: 'Referrals', href: '/referrals' },
+  { label: 'All Services', href: '/all-services' },
   { label: 'Book Appointment', href: '/book-appointment' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -106,12 +106,12 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-sunshine-yellow mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <a
-                  href="https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655"
+                  href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
-                  3600 Galileo Dr
+                  3600 Galileo Dr, Suite 104
                   <br />
                   Trinity, FL 34655, USA
                 </a>

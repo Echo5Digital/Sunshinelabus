@@ -59,7 +59,7 @@ const localBusinessSchema = {
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',

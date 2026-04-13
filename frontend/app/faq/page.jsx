@@ -39,7 +39,7 @@ const localBusinessSchema = {
   url: 'https://sunshineclinicallab.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',
@@ -78,7 +78,7 @@ const faqSchema = {
       name: 'Where is Sunshine Clinical Lab located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We're located at 3600 Galileo Dr, Trinity, FL 34655, USA. Our office is easily accessible from US-19, the Suncoast Parkway, SR-54, and Little Road, with free parking on-site. We serve patients from Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay.",
+        text: "We're located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. Our office is easily accessible from US-19, the Suncoast Parkway, SR-54, and Little Road, with free parking on-site. We serve patients from Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay.",
       },
     },
     {

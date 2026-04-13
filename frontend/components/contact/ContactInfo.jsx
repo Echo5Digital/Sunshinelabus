@@ -33,9 +33,9 @@ const INFO_CARDS = [
   {
     Icon: MapPin,
     title: 'Visit Us',
-    primary: '3600 Galileo Dr',
+    primary: '3600 Galileo Dr, Suite 104',
     secondary: 'Trinity, FL 34655, USA',
-    href: 'https://maps.google.com/?q=3600+Galileo+Dr+Trinity+FL+34655',
+    href: 'https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655',
   },
 ];
 

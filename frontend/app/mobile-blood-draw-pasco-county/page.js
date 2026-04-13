@@ -35,7 +35,7 @@ const localBusinessSchema = {
   url: 'https://sunshineclinicallab.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '3600 Galileo Dr',
+    streetAddress: '3600 Galileo Dr, Suite 104',
     addressLocality: 'Trinity',
     addressRegion: 'FL',
     postalCode: '34655',
@@ -75,7 +75,7 @@ const serviceSchema = {
     telephone: '(727) 233-5223',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '3600 Galileo Dr',
+      streetAddress: '3600 Galileo Dr, Suite 104',
       addressLocality: 'Trinity',
       addressRegion: 'FL',
       postalCode: '34655',
