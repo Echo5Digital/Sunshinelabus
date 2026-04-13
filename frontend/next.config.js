@@ -33,6 +33,36 @@ const nextConfig = {
         destination: '/clinical-lab-services-trinity-fl',
         permanent: true,
       },
+      {
+        source: '/medical-laboratory-services-about-us',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/medical-laboratory-services-resources',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/medical-laboratory-services-laboratory-schedules',
+        destination: '/book-appointment',
+        permanent: true,
+      },
+      {
+        source: '/medical-laboratory-services-careers',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/medical-laboratory-services-send-your-referrals',
+        destination: '/book-appointment',
+        permanent: true,
+      },
+      {
+        source: '/medical-laboratory-services-our-services/drug-testing-and-molecular-testing',
+        destination: '/mobile-blood-draw-pasco-county',
+        permanent: true,
+      },
     ];
   },
 };
