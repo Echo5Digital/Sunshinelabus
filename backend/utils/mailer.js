@@ -10,6 +10,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+const CC_EMAILS = (process.env.CC_EMAILS || '')
+  .split(',')
+  .map(e => e.trim())
+  .filter(Boolean);
+
 function formatTime(timeString) {
   const [h, m] = timeString.split(':').map(Number);
   const suffix = h >= 12 ? 'PM' : 'AM';
@@ -79,7 +84,7 @@ async function sendConfirmationEmail({
   try {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
-      to: patientEmail,
+      to: [patientEmail, ...CC_EMAILS],
       subject: 'Appointment Confirmed \u2013 Sunshine Clinical Lab',
       html,
     });
@@ -273,7 +278,7 @@ async function sendAppointmentUpdatedEmail({
   try {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
-      to: patientEmail,
+      to: [patientEmail, ...CC_EMAILS],
       subject: 'Appointment Updated \u2013 Sunshine Clinical Lab',
       html,
     });
@@ -329,7 +334,7 @@ async function sendAppointmentRejectedEmail({
   try {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
-      to: patientEmail,
+      to: [patientEmail, ...CC_EMAILS],
       subject: 'Appointment Cancelled \u2013 Sunshine Clinical Lab',
       html,
     });

@@ -67,7 +67,12 @@ export function useBookingState() {
         appointment_date: bookingData.date,
         appointment_time: bookingData.timeSlot,
         patient_name: bookingData.patientName,
-        patient_dob: bookingData.patientDob || undefined,
+        patient_dob: (() => {
+        const dob = bookingData.patientDob;
+        if (!dob) return undefined;
+        const [mm, dd, yyyy] = dob.split('/');
+        return `${yyyy}-${mm}-${dd}`;
+      })(),
         patient_phone: bookingData.patientPhone,
         patient_email: bookingData.patientEmail,
         address_street: bookingData.addressStreet || undefined,
