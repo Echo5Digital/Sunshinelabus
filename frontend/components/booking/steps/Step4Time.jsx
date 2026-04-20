@@ -91,7 +91,7 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
       {!loading && !error && (slots.length > 0 || blockedSlots.length > 0) && (
         <>
           {(() => {
-            const ALL_SLOTS = generateTimeSlots('08:00', '17:00', 15);
+            const ALL_SLOTS = generateTimeSlots('08:00', '14:15', 15);
             const availableSet = new Set(slots);
             const blockedSet = new Set(blockedSlots);
             const displaySlots = ALL_SLOTS.filter((s) => availableSet.has(s) || blockedSet.has(s));

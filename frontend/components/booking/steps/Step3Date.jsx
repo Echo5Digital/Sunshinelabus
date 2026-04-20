@@ -48,10 +48,10 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
     return day === 0 ? 6 : day - 1;
   }, [calendarDays]);
 
-  // Disable a date only if its last bookable slot (16:45) is within the advance window.
+  // Disable a date only if its last bookable slot (14:00) is within the advance window.
   // This prevents valid dates from being greyed out just because their midnight < now+24h.
   const isPast = (date) => {
-    const lastSlot = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 16, 45, 0);
+    const lastSlot = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 14, 0, 0);
     return isBefore(lastSlot, minAllowedDate);
   };
 
@@ -161,7 +161,7 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
       {/* Info note */}
       <div className="flex items-start gap-2 mt-4 px-1 text-xs text-gray-400">
         <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
-        <span>We operate Monday–Friday, 8:00 AM – 5:00 PM. Bookings require {MIN_ADVANCE_HOURS}h advance notice.</span>
+        <span>We operate Monday–Friday, 8:00 AM – 2:00 PM.</span>
       </div>
       <div className="flex items-center gap-1.5 mt-2 px-1 text-xs text-gray-400">
         <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block flex-shrink-0" />

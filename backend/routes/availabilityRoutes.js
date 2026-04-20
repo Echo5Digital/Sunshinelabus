@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const supabase = require('../config/supabase');
 
-// Business hours: Mon-Fri, 08:00 – 17:00
+// Business hours: Mon-Fri, 08:00 – 14:00 (last slot 14:00)
 const BUSINESS_START = '08:00';
-const BUSINESS_END = '17:00';
+const BUSINESS_END = '14:15';
 const SLOT_INTERVAL = 15; // minutes
-const MIN_ADVANCE_HOURS = 24;
+const MIN_ADVANCE_HOURS = 0;
 
 // Generate all HH:MM time slots between start and end (exclusive)
 function generateTimeSlots(start, end, intervalMin) {
@@ -85,13 +85,6 @@ router.get('/', async (req, res) => {
       return res.json({ date, slots: [], message: 'We are closed on weekends.' });
     }
 
-    // Must be at least MIN_ADVANCE_HOURS from now
-    const now = new Date();
-    const minDate = new Date(now.getTime() + MIN_ADVANCE_HOURS * 60 * 60 * 1000);
-    if (requestedDate < minDate) {
-      return res.json({ date, slots: [], message: `Bookings require at least ${MIN_ADVANCE_HOURS} hours advance notice.` });
-    }
-
     // Parallel queries: existing appointments + time blocks for this date
     const [appointmentsResult, blocksResult] = await Promise.all([
       supabase
@@ -124,8 +117,20 @@ router.get('/', async (req, res) => {
         .map((b) => b.block_time.slice(0, 5))
     );
 
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const isToday = date === todayStr;
+
     const allSlots = generateTimeSlots(BUSINESS_START, BUSINESS_END, SLOT_INTERVAL);
-    const available = allSlots.filter((slot) => !bookedTimes.has(slot) && !blockedTimes.has(slot));
+    const available = allSlots.filter((slot) => {
+      if (bookedTimes.has(slot) || blockedTimes.has(slot)) return false;
+      if (isToday) {
+        const [h, m] = slot.split(':').map(Number);
+        const slotTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0);
+        if (slotTime <= now) return false;
+      }
+      return true;
+    });
     const blockedSlotsArr = [...blockedTimes];
 
     return res.json({ date, slots: available, blockedSlots: blockedSlotsArr });
