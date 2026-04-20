@@ -117,18 +117,23 @@ router.get('/', async (req, res) => {
         .map((b) => b.block_time.slice(0, 5))
     );
 
+    // Resolve current date and time in Eastern timezone (clinic location: Florida)
     const now = new Date();
-    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const easternParts = Object.fromEntries(
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false,
+      }).formatToParts(now).map(({ type, value }) => [type, value])
+    );
+    const todayStr = `${easternParts.year}-${easternParts.month}-${easternParts.day}`;
+    const currentTimeStr = `${easternParts.hour === '24' ? '00' : easternParts.hour}:${easternParts.minute}`;
     const isToday = date === todayStr;
 
     const allSlots = generateTimeSlots(BUSINESS_START, BUSINESS_END, SLOT_INTERVAL);
     const available = allSlots.filter((slot) => {
       if (bookedTimes.has(slot) || blockedTimes.has(slot)) return false;
-      if (isToday) {
-        const [h, m] = slot.split(':').map(Number);
-        const slotTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0);
-        if (slotTime <= now) return false;
-      }
+      if (isToday && slot <= currentTimeStr) return false;
       return true;
     });
     const blockedSlotsArr = [...blockedTimes];
