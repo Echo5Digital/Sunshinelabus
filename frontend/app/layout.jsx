@@ -1,4 +1,5 @@
 import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import ConditionalLayout from '@/components/ConditionalLayout';
 
@@ -29,6 +30,18 @@ export default function RootLayout({ children }) {
     <html lang="en" className={poppins.variable}>
       <body className="font-sans antialiased">
         <ConditionalLayout>{children}</ConditionalLayout>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QY15PCW73H"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QY15PCW73H');
+          `}
+        </Script>
       </body>
     </html>
   );
