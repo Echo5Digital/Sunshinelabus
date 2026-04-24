@@ -4,7 +4,12 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [100, 75],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+    ],
   },
   async redirects() {
     return [

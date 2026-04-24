@@ -117,6 +117,7 @@ export default function Navbar() {
 
             <NavLink href="/insurance-accepted" label="Insurance" pathname={pathname} />
             <NavLink href="/faq" label="FAQ" pathname={pathname} />
+            <NavLink href="/blog" label="Blog" pathname={pathname} />
             <NavLink href="/contact" label="Contact" pathname={pathname} />
 
             {/* <DropdownItem
@@ -211,6 +212,7 @@ export default function Navbar() {
 
                 <MobileNavLink href="/insurance-accepted" label="Insurance" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/faq" label="FAQ" onClick={() => setMobileOpen(false)} pathname={pathname} />
+                <MobileNavLink href="/blog" label="Blog" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} pathname={pathname} />
 
                 {/* <hr className="border-white/30 my-1" />
