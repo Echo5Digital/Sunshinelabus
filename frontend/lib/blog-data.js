@@ -1,15 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "Why Choose a Quest Diagnostics Alternative in Trinity FL",
-    slug: "why-choose-a-quest-diagnostics-alternative-in-trinity-fl",
-    excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers walk-in blood testing, fast results, and affordable pricing locally.",
-    image: "frontend/public/images/blog/why-choose-a-quest-diagnostics-alternative-in-trinity-fl/featured.jpg",
-    category: "blog",
-    author: "Shani",
-    readTime: "5 min",
-    date: "April 24, 2026",
-  },
-  {
     title: 'Is Mobile Blood Draw Safe and Accurate?',
     slug: 'is-mobile-blood-draw-safe-and-accurate',
     excerpt:
