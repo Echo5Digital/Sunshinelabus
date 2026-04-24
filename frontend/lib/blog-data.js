@@ -1,15 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "testing",
-    slug: "testing",
-    excerpt: "testing",
-    image: "frontend/public/images/blog/testing/featured.jpg",
-    category: "blog",
-    author: "testing",
-    readTime: "5 min",
-    date: "April 24, 2026",
-  },
-  {
     title: 'Is Mobile Blood Draw Safe and Accurate?',
     slug: 'is-mobile-blood-draw-safe-and-accurate',
     excerpt:
