@@ -1,15 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "Why You Should Check Testosterone Levels",
-    slug: "why-you-should-check-testosterone-levels",
-    excerpt: "Need a testosterone blood test in Pasco County? Sunshine Clinical Lab LLC offers fast, affordable testosterone testing with same-day options. Book today.",
-    image: "frontend/public/images/blog/why-you-should-check-testosterone-levels/featured.jpg",
-    category: "blog",
-    author: "Author",
-    readTime: "5 min",
-    date: "April 24, 2026",
-  },
-  {
     title: 'Is Mobile Blood Draw Safe and Accurate?',
     slug: 'is-mobile-blood-draw-safe-and-accurate',
     excerpt:
