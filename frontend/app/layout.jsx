@@ -16,6 +16,9 @@ export const metadata = {
   },
   description: 'Sunshine Clinical Lab in New Port Richey, FL — fast, affordable lab testing. Walk-ins welcome. Call (727) 233-5223.',
   keywords: ['clinical laboratory', 'diagnostic testing', 'blood tests', 'DNA testing', 'New Port Richey FL', 'Sunshine Clinical Lab'],
+  icons: {
+    icon: '/main-logo.webp',
+  },
   openGraph: {
     title: 'Sunshine Clinical Lab | New Port Richey, FL',
     description: 'Fast, affordable lab testing in New Port Richey, FL. Walk-ins welcome. Call (727) 233-5223.',
