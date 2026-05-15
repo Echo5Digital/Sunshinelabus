@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Is Same-Day Lab Testing Available in Trinity?",
+    slug: "is-same-day-lab-testing-available-in-trinity",
+    excerpt: "Looking for a clinical lab in Trinity FL with same-day testing? Sunshine Clinical Lab offers fast, CLIA-certified blood work, drug testing, and more. Walk-ins welcome.",
+    image: "/images/blog/is-same-day-lab-testing-available-in-trinity/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "May 15, 2026",
+  },
+  {
     title: 'Is Mobile Blood Draw Safe and Accurate?',
     slug: 'is-mobile-blood-draw-safe-and-accurate',
     excerpt:
