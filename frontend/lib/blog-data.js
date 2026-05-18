@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "How Early Can a Blood Test Reveal Baby Gender?",
+    slug: "how-early-can-a-blood-test-reveal-baby-gender",
+    excerpt: "Find out how early a blood test can reveal baby gender. Learn about cfDNA testing accuracy, timelines, and professional lab options at Sunshine Clinical Lab.",
+    image: "/images/blog/how-early-can-a-blood-test-reveal-baby-gender/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "May 18, 2026",
+  },
+  {
     title: 'Is Mobile Blood Draw Safe and Accurate?',
     slug: 'is-mobile-blood-draw-safe-and-accurate',
     excerpt:
