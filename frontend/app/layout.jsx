@@ -31,12 +31,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY15PCW73H"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18115671891"></script>
         <script dangerouslySetInnerHTML={{__html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-QY15PCW73H');
+          gtag('config', 'AW-18115671891');
         `}} />
       </head>
       <body className="font-sans antialiased">
