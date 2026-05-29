@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Where to Get Blood Work Done in Trinity, FL (Complete Guide)",
+    slug: "where-to-get-blood-work-done-in-trinity-fl-complete-guide",
+    excerpt: "Looking for blood work in Trinity, FL? Explore walk-in labs, mobile blood draws, and affordable testing options. See why locals trust Sunshine Clinical Lab LLC.",
+    image: "/images/blog/where-to-get-blood-work-done-in-trinity-fl-complete-guide/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "May 29, 2026",
+  },
+  {
     title: "How Early Can a Blood Test Reveal Baby Gender?",
     slug: "how-early-can-a-blood-test-reveal-baby-gender",
     excerpt: "Find out how early a blood test can reveal baby gender. Learn about cfDNA testing accuracy, timelines, and professional lab options at Sunshine Clinical Lab.",
