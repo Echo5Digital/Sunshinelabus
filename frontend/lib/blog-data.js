@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "What Documents Do You Need for a Legal DNA Test?",
+    slug: "what-documents-do-you-need-for-a-legal-dna-test",
+    excerpt: "Learn what documents are needed for a legal DNA test, from photo ID to consent forms. Sunshine Clinical Lab LLC explains the full checklist and process.",
+    image: "/images/blog/what-documents-do-you-need-for-a-legal-dna-test/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "June 12, 2026",
+  },
+  {
     title: "Where to Get Blood Work Done in Trinity, FL (Complete Guide)",
     slug: "where-to-get-blood-work-done-in-trinity-fl-complete-guide",
     excerpt: "Looking for blood work in Trinity, FL? Explore walk-in labs, mobile blood draws, and affordable testing options. See why locals trust Sunshine Clinical Lab LLC.",
