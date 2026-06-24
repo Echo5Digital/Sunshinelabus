@@ -3,7 +3,7 @@ import { Droplets, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Hematology | Sunshine Clinical Lab',
+  title: 'Hematology',
   description: 'Complete blood count, differential analysis, and specialized blood disorder testing with high precision.',
 };
 

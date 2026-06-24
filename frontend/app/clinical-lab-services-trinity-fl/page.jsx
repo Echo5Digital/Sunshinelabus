@@ -1,7 +1,7 @@
 import ClinicalLabServicesPage from '@/components/ClinicalLabServicesPage';
 
 export const metadata = {
-  title: 'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab, Fast Results | Sunshine Clinical Lab',
+  title: 'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab, Fast Results',
   description:
     'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome, next day results for many tests. Call (727) 233-5223.',
   keywords: [

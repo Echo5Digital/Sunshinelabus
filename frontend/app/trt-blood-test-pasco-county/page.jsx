@@ -1,7 +1,7 @@
 import TRTBloodTestPage from '@/components/TRTBloodTestPage';
 
 export const metadata = {
-  title: 'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab | Sunshine Clinical Lab',
+  title: 'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab',
   description:
     'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Next-day results for many tests. Call (727) 233-5223.',
   keywords: [

@@ -1,7 +1,7 @@
 import GenderRevealPage from '@/components/GenderRevealPage';
 
 export const metadata = {
-  title: 'Gender Reveal Blood Test Florida | Peekaboo Test as Early as 7 Weeks | Sunshine Clinical Lab Trinity FL',
+  title: 'Gender Reveal Blood Test Florida | Peekaboo Test as Early as 7 Weeks | Trinity FL',
   description:
     'Find out your baby\'s gender as early as 7 weeks with the Peekaboo gender reveal blood test at Sunshine Clinical Lab in Trinity, FL. Simple, accurate, exciting. Call (727) 233-5223.',
   keywords: [
@@ -17,7 +17,7 @@ export const metadata = {
     'gender reveal Pasco County',
   ],
   openGraph: {
-    title: 'Gender Reveal Blood Test Florida | Peekaboo Test as Early as 7 Weeks | Sunshine Clinical Lab Trinity FL',
+    title: 'Gender Reveal Blood Test Florida | Peekaboo Test as Early as 7 Weeks | Trinity FL',
     description:
       'Find out your baby\'s gender as early as 7 weeks with the Peekaboo gender reveal blood test at Sunshine Clinical Lab in Trinity, FL. Simple, accurate, exciting. Call (727) 233-5223.',
     url: 'https://sunshineclinicallab.com/gender-reveal-testing-florida',

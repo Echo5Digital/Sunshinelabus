@@ -1,7 +1,7 @@
 import InsuranceAcceptedPage from '@/components/InsuranceAcceptedPage';
 
 export const metadata = {
-  title: 'Insurance Accepted | Clinical Lab Trinity FL & Pasco County | Sunshine Clinical Lab',
+  title: 'Insurance Accepted | Clinical Lab Trinity FL & Pasco County',
   description:
     'Sunshine Clinical Lab in Trinity, FL accepts most major insurance plans for blood work and lab testing. Affordable self-pay options available. Verify coverage — call (727) 233-5223.',
   keywords: [

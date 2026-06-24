@@ -3,7 +3,7 @@ import { Dna, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Molecular Testing | Sunshine Clinical Lab',
+  title: 'Molecular Testing',
   description: 'PCR-based infectious disease detection and genetic mutation testing with rapid results.',
 };
 

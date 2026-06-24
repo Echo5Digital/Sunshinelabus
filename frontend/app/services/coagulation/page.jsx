@@ -3,7 +3,7 @@ import { Activity, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Coagulation Service | Sunshine Clinical Lab',
+  title: 'Coagulation Service',
   description: 'PT, PTT, INR, fibrinogen, and advanced coagulation factor analysis for bleeding disorders.',
 };
 

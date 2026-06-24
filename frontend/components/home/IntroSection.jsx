@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
@@ -13,6 +13,10 @@ const itemVariants = {
 export default function IntroSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = true;
+  }, []);
 
   return (
     <section className="py-20 bg-[#EBF5FB] overflow-hidden" ref={ref}>
@@ -28,6 +32,7 @@ export default function IntroSection() {
           >
             <div className="relative h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] rounded-3xl overflow-hidden shadow-2xl shadow-sunshine-blue/10">
               <video
+                ref={videoRef}
                 src="/main-img2.mp4"
                 autoPlay
                 muted

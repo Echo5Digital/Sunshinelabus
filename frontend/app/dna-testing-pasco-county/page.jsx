@@ -1,7 +1,7 @@
 import DNATestingPage from '@/components/DNATestingPage';
 
 export const metadata = {
-  title: 'DNA Testing Trinity FL & Pasco County | Legal, Paternity & Immigration DNA | Sunshine Clinical Lab',
+  title: 'DNA Testing Trinity FL & Pasco County | Legal, Paternity & Immigration DNA',
   description:
     'Professional DNA testing in Trinity, FL — legal paternity, immigration DNA (USCIS), and relationship testing. Chain-of-custody protocols. Serving Pasco County. Call (727) 233-5223.',
   keywords: [

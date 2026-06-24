@@ -3,7 +3,7 @@ import { Shield, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Immunochemistry | Sunshine Clinical Lab',
+  title: 'Immunochemistry',
   description: 'Hormone panels, tumor markers, allergy testing, and advanced immunoassay diagnostics.',
 };
 

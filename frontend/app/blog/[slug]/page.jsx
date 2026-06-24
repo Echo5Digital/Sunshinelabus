@@ -4,10 +4,10 @@ import BlogPostPage from '@/components/BlogPostPage';
 export async function generateMetadata({ params }) {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   if (!post) {
-    return { title: 'Article Not Found | Sunshine Clinical Lab' };
+    return { title: 'Article Not Found' };
   }
   return {
-    title: `${post.title} | Sunshine Clinical Lab`,
+    title: post.title,
     description: post.excerpt,
     openGraph: {
       title: post.title,

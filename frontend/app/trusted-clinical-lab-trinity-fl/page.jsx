@@ -1,8 +1,8 @@
 export const metadata = {
-  title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab",
-  description: "Sunshine Clinical Lab in Trinity, FL — offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today.",
-  openGraph: { title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab", description: "Sunshine Clinical Lab in Trinity, FL — offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today.", url: "https://www.sunshinelabus.com/trusted-clinical-lab-trinity-fl", type: "website" },
-  twitter: { card: "summary_large_image", title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab", description: "Sunshine Clinical Lab in Trinity, FL — offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today." },
+  title: "Clinical Lab in Trinity FL",
+  description: "Sunshine Clinical Lab in Trinity, FL â€” offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today.",
+  openGraph: { title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab", description: "Sunshine Clinical Lab in Trinity, FL â€” offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today.", url: "https://www.sunshinelabus.com/trusted-clinical-lab-trinity-fl", type: "website" },
+  twitter: { card: "summary_large_image", title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab", description: "Sunshine Clinical Lab in Trinity, FL â€” offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today." },
 };
 
 export default function Page() {

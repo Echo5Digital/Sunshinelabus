@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
@@ -614,6 +614,10 @@ const FAQ_SECTIONS = [
 export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const toggleFaq = (i) => setOpenFaq((prev) => (prev === i ? null : i));
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = true;
+  }, []);
 
   return (
     <div className="bg-sunshine-soft min-h-screen">
@@ -720,6 +724,7 @@ export default function FAQPage() {
       <div className="relative bg-sunshine-soft">
         {/* Video background — loops continuously */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted

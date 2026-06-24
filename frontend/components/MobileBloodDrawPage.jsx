@@ -242,6 +242,11 @@ export default function MobileBloodDrawPage() {
     return () => window.removeEventListener('resize', check);
   }, []);
 
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = true;
+  }, []);
+
   // Split FAQ into 2 columns (matching homepage FAQSection)
   const col1 = FAQ_ITEMS.slice(0, 4);
   const col2 = FAQ_ITEMS.slice(4);
@@ -481,6 +486,7 @@ export default function MobileBloodDrawPage() {
         {/* Background video */}
         <div className="absolute inset-0">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop

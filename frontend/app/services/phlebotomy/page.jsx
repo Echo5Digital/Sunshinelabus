@@ -3,7 +3,7 @@ import { Syringe, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Phlebotomy Service | Sunshine Clinical Lab',
+  title: 'Phlebotomy Service',
   description: 'Professional blood draw services available at our facility or via mobile phlebotomy visits.',
 };
 

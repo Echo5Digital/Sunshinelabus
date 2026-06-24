@@ -2,7 +2,7 @@ import MobileBloodDrawPage from '@/components/MobileBloodDrawPage';
 
 export const metadata = {
   title:
-    'Mobile Blood Draw Pasco County & Trinity FL | Home Phlebotomy | Sunshine Clinical Lab',
+    'Mobile Blood Draw Pasco County & Trinity FL | Home Phlebotomy',
   description:
     "Professional mobile blood draw service in Trinity, New Port Richey, Land O' Lakes & Pasco County. Experienced phlebotomists come to your home. Call (727) 233-5223.",
   keywords: [
@@ -145,7 +145,7 @@ const faqSchema = {
       name: 'How long does a mobile blood draw appointment take?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Most mobile appointments take 15 to 30 minutes, depending on the number of tests. Our phlebotomists are efficient and professional — no unnecessary delays.',
+        text: 'Most mobile appointments take 15 to 30 minutes, depending on the number of tests. Our phlebotomists are efficient and professional â€” no unnecessary delays.',
       },
     },
     {
@@ -153,7 +153,7 @@ const faqSchema = {
       name: 'Can I get TRT blood work done through a mobile blood draw?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more — all drawn at your home with the same fast turnaround.',
+        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more â€” all drawn at your home with the same fast turnaround.',
       },
     },
   ],

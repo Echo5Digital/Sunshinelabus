@@ -1,7 +1,7 @@
 import BlogPostTRT from '@/components/BlogPostTRT';
 
 export const metadata = {
-  title: 'How Often Should You Get Blood Work While on TRT? | Sunshine Clinical Lab Trinity FL',
+  title: 'How Often Should You Get Blood Work While on TRT? | Trinity FL',
   description:
     'Learn how often you should get blood work while on TRT, what tests are required, and where to get fast, reliable TRT blood testing in Trinity, FL at Sunshine Clinical Lab.',
   keywords: [
@@ -14,7 +14,7 @@ export const metadata = {
     'Sunshine Clinical Lab TRT',
   ],
   openGraph: {
-    title: 'How Often Should You Get Blood Work While on TRT? | Sunshine Clinical Lab Trinity FL',
+    title: 'How Often Should You Get Blood Work While on TRT? | Trinity FL',
     description:
       'Learn how often you should get blood work while on TRT, what tests are required, and where to get fast, reliable TRT blood testing in Trinity, FL at Sunshine Clinical Lab.',
     url: 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',

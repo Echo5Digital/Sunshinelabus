@@ -1,7 +1,7 @@
 import FAQPage from '@/components/FAQPage';
 
 export const metadata = {
-  title: 'FAQ | Clinical Lab Trinity FL & Pasco County | Sunshine Clinical Lab',
+  title: 'FAQ | Clinical Lab Trinity FL & Pasco County',
   description:
     'Frequently asked questions about Sunshine Clinical Lab in Trinity, FL — services, insurance, appointments, mobile blood draws, DNA testing, TRT labs, gender reveal tests & more.',
   keywords: [
@@ -20,7 +20,7 @@ export const metadata = {
     'gender reveal blood test questions',
   ],
   openGraph: {
-    title: 'FAQ | Clinical Lab Trinity FL & Pasco County | Sunshine Clinical Lab',
+    title: 'FAQ | Clinical Lab Trinity FL & Pasco County',
     description:
       'Frequently asked questions about Sunshine Clinical Lab in Trinity, FL — services, insurance, appointments, mobile blood draws, DNA testing, TRT labs, gender reveal tests & more.',
     url: 'https://sunshineclinicallab.com/faq',

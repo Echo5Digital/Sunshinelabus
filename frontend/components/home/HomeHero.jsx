@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -16,6 +17,11 @@ const itemVariants = {
 };
 
 export default function HomeHero() {
+  const videoRef = useRef(null);
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.muted = true;
+  }, []);
+
   return (
     <section
       className="relative w-full min-h-screen flex items-center overflow-hidden"
@@ -24,6 +30,7 @@ export default function HomeHero() {
       {/* Background video with dark gradient overlay */}
       <div className="absolute inset-0">
         <video
+          ref={videoRef}
           src="/hm1.mp4"
           autoPlay
           muted

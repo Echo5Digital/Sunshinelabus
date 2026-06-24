@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
@@ -223,6 +223,14 @@ function FaqItem({ q, a, index, isOpen, onToggle }) {
 export default function DNATestingPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const toggleFaq = (i) => setOpenFaq((prev) => (prev === i ? null : i));
+  const videoRef1 = useRef(null);
+  const videoRef2 = useRef(null);
+  const videoRef3 = useRef(null);
+  useEffect(() => {
+    if (videoRef1.current) videoRef1.current.muted = true;
+    if (videoRef2.current) videoRef2.current.muted = true;
+    if (videoRef3.current) videoRef3.current.muted = true;
+  }, []);
 
   // Split FAQ into 2 columns (4 + 3)
   const col1 = DNA_FAQ_ITEMS.slice(0, 4);
@@ -379,6 +387,7 @@ export default function DNATestingPage() {
       <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0d1b2a' }}>
         <div className="absolute inset-0 overflow-hidden">
           <video
+            ref={videoRef1}
             autoPlay
             loop
             muted
@@ -501,6 +510,7 @@ export default function DNATestingPage() {
       <section className="py-20 bg-[#F7FBFF] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <video
+            ref={videoRef2}
             autoPlay
             loop
             muted
@@ -704,6 +714,7 @@ export default function DNATestingPage() {
       <section className="py-20 bg-[#EBF5FB] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <video
+            ref={videoRef3}
             autoPlay
             loop
             muted

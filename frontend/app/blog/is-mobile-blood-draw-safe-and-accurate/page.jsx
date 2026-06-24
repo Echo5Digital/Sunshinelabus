@@ -2,7 +2,7 @@ import BlogPostMBD from '@/components/BlogPostMBD';
 
 export const metadata = {
   title:
-    'Is Mobile Blood Draw Safe and Accurate? | Sunshine Clinical Lab Pasco County',
+    'Is Mobile Blood Draw Safe and Accurate? | Pasco County',
   description:
     'Wondering if mobile blood draw is safe and accurate? Learn how it works, its reliability, and why Sunshine Clinical Lab offers trusted mobile blood draw services in Pasco County.',
   keywords: [

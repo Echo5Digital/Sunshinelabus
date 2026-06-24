@@ -18,7 +18,7 @@ import FinalCTABanner from '@/components/home/FinalCTABanner';
 
 // ── SEO Metadata ──────────────────────────────────────────────────────────────
 export const metadata = {
-  title: 'Clinical Lab Trinity FL | Fast Results, Walk-Ins Welcome | Sunshine Clinical Lab',
+  title: 'Clinical Lab Trinity FL | Fast Results, Walk-Ins Welcome',
   description:
     'Sunshine Clinical Lab in Trinity, FL — fast turnaround, walk-in blood work, mobile blood draws, TRT monitoring, DNA testing & gender reveal tests. Serving Pasco County & Tampa Bay. Call (727) 233-5223.',
   keywords: [

@@ -3,7 +3,7 @@ import { TestTube, CheckCircle, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 export const metadata = {
-  title: 'Drug Testing | Sunshine Clinical Lab',
+  title: 'Drug Testing',
   description: 'Urine, hair follicle, and oral fluid drug screening panels for workplace and clinical needs.',
 };
 
