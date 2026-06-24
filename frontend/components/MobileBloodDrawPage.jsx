@@ -244,7 +244,10 @@ export default function MobileBloodDrawPage() {
 
   const videoRef = useRef(null);
   useEffect(() => {
-    if (videoRef.current) videoRef.current.muted = true;
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
+    }
   }, []);
 
   // Split FAQ into 2 columns (matching homepage FAQSection)

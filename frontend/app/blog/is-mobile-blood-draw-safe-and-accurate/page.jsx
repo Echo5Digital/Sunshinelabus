@@ -25,6 +25,9 @@ export const metadata = {
     type: 'article',
     publishedTime: '2025-04-24',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/blog/is-mobile-blood-draw-safe-and-accurate',
+  },
 };
 
 const articleSchema = {

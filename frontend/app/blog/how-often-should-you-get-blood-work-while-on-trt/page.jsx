@@ -23,6 +23,9 @@ export const metadata = {
     type: 'article',
     publishedTime: '2025-04-24',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',
+  },
 };
 
 const articleSchema = {

@@ -28,6 +28,9 @@ export const metadata = {
     'blood draw at home',
     'mobile lab services',
   ],
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/about',
+  },
 };
 
 const coreValues = [

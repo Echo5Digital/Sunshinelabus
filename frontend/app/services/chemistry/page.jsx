@@ -5,6 +5,9 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 export const metadata = {
   title: 'Chemistry',
   description: 'Comprehensive metabolic panels, liver function, kidney function, and electrolyte testing.',
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/services/chemistry',
+  },
 };
 
 const tests = [

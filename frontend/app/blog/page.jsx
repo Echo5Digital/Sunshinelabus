@@ -24,6 +24,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/blog',
+  },
 };
 
 const localBusinessSchema = {

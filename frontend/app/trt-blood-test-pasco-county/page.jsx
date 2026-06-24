@@ -26,6 +26,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/trt-blood-test-pasco-county',
+  },
 };
 
 const localBusinessSchema = {

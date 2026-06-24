@@ -17,6 +17,9 @@ export async function generateMetadata({ params }) {
       locale: 'en_US',
       type: 'article',
     },
+    alternates: {
+      canonical: `https://sunshineclinicallab.com/blog/${params.slug}`,
+    },
   };
 }
 

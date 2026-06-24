@@ -15,7 +15,10 @@ export default function IntroSection() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   const videoRef = useRef(null);
   useEffect(() => {
-    if (videoRef.current) videoRef.current.muted = true;
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
+    }
   }, []);
 
   return (

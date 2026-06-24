@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-05-18",
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/blog/how-early-can-a-blood-test-reveal-baby-gender',
+  },
 };
 
 const articleSchema = {

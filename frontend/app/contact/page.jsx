@@ -7,6 +7,9 @@ export const metadata = {
   title: 'Contact Us | Sunshine Clinical Laboratory',
   description:
     'Get in touch with Sunshine Clinical Laboratory. Contact us by phone, email, or visit us at our Houston location.',
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/contact',
+  },
 };
 
 export default function ContactPage() {

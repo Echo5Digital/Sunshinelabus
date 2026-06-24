@@ -11,7 +11,10 @@ export const metadata = {
     card: "summary_large_image",
     title: "Clinical Lab in Trinity FL | Sunshine Clinical Lab",
     description: "Sunshine Clinical Lab in Trinity, FL â€” offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today."
-  }
+  },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/clinical-lab-trinity-flWS',
+  },
 };
 
 export default function Page() {

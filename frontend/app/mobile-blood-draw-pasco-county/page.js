@@ -25,6 +25,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/mobile-blood-draw-pasco-county',
+  },
 };
 
 const localBusinessSchema = {

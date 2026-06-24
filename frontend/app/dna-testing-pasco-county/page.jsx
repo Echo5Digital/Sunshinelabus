@@ -26,6 +26,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/dna-testing-pasco-county',
+  },
 };
 
 const localBusinessSchema = {

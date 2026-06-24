@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-05-29",
   },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/blog/where-to-get-blood-work-done-in-trinity-fl-complete-guide',
+  },
 };
 
 const articleSchema = {

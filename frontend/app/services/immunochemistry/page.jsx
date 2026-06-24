@@ -5,6 +5,9 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 export const metadata = {
   title: 'Immunochemistry',
   description: 'Hormone panels, tumor markers, allergy testing, and advanced immunoassay diagnostics.',
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/services/immunochemistry',
+  },
 };
 
 const tests = [

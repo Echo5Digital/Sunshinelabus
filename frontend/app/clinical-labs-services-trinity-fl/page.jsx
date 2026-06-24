@@ -11,7 +11,10 @@ export const metadata = {
     card: "summary_large_image",
     title: "Clinical Lab Services Trinity FL - SUNSHINE CLINICAL LAB",
     description: "SUNSHINE CLINICAL LAB in Trinity, FL: fast turnaround clinical lab services - walk-in blood work, mobile phlebotomy, TRT/hormone panels, DNA testing."
-  }
+  },
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/clinical-labs-services-trinity-fl',
+  },
 };
 
 export default function Page() {

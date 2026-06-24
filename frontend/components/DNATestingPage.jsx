@@ -227,9 +227,12 @@ export default function DNATestingPage() {
   const videoRef2 = useRef(null);
   const videoRef3 = useRef(null);
   useEffect(() => {
-    if (videoRef1.current) videoRef1.current.muted = true;
-    if (videoRef2.current) videoRef2.current.muted = true;
-    if (videoRef3.current) videoRef3.current.muted = true;
+    [videoRef1, videoRef2, videoRef3].forEach((ref) => {
+      if (ref.current) {
+        ref.current.muted = true;
+        ref.current.volume = 0;
+      }
+    });
   }, []);
 
   // Split FAQ into 2 columns (4 + 3)

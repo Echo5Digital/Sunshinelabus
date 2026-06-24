@@ -5,6 +5,9 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 export const metadata = {
   title: 'Phlebotomy Service',
   description: 'Professional blood draw services available at our facility or via mobile phlebotomy visits.',
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/services/phlebotomy',
+  },
 };
 
 const services = [

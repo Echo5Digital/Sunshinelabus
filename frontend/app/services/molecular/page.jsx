@@ -5,6 +5,9 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 export const metadata = {
   title: 'Molecular Testing',
   description: 'PCR-based infectious disease detection and genetic mutation testing with rapid results.',
+  alternates: {
+    canonical: 'https://sunshineclinicallab.com/services/molecular',
+  },
 };
 
 const tests = [
