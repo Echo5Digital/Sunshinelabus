@@ -29,7 +29,7 @@ export const metadata = {
     'mobile lab services',
   ],
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/about',
+    canonical: 'https://www.sunshinelabus.com/about',
   },
 };
 

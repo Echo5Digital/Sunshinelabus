@@ -13,7 +13,7 @@ export const metadata = {
     description: "Sunshine Clinical Lab in Trinity, FL accepts most insurance for walk-in & mobile testing. Fast results, TRT & hormone panels, DNA & paternity testing."
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/lab-testing-insurances-accepteds-trinity-fl',
+    canonical: 'https://www.sunshinelabus.com/lab-testing-insurances-accepteds-trinity-fl',
   },
 };
 

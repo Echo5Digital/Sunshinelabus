@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Drug Testing',
   description: 'Urine, hair follicle, and oral fluid drug screening panels for workplace and clinical needs.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/drug-testing',
+    canonical: 'https://www.sunshinelabus.com/services/drug-testing',
   },
 };
 

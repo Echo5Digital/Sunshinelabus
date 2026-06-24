@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Book an Appointment — Sunshine Clinical Lab LLC',
   description: 'Schedule your laboratory visit at Sunshine Clinical Lab LLC. Our guided booking wizard makes it easy to pick your service, date, and time.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/book-appointment',
+    canonical: 'https://www.sunshinelabus.com/book-appointment',
   },
 };
 

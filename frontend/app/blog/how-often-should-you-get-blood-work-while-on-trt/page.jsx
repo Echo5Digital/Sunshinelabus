@@ -17,14 +17,14 @@ export const metadata = {
     title: 'How Often Should You Get Blood Work While on TRT? | Trinity FL',
     description:
       'Learn how often you should get blood work while on TRT, what tests are required, and where to get fast, reliable TRT blood testing in Trinity, FL at Sunshine Clinical Lab.',
-    url: 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',
+    url: 'https://www.sunshinelabus.com/blog/how-often-should-you-get-blood-work-while-on-trt',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'article',
     publishedTime: '2025-04-24',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',
+    canonical: 'https://www.sunshinelabus.com/blog/how-often-should-you-get-blood-work-while-on-trt',
   },
 };
 
@@ -37,18 +37,18 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: 'Sunshine Clinical Lab',
-    url: 'https://sunshineclinicallab.com',
+    url: 'https://www.sunshinelabus.com',
   },
   publisher: {
     '@type': 'Organization',
     name: 'Sunshine Clinical Lab',
-    url: 'https://sunshineclinicallab.com',
+    url: 'https://www.sunshinelabus.com',
   },
   datePublished: '2025-04-24',
-  url: 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',
+  url: 'https://www.sunshinelabus.com/blog/how-often-should-you-get-blood-work-while-on-trt',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://sunshineclinicallab.com/blog/how-often-should-you-get-blood-work-while-on-trt',
+    '@id': 'https://www.sunshinelabus.com/blog/how-often-should-you-get-blood-work-while-on-trt',
   },
   keywords:
     'TRT blood test frequency, what blood tests are needed for TRT monitoring, TRT blood test near me',

@@ -20,13 +20,13 @@ export const metadata = {
       'Mobile Blood Draw Pasco County & Trinity FL | Home Phlebotomy | Sunshine Clinical Lab',
     description:
       "Professional mobile blood draw service in Trinity, New Port Richey, Land O' Lakes & Pasco County. Call (727) 233-5223.",
-    url: 'https://sunshineclinicallab.com/mobile-blood-draw-pasco-county',
+    url: 'https://www.sunshinelabus.com/mobile-blood-draw-pasco-county',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/mobile-blood-draw-pasco-county',
+    canonical: 'https://www.sunshinelabus.com/mobile-blood-draw-pasco-county',
   },
 };
 
@@ -35,7 +35,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

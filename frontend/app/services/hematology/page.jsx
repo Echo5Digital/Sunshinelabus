@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Hematology',
   description: 'Complete blood count, differential analysis, and specialized blood disorder testing with high precision.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/hematology',
+    canonical: 'https://www.sunshinelabus.com/services/hematology',
   },
 };
 

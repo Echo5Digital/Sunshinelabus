@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Immunochemistry',
   description: 'Hormone panels, tumor markers, allergy testing, and advanced immunoassay diagnostics.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/immunochemistry',
+    canonical: 'https://www.sunshinelabus.com/services/immunochemistry',
   },
 };
 

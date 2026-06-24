@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Molecular Testing',
   description: 'PCR-based infectious disease detection and genetic mutation testing with rapid results.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/molecular',
+    canonical: 'https://www.sunshinelabus.com/services/molecular',
   },
 };
 

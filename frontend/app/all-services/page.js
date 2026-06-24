@@ -18,7 +18,7 @@ export const metadata = {
     title: 'All Lab Services | Sunshine Clinical Lab – Trinity, FL',
     description:
       'Browse all services at Sunshine Clinical Lab: general testing, mobile blood draw, TRT monitoring, DNA testing, and gender reveal testing in Pasco County, FL.',
-    url: 'https://sunshineclinicallab.com/all-services',
+    url: 'https://www.sunshinelabus.com/all-services',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
@@ -30,7 +30,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

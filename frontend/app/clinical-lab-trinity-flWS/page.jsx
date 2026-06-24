@@ -13,7 +13,7 @@ export const metadata = {
     description: "Sunshine Clinical Lab in Trinity, FL â€” offering fast, reliable lab testing with personalized service. Walk-in or schedule an appointment today."
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/clinical-lab-trinity-flWS',
+    canonical: 'https://www.sunshinelabus.com/clinical-lab-trinity-flWS',
   },
 };
 

@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Clinical Lab Services New Port Richey',
   description: 'Walk-in clinical lab testing for New Port Richey patients. Comprehensive blood works, fast results, and accepted insurance.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/clinical-lab-new-port-richey',
+    canonical: 'https://www.sunshinelabus.com/clinical-lab-new-port-richey',
   }
 };
 

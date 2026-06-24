@@ -19,13 +19,13 @@ export const metadata = {
     title: 'Blog & Articles | Sunshine Clinical Lab',
     description:
       'Health insights, lab tips, and wellness updates from Sunshine Clinical Lab in New Port Richey, FL.',
-    url: 'https://sunshineclinicallab.com/blog',
+    url: 'https://www.sunshinelabus.com/blog',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/blog',
+    canonical: 'https://www.sunshinelabus.com/blog',
   },
 };
 
@@ -33,7 +33,7 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   telephone: '+1-727-233-5223',
   address: {
     '@type': 'PostalAddress',

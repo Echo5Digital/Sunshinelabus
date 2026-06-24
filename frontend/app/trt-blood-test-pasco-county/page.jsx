@@ -21,13 +21,13 @@ export const metadata = {
       'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab | Sunshine Clinical Lab',
     description:
       'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Next-day results for many tests. Call (727) 233-5223.',
-    url: 'https://sunshineclinicallab.com/trt-blood-test-pasco-county',
+    url: 'https://www.sunshinelabus.com/trt-blood-test-pasco-county',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/trt-blood-test-pasco-county',
+    canonical: 'https://www.sunshinelabus.com/trt-blood-test-pasco-county',
   },
 };
 
@@ -36,7 +36,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

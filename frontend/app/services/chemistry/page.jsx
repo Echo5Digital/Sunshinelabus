@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Chemistry',
   description: 'Comprehensive metabolic panels, liver function, kidney function, and electrolyte testing.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/chemistry',
+    canonical: 'https://www.sunshinelabus.com/services/chemistry',
   },
 };
 

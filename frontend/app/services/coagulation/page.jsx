@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Coagulation Service',
   description: 'PT, PTT, INR, fibrinogen, and advanced coagulation factor analysis for bleeding disorders.',
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/services/coagulation',
+    canonical: 'https://www.sunshinelabus.com/services/coagulation',
   },
 };
 

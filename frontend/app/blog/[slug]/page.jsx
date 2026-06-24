@@ -1,4 +1,4 @@
-import { BLOG_POSTS } from '@/lib/blog-data';
+﻿import { BLOG_POSTS } from '@/lib/blog-data';
 import BlogPostPage from '@/components/BlogPostPage';
 
 export async function generateMetadata({ params }) {
@@ -12,13 +12,13 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://sunshineclinicallab.com/blog/${post.slug}`,
+      url: `https://www.sunshinelabus.com/blog/${post.slug}`,
       siteName: 'Sunshine Clinical Lab',
       locale: 'en_US',
       type: 'article',
     },
     alternates: {
-      canonical: `https://sunshineclinicallab.com/blog/${params.slug}`,
+      canonical: `https://www.sunshinelabus.com/blog/${params.slug}`,
     },
   };
 }

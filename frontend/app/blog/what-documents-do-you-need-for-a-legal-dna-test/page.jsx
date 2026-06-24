@@ -10,7 +10,7 @@ export const metadata = {
     publishedTime: "2026-06-12",
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/blog/what-documents-do-you-need-for-a-legal-dna-test',
+    canonical: 'https://www.sunshinelabus.com/blog/what-documents-do-you-need-for-a-legal-dna-test',
   },
 };
 

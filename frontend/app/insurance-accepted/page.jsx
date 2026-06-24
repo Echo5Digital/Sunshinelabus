@@ -16,13 +16,13 @@ export const metadata = {
       'Insurance Accepted | Clinical Lab Trinity FL & Pasco County | Sunshine Clinical Lab',
     description:
       'Sunshine Clinical Lab in Trinity, FL accepts most major insurance plans for blood work and lab testing. Affordable self-pay options available. Verify coverage — call (727) 233-5223.',
-    url: 'https://sunshineclinicallab.com/insurance-accepted',
+    url: 'https://www.sunshinelabus.com/insurance-accepted',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/insurance-accepted',
+    canonical: 'https://www.sunshinelabus.com/insurance-accepted',
   },
 };
 
@@ -31,7 +31,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

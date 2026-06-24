@@ -1,10 +1,10 @@
-export const metadata = {
+﻿export const metadata = {
   title: "Clinical Lab Services Trinity FL - SUNSHINE CLINICAL LAB",
   description: "SUNSHINE CLINICAL LAB in Trinity, FL: fast turnaround clinical lab services - walk-in blood work, mobile phlebotomy, TRT/hormone panels, DNA testing.",
   openGraph: {
     title: "Clinical Lab Services Trinity FL - SUNSHINE CLINICAL LAB",
     description: "SUNSHINE CLINICAL LAB in Trinity, FL: fast turnaround clinical lab services - walk-in blood work, mobile phlebotomy, TRT/hormone panels, DNA testing.",
-    url: "https://www.sunshineclinicallab.com/clinical-lab-services-trinity-fl",
+    url: "https://www.sunshinelabus.com/clinical-lab-services-trinity-fl",
     type: "website"
   },
   twitter: {
@@ -13,7 +13,7 @@ export const metadata = {
     description: "SUNSHINE CLINICAL LAB in Trinity, FL: fast turnaround clinical lab services - walk-in blood work, mobile phlebotomy, TRT/hormone panels, DNA testing."
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/clinical-labs-services-trinity-fl',
+    canonical: 'https://www.sunshinelabus.com/clinical-labs-services-trinity-fl',
   },
 };
 
@@ -22,7 +22,7 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "name": "SUNSHINE CLINICAL LAB LLC",
-    "url": "https://www.sunshineclinicallab.com/clinical-lab-services-trinity-fl",
+    "url": "https://www.sunshinelabus.com/clinical-lab-services-trinity-fl",
     "telephone": "+1-727-555-0123",
     "address": {
       "@type": "PostalAddress",

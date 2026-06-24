@@ -21,13 +21,13 @@ export const metadata = {
       'DNA Testing Trinity FL & Pasco County | Legal, Paternity & Immigration DNA | Sunshine Clinical Lab',
     description:
       'Professional DNA testing in Trinity, FL — legal paternity, immigration DNA (USCIS), and relationship testing. Chain-of-custody protocols. Serving Pasco County. Call (727) 233-5223.',
-    url: 'https://sunshineclinicallab.com/dna-testing-pasco-county',
+    url: 'https://www.sunshinelabus.com/dna-testing-pasco-county',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/dna-testing-pasco-county',
+    canonical: 'https://www.sunshinelabus.com/dna-testing-pasco-county',
   },
 };
 
@@ -36,7 +36,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

@@ -19,13 +19,13 @@ export const metadata = {
       'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab, Fast Results | Sunshine Clinical Lab',
     description:
       'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome, next day results for many tests. Call (727) 233-5223.',
-    url: 'https://sunshineclinicallab.com/clinical-lab-services-trinity-fl',
+    url: 'https://www.sunshinelabus.com/clinical-lab-services-trinity-fl',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/clinical-lab-services-trinity-fl',
+    canonical: 'https://www.sunshinelabus.com/clinical-lab-services-trinity-fl',
   },
 };
 
@@ -34,8 +34,8 @@ const medicalBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com/clinical-lab-services-trinity-fl',
-  image: 'https://sunshineclinicallab.com/main-logo.webp',
+  url: 'https://www.sunshinelabus.com/clinical-lab-services-trinity-fl',
+  image: 'https://www.sunshinelabus.com/main-logo.webp',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',
@@ -59,7 +59,7 @@ const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

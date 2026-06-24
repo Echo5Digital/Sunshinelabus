@@ -19,14 +19,14 @@ export const metadata = {
       'Is Mobile Blood Draw Safe and Accurate? | Sunshine Clinical Lab Pasco County',
     description:
       'Wondering if mobile blood draw is safe and accurate? Learn how it works, its reliability, and why Sunshine Clinical Lab offers trusted mobile blood draw services in Pasco County.',
-    url: 'https://sunshineclinicallab.com/blog/is-mobile-blood-draw-safe-and-accurate',
+    url: 'https://www.sunshinelabus.com/blog/is-mobile-blood-draw-safe-and-accurate',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'article',
     publishedTime: '2025-04-24',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/blog/is-mobile-blood-draw-safe-and-accurate',
+    canonical: 'https://www.sunshinelabus.com/blog/is-mobile-blood-draw-safe-and-accurate',
   },
 };
 
@@ -39,18 +39,18 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: 'Sunshine Clinical Lab',
-    url: 'https://sunshineclinicallab.com',
+    url: 'https://www.sunshinelabus.com',
   },
   publisher: {
     '@type': 'Organization',
     name: 'Sunshine Clinical Lab',
-    url: 'https://sunshineclinicallab.com',
+    url: 'https://www.sunshinelabus.com',
   },
   datePublished: '2025-04-24',
-  url: 'https://sunshineclinicallab.com/blog/is-mobile-blood-draw-safe-and-accurate',
+  url: 'https://www.sunshinelabus.com/blog/is-mobile-blood-draw-safe-and-accurate',
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': 'https://sunshineclinicallab.com/blog/is-mobile-blood-draw-safe-and-accurate',
+    '@id': 'https://www.sunshinelabus.com/blog/is-mobile-blood-draw-safe-and-accurate',
   },
   keywords:
     'mobile blood draw Pasco County, mobile phlebotomy near me, how does mobile blood draw work',

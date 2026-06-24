@@ -23,13 +23,13 @@ export const metadata = {
     title: 'FAQ | Clinical Lab Trinity FL & Pasco County',
     description:
       'Frequently asked questions about Sunshine Clinical Lab in Trinity, FL — services, insurance, appointments, mobile blood draws, DNA testing, TRT labs, gender reveal tests & more.',
-    url: 'https://sunshineclinicallab.com/faq',
+    url: 'https://www.sunshinelabus.com/faq',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/faq',
+    canonical: 'https://www.sunshinelabus.com/faq',
   },
 };
 
@@ -39,7 +39,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',

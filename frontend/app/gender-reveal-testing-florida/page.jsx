@@ -20,13 +20,13 @@ export const metadata = {
     title: 'Gender Reveal Blood Test Florida | Peekaboo Test as Early as 7 Weeks | Trinity FL',
     description:
       'Find out your baby\'s gender as early as 7 weeks with the Peekaboo gender reveal blood test at Sunshine Clinical Lab in Trinity, FL. Simple, accurate, exciting. Call (727) 233-5223.',
-    url: 'https://sunshineclinicallab.com/gender-reveal-testing-florida',
+    url: 'https://www.sunshinelabus.com/gender-reveal-testing-florida',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://sunshineclinicallab.com/gender-reveal-testing-florida',
+    canonical: 'https://www.sunshinelabus.com/gender-reveal-testing-florida',
   },
 };
 
@@ -36,7 +36,7 @@ const localBusinessSchema = {
   '@type': 'MedicalBusiness',
   name: 'Sunshine Clinical Lab',
   telephone: '(727) 233-5223',
-  url: 'https://sunshineclinicallab.com',
+  url: 'https://www.sunshinelabus.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3600 Galileo Dr, Suite 104',
