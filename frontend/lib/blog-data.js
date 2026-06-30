@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Blood Testing Options in Land O' Lakes, FL: What to Know",
+    slug: "blood-testing-options-in-land-o-lakes-fl-what-to-know",
+    excerpt: "Explore blood testing options in Land O' Lakes, FL with Sunshine Clinical Lab LLC. Walk-in lab testing, mobile blood draws, fast results, and affordable pricing.",
+    image: "/images/blog/blood-testing-options-in-land-o-lakes-fl-what-to-know/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "June 30, 2026",
+  },
+  {
     title: "What Documents Do You Need for a Legal DNA Test?",
     slug: "what-documents-do-you-need-for-a-legal-dna-test",
     excerpt: "Learn what documents are needed for a legal DNA test, from photo ID to consent forms. Sunshine Clinical Lab LLC explains the full checklist and process.",
