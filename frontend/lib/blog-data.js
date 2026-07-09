@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Low Testosterone Symptoms: When to Get Tested in Trinity, FL",
+    slug: "low-testosterone-symptoms-when-to-get-tested-in-trinity-fl",
+    excerpt: "Recognize low testosterone symptoms and find out when to get tested. Sunshine Clinical Lab LLC in Trinity, FL offers fast, accurate hormone and Low T testing.",
+    image: "/images/blog/low-testosterone-symptoms-when-to-get-tested-in-trinity-fl/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "July 9, 2026",
+  },
+  {
     title: "Blood Testing Options in Land O' Lakes, FL: What to Know",
     slug: "blood-testing-options-in-land-o-lakes-fl-what-to-know",
     excerpt: "Explore blood testing options in Land O' Lakes, FL with Sunshine Clinical Lab LLC. Walk-in lab testing, mobile blood draws, fast results, and affordable pricing.",
