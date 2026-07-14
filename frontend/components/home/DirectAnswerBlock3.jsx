@@ -52,7 +52,7 @@ export default function DirectAnswerBlock3() {
               welcome for most routine blood work, and the lab offers specialty services including TRT
               blood testing, DNA testing, gender reveal blood tests, and mobile phlebotomy. The lab is
               open to patients of all ages and accepts most major insurance plans. Call{' '}
-              <a href="tel:7272335223" className="text-sunshine-blue font-semibold hover:underline">
+              <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
                 (727) 233-5223
               </a>{' '}
               for hours and availability.

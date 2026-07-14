@@ -91,7 +91,7 @@ export default function InsuranceSection() {
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>
             </Link>
-            <a href="tel:7272335223" aria-label="Call to confirm insurance coverage">
+            <a href="tel:+17272335223" aria-label="Call to confirm insurance coverage">
               <ShimmerButton className="border-2 border-sunshine-blue text-sunshine-blue bg-white px-8 py-3.5 rounded-full font-semibold gap-2">
                 <Phone className="w-4 h-4" aria-hidden="true" />
                 Call to Confirm Coverage

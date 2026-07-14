@@ -79,7 +79,7 @@ export default function Page() {
         <section className="bg-[#EBF5FB] text-[#374151] py-10">
           <h2 style={{fontFamily:"Inter,sans-serif"}} className="text-2xl font-semibold text-[#0EA5E9]">Ready for Reliable Lab Testing?</h2>
           <p>Experience why Trinity trusts Sunshine Clinical Lab. Get started with your blood work or testing today.</p>
-          <a href="tel:+1234567890" className="bg-[#0EA5E9] text-white py-2 px-4 mt-5 inline-block" style={{borderRadius:"8px"}}>Schedule Now</a>
+          <a href="tel:+17272335223" className="bg-[#0EA5E9] text-white py-2 px-4 mt-5 inline-block" style={{borderRadius:"8px"}}>Schedule Now</a>
         </section>
       </main>
     </>

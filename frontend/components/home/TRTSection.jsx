@@ -97,7 +97,7 @@ export default function TRTSection() {
             </motion.ul>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-              <a href="tel:7272335223" aria-label="Call to book your TRT panel" className="w-full sm:w-auto">
+              <a href="tel:+17272335223" aria-label="Call to book your TRT panel" className="w-full sm:w-auto">
                 <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                   <Phone className="w-4 h-4" aria-hidden="true" />
                   Book Your TRT Panel — (727) 233-5223

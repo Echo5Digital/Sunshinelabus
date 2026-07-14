@@ -107,7 +107,7 @@ export default function Page() {
             SUNSHINE CLINICAL LAB LLC provides rapid, reliable lab testing with walk-in and mobile phlebotomy options across Trinity and greater Pasco County. We prioritize short waits, secure electronic results, and specialty testing including TRT monitoring and DNA collection.
           </p>
           <div style={{ marginTop: 20, display: 'flex', gap: 12, justifyContent: 'center' }}>
-            <a href="tel:+17275550123" style={{ backgroundColor: '#0EA5E9', color: '#ffffff', padding: '12px 18px', borderRadius: 8, textDecoration: 'none', fontWeight: 700 }}>
+            <a href="tel:+17272335223" style={{ backgroundColor: '#0EA5E9', color: '#ffffff', padding: '12px 18px', borderRadius: 8, textDecoration: 'none', fontWeight: 700 }}>
               Call Now
             </a>
             <a href="#booking" style={{ backgroundColor: 'transparent', color: '#0EA5E9', padding: '12px 18px', borderRadius: 8, border: '2px solid #0EA5E9', textDecoration: 'none', fontWeight: 700 }}>
@@ -245,7 +245,7 @@ export default function Page() {
             SUNSHINE CLINICAL LAB LLC offers rapid blood work, mobile phlebotomy, and specialized hormone and TRT monitoring for Trinity and greater Pasco County. Call or book your walk‑in or home draw to get faster results and personalized test options tailored to local patients.
           </p>
           <div style={{ marginTop: 18, display: 'flex', gap: 12 }}>
-            <a href="tel:+17275550123" style={{ backgroundColor: '#0EA5E9', color: '#ffffff', padding: '12px 18px', borderRadius: 8, textDecoration: 'none', fontWeight: 700 }}>
+            <a href="tel:+17272335223" style={{ backgroundColor: '#0EA5E9', color: '#ffffff', padding: '12px 18px', borderRadius: 8, textDecoration: 'none', fontWeight: 700 }}>
               Call Now
             </a>
             <a id="booking" href="#booking-form" style={{ backgroundColor: '#38BDF8', color: '#0D3047', padding: '12px 18px', borderRadius: 8, textDecoration: 'none', fontWeight: 700 }}>
@@ -256,7 +256,7 @@ export default function Page() {
 
         <footer style={{ maxWidth: 1100, margin: '0 auto 40px', padding: '20px', textAlign: 'center', color: '#6B7280' }}>
           <div style={{ fontSize: 14, marginBottom: 6 }}>
-            SUNSHINE CLINICAL LAB LLC • Trinity, FL • Phone: <a href="tel:+17275550123" style={{ color: '#0EA5E9', textDecoration: 'none' }}>+1 (727) 555‑0123</a>
+            SUNSHINE CLINICAL LAB LLC • Trinity, FL • Phone: <a href="tel:+17272335223" style={{ color: '#0EA5E9', textDecoration: 'none' }}>(727) 233-5223</a>
           </div>
           <div style={{ fontSize: 13 }}>Secure HIPAA portal • CLIA‑regulated laboratory • Mobile phlebotomy across Pasco County</div>
         </footer>

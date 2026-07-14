@@ -77,7 +77,7 @@ export default function GenderRevealSection() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-            <a href="tel:7272335223" aria-label="Schedule your gender reveal blood test" className="w-full sm:w-auto">
+            <a href="tel:+17272335223" aria-label="Schedule your gender reveal blood test" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                 <Phone className="w-5 h-5" aria-hidden="true" />
                 Schedule Your Gender Reveal Blood Test — (727) 233-5223

@@ -116,7 +116,7 @@ export default function Page() {
             </p>
             <div className="mt-6 flex items-center justify-center gap-4">
               <a
-                href="tel:+18885551234"
+                href="tel:+17272335223"
                 style={{
                   backgroundColor: "#0EA5E9",
                   color: "#ffffff",
@@ -335,7 +335,7 @@ export default function Page() {
             </div>
             <div className="flex gap-3">
               <a
-                href="tel:+18885551234"
+                href="tel:+17272335223"
                 style={{
                   backgroundColor: "#0EA5E9",
                   color: "#fff",
@@ -366,7 +366,7 @@ export default function Page() {
 
           <footer className="max-w-4xl mx-auto px-6 py-8 text-center" style={{ color: "#6B7280", fontFamily: "Inter,sans-serif" }}>
             <p style={{ margin: 0 }}>
-              SUNSHINE CLINICAL LAB LLC — Trinity, FL • <a href="tel:+18885551234" style={{ color: "#0EA5E9", textDecoration: "none" }}>Call: (888) 555-1234</a>
+              SUNSHINE CLINICAL LAB LLC — Trinity, FL • <a href="tel:+17272335223" style={{ color: "#0EA5E9", textDecoration: "none" }}>Call: (727) 233-5223</a>
             </p>
             <p style={{ marginTop: 6, fontSize: 13 }}>Serving Trinity, New Port Richey, Land O' Lakes, Tarpon Springs & greater Pasco County</p>
           </footer>

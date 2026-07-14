@@ -157,7 +157,7 @@ export default function ServicesGridSection() {
             </ShimmerButton>
           </Link>
           <p className="mt-3 text-sm text-gray-500">
-            Or call <a href="tel:7272335223" className="text-sunshine-blue font-semibold">(727) 233-5223</a>
+            Or call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold">(727) 233-5223</a>
           </p>
         </motion.div>
       </div>

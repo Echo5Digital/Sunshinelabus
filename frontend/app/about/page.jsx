@@ -290,7 +290,7 @@ export default function AboutPage() {
           </ul>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab">
+            <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab">
               <ShimmerButton className="bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
                 <Phone className="w-6 h-6" aria-hidden="true" />
                 Call Now: (727) 233-5223

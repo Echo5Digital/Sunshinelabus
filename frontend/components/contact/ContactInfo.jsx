@@ -21,7 +21,7 @@ const INFO_CARDS = [
     title: 'Call Us',
     primary: '(727) 233-5223',
     secondary: 'Mon–Fri 8:00 AM – 5:00 PM · Walk-Ins Welcome',
-    href: 'tel:7272335223',
+    href: 'tel:+17272335223',
   },
   {
     Icon: Mail,

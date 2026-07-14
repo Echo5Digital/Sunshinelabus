@@ -115,7 +115,7 @@ export default function ContactMap() {
                 </div>
                 <div>
                   <p className="font-bold text-sunshine-dark mb-1">Phone</p>
-                  <a href="tel:7272335223" className="text-sunshine-blue text-sm font-medium hover:underline">
+                  <a href="tel:+17272335223" className="text-sunshine-blue text-sm font-medium hover:underline">
                     (727) 233-5223
                   </a>
                 </div>

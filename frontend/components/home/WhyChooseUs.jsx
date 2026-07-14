@@ -140,7 +140,7 @@ export default function WhyChooseUs() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab">
+          <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab">
             <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-bold shadow-lg gap-2">
               <Phone className="w-5 h-5" aria-hidden="true" />
               Call Us: (727) 233-5223

@@ -90,7 +90,7 @@ export default function HomeHero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row flex-wrap gap-4"
           >
-            <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
+            <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
                 <Phone className="w-5 h-5" aria-hidden="true" />
                 Schedule Your Visit — (727) 233-5223

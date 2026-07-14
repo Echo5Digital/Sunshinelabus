@@ -92,7 +92,7 @@ export default function MobileBloodDrawSection() {
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </ShimmerButton>
               </Link>
-              <a href="tel:7272335223" aria-label="Call to schedule a mobile blood draw" className="w-full sm:w-auto">
+              <a href="tel:+17272335223" aria-label="Call to schedule a mobile blood draw" className="w-full sm:w-auto">
                 <ShimmerButton className="w-full sm:w-auto border-2 border-sunshine-blue text-sunshine-blue bg-white px-7 py-4 rounded-full font-semibold gap-2">
                   <Phone className="w-4 h-4" aria-hidden="true" />
                   (727) 233-5223

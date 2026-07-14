@@ -186,7 +186,7 @@ export default function FAQSection() {
           <p className="text-sunshine-dark/60 text-sm mb-5">
             Can&apos;t find what you&apos;re looking for? Our team is happy to help.
           </p>
-          <a href="tel:7272335223" aria-label="Call Sunshine Clinical Lab with any questions">
+          <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab with any questions">
             <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
               <Phone className="w-5 h-5" aria-hidden="true" />
               Still Have Questions? Call (727) 233-5223

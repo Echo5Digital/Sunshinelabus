@@ -67,7 +67,7 @@ export default function BookAppointmentSection() {
 
             <div className="flex items-center justify-center gap-2 mt-5 text-sm text-gray-400">
               <Phone className="w-3.5 h-3.5" />
-              <span>Or call us: <a href="tel:7272335223" className="text-sunshine-dark font-medium hover:text-sunshine-blue transition-colors">(727) 233-5223</a></span>
+              <span>Or call us: <a href="tel:+17272335223" className="text-sunshine-dark font-medium hover:text-sunshine-blue transition-colors">(727) 233-5223</a></span>
             </div>
           </div>
         </motion.div>
