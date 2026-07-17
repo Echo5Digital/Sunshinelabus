@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, CalendarX, RefreshCw, Clock, Lock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CalendarX, RefreshCw, Clock, Lock, Info } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 import { fetchAvailability } from '@/lib/api';
 import { formatTimeSlot, generateTimeSlots } from '@/lib/booking-constants';
@@ -17,8 +17,12 @@ function TimeSkeleton() {
   );
 }
 
+const HOME_DRAW_MIN = 9 * 60;  // 09:00
+const HOME_DRAW_MAX = 12 * 60; // 12:00 (inclusive)
+
 export default function Step4Time({ bookingData, updateBookingData, onNext, onPrev }) {
   const { date, timeSlot } = bookingData;
+  const isHomeDraw = bookingData?.service?.slug === 'home-draw';
   const [slots, setSlots] = useState([]);
   const [blockedSlots, setBlockedSlots] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -90,24 +94,44 @@ export default function Step4Time({ bookingData, updateBookingData, onNext, onPr
 
       {!loading && !error && (slots.length > 0 || blockedSlots.length > 0) && (
         <>
+          {isHomeDraw && (
+            <div className="flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 mb-4">
+              <Info className="w-4 h-4 text-sunshine-blue mt-0.5 shrink-0" />
+              <p className="text-xs text-blue-700 leading-relaxed">
+                Online appointments are available from 9:00 AM to 12:00 PM. For appointments outside these hours or special home visit arrangements, please call our office directly.
+              </p>
+            </div>
+          )}
           {(() => {
             const ALL_SLOTS = generateTimeSlots('08:00', '14:15', 15);
             const availableSet = new Set(slots);
             const blockedSet = new Set(blockedSlots);
             const displaySlots = ALL_SLOTS.filter((s) => availableSet.has(s) || blockedSet.has(s));
+
+            const isTimeRestricted = (slot) => {
+              if (!isHomeDraw) return false;
+              const [h, m] = slot.split(':').map(Number);
+              const total = h * 60 + m;
+              return total < HOME_DRAW_MIN || total > HOME_DRAW_MAX;
+            };
+
             return (
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                 {displaySlots.map((slot) => {
                   const isSelected = timeSlot === slot;
                   const isBlockedSlot = blockedSet.has(slot);
+                  const isRestrictedSlot = isTimeRestricted(slot);
+                  const isDisabled = isBlockedSlot || isRestrictedSlot;
                   return (
                     <button
                       key={slot}
-                      onClick={() => !isBlockedSlot && updateBookingData({ timeSlot: slot })}
-                      disabled={isBlockedSlot}
+                      onClick={() => !isDisabled && updateBookingData({ timeSlot: slot })}
+                      disabled={isDisabled}
                       className={`py-2.5 sm:py-3 px-1 rounded-xl text-sm font-medium border-2 transition-all duration-150
                         ${isBlockedSlot
                           ? 'border-red-200 bg-red-50 text-red-400 cursor-not-allowed'
+                          : isRestrictedSlot
+                          ? 'border-gray-200 bg-gray-50 text-gray-300 cursor-not-allowed'
                           : isSelected
                           ? 'bg-sunshine-blue border-sunshine-blue text-white shadow-md shadow-sunshine-blue/25'
                           : 'border-sunshine-sky/30 text-sunshine-dark hover:border-sunshine-blue hover:bg-sunshine-soft hover:text-sunshine-blue'
