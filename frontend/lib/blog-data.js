@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "How Accurate Are Paternity Tests? What You Should Know",
+    slug: "how-accurate-are-paternity-tests-what-you-should-know",
+    excerpt: "Learn how accurate paternity tests really are, including legal, home, and prenatal options. Sunshine Clinical Lab LLC offers reliable DNA paternity testing.",
+    image: "/images/blog/how-accurate-are-paternity-tests-what-you-should-know/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "July 30, 2026",
+  },
+  {
     title: "Low Testosterone Symptoms: When to Get Tested in Trinity, FL",
     slug: "low-testosterone-symptoms-when-to-get-tested-in-trinity-fl",
     excerpt: "Recognize low testosterone symptoms and find out when to get tested. Sunshine Clinical Lab LLC in Trinity, FL offers fast, accurate hormone and Low T testing.",
