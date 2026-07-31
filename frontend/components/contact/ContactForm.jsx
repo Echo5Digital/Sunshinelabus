@@ -256,9 +256,7 @@ export default function ContactForm() {
                   applicable, health-related information, including any data I submit on behalf of
                   others, for the purpose of evaluating or fulfilling my request made through this
                   form. I understand this will be handled in accordance with the{' '}
-                  <a href="/privacy-notice" className="font-bold text-sunshine-dark hover:underline">
-                    Privacy Notice
-                  </a>
+                  <span className="font-bold text-sunshine-dark">Privacy Notice</span>
                   .
                 </span>
               </label>
