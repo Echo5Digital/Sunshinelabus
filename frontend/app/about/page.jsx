@@ -18,9 +18,9 @@ import MagicCard from '@/components/ui/MagicCard';
 import MissionVisionSection from '@/components/about/MissionVisionSection';
 
 export const metadata = {
-  title: 'About Sunshine Clinical Lab | Mobile Blood Draw Pasco County & Trinity FL',
+  title: "About Sunshine Clinical Lab | Mobile Blood Draw Pasco County & Trinity FL",
   description:
-    'Learn about Sunshine Clinical Lab, a trusted provider of mobile blood draw and home phlebotomy services in Pasco County, Trinity, and New Port Richey.',
+    "Learn about Sunshine Clinical Lab, a trusted provider of mobile blood draw and home phlebotomy services in Pasco County, Trinity, and New Port Richey.",
   keywords: [
     'mobile blood draw Pasco County',
     'home phlebotomy services',
@@ -105,7 +105,7 @@ export default function AboutPage() {
           </h1>
           <div className="w-12 h-0.5 bg-sunshine-sky mx-auto mb-5 rounded-full opacity-80" />
           <p className="text-white/70 text-sm sm:text-base lg:text-lg max-w-lg mx-auto leading-relaxed font-light tracking-wide">
-            Discover our legacy of precision healthcare solutions.
+            Discover our legacy of precision healthcare solution.
           </p>
         </div>
 
