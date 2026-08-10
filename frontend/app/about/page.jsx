@@ -105,7 +105,7 @@ export default function AboutPage() {
           </h1>
           <div className="w-12 h-0.5 bg-sunshine-sky mx-auto mb-5 rounded-full opacity-80" />
           <p className="text-white/70 text-sm sm:text-base lg:text-lg max-w-lg mx-auto leading-relaxed font-light tracking-wide">
-            Discover our legacy of precision healthcare solution.
+            Discover our legacy of precision healthcare solutions.
           </p>
         </div>
 
