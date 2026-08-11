@@ -80,6 +80,7 @@ export default function sitemap() {
     'dna-testing-pasco-county',
     'gender-reveal-testing-florida',
     'mobile-blood-draw-the-villages',
+    'mobile-blood-draw-wesley-chapel',
   ].map((slug) => ({
     url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),
