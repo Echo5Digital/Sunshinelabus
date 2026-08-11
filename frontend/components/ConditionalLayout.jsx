@@ -4,15 +4,20 @@ import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+const NO_NAVBAR_PREFIXES = [
+  '/mobile-blood-draw-the-villages',
+  '/mobile-blood-draw-wesley-chapel',
+  '/mobile-blood-draw-zephyrhills',
+];
+
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith('/admin');
-  const isVillagesLanding = pathname.startsWith('/mobile-blood-draw-the-villages');
-  const isWesleyChapelLanding = pathname.startsWith('/mobile-blood-draw-wesley-chapel');
+  const isNavlessLanding = NO_NAVBAR_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
   return (
     <>
-      {!isAdmin && !isVillagesLanding && !isWesleyChapelLanding && <Navbar />}
+      {!isAdmin && !isNavlessLanding && <Navbar />}
       <main>{children}</main>
       {!isAdmin && <Footer />}
     </>

@@ -81,6 +81,7 @@ export default function sitemap() {
     'gender-reveal-testing-florida',
     'mobile-blood-draw-the-villages',
     'mobile-blood-draw-wesley-chapel',
+    'mobile-blood-draw-zephyrhills',
   ].map((slug) => ({
     url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),

@@ -495,16 +495,17 @@ export default function MobileBloodDrawWesleyChapelPage() {
             ))}
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="tel:+17272335223">
-              <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
-                <Phone className="w-5 h-5" />
-                Book Your Wesley Chapel Home Draw — Call (727) 233-5223
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="tel:+17272335223" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2 justify-center whitespace-nowrap">
+                <Phone className="w-5 h-5 flex-shrink-0" />
+                <span className="sm:hidden">Call (727) 233-5223</span>
+                <span className="hidden sm:inline">Book Your Wesley Chapel Home Draw — Call (727) 233-5223</span>
               </ShimmerButton>
             </a>
-            <Link href="/book-appointment">
-              <ShimmerButton className="bg-white text-sunshine-dark border border-sunshine-blue/20 px-8 py-3.5 rounded-full font-semibold shadow-md gap-2">
-                <CalendarDays className="w-5 h-5" />
+            <Link href="/book-appointment" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark border border-sunshine-blue/20 px-8 py-3.5 rounded-full font-semibold shadow-md gap-2 justify-center whitespace-nowrap">
+                <CalendarDays className="w-5 h-5 flex-shrink-0" />
                 Book Online
               </ShimmerButton>
             </Link>
