@@ -276,7 +276,7 @@ export default function MobileBloodDrawWesleyChapelPage() {
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden">
         <Image
-          src="/mbd-banner.jpg"
+          src="/mbd-wesley-chapel.webp"
           alt="Mobile Blood Draw Service Wesley Chapel FL"
           fill
           priority

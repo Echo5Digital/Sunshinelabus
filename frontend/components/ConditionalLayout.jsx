@@ -8,6 +8,7 @@ const NO_NAVBAR_PREFIXES = [
   '/mobile-blood-draw-the-villages',
   '/mobile-blood-draw-wesley-chapel',
   '/mobile-blood-draw-zephyrhills',
+  '/es/prueba-de-adn-inmigracion',
 ];
 
 export default function ConditionalLayout({ children }) {

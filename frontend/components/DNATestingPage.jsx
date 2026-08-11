@@ -1000,6 +1000,54 @@ export default function DNATestingPage() {
         </div>
       </section>
 
+      {/* ══ EXPLORE MORE / INTERNAL LINKS ═══════════════════════ */}
+      <section className="py-16 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Section>
+            <motion.div variants={itemVariants} className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
+                Explore More
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark">
+                More From Sunshine Clinical Lab
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                {
+                  href: '/es/prueba-de-adn-inmigracion',
+                  title: '🇪🇸 Prueba de ADN para Inmigración',
+                  body: 'Vea esta página en español — cadena de custodia completa, aceptada por USCIS. Hablamos español.',
+                },
+                {
+                  href: '/mobile-blood-draw-zephyrhills',
+                  title: 'Mobile Blood Draw — Zephyrhills & Dade City',
+                  body: 'Home blood draws with a Spanish-speaking phlebotomist for Zephyrhills, Dade City, and San Antonio.',
+                },
+                {
+                  href: '/mobile-blood-draw-wesley-chapel',
+                  title: 'Mobile Blood Draw — Wesley Chapel',
+                  body: 'Mobile phlebotomy for Wesley Chapel, Wiregrass, Seven Oaks, and nearby communities.',
+                },
+              ].map(({ href, title, body }, i) => (
+                <motion.div key={href} variants={cardVariants} custom={i}>
+                  <Link href={href} className="block h-full">
+                    <MagicCard gradientColor="#93C5FD60" borderGlowColor="#2B7DBF" className="shadow-sm hover:shadow-lg h-full">
+                      <div className="p-6 flex flex-col gap-2 h-full">
+                        <h3 className="text-base font-bold text-sunshine-dark">{title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed flex-1">{body}</p>
+                        <span className="text-sunshine-blue text-sm font-semibold mt-1">Learn more →</span>
+                      </div>
+                    </MagicCard>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </Section>
+        </div>
+      </section>
+
       {/* ══ FINAL CTA ═══════════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden bg-gradient-to-r from-sunshine-blue to-sunshine-sky">
         {/* Decorative circles */}

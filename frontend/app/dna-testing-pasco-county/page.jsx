@@ -28,6 +28,10 @@ export const metadata = {
   },
   alternates: {
     canonical: 'https://www.sunshinelabus.com/dna-testing-pasco-county',
+    languages: {
+      en: 'https://www.sunshinelabus.com/dna-testing-pasco-county',
+      es: 'https://www.sunshinelabus.com/es/prueba-de-adn-inmigracion',
+    },
   },
 };
 

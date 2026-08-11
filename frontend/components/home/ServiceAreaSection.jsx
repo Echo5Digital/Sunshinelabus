@@ -29,6 +29,9 @@ const serviceAreas = [
   { label: 'Palm Harbor', href: '/clinical-lab-services-trinity-fl' },
   { label: 'East Lake', href: '/clinical-lab-services-trinity-fl' },
   { label: 'Elfers', href: '/clinical-lab-services-trinity-fl' },
+  { label: 'The Villages', href: '/mobile-blood-draw-the-villages' },
+  { label: 'Wesley Chapel', href: '/mobile-blood-draw-wesley-chapel' },
+  { label: 'Zephyrhills', href: '/mobile-blood-draw-zephyrhills' },
 ];
 
 export default function ServiceAreaSection() {

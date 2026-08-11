@@ -132,6 +132,12 @@ export default function DNATestingSection() {
               </ShimmerButton>
             </Link>
           </div>
+          <Link
+            href="/es/prueba-de-adn-inmigracion"
+            className="inline-block mt-5 text-sunshine-blue font-semibold text-sm hover:underline"
+          >
+            🇪🇸 Ver en Español — Prueba de ADN para Inmigración
+          </Link>
         </motion.div>
       </div>
     </section>

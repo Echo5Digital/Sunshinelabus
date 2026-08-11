@@ -106,6 +106,16 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
+  // ── Spanish-Language Pages (/es/*) ──────────────────────────────────────────
+  const spanishPages = [
+    {
+      url: `${BASE_URL}/es/prueba-de-adn-inmigracion`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+  ];
+
   // ── Location / City Pages ───────────────────────────────────────────────────
   const locationPages = [
     'clinical-lab-trinity-fl',
@@ -126,6 +136,7 @@ export default function sitemap() {
     ...blogPosts,
     ...serviceSlugPages,
     ...serviceCategoryPages,
+    ...spanishPages,
     ...locationPages,
   ];
 }

@@ -285,7 +285,7 @@ export default function MobileBloodDrawTheVillagesPage() {
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden">
         <Image
-          src="/mbd-banner.jpg"
+          src="/mbd-the-villages.webp"
           alt="Mobile Blood Draw Service The Villages and Bushnell FL"
           fill
           priority
