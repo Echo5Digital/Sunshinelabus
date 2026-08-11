@@ -79,6 +79,7 @@ export default function sitemap() {
     'trt-blood-test-pasco-county',
     'dna-testing-pasco-county',
     'gender-reveal-testing-florida',
+    'mobile-blood-draw-the-villages',
   ].map((slug) => ({
     url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),
