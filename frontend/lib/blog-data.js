@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Do You Need Fasting Before TRT Blood Work?",
+    slug: "do-you-need-fasting-before-trt-blood-work",
+    excerpt: "Find out if fasting is needed before TRT blood work, what tests are included, and how Sunshine Clinical Lab LLC makes walk-in testosterone testing easy.",
+    image: "/images/blog/do-you-need-fasting-before-trt-blood-work/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "August 12, 2026",
+  },
+  {
     title: "How Accurate Are Paternity Tests? What You Should Know",
     slug: "how-accurate-are-paternity-tests-what-you-should-know",
     excerpt: "Learn how accurate paternity tests really are, including legal, home, and prenatal options. Sunshine Clinical Lab LLC offers reliable DNA paternity testing.",
