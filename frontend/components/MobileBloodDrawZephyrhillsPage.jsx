@@ -269,6 +269,12 @@ export default function MobileBloodDrawZephyrhillsPage() {
                   <span className="hidden sm:inline">Book Your Home Draw</span>
                 </ShimmerButton>
               </Link>
+              <Link
+                href="/es/prueba-de-adn-inmigracion"
+                className="hidden sm:inline-flex items-center gap-1.5 text-white/85 text-sm font-semibold whitespace-nowrap hover:text-sunshine-sky transition-colors"
+              >
+                🇪🇸 En Español
+              </Link>
             </div>
           </div>
 
@@ -330,7 +336,7 @@ export default function MobileBloodDrawZephyrhillsPage() {
 
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-start mb-8"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-start mb-4"
             >
               <Link href="/book-appointment">
                 <ShimmerButton className="bg-sunshine-blue border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base gap-2">
@@ -344,6 +350,15 @@ export default function MobileBloodDrawZephyrhillsPage() {
                   Call (727) 233-5223
                 </ShimmerButton>
               </a>
+            </motion.div>
+
+            <motion.div variants={heroItemVariants} className="mb-8">
+              <Link
+                href="/es/prueba-de-adn-inmigracion"
+                className="text-[#93C5FD] font-semibold hover:underline text-base"
+              >
+                🇪🇸 Ver Esta Página en Español
+              </Link>
             </motion.div>
 
             {/* Trust strip */}
