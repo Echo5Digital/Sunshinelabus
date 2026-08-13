@@ -4,12 +4,20 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, User, Calendar, Clock, MapPin, Phone, Mail,
-  FileText, Download, Loader2, Check, AlertCircle,
+  FileText, Download, Loader2, Check, AlertCircle, Languages,
 } from 'lucide-react';
 import { fetchAdminAppointmentById, updateAppointmentStatus, updateAppointmentNotes } from '@/lib/api';
-import { STATUS_CONFIG } from '@/lib/booking-constants';
+import { STATUS_CONFIG, LOCATION_ZONES, LANGUAGE_OPTIONS } from '@/lib/booking-constants';
 
 const LOCATION_LABELS = { on_site: 'Clinic Visit', home_visit: 'Home Visit' };
+const LANGUAGE_LABELS = Object.fromEntries(LANGUAGE_OPTIONS.map((o) => [o.key, o.label]));
+
+function locationLabel(locationType, locationZone) {
+  if (locationType === 'home_visit' && locationZone && LOCATION_ZONES[locationZone]) {
+    return LOCATION_ZONES[locationZone].shortLabel;
+  }
+  return LOCATION_LABELS[locationType];
+}
 const DOC_LABELS = {
   id: 'Photo ID', lab_order: 'Lab Order / Rx',
   insurance_front: 'Insurance (Front)', insurance_back: 'Insurance (Back)', other: 'Other',
@@ -159,7 +167,14 @@ export default function AppointmentDetailModal({ appointmentId, onClose, onSaved
                     <p className="text-xs font-semibold text-white/40 uppercase tracking-wide mb-3">Appointment</p>
                     <div className="space-y-2">
                       <InfoRow icon={FileText} label="Service" value={appt.services?.name} />
-                      <InfoRow icon={MapPin} label="Location" value={LOCATION_LABELS[appt.location_type]} />
+                      <InfoRow icon={MapPin} label="Location" value={locationLabel(appt.location_type, appt.location_zone)} />
+                      {appt.location_zone && LOCATION_ZONES[appt.location_zone]?.expansion && (
+                        <div className="flex items-start gap-2.5 text-sm">
+                          <AlertCircle className="w-3.5 h-3.5 text-amber-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-white/40 min-w-[80px] flex-shrink-0">Dispatch</span>
+                          <span className="text-amber-300 font-medium">Expansion Phlebotomist</span>
+                        </div>
+                      )}
                       <InfoRow icon={Calendar} label="Date" value={appt.appointment_date} />
                       <InfoRow icon={Clock} label="Time" value={appt.appointment_time?.slice(0, 5)} />
                       <InfoRow icon={Clock} label="Duration" value={appt.services?.duration_minutes ? `${appt.services.duration_minutes} min` : null} />
@@ -174,6 +189,7 @@ export default function AppointmentDetailModal({ appointmentId, onClose, onSaved
                       <InfoRow icon={Calendar} label="DOB" value={appt.patient_dob} />
                       <InfoRow icon={Phone} label="Phone" value={appt.patient_phone} />
                       <InfoRow icon={Mail} label="Email" value={appt.patient_email} />
+                      <InfoRow icon={Languages} label="Language" value={LANGUAGE_LABELS[appt.preferred_language]} />
                       {appt.location_type === 'home_visit' && appt.address_street && (
                         <InfoRow
                           icon={MapPin}

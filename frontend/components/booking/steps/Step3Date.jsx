@@ -8,7 +8,7 @@ import {
 } from 'date-fns';
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
-import { MIN_ADVANCE_HOURS } from '@/lib/booking-constants';
+import { MIN_ADVANCE_HOURS, LOCATION_ZONES } from '@/lib/booking-constants';
 import { fetchDateBlocks } from '@/lib/api';
 
 const ALL_DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -64,6 +64,13 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
   const canGoPrev =
     displayMonth.getMonth() > today.getMonth() ||
     displayMonth.getFullYear() > today.getFullYear();
+
+  const isExpansionArea = bookingData.locationType === 'home_visit'
+    && LOCATION_ZONES[bookingData.locationZone]?.expansion;
+
+  const hoursNote = isExpansionArea
+    ? 'Home visits available Monday–Friday. Early morning (3:00–7:30 AM) and morning (9:00 AM–2:30 PM) appointments available.'
+    : 'We operate Monday–Friday, 8:00 AM – 2:00 PM.';
 
   return (
     <div>
@@ -161,7 +168,7 @@ export default function Step3Date({ bookingData, updateBookingData, onNext, onPr
       {/* Info note */}
       <div className="flex items-start gap-2 mt-4 px-1 text-xs text-gray-400">
         <Info className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
-        <span>We operate Monday–Friday, 8:00 AM – 2:00 PM.</span>
+        <span>{hoursNote}</span>
       </div>
       <div className="flex items-center gap-1.5 mt-2 px-1 text-xs text-gray-400">
         <span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block flex-shrink-0" />

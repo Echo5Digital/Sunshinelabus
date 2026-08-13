@@ -11,6 +11,12 @@ const {
 
 const MIN_ADVANCE_HOURS = 24;
 
+// Boundary between the expansion-area "Early Morning" and "Morning" time blocks (see availabilityRoutes.js).
+const EARLY_AM_END = '07:30';
+
+// Expansion-area home-visit zones dispatched to a separate phlebotomist (see LOCATION_ZONES on the frontend).
+const EXPANSION_ZONES = new Set(['wesley_chapel', 'zephyrhills_dade_city', 'bushnell_villages']);
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function isWeekday(dateString) {
@@ -22,6 +28,17 @@ function isWeekday(dateString) {
 function isAtLeastNHoursAhead(dateString, timeString, hours) {
   const dt = new Date(`${dateString}T${timeString}:00`);
   return dt.getTime() - Date.now() >= hours * 60 * 60 * 1000;
+}
+
+// Confirms appointment_time falls within a real bookable window for the given location.
+// Expansion zones offer Early Morning (03:00–07:00) and Morning (09:00–14:00); everyone
+// else (on-site or non-expansion home visits) is limited to standard hours (08:00–14:00).
+function isValidTimeForLocation(timeString, locationType, locationZone) {
+  const isExpansionZone = locationType === 'home_visit' && EXPANSION_ZONES.has(locationZone);
+  if (isExpansionZone) {
+    return (timeString >= '03:00' && timeString <= '07:00') || (timeString >= '09:00' && timeString <= '14:00');
+  }
+  return timeString >= '08:00' && timeString <= '14:00';
 }
 
 async function isSlotAvailable(date, time) {
@@ -46,6 +63,14 @@ router.post(
     body('location_type')
       .isIn(['on_site', 'home_visit'])
       .withMessage('Location type must be on_site or home_visit'),
+    body('location_zone')
+      .optional({ nullable: true, checkFalsy: true })
+      .isIn(['trinity_nearby', 'wesley_chapel', 'zephyrhills_dade_city', 'bushnell_villages'])
+      .withMessage('Invalid location zone'),
+    body('preferred_language')
+      .optional({ nullable: true, checkFalsy: true })
+      .isIn(['en', 'es'])
+      .withMessage('Invalid preferred language'),
     body('appointment_date')
       .matches(/^\d{4}-\d{2}-\d{2}$/)
       .withMessage('Date must be YYYY-MM-DD format')
@@ -59,6 +84,9 @@ router.post(
       .custom((value, { req }) => {
         if (!isAtLeastNHoursAhead(req.body.appointment_date, value, MIN_ADVANCE_HOURS)) {
           throw new Error(`Appointments require at least ${MIN_ADVANCE_HOURS} hours advance notice`);
+        }
+        if (!isValidTimeForLocation(value, req.body.location_type, req.body.location_zone)) {
+          throw new Error('Selected time is not available for this location');
         }
         return true;
       }),
@@ -98,7 +126,7 @@ router.post(
 
     try {
       const {
-        service_id, location_type, appointment_date, appointment_time,
+        service_id, location_type, location_zone, preferred_language, appointment_date, appointment_time,
         patient_name, patient_dob, patient_phone, patient_email,
         address_street, address_city, address_state, address_zip,
       } = req.body;
@@ -127,6 +155,8 @@ router.post(
         .insert({
           service_id,
           location_type,
+          location_zone: location_type === 'home_visit' ? (location_zone || null) : null,
+          preferred_language: preferred_language || null,
           appointment_date,
           appointment_time,
           patient_name: patient_name.trim(),
@@ -158,6 +188,12 @@ router.post(
             appointmentDate: appointment_date,
             appointmentTime: appointment_time,
             locationType: location_type,
+            locationZone: location_type === 'home_visit' ? (location_zone || null) : null,
+            preferredLanguage: preferred_language || null,
+            addressStreet: address_street?.trim() || null,
+            addressCity: address_city?.trim() || null,
+            addressState: address_state?.trim() || 'FL',
+            addressZip: address_zip || null,
           });
         })
         .catch((err) => console.error('Service lookup for email failed:', err.message));
@@ -337,12 +373,16 @@ router.post(
 // GET /api/admin/appointments — filtered list with pagination
 router.get('/admin', verifyAdmin, async (req, res) => {
   try {
-    const { date, status, search, limit = 20, offset = 0 } = req.query;
+    const {
+      date, start_date, end_date, status, search,
+      zone, time_block, preferred_language,
+      limit = 20, offset = 0,
+    } = req.query;
 
     let q = supabase
       .from('appointments')
       .select(
-        `id, appointment_date, appointment_time, status, location_type,
+        `id, appointment_date, appointment_time, status, location_type, location_zone, preferred_language,
          patient_name, patient_email, patient_phone, created_at,
          services(name, slug, duration_minutes)`,
         { count: 'exact' }
@@ -352,10 +392,16 @@ router.get('/admin', verifyAdmin, async (req, res) => {
       .range(Number(offset), Number(offset) + Number(limit) - 1);
 
     if (date) q = q.eq('appointment_date', date);
+    if (start_date) q = q.gte('appointment_date', start_date);
+    if (end_date) q = q.lte('appointment_date', end_date);
     if (status) q = q.eq('status', status);
     if (search) {
       q = q.or(`patient_name.ilike.%${search}%,patient_email.ilike.%${search}%`);
     }
+    if (zone) q = q.eq('location_zone', zone);
+    if (preferred_language) q = q.eq('preferred_language', preferred_language);
+    if (time_block === 'early_morning') q = q.lt('appointment_time', EARLY_AM_END);
+    if (time_block === 'morning') q = q.gte('appointment_time', EARLY_AM_END);
 
     const { data, error, count } = await q;
     if (error) throw error;
@@ -436,6 +482,14 @@ router.patch(
     body('location_type')
       .isIn(['on_site', 'home_visit'])
       .withMessage('Location type must be on_site or home_visit'),
+    body('location_zone')
+      .optional({ nullable: true, checkFalsy: true })
+      .isIn(['trinity_nearby', 'wesley_chapel', 'zephyrhills_dade_city', 'bushnell_villages'])
+      .withMessage('Invalid location zone'),
+    body('preferred_language')
+      .optional({ nullable: true, checkFalsy: true })
+      .isIn(['en', 'es'])
+      .withMessage('Invalid preferred language'),
     body('appointment_date')
       .matches(/^\d{4}-\d{2}-\d{2}$/)
       .withMessage('Date must be YYYY-MM-DD format'),
@@ -451,6 +505,24 @@ router.patch(
       .optional({ nullable: true, checkFalsy: true })
       .isISO8601()
       .withMessage('Date of birth must be a valid date'),
+    body('address_street').custom((value, { req }) => {
+      if (req.body.location_type === 'home_visit' && (!value || value.trim().length < 5)) {
+        throw new Error('Street address is required for home visits');
+      }
+      return true;
+    }),
+    body('address_city').custom((value, { req }) => {
+      if (req.body.location_type === 'home_visit' && (!value || !value.trim())) {
+        throw new Error('City is required for home visits');
+      }
+      return true;
+    }),
+    body('address_zip').custom((value, { req }) => {
+      if (req.body.location_type === 'home_visit' && !/^\d{5}(-\d{4})?$/.test(value)) {
+        throw new Error('Valid ZIP code required for home visits');
+      }
+      return true;
+    }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -460,6 +532,8 @@ router.patch(
       const {
         service_id,
         location_type,
+        location_zone,
+        preferred_language,
         appointment_date,
         appointment_time,
         patient_name,
@@ -500,6 +574,8 @@ router.patch(
 
       const updatePayload = {
         location_type,
+        location_zone: location_type === 'home_visit' ? (location_zone || null) : null,
+        preferred_language: preferred_language || null,
         appointment_date,
         appointment_time,
         patient_name: patient_name.trim(),

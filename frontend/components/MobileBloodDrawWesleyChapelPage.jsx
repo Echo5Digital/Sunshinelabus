@@ -256,7 +256,7 @@ export default function MobileBloodDrawWesleyChapelPage() {
                 </span>
                 (727) 233-5223
               </a>
-              <Link href="/book-appointment">
+              <Link href="/book-appointment?service=home-draw&location=wesley-chapel">
                 <ShimmerButton className="bg-sunshine-blue text-white text-[0.7rem] sm:text-sm px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full font-semibold whitespace-nowrap shadow-md gap-1.5">
                   <CalendarDays className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:inline" />
                   <span className="sm:hidden">Book Online</span>
@@ -326,7 +326,7 @@ export default function MobileBloodDrawWesleyChapelPage() {
               variants={heroItemVariants}
               className="flex flex-col sm:flex-row flex-wrap gap-4 justify-start mb-8"
             >
-              <Link href="/book-appointment">
+              <Link href="/book-appointment?service=home-draw&location=wesley-chapel">
                 <ShimmerButton className="bg-sunshine-blue border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base gap-2">
                   <CalendarDays className="w-4 h-4" />
                   Book Your Home Blood Draw
@@ -503,7 +503,7 @@ export default function MobileBloodDrawWesleyChapelPage() {
                 <span className="hidden sm:inline">Book Your Wesley Chapel Home Draw — Call (727) 233-5223</span>
               </ShimmerButton>
             </a>
-            <Link href="/book-appointment" className="w-full sm:w-auto">
+            <Link href="/book-appointment?service=home-draw&location=wesley-chapel" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark border border-sunshine-blue/20 px-8 py-3.5 rounded-full font-semibold shadow-md gap-2 justify-center whitespace-nowrap">
                 <CalendarDays className="w-5 h-5 flex-shrink-0" />
                 Book Online
@@ -809,7 +809,7 @@ export default function MobileBloodDrawWesleyChapelPage() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
             >
-              <Link href="/book-appointment">
+              <Link href="/book-appointment?service=home-draw&location=wesley-chapel">
                 <ShimmerButton className="bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
                   <CalendarDays className="w-6 h-6" />
                   Book Your Home Blood Draw

@@ -25,8 +25,8 @@ const stepVariants = {
   }),
 };
 
-export default function BookingWizard() {
-  const state = useBookingState();
+export default function BookingWizard({ deepLinkService, deepLinkLocation }) {
+  const state = useBookingState({ deepLinkService, deepLinkLocation });
   const { step, goToStep, nextStep, prevStep } = state;
   const [direction, setDirection] = useState(1);
 
@@ -59,7 +59,7 @@ export default function BookingWizard() {
           Book an Appointment
         </h1>
         <p className="text-gray-500 text-base">
-          Sunshine Clinical Lab — New Port Richey, FL
+          Sunshine Clinical Lab — Trinity, FL
         </p>
       </div>
 

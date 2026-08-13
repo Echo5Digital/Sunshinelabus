@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Loader2, AlertCircle, Check } from 'lucide-react';
 import { fetchAdminAppointmentById, updateAppointment, fetchServices } from '@/lib/api';
+import { LOCATION_ZONES, LANGUAGE_OPTIONS } from '@/lib/booking-constants';
 
 const inputCls =
   'w-full border border-white/[0.10] rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06] placeholder-white/25';
@@ -28,12 +29,14 @@ export default function AppointmentEditModal({ appointmentId, onClose, onSaved }
   // Form fields
   const [serviceId, setServiceId] = useState('');
   const [locationType, setLocationType] = useState('on_site');
+  const [locationZone, setLocationZone] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [patientName, setPatientName] = useState('');
   const [patientDob, setPatientDob] = useState('');
   const [patientPhone, setPatientPhone] = useState('');
   const [patientEmail, setPatientEmail] = useState('');
+  const [preferredLanguage, setPreferredLanguage] = useState('');
   const [addressStreet, setAddressStreet] = useState('');
   const [addressCity, setAddressCity] = useState('');
   const [addressState, setAddressState] = useState('FL');
@@ -56,12 +59,14 @@ export default function AppointmentEditModal({ appointmentId, onClose, onSaved }
         setApptId(appt.id);
         setServiceId(appt.service_id || '');
         setLocationType(appt.location_type || 'on_site');
+        setLocationZone(appt.location_zone || '');
         setDate(appt.appointment_date || '');
         setTime(appt.appointment_time?.slice(0, 5) || '');
         setPatientName(appt.patient_name || '');
         setPatientDob(appt.patient_dob || '');
         setPatientPhone(appt.patient_phone || '');
         setPatientEmail(appt.patient_email || '');
+        setPreferredLanguage(appt.preferred_language || '');
         setAddressStreet(appt.address_street || '');
         setAddressCity(appt.address_city || '');
         setAddressState(appt.address_state || 'FL');
@@ -80,12 +85,14 @@ export default function AppointmentEditModal({ appointmentId, onClose, onSaved }
       await updateAppointment(apptId, {
         service_id: serviceId || undefined,
         location_type: locationType,
+        location_zone: locationType === 'home_visit' ? (locationZone || null) : null,
         appointment_date: date,
         appointment_time: time,
         patient_name: patientName,
         patient_dob: patientDob || null,
         patient_phone: patientPhone,
         patient_email: patientEmail,
+        preferred_language: preferredLanguage || null,
         address_street: locationType === 'home_visit' ? addressStreet : null,
         address_city: locationType === 'home_visit' ? addressCity : null,
         address_state: locationType === 'home_visit' ? addressState : null,
@@ -178,13 +185,34 @@ export default function AppointmentEditModal({ appointmentId, onClose, onSaved }
                       <Field label="Location">
                         <select
                           value={locationType}
-                          onChange={(e) => setLocationType(e.target.value)}
+                          onChange={(e) => {
+                            const next = e.target.value;
+                            setLocationType(next);
+                            if (next === 'on_site') setLocationZone('');
+                          }}
                           className={inputCls + ' bg-[#1a2535]'}
                         >
                           <option value="on_site">Clinic Visit</option>
                           <option value="home_visit">Home Visit</option>
                         </select>
                       </Field>
+
+                      {locationType === 'home_visit' && (
+                        <Field label="Service Area">
+                          <select
+                            value={locationZone}
+                            onChange={(e) => setLocationZone(e.target.value)}
+                            className={inputCls + ' bg-[#1a2535]'}
+                          >
+                            <option value="">— Select area —</option>
+                            {Object.entries(LOCATION_ZONES).map(([key, zone]) => (
+                              <option key={key} value={key}>
+                                {zone.shortLabel}{zone.expansion ? ' (Expansion)' : ''}
+                              </option>
+                            ))}
+                          </select>
+                        </Field>
+                      )}
 
                       <div className="grid grid-cols-2 gap-3">
                         <Field label="Date">
@@ -254,6 +282,19 @@ export default function AppointmentEditModal({ appointmentId, onClose, onSaved }
                           placeholder="Email address"
                           className={inputCls}
                         />
+                      </Field>
+
+                      <Field label="Preferred Language">
+                        <select
+                          value={preferredLanguage}
+                          onChange={(e) => setPreferredLanguage(e.target.value)}
+                          className={inputCls + ' bg-[#1a2535]'}
+                        >
+                          <option value="">— Not specified —</option>
+                          {LANGUAGE_OPTIONS.map((opt) => (
+                            <option key={opt.key} value={opt.key}>{opt.label}</option>
+                          ))}
+                        </select>
                       </Field>
                     </div>
                   </div>

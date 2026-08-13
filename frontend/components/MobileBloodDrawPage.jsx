@@ -318,7 +318,7 @@ export default function MobileBloodDrawPage() {
               variants={heroItemVariants}
               className="flex flex-col sm:flex-row flex-wrap gap-4 justify-end"
             >
-              <Link href="/book-appointment">
+              <Link href="/book-appointment?service=home-draw&location=trinity">
                 <ShimmerButton className="bg-sunshine-blue border border-white/20 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base gap-2">
                   <CalendarDays className="w-4 h-4" />
                   Book Appointment
@@ -1039,7 +1039,7 @@ export default function MobileBloodDrawPage() {
                   Call Now: (727) 233-5223
                 </ShimmerButton>
               </a>
-              <Link href="/book-appointment">
+              <Link href="/book-appointment?service=home-draw&location=trinity">
                 <ShimmerButton className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
                   <CalendarDays className="w-5 h-5" />
                   Book Appointment

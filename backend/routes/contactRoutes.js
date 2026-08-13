@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const supabase = require('../config/supabase');
+const { sendContactNotificationEmail } = require('../utils/mailer');
 
 const validateContact = [
   body('name')
@@ -54,6 +55,8 @@ router.post('/', validateContact, async (req, res) => {
       // Log but don't expose to user (contact table may not exist yet)
       console.warn('Contact insert warning:', error.message);
     }
+
+    sendContactNotificationEmail({ senderEmail: req.body.email });
 
     res.status(201).json({ message: 'Your message has been received. We will be in touch soon.' });
   } catch (err) {

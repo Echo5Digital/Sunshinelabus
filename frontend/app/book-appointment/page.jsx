@@ -8,11 +8,15 @@ export const metadata = {
   },
 };
 
-export default function BookAppointmentPage() {
+export default async function BookAppointmentPage({ searchParams }) {
+  const params = await searchParams;
+  const deepLinkService = typeof params?.service === 'string' ? params.service : null;
+  const deepLinkLocation = typeof params?.location === 'string' ? params.location : null;
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-sunshine-soft/50 via-white to-white pt-28 pb-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <BookingWizard />
+        <BookingWizard deepLinkService={deepLinkService} deepLinkLocation={deepLinkLocation} />
       </div>
     </main>
   );

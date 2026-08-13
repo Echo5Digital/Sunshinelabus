@@ -44,7 +44,7 @@ export default function Step1Service({ bookingData, updateBookingData, onNext })
   const selected = bookingData.service;
 
   const handleSelect = (svc) => {
-    updateBookingData({ service: svc, locationType: null });
+    updateBookingData({ service: svc, locationType: null, locationZone: null });
   };
 
   return (

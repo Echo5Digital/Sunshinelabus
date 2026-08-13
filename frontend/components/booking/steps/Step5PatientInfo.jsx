@@ -2,8 +2,9 @@
 
 import { useForm } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, User, MapPin } from 'lucide-react';
+import { ChevronLeft, ChevronRight, User, MapPin, AlertTriangle, Languages } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
+import { LOCATION_ZONES, LANGUAGE_OPTIONS } from '@/lib/booking-constants';
 
 const inputBase =
   'w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sunshine-blue transition-colors bg-white disabled:bg-gray-50';
@@ -29,10 +30,14 @@ function Field({ label, error, required, children }) {
 
 export default function Step5PatientInfo({ bookingData, updateBookingData, onNext, onPrev }) {
   const isHomeVisit = bookingData.locationType === 'home_visit';
+  const zone = LOCATION_ZONES[bookingData.locationZone];
+  const zoneZips = isHomeVisit ? zone?.zipCodes : null;
 
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -43,8 +48,16 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
       addressStreet: bookingData.addressStreet,
       addressCity: bookingData.addressCity,
       addressZip: bookingData.addressZip,
+      preferredLanguage: bookingData.preferredLanguage,
     },
   });
+
+  const enteredZip = watch('addressZip');
+  const zipMismatch = Boolean(
+    isHomeVisit && zoneZips && enteredZip &&
+    /^\d{5}/.test(enteredZip) &&
+    !zoneZips.includes(enteredZip.slice(0, 5))
+  );
 
   const { onChange: dobOnChange, ...dobRest } = register('patientDob', {
     validate: (v) => {
@@ -69,6 +82,7 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
       addressStreet: data.addressStreet?.trim() || '',
       addressCity: data.addressCity?.trim() || '',
       addressZip: data.addressZip || '',
+      preferredLanguage: data.preferredLanguage || '',
     });
     onNext();
   };
@@ -147,6 +161,31 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
           </Field>
         </div>
 
+        {/* Preferred language — optional */}
+        <Field label="Preferred Language (optional)">
+          <input type="hidden" {...register('preferredLanguage')} />
+          <div className="flex flex-wrap gap-2">
+            {LANGUAGE_OPTIONS.map((opt) => {
+              const isSelected = watch('preferredLanguage') === opt.key;
+              return (
+                <button
+                  key={opt.key}
+                  type="button"
+                  onClick={() => setValue('preferredLanguage', isSelected ? '' : opt.key)}
+                  className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-medium border-2 transition-colors
+                    ${isSelected
+                      ? 'border-sunshine-blue bg-sunshine-soft/40 text-sunshine-dark'
+                      : 'border-gray-200 text-gray-500 hover:border-sunshine-blue/40 hover:text-sunshine-dark'
+                    }`}
+                >
+                  <Languages className="w-3.5 h-3.5" />
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+        </Field>
+
         {/* Address section — only for home visits */}
         <AnimatePresence>
           {isHomeVisit && (
@@ -223,6 +262,25 @@ export default function Step5PatientInfo({ bookingData, updateBookingData, onNex
                     </Field>
                   </div>
                 </div>
+
+                <AnimatePresence>
+                  {zipMismatch && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                        <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
+                        <p className="text-xs text-amber-800 leading-relaxed">
+                          The zip code you entered doesn&apos;t match your selected service area. Please verify your address or go back to select a different location.
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           )}

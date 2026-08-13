@@ -155,3 +155,20 @@ CREATE TABLE IF NOT EXISTS admin_users (
 CREATE INDEX IF NOT EXISTS idx_admin_users_email ON admin_users(email);
 CREATE INDEX IF NOT EXISTS idx_admin_users_role  ON admin_users(role);
 -- ============================================================
+
+-- ============================================================
+-- Migration: home-visit service zones — run once in Supabase SQL editor if appointments table already exists
+-- Tags which coverage area a home_visit booking falls in, so staff know which
+-- phlebotomist to dispatch. NULL for on_site bookings or legacy rows.
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS location_zone TEXT
+  CHECK (location_zone IN ('trinity_nearby', 'wesley_chapel', 'zephyrhills_dade_city', 'bushnell_villages'));
+CREATE INDEX IF NOT EXISTS idx_appointments_location_zone ON appointments(location_zone);
+-- ============================================================
+
+-- ============================================================
+-- Migration: preferred language — run once in Supabase SQL editor if appointments table already exists
+-- Optional patient-selected language, so staff know to dispatch a Spanish-speaking
+-- phlebotomist and communicate in Spanish for follow-ups. NULL if not specified.
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS preferred_language TEXT
+  CHECK (preferred_language IN ('en', 'es'));
+-- ============================================================

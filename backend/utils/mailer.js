@@ -22,15 +22,37 @@ function formatTime(timeString) {
   return `${hour}:${String(m).padStart(2, '0')} ${suffix}`;
 }
 
-function formatDate(dateString) {
+function formatDate(dateString, locale = 'en-US') {
   const d = new Date(dateString + 'T00:00:00');
-  return d.toLocaleDateString('en-US', {
+  return d.toLocaleDateString(locale, {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
 }
 
+// Expansion-area home-visit zones dispatched to a separate phlebotomist (see LOCATION_ZONES on the frontend).
+const EXPANSION_ZONES = new Set(['wesley_chapel', 'zephyrhills_dade_city', 'bushnell_villages']);
+
+const EARLY_AM_END = '07:30';
+
+const ZONE_LABELS_EN = {
+  trinity_nearby: 'Trinity & Nearby',
+  wesley_chapel: 'Wesley Chapel',
+  zephyrhills_dade_city: 'Zephyrhills & Dade City',
+  bushnell_villages: 'Bushnell & The Villages Area',
+};
+
+const ZONE_LABELS_ES = {
+  trinity_nearby: 'Trinity y Alrededores',
+  wesley_chapel: 'Wesley Chapel',
+  zephyrhills_dade_city: 'Zephyrhills y Dade City',
+  bushnell_villages: 'Bushnell y The Villages',
+};
+
 /**
- * Sends patient confirmation email. Never throws — errors are logged only.
+ * Sends patient confirmation email. Never throws, errors are logged only.
+ * For home-visit bookings in an expansion area, includes the full address, arrival-time note,
+ * and fasting-prep reminder. Early-morning bookings get a porch-light/access reminder.
+ * Sent in Spanish when preferredLanguage is 'es'.
  */
 async function sendConfirmationEmail({
   patientEmail,
@@ -39,14 +61,56 @@ async function sendConfirmationEmail({
   appointmentDate,
   appointmentTime,
   locationType,
+  locationZone = null,
+  preferredLanguage = null,
+  addressStreet = null,
+  addressCity = null,
+  addressState = null,
+  addressZip = null,
 }) {
-  const displayDate = formatDate(appointmentDate);
-  const displayTime = formatTime(appointmentTime);
-  const displayLocation = locationType === 'home_visit' ? 'Home Visit' : 'On-Site Visit (Clinic)';
+  const isSpanish = preferredLanguage === 'es';
+  const isHomeVisit = locationType === 'home_visit';
+  const isExpansionZone = isHomeVisit && EXPANSION_ZONES.has(locationZone);
+  const isEarlyMorning = appointmentTime < EARLY_AM_END;
+  const fullAddress = [addressStreet, addressCity, addressState, addressZip].filter(Boolean).join(', ');
 
-  const html = `
+  const locale = isSpanish ? 'es-US' : 'en-US';
+  const displayDate = formatDate(appointmentDate, locale);
+  const displayTime = formatTime(appointmentTime);
+  const zoneLabels = isSpanish ? ZONE_LABELS_ES : ZONE_LABELS_EN;
+  const homeVisitWord = isSpanish ? 'Visita a Domicilio' : 'Home Visit';
+  const displayLocation = isHomeVisit
+    ? (zoneLabels[locationZone] ? `${homeVisitWord} - ${zoneLabels[locationZone]}` : homeVisitWord)
+    : (isSpanish ? 'Visita en Clinica' : 'On-Site Visit (Clinic)');
+
+  const html = isSpanish ? buildSpanishConfirmationHtml({
+    patientName, serviceName, displayDate, displayTime, displayLocation,
+    isHomeVisit, fullAddress, isExpansionZone, isEarlyMorning,
+  }) : buildEnglishConfirmationHtml({
+    patientName, serviceName, displayDate, displayTime, displayLocation,
+    isHomeVisit, fullAddress, isExpansionZone, isEarlyMorning,
+  });
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: [patientEmail, ...CC_EMAILS],
+      subject: isSpanish ? 'Cita Confirmada \u2013 Sunshine Clinical Lab' : 'Appointment Confirmed \u2013 Sunshine Clinical Lab',
+      html,
+    });
+    console.log(`Confirmation email sent to ${patientEmail}`);
+  } catch (err) {
+    console.error('Email send failed (booking still confirmed):', err.message);
+  }
+}
+
+function buildEnglishConfirmationHtml({
+  patientName, serviceName, displayDate, displayTime, displayLocation,
+  isHomeVisit, fullAddress, isExpansionZone, isEarlyMorning,
+}) {
+  return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
-      <h2 style="color:#1B5E9B">Appointment Confirmed &#8211; Sunshine Clinical Lab</h2>
+      <h2 style="color:#1B5E9B">Appointment Confirmed \u2013 Sunshine Clinical Lab</h2>
       <p>Hello ${patientName},</p>
       <p>Your appointment has been successfully booked.</p>
       <table style="border-collapse:collapse;width:100%;margin:16px 0">
@@ -66,11 +130,16 @@ async function sendConfirmationEmail({
           <td style="padding:8px 0;color:#555"><strong>Location</strong></td>
           <td>${displayLocation}</td>
         </tr>
+        ${isHomeVisit && fullAddress ? `
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Address</strong></td>
+          <td>${fullAddress}</td>
+        </tr>` : ''}
       </table>
-      ${locationType === 'home_visit'
-        ? '<p>Our team will come to your provided address for the home visit.</p>'
-        : ''}
-      <p>If you need to make changes, please call us at <strong>(727) 233-5223</strong>.</p>
+      ${isHomeVisit ? `<p>Your phlebotomist will arrive at your home at <strong>${displayTime}</strong>.</p>` : ''}
+      ${isExpansionZone ? '<p>If your test requires fasting, please avoid food and drink (except water) for 8\u201312 hours before your appointment.</p>' : ''}
+      ${isEarlyMorning ? `<p style="background:#FFF7E6;border:1px solid #FDE3A7;border-radius:6px;padding:12px 16px"><strong>Reminder:</strong> Your appointment is at ${displayTime}. Please ensure your porch light is on and the entrance is accessible for our phlebotomist.</p>` : ''}
+      <p>If you need to reschedule, call <strong>(727) 233-5223</strong>.</p>
       <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
       <p style="color:#555;font-size:13px">
         Thank you,<br/>
@@ -80,18 +149,53 @@ async function sendConfirmationEmail({
       </p>
     </div>
   `;
+}
 
-  try {
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
-      to: [patientEmail, ...CC_EMAILS],
-      subject: 'Appointment Confirmed \u2013 Sunshine Clinical Lab',
-      html,
-    });
-    console.log(`Confirmation email sent to ${patientEmail}`);
-  } catch (err) {
-    console.error('Email send failed (booking still confirmed):', err.message);
-  }
+function buildSpanishConfirmationHtml({
+  patientName, serviceName, displayDate, displayTime, displayLocation,
+  isHomeVisit, fullAddress, isExpansionZone, isEarlyMorning,
+}) {
+  return `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#1a1a2e">
+      <h2 style="color:#1B5E9B">Cita Confirmada \u2013 Sunshine Clinical Lab</h2>
+      <p>Hola ${patientName},</p>
+      <p>Su cita ha sido reservada exitosamente.</p>
+      <table style="border-collapse:collapse;width:100%;margin:16px 0">
+        <tr>
+          <td style="padding:8px 0;color:#555;width:140px"><strong>Servicio</strong></td>
+          <td>${serviceName}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Fecha</strong></td>
+          <td>${displayDate}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Hora</strong></td>
+          <td>${displayTime}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Ubicaci\u00f3n</strong></td>
+          <td>${displayLocation}</td>
+        </tr>
+        ${isHomeVisit && fullAddress ? `
+        <tr>
+          <td style="padding:8px 0;color:#555"><strong>Direcci\u00f3n</strong></td>
+          <td>${fullAddress}</td>
+        </tr>` : ''}
+      </table>
+      ${isHomeVisit ? `<p>Nuestro flebotomista llegar\u00e1 a su domicilio a las <strong>${displayTime}</strong>.</p>` : ''}
+      ${isExpansionZone ? '<p>Si su prueba requiere ayuno, evite comer y beber (excepto agua) durante 8 a 12 horas antes de su cita.</p>' : ''}
+      ${isEarlyMorning ? `<p style="background:#FFF7E6;border:1px solid #FDE3A7;border-radius:6px;padding:12px 16px"><strong>Recordatorio:</strong> Su cita es a las ${displayTime}. Por favor, asegurese de que la luz del porche este encendida y que la entrada sea accesible para nuestro flebotomista.</p>` : ''}
+      <p>Si necesita reprogramar, llame al <strong>(727) 233-5223</strong>.</p>
+      <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
+      <p style="color:#555;font-size:13px">
+        Gracias,<br/>
+        <strong>Sunshine Clinical Lab</strong><br/>
+        3600 Galileo Dr<br/>
+        Trinity, FL 34655, USA
+      </p>
+    </div>
+  `;
 }
 
 /**
@@ -344,10 +448,30 @@ async function sendAppointmentRejectedEmail({
   }
 }
 
+/**
+ * Sends a notification to the CC list when a new message is submitted via the /contact page. Never throws.
+ */
+async function sendContactNotificationEmail({ senderEmail }) {
+  if (CC_EMAILS.length === 0) return;
+
+  try {
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || '"Sunshine Clinical Lab" <no-reply@sunshineclinicallab.com>',
+      to: CC_EMAILS,
+      subject: 'New Contact Form Message – Sunshine Clinical Lab',
+      text: `new message from "${senderEmail}"`,
+    });
+    console.log(`Contact notification email sent for ${senderEmail}`);
+  } catch (err) {
+    console.error('Contact notification email failed:', err.message);
+  }
+}
+
 module.exports = {
   sendConfirmationEmail,
   sendReminder24Email,
   sendReminder2HrEmail,
   sendAppointmentUpdatedEmail,
   sendAppointmentRejectedEmail,
+  sendContactNotificationEmail,
 };

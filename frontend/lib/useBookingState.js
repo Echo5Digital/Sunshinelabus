@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-import { submitBooking, uploadDocuments } from '@/lib/api';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { submitBooking, uploadDocuments, fetchServices } from '@/lib/api';
+import { DEEP_LINK_LOCATION_ZONES } from '@/lib/booking-constants';
 
 const initialData = {
   // Step 1
   service: null,
   // Step 2
   locationType: null,
+  locationZone: null,
   // Step 3
   date: '',
   // Step 4
@@ -21,17 +23,19 @@ const initialData = {
   addressCity: '',
   addressState: 'FL',
   addressZip: '',
+  preferredLanguage: '',
   // Step 6
   documents: [], // Array of { file: File, docType: string }
   // Step 7 — populated on success
   confirmedAppointmentId: null,
 };
 
-export function useBookingState() {
+export function useBookingState({ deepLinkService, deepLinkLocation } = {}) {
   const [step, setStep] = useState(1);
   const [bookingData, setBookingData] = useState(initialData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const deepLinkAttempted = useRef(false);
 
   const goToStep = useCallback((n) => {
     setStep(Math.min(7, Math.max(1, n)));
@@ -49,6 +53,34 @@ export function useBookingState() {
     setBookingData((prev) => ({ ...prev, ...updates }));
   }, []);
 
+  // Deep-link pre-fill: landing-page CTAs pass ?service=<slug>&location=<zone-slug>
+  // to pre-select Service (Step 1) + Location (Step 2) and skip straight to Date (Step 3).
+  useEffect(() => {
+    if (deepLinkAttempted.current) return;
+    if (!deepLinkService || !deepLinkLocation) return;
+    const locationZone = DEEP_LINK_LOCATION_ZONES[deepLinkLocation];
+    if (!locationZone) return;
+
+    deepLinkAttempted.current = true;
+
+    fetchServices()
+      .then((services) => {
+        const service = (Array.isArray(services) ? services : []).find((s) => s.slug === deepLinkService);
+        if (!service || !service.allows_home_visit) return;
+
+        setBookingData((prev) => ({
+          ...prev,
+          service,
+          locationType: 'home_visit',
+          locationZone,
+        }));
+        setStep(3);
+      })
+      .catch(() => {
+        // Deep-link pre-fill failed silently — patient falls back to the normal Step 1 flow.
+      });
+  }, [deepLinkService, deepLinkLocation]);
+
   const resetWizard = useCallback(() => {
     setStep(1);
     setBookingData(initialData);
@@ -64,6 +96,7 @@ export function useBookingState() {
       const payload = {
         service_id: bookingData.service.id,
         location_type: bookingData.locationType,
+        location_zone: bookingData.locationType === 'home_visit' ? bookingData.locationZone || undefined : undefined,
         appointment_date: bookingData.date,
         appointment_time: bookingData.timeSlot,
         patient_name: bookingData.patientName,
@@ -79,6 +112,7 @@ export function useBookingState() {
         address_city: bookingData.addressCity || undefined,
         address_state: bookingData.addressState || 'FL',
         address_zip: bookingData.addressZip || undefined,
+        preferred_language: bookingData.preferredLanguage || undefined,
       };
 
       const result = await submitBooking(payload);

@@ -7,13 +7,50 @@ import {
   CalendarDays, Calendar, Clock, ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { fetchAdminAppointments, updateAppointmentStatus, deleteAppointment } from '@/lib/api';
-import { STATUS_CONFIG } from '@/lib/booking-constants';
+import { STATUS_CONFIG, LOCATION_ZONES, LANGUAGE_OPTIONS, EARLY_AM_END } from '@/lib/booking-constants';
 import AppointmentDetailModal from './AppointmentDetailModal';
 import AppointmentEditModal from './AppointmentEditModal';
 
 const PAGE_SIZE = 20;
 
+// ── Filter option definitions ───────────────────────────────────────────────────
+
+const AREA_FILTERS = [
+  { key: '', label: 'All Areas' },
+  { key: 'trinity_nearby', label: 'Trinity' },
+  { key: 'wesley_chapel', label: 'Wesley Chapel' },
+  { key: 'zephyrhills_dade_city', label: 'Zephyrhills' },
+  { key: 'bushnell_villages', label: 'Bushnell/Villages' },
+];
+
+const TIME_BLOCK_FILTERS = [
+  { key: '', label: 'All Times' },
+  { key: 'early_morning', label: 'Early Morning 3–7:30' },
+  { key: 'morning', label: 'Morning 9–2:30' },
+];
+
+const LANGUAGE_LABELS = Object.fromEntries(LANGUAGE_OPTIONS.map((o) => [o.key, o.label]));
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
+
+function locationShortLabel(appt) {
+  if (appt.location_type !== 'home_visit') return 'Clinic';
+  const zone = LOCATION_ZONES[appt.location_zone];
+  return zone ? zone.shortLabel.replace('Home Visit ', '') : 'Home';
+}
+
+function isExpansionZone(appt) {
+  return appt.location_type === 'home_visit' && LOCATION_ZONES[appt.location_zone]?.expansion;
+}
+
+function phlebotomistTeam(appt) {
+  return isExpansionZone(appt) ? 'Expansion Phlebotomist' : 'Trinity Team';
+}
+
+function timeBlockLabel(appt) {
+  if (!isExpansionZone(appt) || !appt.appointment_time) return null;
+  return appt.appointment_time.slice(0, 5) < EARLY_AM_END ? 'Early Morning' : 'Morning';
+}
 
 function getWeekRange() {
   const now = new Date();
@@ -205,7 +242,12 @@ function WeekAppointments({ onView, onEdit, onDelete }) {
                         <div className="flex items-center justify-between">
                           <span className="inline-flex items-center gap-1 text-[10px] text-white/40">
                             <MapPin className="w-2.5 h-2.5" />
-                            {appt.location_type === 'home_visit' ? 'Home Visit' : 'Clinic'}
+                            {locationShortLabel(appt)}
+                            {isExpansionZone(appt) && (
+                              <span className="ml-1 px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold">
+                                Expansion
+                              </span>
+                            )}
                           </span>
                           <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
@@ -257,6 +299,11 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
   const [statusFilter, setStatusFilter] = useState('');
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [areaFilter, setAreaFilter] = useState('');
+  const [timeBlockFilter, setTimeBlockFilter] = useState('');
+  const [dateMode, setDateMode] = useState('all'); // 'all' | 'today' | 'week' | 'range'
+  const [rangeStart, setRangeStart] = useState('');
+  const [rangeEnd, setRangeEnd] = useState('');
   const searchTimer = useRef(null);
 
   const onSearchChange = (v) => {
@@ -268,6 +315,18 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
     }, 300);
   };
 
+  const applyDateMode = (mode) => {
+    setDateMode(mode);
+    setPage(0);
+    if (mode !== 'range') {
+      setRangeStart('');
+      setRangeEnd('');
+    }
+    if (mode !== 'all') {
+      setDateFilter('');
+    }
+  };
+
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -276,6 +335,28 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
       if (dateFilter) params.date = dateFilter;
       if (statusFilter) params.status = statusFilter;
       if (debouncedSearch) params.search = debouncedSearch;
+      if (areaFilter) params.zone = areaFilter;
+      if (timeBlockFilter) params.time_block = timeBlockFilter;
+
+      if (dateMode === 'today') {
+        const today = new Date().toISOString().slice(0, 10);
+        params.start_date = today;
+        params.end_date = today;
+      } else if (dateMode === 'week') {
+        const now = new Date();
+        const day = now.getDay();
+        const diffToMon = (day === 0 ? -6 : 1 - day);
+        const mon = new Date(now);
+        mon.setDate(now.getDate() + diffToMon);
+        const sun = new Date(mon);
+        sun.setDate(mon.getDate() + 6);
+        const fmt = (d) => d.toISOString().slice(0, 10);
+        params.start_date = fmt(mon);
+        params.end_date = fmt(sun);
+      } else if (dateMode === 'range') {
+        if (rangeStart) params.start_date = rangeStart;
+        if (rangeEnd) params.end_date = rangeEnd;
+      }
 
       const data = await fetchAdminAppointments(params);
       setAppointments(data.data || []);
@@ -285,7 +366,7 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
     } finally {
       setLoading(false);
     }
-  }, [page, dateFilter, statusFilter, debouncedSearch]);
+  }, [page, dateFilter, statusFilter, debouncedSearch, areaFilter, timeBlockFilter, dateMode, rangeStart, rangeEnd]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -294,10 +375,15 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
     setStatusFilter('');
     setSearch('');
     setDebouncedSearch('');
+    setAreaFilter('');
+    setTimeBlockFilter('');
+    setDateMode('all');
+    setRangeStart('');
+    setRangeEnd('');
     setPage(0);
   };
 
-  const hasFilters = dateFilter || statusFilter || debouncedSearch;
+  const hasFilters = dateFilter || statusFilter || debouncedSearch || areaFilter || timeBlockFilter || dateMode !== 'all';
   const totalPages = Math.ceil(total / PAGE_SIZE);
 
   const getRowBg = (status) => {
@@ -331,14 +417,90 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
         </button>
       </div>
 
+      {/* Route filter bar — area / time block / date range, for dispatch planning */}
+      <div className="px-4 py-3 border-b border-white/[0.07] bg-white/[0.02] space-y-2.5">
+        {/* Area filter */}
+        <div className="flex flex-wrap gap-1.5">
+          {AREA_FILTERS.map((opt) => (
+            <button
+              key={opt.key}
+              onClick={() => { setAreaFilter(opt.key); setPage(0); }}
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                areaFilter === opt.key
+                  ? 'bg-sunshine-blue border-sunshine-blue text-white'
+                  : 'border-white/[0.10] text-white/50 hover:text-white hover:border-white/[0.25]'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Time block filter */}
+        <div className="flex flex-wrap gap-1.5">
+          {TIME_BLOCK_FILTERS.map((opt) => (
+            <button
+              key={opt.key}
+              onClick={() => { setTimeBlockFilter(opt.key); setPage(0); }}
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                timeBlockFilter === opt.key
+                  ? 'bg-sunshine-sky border-sunshine-sky text-white'
+                  : 'border-white/[0.10] text-white/50 hover:text-white hover:border-white/[0.25]'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Date quick-select */}
+        <div className="flex flex-wrap gap-1.5 items-center">
+          {[
+            { key: 'all', label: 'All Dates' },
+            { key: 'today', label: 'Today' },
+            { key: 'week', label: 'This Week' },
+            { key: 'range', label: 'Date Range' },
+          ].map((opt) => (
+            <button
+              key={opt.key}
+              onClick={() => applyDateMode(opt.key)}
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                dateMode === opt.key
+                  ? 'bg-violet-500 border-violet-500 text-white'
+                  : 'border-white/[0.10] text-white/50 hover:text-white hover:border-white/[0.25]'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+          {dateMode === 'range' && (
+            <div className="flex items-center gap-1.5 ml-1">
+              <input
+                type="date"
+                value={rangeStart}
+                onChange={(e) => { setRangeStart(e.target.value); setPage(0); }}
+                className="border border-white/[0.10] rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06] [color-scheme:dark]"
+              />
+              <span className="text-white/30 text-xs">to</span>
+              <input
+                type="date"
+                value={rangeEnd}
+                onChange={(e) => { setRangeEnd(e.target.value); setPage(0); }}
+                className="border border-white/[0.10] rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06] [color-scheme:dark]"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Filter bar */}
       <div className="px-4 py-3 border-b border-white/[0.07] bg-white/[0.02]">
         <div className="flex flex-wrap gap-3 items-center">
-          {/* Date filter */}
+          {/* Date filter (exact date — independent of the quick-select date range above) */}
           <input
             type="date"
             value={dateFilter}
-            onChange={(e) => { setDateFilter(e.target.value); setPage(0); }}
+            onChange={(e) => { setDateFilter(e.target.value); setDateMode('all'); setRangeStart(''); setRangeEnd(''); setPage(0); }}
             className="border border-white/[0.10] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sunshine-blue bg-white/[0.06] w-40 [color-scheme:dark]"
           />
 
@@ -430,7 +592,7 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                   <span>·</span>
                   <span>{appt.services?.name || '—'}</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <select
                     value={appt.status}
                     onChange={(e) => onStatusChange(appt.id, e.target.value)}
@@ -442,8 +604,23 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                   </select>
                   <span className="inline-flex items-center gap-1 text-xs text-white/60">
                     <MapPin className="w-3 h-3" />
-                    {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
+                    {locationShortLabel(appt)}
+                    {isExpansionZone(appt) && (
+                      <span className="ml-1 px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-semibold">
+                        Expansion
+                      </span>
+                    )}
                   </span>
+                  {timeBlockLabel(appt) && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-sunshine-sky/20 text-sunshine-sky text-[10px] font-semibold">
+                      {timeBlockLabel(appt)}
+                    </span>
+                  )}
+                  {appt.preferred_language === 'es' && (
+                    <span className="px-1.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 text-[10px] font-semibold">
+                      {LANGUAGE_LABELS.es}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -458,6 +635,8 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Patient</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Service</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Location</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Team</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Language</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Status</th>
                   <th className="px-4 py-3" />
                 </tr>
@@ -477,8 +656,31 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                     <td className="px-4 py-3">
                       <span className="inline-flex items-center gap-1 text-xs text-white/60">
                         <MapPin className="w-3 h-3" />
-                        {appt.location_type === 'home_visit' ? 'Home' : 'Clinic'}
+                        {locationShortLabel(appt)}
+                        {timeBlockLabel(appt) && (
+                          <span className="ml-1 px-1.5 py-0.5 rounded-full bg-sunshine-sky/20 text-sunshine-sky text-[10px] font-semibold">
+                            {timeBlockLabel(appt)}
+                          </span>
+                        )}
                       </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                        isExpansionZone(appt) ? 'bg-amber-500/20 text-amber-300' : 'bg-white/10 text-white/60'
+                      }`}>
+                        {phlebotomistTeam(appt)}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {appt.preferred_language ? (
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                          appt.preferred_language === 'es' ? 'bg-violet-500/20 text-violet-300' : 'bg-white/10 text-white/60'
+                        }`}>
+                          {LANGUAGE_LABELS[appt.preferred_language]}
+                        </span>
+                      ) : (
+                        <span className="text-white/30 text-xs">—</span>
+                      )}
                     </td>
                     <td className="px-4 py-3">
                       <select

@@ -8,6 +8,12 @@ const BUSINESS_END = '14:15';
 const SLOT_INTERVAL = 15; // minutes
 const MIN_ADVANCE_HOURS = 0;
 
+// Early-morning window for expansion-area home visits (Wesley Chapel, Zephyrhills/Dade
+// City, Bushnell/Villages): Mon-Fri, 03:00 – 07:00 (last slot 07:00), 30-min increments.
+const EARLY_AM_START = '03:00';
+const EARLY_AM_END = '07:30';
+const EARLY_AM_INTERVAL = 30; // minutes
+
 // Generate all HH:MM time slots between start and end (exclusive)
 function generateTimeSlots(start, end, intervalMin) {
   const slots = [];
@@ -130,7 +136,10 @@ router.get('/', async (req, res) => {
     const currentTimeStr = `${easternParts.hour === '24' ? '00' : easternParts.hour}:${easternParts.minute}`;
     const isToday = date === todayStr;
 
-    const allSlots = generateTimeSlots(BUSINESS_START, BUSINESS_END, SLOT_INTERVAL);
+    const allSlots = [
+      ...generateTimeSlots(EARLY_AM_START, EARLY_AM_END, EARLY_AM_INTERVAL),
+      ...generateTimeSlots(BUSINESS_START, BUSINESS_END, SLOT_INTERVAL),
+    ];
     const available = allSlots.filter((slot) => {
       if (bookedTimes.has(slot) || blockedTimes.has(slot)) return false;
       if (isToday && slot <= currentTimeStr) return false;

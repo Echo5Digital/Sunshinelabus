@@ -3,12 +3,31 @@
 import { format, parseISO } from 'date-fns';
 import {
   Calendar, Clock, MapPin, User, Phone, Mail, FileText,
-  ChevronLeft, Loader2, CheckCircle, AlertCircle, Edit2, Home,
+  ChevronLeft, Loader2, CheckCircle, AlertCircle, Edit2, Home, Languages,
 } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
-import { formatTimeSlot } from '@/lib/booking-constants';
+import { formatTimeSlot, LOCATION_ZONES, LANGUAGE_OPTIONS, EARLY_AM_END } from '@/lib/booking-constants';
 
 const LOCATION_LABELS = { on_site: 'Clinic Visit', home_visit: 'Home Visit' };
+const LANGUAGE_LABELS = Object.fromEntries(LANGUAGE_OPTIONS.map((o) => [o.key, o.label]));
+
+function locationLabel(locationType, locationZone, addressZip) {
+  const base = locationType === 'home_visit' && locationZone && LOCATION_ZONES[locationZone]
+    ? LOCATION_ZONES[locationZone].shortLabel
+    : LOCATION_LABELS[locationType];
+  if (locationType === 'home_visit' && addressZip) {
+    return `${base} (${addressZip})`;
+  }
+  return base;
+}
+
+// Appends the expansion-area time block name (Early Morning / Morning) next to the formatted time.
+function timeWithBlock(formattedTime, timeSlot, locationType, locationZone) {
+  const isExpansion = locationType === 'home_visit' && LOCATION_ZONES[locationZone]?.expansion;
+  if (!isExpansion || !timeSlot) return formattedTime;
+  const blockName = timeSlot < EARLY_AM_END ? 'Early Morning Block' : 'Morning Block';
+  return `${formattedTime} (${blockName})`;
+}
 const DOC_LABELS = {
   id: 'Photo ID',
   lab_order: 'Lab Order / Rx',
@@ -57,8 +76,8 @@ export default function Step7Review({
   onGoToStep,
   resetWizard,
 }) {
-  const { service, locationType, date, timeSlot, patientName, patientDob,
-    patientPhone, patientEmail, addressStreet, addressCity, addressZip,
+  const { service, locationType, locationZone, date, timeSlot, patientName, patientDob,
+    patientPhone, patientEmail, addressStreet, addressCity, addressZip, preferredLanguage,
     documents, confirmedAppointmentId } = bookingData;
 
   const formattedDate = date ? format(parseISO(date), 'EEEE, MMMM d, yyyy') : '';
@@ -85,7 +104,7 @@ export default function Step7Review({
             <Row icon={Calendar} label="Date" value={formattedDate} />
             <Row icon={Clock} label="Time" value={formattedTime} />
             <Row icon={FileText} label="Service" value={service?.name} />
-            <Row icon={MapPin} label="Location" value={LOCATION_LABELS[locationType]} />
+            <Row icon={MapPin} label="Location" value={locationLabel(locationType, locationZone)} />
           </div>
         </div>
 
@@ -120,12 +139,13 @@ export default function Step7Review({
         {/* Service & Schedule */}
         <ReviewSection title="Service & Schedule" icon={Calendar} onEdit={() => onGoToStep(1)}>
           <Row icon={FileText} label="Service" value={service?.name} />
-          <Row icon={MapPin} label="Location" value={LOCATION_LABELS[locationType]} />
+          <Row icon={MapPin} label="Location" value={locationLabel(locationType, locationZone, addressZip)} />
           <Row icon={Calendar} label="Date" value={formattedDate} />
-          <Row icon={Clock} label="Time" value={formattedTime} />
+          <Row icon={Clock} label="Time" value={timeWithBlock(formattedTime, timeSlot, locationType, locationZone)} />
           {service?.duration_minutes && (
             <Row icon={Clock} label="Duration" value={`${service.duration_minutes} minutes`} />
           )}
+          <Row icon={Languages} label="Phlebotomist Language" value={LANGUAGE_LABELS[preferredLanguage] || LANGUAGE_LABELS.en} />
         </ReviewSection>
 
         {/* Patient Information */}
