@@ -201,7 +201,34 @@ export default function AboutPage() {
       </section>
 
       {/* ── Core Values ───────────────────────────────────────────────────────── */}
+      
       <section className="relative overflow-hidden py-20 pb-24 sm:pb-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-sunshine-blue text-xs font-bold uppercase tracking-widest mb-3 block">
+              Trusted Since Day One
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark mb-4">
+              Why Patients Trust Us
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
+              For more than three decades, Sunshine Clinical Lab has earned the confidence of healthcare providers, care facilities, and patients by delivering{' '}
+              <span className="text-sunshine-blue font-semibold">accurate results with exceptional service</span>. Our team understands that laboratory testing plays a critical role in medical decisions, which is why we combine advanced diagnostic expertise with a patient-centered approach.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-medium text-center">
+              From routine blood work to specialized testing and{' '}
+              <span className="text-sunshine-dark font-semibold">mobile phlebotomy services</span>, we focus on making the testing process simple, convenient, and reliable. Every sample is handled with{' '}
+              <span className="text-sunshine-blue font-semibold">precision</span>, every patient is treated with{' '}
+              <span className="text-sunshine-blue font-semibold">respect</span>, and every result is delivered with the{' '}
+              <span className="text-sunshine-blue font-semibold">quality standards</span> our community depends on.
+            </p>
+          </div>
+        </div>
+      </section>
+<section className="relative overflow-hidden py-20 pb-24 sm:pb-28 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="text-sunshine-blue text-xs font-bold uppercase tracking-widest mb-3 block">
