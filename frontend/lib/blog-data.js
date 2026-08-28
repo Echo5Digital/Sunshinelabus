@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Peekaboo Gender Test vs Ultrasound: Which Is More Accurate?",
+    slug: "peekaboo-gender-test-vs-ultrasound-which-is-more-accurate",
+    excerpt: "Peekaboo gender test vs ultrasound: compare accuracy, timing, and reliability of each method to find out your baby's sex during pregnancy.",
+    image: "/images/blog/peekaboo-gender-test-vs-ultrasound-which-is-more-accurate/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "August 28, 2026",
+  },
+  {
     title: "Do You Need Fasting Before TRT Blood Work?",
     slug: "do-you-need-fasting-before-trt-blood-work",
     excerpt: "Find out if fasting is needed before TRT blood work, what tests are included, and how Sunshine Clinical Lab LLC makes walk-in testosterone testing easy.",
