@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61569740364739', Icon: Facebook },
+  { label: 'Instagram', href: 'https://www.instagram.com/sunshinelabfl', Icon: Instagram },
+];
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -40,6 +45,20 @@ export default function Footer() {
             <p className="text-white/55 text-sm leading-relaxed mb-6">
               Accurate, reliable, and timely diagnostic services — bringing sunshine to your health journey in New Port Richey&nbsp;&amp;&nbsp;Pasco County.
             </p>
+            <div className="flex items-center gap-3">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-sunshine-yellow hover:text-sunshine-dark transition-colors duration-200"
+                >
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Column 1: Quick Links */}
