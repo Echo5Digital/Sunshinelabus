@@ -70,6 +70,18 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 }
 
+function formatBookedOnDate(isoStr) {
+  if (!isoStr) return '—';
+  const d = new Date(isoStr);
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function formatBookedOnTime(isoStr) {
+  if (!isoStr) return '';
+  const d = new Date(isoStr);
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+}
+
 function StatusBadge({ status }) {
   const cfg = STATUS_CONFIG[status] || { label: status, color: 'gray' };
   const colorMap = {
@@ -592,6 +604,15 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                   <span>·</span>
                   <span>{appt.services?.name || '—'}</span>
                 </div>
+                <div className="flex flex-wrap items-center gap-1.5 text-xs text-white/40 mb-2">
+                  <span>Booked on {formatBookedOnDate(appt.created_at)}</span>
+                  {appt.created_at && (
+                    <>
+                      <span>·</span>
+                      <span>{formatBookedOnTime(appt.created_at)}</span>
+                    </>
+                  )}
+                </div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <select
                     value={appt.status}
@@ -631,7 +652,8 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-white/[0.04] border-b border-white/[0.07]">
-                  <th className="text-left px-5 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Date &amp; Time</th>
+                  <th className="text-left px-5 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Booked On</th>
+                  <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Booked for Date &amp; Time</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Patient</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Service</th>
                   <th className="text-left px-4 py-3 text-xs font-semibold text-white/60 uppercase tracking-wide">Location</th>
@@ -645,6 +667,10 @@ function AllAppointments({ onView, onEdit, onDelete, onStatusChange }) {
                 {appointments.map((appt) => (
                   <tr key={appt.id} className={`hover:bg-white/[0.03] transition-colors ${getRowBg(appt.status)}`}>
                     <td className="px-5 py-3">
+                      <p className="font-medium text-white">{formatBookedOnDate(appt.created_at)}</p>
+                      <p className="text-xs text-white/55">{formatBookedOnTime(appt.created_at)}</p>
+                    </td>
+                    <td className="px-4 py-3">
                       <p className="font-medium text-white">{appt.appointment_date}</p>
                       <p className="text-xs text-white/55">{appt.appointment_time?.slice(0, 5)}</p>
                     </td>

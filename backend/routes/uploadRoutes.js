@@ -89,6 +89,7 @@ router.post('/:id/documents', upload.array('files', 4), async (req, res) => {
           appointment_id: appointmentId,
           document_type: docType,
           file_url: fileUrl,
+          storage_path: storagePath,
           file_name: file.originalname,
           file_size_bytes: file.size,
         })

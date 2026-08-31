@@ -11,6 +11,9 @@ const {
 
 const MIN_ADVANCE_HOURS = 24;
 
+// Must match STORAGE_BUCKET in uploadRoutes.js
+const DOCS_STORAGE_BUCKET = 'appointment-docs';
+
 // Boundary between the expansion-area "Early Morning" and "Morning" time blocks (see availabilityRoutes.js).
 const EARLY_AM_END = '07:30';
 
@@ -434,10 +437,23 @@ router.get(
 
       const { data: docs } = await supabase
         .from('appointment_documents')
-        .select('id, document_type, file_url, file_name, file_size_bytes, uploaded_at')
+        .select('id, document_type, file_url, storage_path, file_name, file_size_bytes, uploaded_at')
         .eq('appointment_id', req.params.id);
 
-      return res.json({ ...appt, documents: docs || [] });
+      // Re-sign a fresh, short-lived download URL on every request so links never
+      // silently expire between uploads and admin views. Legacy rows without a
+      // storage_path (uploaded before this fix) fall back to their stored file_url.
+      const documents = await Promise.all(
+        (docs || []).map(async (doc) => {
+          if (!doc.storage_path) return doc;
+          const { data: urlData } = await supabase.storage
+            .from(DOCS_STORAGE_BUCKET)
+            .createSignedUrl(doc.storage_path, 60 * 5);
+          return urlData?.signedUrl ? { ...doc, file_url: urlData.signedUrl } : doc;
+        })
+      );
+
+      return res.json({ ...appt, documents });
     } catch (err) {
       console.error('Admin detail error:', err.message);
       return res.status(500).json({ error: 'Failed to fetch appointment' });

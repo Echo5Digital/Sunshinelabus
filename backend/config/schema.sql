@@ -172,3 +172,41 @@ CREATE INDEX IF NOT EXISTS idx_appointments_location_zone ON appointments(locati
 ALTER TABLE appointments ADD COLUMN IF NOT EXISTS preferred_language TEXT
   CHECK (preferred_language IN ('en', 'es'));
 -- ============================================================
+
+-- ============================================================
+-- Migration: document storage path — run once in Supabase SQL editor if appointment_documents table already exists
+-- Stores the raw Supabase Storage object path (not a signed URL) so the admin
+-- API can re-sign a fresh, short-lived download URL on every request instead
+-- of persisting a signed URL that expires after 7 days.
+ALTER TABLE appointment_documents ADD COLUMN IF NOT EXISTS storage_path TEXT;
+-- ============================================================
+
+-- ============================================================
+-- Backfill: derive storage_path for legacy documents uploaded before the
+-- migration above — run once in Supabase SQL editor, AFTER the ALTER TABLE.
+-- Read-only only touches the storage_path column, and only for rows where it
+-- is currently NULL. Does not modify or delete file_url, file_name, or any
+-- other column/row, and does not touch Supabase Storage objects at all.
+--
+-- Case A: file_url is a Supabase signed URL — the storage path is a literal,
+-- non-expiring substring of that URL (only the token/signature expires, not
+-- the path), so it can be extracted directly via regex.
+UPDATE appointment_documents
+SET storage_path = substring(file_url from '/storage/v1/object/sign/appointment-docs/([^?]+)\?')
+WHERE storage_path IS NULL
+  AND file_url LIKE 'http%/storage/v1/object/sign/appointment-docs/%';
+
+-- Case B: signing failed at upload time, so file_url already holds the bare
+-- storage path (no https://.../sign/... wrapper) — copy it across as-is.
+UPDATE appointment_documents
+SET storage_path = file_url
+WHERE storage_path IS NULL
+  AND file_url NOT LIKE 'http%';
+
+-- Run this SELECT first (or after) to confirm every row was recovered — any
+-- row still listed has a file_url that doesn't match either known shape and
+-- should be reviewed manually rather than force-derived:
+--   SELECT id, appointment_id, document_type, file_name, file_url
+--   FROM appointment_documents
+--   WHERE storage_path IS NULL;
+-- ============================================================
