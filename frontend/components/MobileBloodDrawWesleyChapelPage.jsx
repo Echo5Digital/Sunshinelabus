@@ -78,7 +78,7 @@ const SERVICES = [
   {
     Icon: Activity,
     title: 'Routine Blood Work',
-    body: 'CBC, CMP, lipid panels, A1C, thyroid panels, liver and kidney function, and all physician-ordered blood work. Next-day results for many tests.',
+    body: 'CBC, CMP, lipid panels, A1C, thyroid panels, liver and kidney function, and all physician-ordered blood work.',
   },
   {
     Icon: ShieldCheck,
@@ -115,8 +115,8 @@ const STEPS = [
   },
   {
     num: '03',
-    title: 'Results — Fast',
-    body: 'Samples are transported to our lab and processed with the same speed as in-office draws. Results for many routine tests are available the next business day.',
+    title: 'Lab Processing',
+    body: 'Samples are transported to our lab and processed the same way as in-office draws. Turnaround time depends on the tests ordered — our team can give you an expected timeframe when your appointment is scheduled.',
   },
 ];
 
@@ -131,7 +131,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Do you offer TRT blood work at home in Wesley Chapel?',
-    a: 'Yes. We provide complete TRT monitoring panels at your home — total/free testosterone, estradiol, hematocrit, PSA, CBC, CMP, and more. Next-day results for many tests at affordable pricing.',
+    a: 'Yes. We provide complete TRT monitoring panels at your home — total/free testosterone, estradiol, hematocrit, PSA, CBC, CMP, and more, at affordable pricing.',
   },
   {
     q: 'Is a Spanish-speaking phlebotomist available in Wesley Chapel?',

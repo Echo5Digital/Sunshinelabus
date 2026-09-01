@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
-import { MapPin, CheckCircle2, Clock, Award } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 export default function DirectAnswerBlock1() {
   const ref = useRef(null);
@@ -55,23 +55,6 @@ export default function DirectAnswerBlock1() {
               available the next business day. The lab serves as a personalized, faster alternative
               to large national chain laboratories.
             </p>
-            {/* Quick stats strip */}
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {[
-                { icon: CheckCircle2, label: 'Walk-Ins Welcome' },
-                { icon: Clock, label: 'Next-Day Results' },
-                { icon: Award, label: '35+ Years Experience' },
-                { icon: MapPin, label: 'Trinity, FL' },
-              ].map(({ icon: Icon, label }) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full"
-                >
-                  <Icon className="w-3.5 h-3.5 text-sunshine-blue flex-shrink-0" />
-                  {label}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>

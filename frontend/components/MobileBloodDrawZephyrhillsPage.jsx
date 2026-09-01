@@ -80,12 +80,12 @@ const SERVICES = [
   {
     Icon: Activity,
     title: 'Routine Blood Panels',
-    body: 'CBC, CMP, lipid panels, A1C, thyroid, liver function, kidney function, and all standard physician-ordered tests. Next-day results for many.',
+    body: 'CBC, CMP, lipid panels, A1C, thyroid, liver function, kidney function, and all standard physician-ordered tests.',
   },
   {
     Icon: ShieldCheck,
     title: 'TRT & Hormone Monitoring',
-    body: 'Complete testosterone panels — total/free T, estradiol, hematocrit, PSA, SHBG, LH, FSH. Affordable pricing for self-pay patients. Next-day results for many TRT tests.',
+    body: 'Complete testosterone panels — total/free T, estradiol, hematocrit, PSA, SHBG, LH, FSH. Affordable pricing for self-pay patients.',
   },
   {
     Icon: Fingerprint,

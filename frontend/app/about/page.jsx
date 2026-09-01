@@ -37,7 +37,7 @@ const coreValues = [
   {
     Icon: Zap,
     title: 'Speed & Accuracy',
-    desc: 'Fast turnaround without compromising precision. Most results available next business day.',
+    desc: 'Turnaround time depends on the test being performed — our team can give you an expected timeframe when you visit or schedule.',
   },
   {
     Icon: Truck,
@@ -77,9 +77,7 @@ const mobileDrawItems = [
 
 const stats = [
   { value: '35+', label: 'Years of Experience' },
-  { value: '5★', label: 'Patient Satisfaction' },
   { value: '10+', label: 'Cities Served' },
-  { value: '24h', label: 'Fast Results' },
 ];
 
 export default function AboutPage() {
@@ -320,7 +318,7 @@ export default function AboutPage() {
             <span className="hidden sm:block text-white/30" aria-hidden="true">|</span>
             <span className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-              Mon–Fri 8:00am–5:00pm · Walk-Ins Welcome
+              Mon–Fri 8:00am–2:00pm · Walk-Ins Welcome
             </span>
           </div>
         </div>

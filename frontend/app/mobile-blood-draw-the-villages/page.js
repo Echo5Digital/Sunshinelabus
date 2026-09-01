@@ -53,7 +53,7 @@ const localBusinessSchema = {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 
@@ -132,7 +132,7 @@ const faqSchema = {
       name: 'How fast will I get my results?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For many routine blood tests, results are available the next business day. Turnaround varies by test type. Our team will provide a timeline when you schedule.',
+        text: 'Turnaround time varies by test type. Our team will provide an expected timeframe when you schedule.',
       },
     },
     {

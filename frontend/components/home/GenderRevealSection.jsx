@@ -55,37 +55,36 @@ export default function GenderRevealSection() {
             id="gender-reveal-heading"
             className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark leading-tight mb-5"
           >
-            Gender Reveal Blood Test —{' '}
+            Gender Reveal{' '}
             <span className="bg-gradient-to-r from-sunshine-yellow to-sunshine-blue bg-clip-text text-transparent">
-              Find Out as Early as 6 Weeks
+              Blood Testing
             </span>
           </motion.h2>
 
           <motion.p variants={itemVariants} className="text-gray-600 leading-relaxed mb-4">
-            Sunshine Clinical Lab is proud to offer the{' '}
-            <strong>Peekaboo Early Gender Reveal Blood Test</strong> right here in Trinity, FL.
-            This simple, non-invasive blood draw can reveal whether you&apos;re expecting a boy or
-            a girl as early as 6 weeks into pregnancy — long before a traditional ultrasound.
+            Want to learn your baby&apos;s gender earlier in pregnancy? Sunshine Clinical Labs
+            offers the <strong>Peekaboo Early Gender Reveal Blood Test</strong> — a simple,
+            non-invasive blood-based gender reveal test for expecting parents right here in
+            Trinity, FL. Contact our team to learn when testing can be performed and how to
+            schedule your visit.
           </motion.p>
 
           <motion.p variants={itemVariants} className="text-gray-600 leading-relaxed mb-8">
             It&apos;s one of the most exciting moments for expecting families, and we love being
             part of it. Many of our patients use their results to plan gender reveal parties,
-            nursery themes, and those unforgettable family announcements. Schedule your Peekaboo
-            test today and find out if it&apos;s pink or blue — faster than you ever thought
-            possible.
+            nursery themes, and those unforgettable family announcements.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-            <a href="tel:+17272335223" aria-label="Schedule your gender reveal blood test" className="w-full sm:w-auto">
+            <a href="tel:+17272335223" aria-label="Contact us about gender reveal blood testing" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-8 py-4 rounded-full font-bold shadow-xl gap-2">
                 <Phone className="w-5 h-5" aria-hidden="true" />
-                Schedule Your Gender Reveal Blood Test — (727) 233-5223
+                Call (727) 233-5223
               </ShimmerButton>
             </a>
-            <Link href="/gender-reveal-testing-florida" aria-label="Learn more about gender reveal testing in Florida" className="w-full sm:w-auto">
+            <Link href="/gender-reveal-testing-florida" aria-label="Learn about gender reveal testing" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto border border-sunshine-blue/30 text-sunshine-blue bg-white px-6 py-4 rounded-full font-semibold gap-2">
-                Learn More About Gender Reveal Testing
+                Learn About Gender Reveal Testing
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>
             </Link>

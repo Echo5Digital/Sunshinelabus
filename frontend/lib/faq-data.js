@@ -6,35 +6,31 @@
  */
 export const FAQ_DATA = [
   {
-    q: 'Do I need an appointment for blood work at Sunshine Clinical Lab in Trinity, FL?',
-    a: 'For many of our services, walk-ins are welcome — no appointment necessary. Our Trinity location at 3600 Galileo Dr, Suite 104 accepts walk-in patients for most routine blood work during business hours. For specialty tests such as DNA testing or gender reveal blood tests, we recommend calling ahead at (727) 233-5223 to ensure availability and proper preparation.',
+    q: 'Can I walk in for blood work?',
+    a: 'Yes. Sunshine Clinical Labs welcomes walk-in patients for many laboratory services at our Trinity location. Hours: Monday–Friday, 8:00 AM–2:00 PM. Certain specialty tests may need to be scheduled in advance. Call (727) 233-5223 if you\'re unsure.',
   },
   {
-    q: 'How fast will I get my lab results?',
-    a: 'For many routine blood tests including CBC, CMP, and lipid panels, results are available the next business day. Turnaround times vary depending on the test type and complexity. Our team will give you a clear timeline when you visit or call.',
+    q: 'Do you offer mobile blood draws?',
+    a: 'Yes. Sunshine Clinical Labs provides mobile blood draw services throughout Pasco County and select surrounding areas. A phlebotomist can come to your home, office, or care facility by appointment.',
   },
   {
-    q: 'Does Sunshine Clinical Lab offer mobile blood draw services near me?',
-    a: 'Yes. Sunshine Clinical Lab provides professional mobile phlebotomy services throughout Pasco County, including Trinity, New Port Richey, Land O\' Lakes, Tarpon Springs, Holiday, Hudson, and surrounding areas. Our experienced phlebotomists come to your home, office, or care facility. Call (727) 233-5223 to schedule.',
+    q: 'Do you provide mobile blood draws in Tampa?',
+    a: 'Yes. Mobile blood draw service is available in select Tampa and Hillsborough County areas by appointment. Sunshine Clinical Labs does not currently operate a walk-in laboratory in Tampa.',
   },
   {
-    q: 'What insurance plans does Sunshine Clinical Lab accept?',
-    a: 'We accept most major insurance plans. Please contact our office at (727) 233-5223 to verify your specific coverage before your visit. We also offer affordable self-pay options for patients without insurance.',
+    q: 'What types of lab testing do you offer?',
+    a: 'We offer routine laboratory testing, mobile blood draws, TRT and hormone monitoring, DNA testing, gender reveal testing, drug and toxicology testing, and additional laboratory services.',
   },
   {
-    q: 'Can I get TRT blood work done at Sunshine Clinical Lab?',
-    a: 'Absolutely. We offer comprehensive TRT monitoring panels including total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and FSH testing — with fast turnaround and competitive pricing. Walk-ins are welcome, and mobile draws are available throughout Pasco County.',
+    q: 'Do you accept insurance?',
+    a: 'Sunshine Clinical Labs accepts insurance and offers self-pay options. Because coverage varies by plan and test, contact our office before your visit if you would like to verify coverage.',
   },
   {
-    q: 'Does Sunshine Clinical Lab offer DNA testing for legal and immigration purposes?',
-    a: 'Yes. We provide legal DNA testing, immigration DNA testing (USCIS), and paternity testing, all conducted under proper chain-of-custody procedures when legal admissibility is required. Contact us for details and scheduling.',
+    q: 'What are your hours?',
+    a: 'Sunshine Clinical Labs is open Monday–Friday, 8:00 AM–2:00 PM. Our walk-in laboratory is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655.',
   },
   {
-    q: 'Is the Peekaboo gender reveal blood test available at Sunshine Clinical Lab?',
-    a: 'Yes. The Peekaboo Early Gender Reveal Test is a clinically validated, non-invasive blood test available at our Trinity, FL location. It can determine your baby\'s gender as early as 6 weeks of pregnancy — well before a traditional ultrasound.',
-  },
-  {
-    q: 'Where is Sunshine Clinical Lab located?',
-    a: 'Sunshine Clinical Lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. We are easily accessible from New Port Richey, Land O\' Lakes, Tarpon Springs, and communities throughout Pasco County via US-19, the Suncoast Parkway, SR-54, and Little Road. Free parking is available on-site.',
+    q: 'How quickly will I receive my lab results?',
+    a: 'Turnaround time depends on the type of test being performed. Our team can provide an expected timeframe when your test is scheduled or your specimen is collected.',
   },
 ];

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Phone, CalendarDays, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Phone, CalendarDays, MapPin, ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const containerVariants = {
@@ -53,69 +53,73 @@ export default function FinalCTABanner() {
             id="final-cta-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-5"
           >
-            Fast Results. Personal Care.
-            <br />
-            <span className="text-[#93C5FD]">No Long Waits.</span>
+            Need Lab Work?{' '}
+            <span className="text-[#93C5FD]">Let&apos;s Make It Simple.</span>
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
+            className="text-white/80 text-lg leading-relaxed mb-4 max-w-2xl mx-auto"
           >
-            Walk in today or call to schedule. Your neighborhood clinical lab is ready to serve you
-            — with the speed and care you deserve.
+            Visit Sunshine Clinical Labs in Trinity for available walk-in testing, schedule an
+            appointment, or arrange a mobile blood draw and we&apos;ll come to you.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-white/90 font-semibold mb-10"
+          >
+            Monday–Friday • 8:00 AM–2:00 PM
           </motion.p>
 
           {/* CTA buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 mb-12"
           >
+            <Link href="/book-appointment" aria-label="Book an appointment online" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-2xl text-base gap-2 whitespace-nowrap">
+                <CalendarDays className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                Book an Appointment
+              </ShimmerButton>
+            </Link>
+
+            <Link href="/mobile-blood-draw-new-port-richey" aria-label="Schedule a mobile blood draw" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white text-white px-7 py-3.5 rounded-full font-semibold text-base gap-2 whitespace-nowrap">
+                Schedule a Mobile Blood Draw
+                <ArrowRight className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+              </ShimmerButton>
+            </Link>
+
             <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-9 py-4 rounded-full font-bold shadow-2xl text-lg gap-2">
-                <Phone className="w-6 h-6" aria-hidden="true" />
-                Call Now: (727) 233-5223
+              <ShimmerButton className="w-full sm:w-auto bg-white/15 backdrop-blur-sm border border-white/40 text-white px-7 py-3.5 rounded-full font-semibold text-base gap-2 whitespace-nowrap">
+                <Phone className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                Call (727) 233-5223
               </ShimmerButton>
             </a>
-
-            <Link href="/book-appointment" aria-label="Book an appointment online" className="w-full sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto bg-white/20 backdrop-blur-sm border-2 border-white text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
-                <CalendarDays className="w-5 h-5" aria-hidden="true" />
-                Book Appointment
-              </ShimmerButton>
-            </Link>
-
-            <Link href="/mobile-blood-draw-new-port-richey" aria-label="Request a mobile blood draw" className="w-full sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto bg-white/15 backdrop-blur-sm border border-white/40 text-white px-9 py-4 rounded-full font-semibold text-lg gap-2">
-                Request Mobile Draw
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </ShimmerButton>
-            </Link>
           </motion.div>
 
-          {/* Address & hours info bar */}
+          {/* Business info block */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-white/75 text-sm"
-            aria-label="Location and hours information"
+            className="text-white/80 text-sm leading-relaxed"
           >
+            <p className="text-white font-bold text-base mb-1">Sunshine Clinical Labs LLC</p>
             <a
               href="https://maps.google.com/?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 hover:text-white transition-colors"
               aria-label="Get directions to 3600 Galileo Dr Trinity FL"
             >
-              <MapPin className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-              3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA
+              <MapPin className="w-4 h-4 text-white flex-shrink-0" aria-hidden="true" />
+              3600 Galileo Dr, Suite 104, Trinity, FL 34655
             </a>
-
-            <span className="hidden sm:block text-white/30" aria-hidden="true">|</span>
-
-            <span className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-              Mon–Fri 8:00am–5:00pm · Walk-Ins Welcome
-            </span>
+            <p className="mt-1">
+              <a href="tel:+17272335223" className="hover:text-white transition-colors">
+                (727) 233-5223
+              </a>
+            </p>
           </motion.div>
         </motion.div>
       </div>

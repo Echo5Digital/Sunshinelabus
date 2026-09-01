@@ -3,12 +3,12 @@ import HomeHero from '@/components/home/HomeHero';
 import IntroSection from '@/components/home/IntroSection';
 import DirectAnswerBlock1 from '@/components/home/DirectAnswerBlock1';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
-import DirectAnswerBlock2 from '@/components/home/DirectAnswerBlock2';
 import ServicesGridSection from '@/components/home/ServicesGridSection';
 import MobileBloodDrawSection from '@/components/home/MobileBloodDrawSection';
 import TRTSection from '@/components/home/TRTSection';
 import GenderRevealSection from '@/components/home/GenderRevealSection';
 import DNATestingSection from '@/components/home/DNATestingSection';
+import FacilityPartnershipsSection from '@/components/home/FacilityPartnershipsSection';
 import InsuranceSection from '@/components/home/InsuranceSection';
 import FAQSection from '@/components/home/FAQSection';
 import ServiceAreaSection from '@/components/home/ServiceAreaSection';
@@ -18,9 +18,9 @@ import FinalCTABanner from '@/components/home/FinalCTABanner';
 
 // ── SEO Metadata ──────────────────────────────────────────────────────────────
 export const metadata = {
-  title: 'Clinical Lab Trinity FL | Fast Results, Walk-Ins Welcome',
+  title: 'Clinical Lab in Trinity, FL | Walk-In & Mobile Blood Draws',
   description:
-    'Sunshine Clinical Lab in Trinity, FL — fast turnaround, walk-in blood work, mobile blood draws, TRT monitoring, DNA testing & gender reveal tests. Serving Pasco County & Tampa Bay. Call (727) 233-5223.',
+    'Visit Sunshine Clinical Labs in Trinity, FL for walk-in lab testing or schedule a mobile blood draw across Pasco County. Routine labs, TRT, DNA testing and more.',
   keywords: [
     'clinical lab Trinity FL',
     'blood test Trinity FL',
@@ -75,15 +75,16 @@ const localBusinessSchema = {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '08:00',
-      closes: '17:00',
+      closes: '14:00',
     },
   ],
   areaServed: [
     { '@type': 'City', 'name': 'Trinity' },
     { '@type': 'City', 'name': 'New Port Richey' },
     { '@type': 'City', 'name': "Land O' Lakes" },
-    { '@type': 'City', 'name': 'Tarpon Springs' },
     { '@type': 'AdministrativeArea', 'name': 'Pasco County' },
+    { '@type': 'City', 'name': 'Tarpon Springs' },
+    { '@type': 'AdministrativeArea', 'name': 'Pinellas County' },
   ],
   medicalSpecialty: 'Laboratory',
   description:
@@ -140,9 +141,6 @@ export default function HomePage() {
       {/* Section 3 — Why Choose Us (6 cards) */}
       <WhyChooseUs />
 
-      {/* Direct Answer Block 2 — Why Do Patients Choose Us? */}
-      <DirectAnswerBlock2 />
-
       {/* Section 4 — Services Grid (tabbed) */}
       <ServicesGridSection />
 
@@ -158,8 +156,14 @@ export default function HomePage() {
       {/* Section 8 — DNA Testing */}
       <DNATestingSection />
 
+      {/* Section 8b — Facility & Provider Partnerships */}
+      <FacilityPartnershipsSection />
+
       {/* Section 9 — Insurance */}
       <InsuranceSection />
+
+      {/* Section 9b — Testimonials & Review CTA */}
+      <TestimonialsSection />
 
       {/* Section 10 — FAQ Accordion */}
       <FAQSection />
@@ -172,9 +176,6 @@ export default function HomePage() {
 
       {/* Section 12 — Final CTA Banner */}
       <FinalCTABanner />
-
-      {/* Section 13 — Testimonials & Review CTA */}
-      <TestimonialsSection />
     </>
   );
 }

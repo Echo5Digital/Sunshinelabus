@@ -17,14 +17,15 @@ const itemVariants = {
 };
 
 const panelTests = [
-  'Testosterone Total & Free',
-  'Estradiol (E2)',
-  'PSA (Prostate)',
-  'CBC / Hematocrit',
-  'Comprehensive Metabolic Panel',
+  'Total Testosterone',
+  'Free Testosterone',
+  'Estradiol',
+  'Hematocrit',
   'SHBG',
-  'LH / FSH Testing',
-  'Lipid Panel',
+  'LH / FSH',
+  'PSA',
+  'CBC',
+  'CMP',
 ];
 
 export default function TRTSection() {
@@ -65,27 +66,22 @@ export default function TRTSection() {
               id="trt-heading"
               className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-5"
             >
-              TRT Blood Testing —{' '}
-              <span className="text-[#93C5FD]">Fast, Affordable Testosterone Monitoring in Trinity, FL</span>
+              TRT &amp; Hormone{' '}
+              <span className="text-[#93C5FD]">Blood Testing</span>
             </motion.h2>
 
             <motion.p variants={itemVariants} className="text-white/75 leading-relaxed mb-6">
-              If you&apos;re on TRT or considering testosterone replacement therapy, consistent
-              blood monitoring isn&apos;t optional — it&apos;s essential. Sunshine Clinical Lab is
-              Pasco County&apos;s go-to TRT blood testing lab for men who need reliable hormone
-              panels without the chain lab hassle or chain lab price tag.
+              Routine monitoring is an important part of testosterone replacement therapy. Sunshine
+              Clinical Labs offers blood testing for commonly requested TRT markers, including:
             </motion.p>
 
-            <motion.p variants={itemVariants} className="text-white/75 leading-relaxed mb-6">
-              We offer complete TRT monitoring panels including total and free testosterone,
-              estradiol (E2), hematocrit, PSA, CBC, CMP, SHBG, LH, and FSH — with next-day
-              results for many tests and pricing that respects your wallet.
+            <motion.p variants={itemVariants} className="text-white font-semibold leading-relaxed mb-6">
+              Total Testosterone • Free Testosterone • Estradiol • Hematocrit • SHBG • LH/FSH • PSA
+              • CBC • CMP
             </motion.p>
 
             <motion.ul variants={itemVariants} className="space-y-2.5 mb-8">
               {[
-                'No long waits. No corporate runaround.',
-                'Fast, accurate results for your protocol',
                 'Physician-ordered and self-pay options available',
                 'Walk-ins welcome — mobile draws available',
               ].map((item) => (
@@ -96,19 +92,23 @@ export default function TRTSection() {
               ))}
             </motion.ul>
 
+            <motion.p variants={itemVariants} className="text-white/75 leading-relaxed mb-8">
+              Visit our Trinity location or contact us about available mobile blood draw options.
+            </motion.p>
+
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3">
-              <a href="tel:+17272335223" aria-label="Call to book your TRT panel" className="w-full sm:w-auto">
+              <Link href="/trt-blood-test-pasco-county" aria-label="Explore TRT blood testing" className="w-full sm:w-auto">
                 <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-8 py-4 rounded-full font-bold shadow-xl gap-2">
-                  <Phone className="w-4 h-4" aria-hidden="true" />
-                  Book Your TRT Panel — (727) 233-5223
-                </ShimmerButton>
-              </a>
-              <Link href="/trt-blood-test-pasco-county" aria-label="Full details on TRT blood testing" className="w-full sm:w-auto">
-                <ShimmerButton className="w-full sm:w-auto border border-white/30 text-white px-6 py-4 rounded-full font-semibold gap-2">
-                  Full TRT Testing Details
+                  Explore TRT Blood Testing
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </ShimmerButton>
               </Link>
+              <a href="tel:+17272335223" aria-label="Call to ask about TRT testing" className="w-full sm:w-auto">
+                <ShimmerButton className="w-full sm:w-auto border border-white/30 text-white px-6 py-4 rounded-full font-semibold gap-2">
+                  <Phone className="w-4 h-4" aria-hidden="true" />
+                  (727) 233-5223
+                </ShimmerButton>
+              </a>
             </motion.div>
           </motion.div>
 

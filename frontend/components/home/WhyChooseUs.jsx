@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { Zap, Award, Truck, FlaskConical, DollarSign, Heart, Phone } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
@@ -34,28 +35,28 @@ const cardVariants = {
 const reasons = [
   {
     Icon: Zap,
-    title: 'Faster Than the Chains — Period',
-    desc: 'Most patients are in and out in minutes, not hours. We don\'t overbook. We don\'t make you wait. For many of our most-requested tests, results are available the next business day.',
+    title: 'Walk-In Testing',
+    desc: 'Visit our Trinity location Monday through Friday from 8:00 AM to 2:00 PM for available walk-in laboratory services.',
   },
   {
     Icon: Award,
-    title: '35+ Years of Combined Phlebotomy Experience',
-    desc: 'Our team isn\'t fresh out of a weekend training course. We\'ve drawn blood on difficult veins, pediatric patients, elderly patients, and everyone in between — thousands of times over.',
+    title: 'Mobile Blood Draws',
+    desc: 'Need us to come to you? Schedule a phlebotomist to visit your home, office, or care facility.',
   },
   {
     Icon: Truck,
-    title: 'We Come to You — Mobile Blood Draws Across Pasco County',
-    desc: 'Homebound? Post-surgery? Elderly? Busy parent? Our mobile phlebotomy service brings the lab to your door in Trinity, New Port Richey, Land O\' Lakes, Tarpon Springs, and surrounding communities.',
+    title: 'Routine & Specialty Testing',
+    desc: 'Access routine blood testing along with TRT monitoring, DNA testing, gender reveal testing, drug and toxicology testing, and additional laboratory services.',
   },
   {
     Icon: FlaskConical,
-    title: 'Specialty Testing Most Labs Don\'t Prioritize',
-    desc: 'TRT monitoring panels, hormone testing, legal DNA, immigration DNA, Peekaboo gender reveal blood tests, PSA, estradiol, SHBG — we don\'t just offer these services. We specialize in them.',
+    title: 'Insurance & Self-Pay Options',
+    desc: 'Insurance and self-pay options are available. Contact our team if you need help verifying coverage or pricing before your visit.',
   },
   {
     Icon: DollarSign,
-    title: 'Affordable, Transparent Pricing',
-    desc: 'No surprise bills. No inflated corporate pricing. Contact our team for current pricing on any test — we\'re often significantly more affordable than the large national chains.',
+    title: 'Personal Local Service',
+    desc: 'Have a question about a test or appointment? Call our office and speak with our team.',
   },
   {
     Icon: Heart,
@@ -135,11 +136,14 @@ export default function WhyChooseUs() {
 
         {/* CTA strip */}
         <motion.div
-          className="mt-10 text-center"
+          className="mt-10 flex flex-col items-center gap-4"
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
+          <Link href="/about" aria-label="Learn more about Sunshine Clinical Labs" className="text-sunshine-blue font-semibold hover:underline">
+            Learn More About Sunshine Clinical Labs
+          </Link>
           <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab">
             <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-bold shadow-lg gap-2">
               <Phone className="w-5 h-5" aria-hidden="true" />

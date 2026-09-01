@@ -60,13 +60,13 @@ export default function InsuranceSection() {
             id="insurance-heading"
             className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4"
           >
-            We Accept Most Major Insurance Plans
+            Insurance &amp; Self-Pay
           </h2>
 
           <p className="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Don&apos;t let insurance confusion stop you from getting the testing you need.
-            We work with most major carriers and can verify your benefits before your visit.
-            Self-pay options also available with transparent pricing.
+            Sunshine Clinical Labs accepts insurance and offers self-pay options. Coverage can
+            vary depending on your plan and the testing being performed. Contact our office
+            before your visit if you would like us to help verify your coverage.
           </p>
 
           {/* Insurance plan chips */}
@@ -85,16 +85,16 @@ export default function InsuranceSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/insurance-accepted" aria-label="Verify your insurance coverage">
+            <Link href="/insurance-accepted" aria-label="View insurance and payment information">
               <ShimmerButton className="bg-sunshine-blue text-white px-8 py-3.5 rounded-full font-semibold shadow-lg gap-2">
-                Verify Your Insurance
+                View Insurance &amp; Payment Information
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>
             </Link>
-            <a href="tel:+17272335223" aria-label="Call to confirm insurance coverage">
+            <a href="tel:+17272335223" aria-label="Call to ask about insurance coverage">
               <ShimmerButton className="border-2 border-sunshine-blue text-sunshine-blue bg-white px-8 py-3.5 rounded-full font-semibold gap-2">
                 <Phone className="w-4 h-4" aria-hidden="true" />
-                Call to Confirm Coverage
+                (727) 233-5223
               </ShimmerButton>
             </a>
           </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
@@ -68,8 +69,8 @@ export default function IntroSection() {
               animate={isInView ? 'visible' : 'hidden'}
               className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark leading-tight mb-5"
             >
-              Skip the Chain Lab Waiting Room.{' '}
-              <span className="text-sunshine-blue">Get Your Results Faster.</span>
+              A Local Lab That Makes{' '}
+              <span className="text-sunshine-blue">Testing Feel a Little Easier</span>
             </motion.h2>
 
             <motion.p
@@ -79,9 +80,7 @@ export default function IntroSection() {
               transition={{ delay: 0.1 }}
               className="text-gray-600 leading-relaxed mb-4"
             >
-              You shouldn&apos;t have to take a number, sit in a packed waiting room for 45
-              minutes, and leave feeling like just another barcode. That&apos;s the chain lab
-              experience — and it&apos;s exactly what Sunshine Clinical Lab was built to replace.
+              Getting blood work shouldn&apos;t have to feel complicated.
             </motion.p>
 
             <motion.p
@@ -91,12 +90,10 @@ export default function IntroSection() {
               transition={{ delay: 0.15 }}
               className="text-gray-600 leading-relaxed mb-4"
             >
-              Located at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>, Sunshine Clinical
-              Lab is an independent, patient-centered clinical laboratory proudly serving Trinity,
-              New Port Richey, and communities across Pasco County and the greater Tampa Bay area.
-              Our phlebotomy team brings over 35 years of combined experience to every draw — and
-              we deliver the kind of personal attention that large national labs simply aren&apos;t
-              set up to provide.
+              Sunshine Clinical Labs is a locally operated clinical laboratory serving Trinity, New
+              Port Richey, and surrounding communities. Patients can visit our Trinity location for
+              available walk-in testing or schedule a mobile blood draw when coming to the lab
+              isn&apos;t convenient.
             </motion.p>
 
             <motion.p
@@ -104,34 +101,46 @@ export default function IntroSection() {
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
               transition={{ delay: 0.2 }}
+              className="text-gray-600 leading-relaxed mb-4"
+            >
+              We provide routine blood testing along with specialized services including TRT and
+              hormone monitoring, DNA testing, gender reveal testing, and drug and toxicology
+              testing.
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              transition={{ delay: 0.25 }}
               className="text-gray-600 leading-relaxed mb-8"
             >
-              Whether you need a routine CBC panel, a full testosterone monitoring workup for your
-              TRT protocol, a legal DNA test, or a Peekaboo gender reveal blood test for your
-              growing family — we handle it all under one roof, with faster turnaround, transparent
-              pricing, and a team that actually knows your name. Walk-ins are always welcome. All
-              ages are welcome. And if you can&apos;t come to us, we&apos;ll come to you — our
-              mobile blood draw service reaches patients across Pasco County.
+              Our focus is simple: convenient access, professional blood collection, clear
+              communication, and personal service.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              transition={{ delay: 0.25 }}
+              transition={{ delay: 0.3 }}
             >
+              <p className="text-gray-600 font-medium mb-4">
+                Monday–Friday: 8:00 AM–2:00 PM
+              </p>
               <div className="flex items-center gap-3 flex-wrap">
-                <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223">
+                <Link href="/book-appointment" aria-label="Book an appointment">
                   <ShimmerButton className="bg-sunshine-blue text-white px-8 py-4 rounded-full font-semibold shadow-lg text-base gap-2">
+                    Book an Appointment
+                  </ShimmerButton>
+                </Link>
+                <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223">
+                  <ShimmerButton className="bg-white text-sunshine-dark border-2 border-sunshine-blue/30 px-8 py-4 rounded-full font-semibold shadow-lg text-base gap-2">
                     <Phone className="w-5 h-5" aria-hidden="true" />
                     Call (727) 233-5223
                   </ShimmerButton>
                 </a>
-                <span className="text-gray-500 font-medium">— or Walk In Today</span>
               </div>
-              <p className="mt-3 text-sm text-gray-500">
-                No Appointment Needed for Many Services
-              </p>
             </motion.div>
           </motion.div>
         </div>

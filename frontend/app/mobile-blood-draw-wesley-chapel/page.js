@@ -53,7 +53,7 @@ const localBusinessSchema = {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 
@@ -116,7 +116,7 @@ const faqSchema = {
       name: 'Do you offer TRT blood work at home in Wesley Chapel?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. We provide complete TRT monitoring panels at your home — total/free testosterone, estradiol, hematocrit, PSA, CBC, CMP, and more. Next-day results for many tests at affordable pricing.',
+        text: 'Yes. We provide complete TRT monitoring panels at your home — total/free testosterone, estradiol, hematocrit, PSA, CBC, CMP, and more, at affordable pricing.',
       },
     },
     {

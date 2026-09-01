@@ -48,20 +48,21 @@ const localBusinessSchema = {
     'Trinity, FL',
     'New Port Richey, FL',
     "Land O' Lakes, FL",
-    'Tarpon Springs, FL',
     'Holiday, FL',
     'Hudson, FL',
     'Port Richey, FL',
     'Odessa, FL',
     'Lutz, FL',
-    'East Lake, FL',
     'Pasco County, FL',
+    'Tarpon Springs, FL',
+    'East Lake, FL',
+    'Pinellas County, FL',
   ],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 
@@ -132,7 +133,7 @@ const faqSchema = {
       name: 'What areas do you cover for mobile blood draws in Pasco County?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We serve Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, East Lake, and surrounding communities. Call to confirm availability in your specific area.",
+        text: "We serve Trinity, New Port Richey, Land O' Lakes, Holiday, Hudson, Port Richey, Odessa, and surrounding Pasco County communities, as well as Tarpon Springs and East Lake in Pinellas County. Call to confirm availability in your specific area.",
       },
     },
     {
@@ -156,7 +157,7 @@ const faqSchema = {
       name: 'Can I get TRT blood work done through a mobile blood draw?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more â€” all drawn at your home with the same fast turnaround.',
+        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more â€” all drawn at your home by the same phlebotomy team.',
       },
     },
   ],

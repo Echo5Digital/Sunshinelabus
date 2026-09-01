@@ -117,8 +117,8 @@ const STEPS = [
   },
   {
     num: '03',
-    title: 'Fast Results',
-    body: 'Your samples are transported to our laboratory under proper handling protocols. Results for many routine tests are available the next business day. Your doctor gets the results just as they would from any in-office lab visit.',
+    title: 'Lab Processing',
+    body: 'Your samples are transported to our laboratory under proper handling protocols. Turnaround time depends on the tests ordered — our team can give you an expected timeframe when your appointment is scheduled. Your doctor gets the results just as they would from any in-office lab visit.',
   },
 ];
 
@@ -141,7 +141,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How fast will I get my results?',
-    a: 'For many routine blood tests, results are available the next business day. Turnaround varies by test type. Our team will provide a timeline when you schedule.',
+    a: 'Turnaround time varies by test type. Our team will provide an expected timeframe when you schedule.',
   },
   {
     q: 'What if I have difficult veins?',
@@ -328,7 +328,7 @@ export default function MobileBloodDrawTheVillagesPage() {
               Sunshine Clinical Lab&apos;s experienced phlebotomist now serves The Villages,
               Bushnell, Wildwood, and surrounding Sumter County communities. Routine blood
               panels, fasting blood work, hormone testing, and more — all performed at your
-              home with next-day results for many tests.
+              home.
             </motion.p>
 
             <motion.div
@@ -420,7 +420,7 @@ export default function MobileBloodDrawTheVillagesPage() {
                   {[
                     { icon: MapPin, label: 'The Villages & Sumter County' },
                     { icon: Sunrise, label: 'Fasting Draws From 3:00 AM' },
-                    { icon: CheckCircle, label: 'Next-Day Results' },
+                    { icon: CheckCircle, label: 'Mobile Draws Available' },
                   ].map(({ icon: Icon, label }) => (
                     <span
                       key={label}
@@ -571,7 +571,7 @@ export default function MobileBloodDrawTheVillagesPage() {
                 },
                 {
                   title: 'TRT & Hormone Monitoring',
-                  body: 'Total and free testosterone, estradiol (E2), hematocrit, PSA, SHBG, LH, FSH, CBC, and CMP. Complete TRT monitoring panels with next-day results for many tests.',
+                  body: 'Total and free testosterone, estradiol (E2), hematocrit, PSA, SHBG, LH, FSH, CBC, and CMP. Complete TRT monitoring panels available.',
                 },
                 {
                   title: 'DNA Testing',
@@ -679,8 +679,7 @@ export default function MobileBloodDrawTheVillagesPage() {
 
             <motion.p variants={itemVariants} className="text-white/85 text-lg leading-relaxed mb-4 max-w-2xl mx-auto">
               We accept most major insurance plans. For patients who prefer to pay out of pocket
-              or don&apos;t have insurance, we offer competitive self-pay pricing that&apos;s
-              often significantly more affordable than chain lab facilities.
+              or don&apos;t have insurance, we offer competitive self-pay pricing.
             </motion.p>
 
             <motion.p variants={itemVariants} className="text-white/85 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">

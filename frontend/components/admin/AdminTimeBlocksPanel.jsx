@@ -8,7 +8,7 @@ import { format, addDays } from 'date-fns';
 import { fetchTimeBlocks, createTimeBlock, deleteTimeBlock } from '@/lib/api';
 import { generateTimeSlots, formatTimeSlot } from '@/lib/booking-constants';
 
-const ALL_SLOTS = generateTimeSlots('08:00', '17:00', 15);
+const ALL_SLOTS = generateTimeSlots('08:00', '14:15', 15);
 
 const timeToMinutes = (t) => {
   const [h, m] = t.split(':').map(Number);

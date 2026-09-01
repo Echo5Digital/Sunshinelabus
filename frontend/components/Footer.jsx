@@ -138,7 +138,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-sunshine-yellow mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <span className="text-sm text-white/60">
-                  Mon–Fri: 8:00 am – 5:00 pm
+                  Mon–Fri: 8:00 am – 2:00 pm
                   <br />
                   <span className="text-sunshine-sky/80">Walk-Ins Welcome</span>
                 </span>

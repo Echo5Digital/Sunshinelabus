@@ -42,7 +42,7 @@ export default function ContactMap() {
           >
             <div className="rounded-2xl overflow-hidden shadow-md border border-sunshine-sky/20 h-80 lg:h-full min-h-[420px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.6558376295085!2d-95.3698!3d29.7604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ1JzM3LjQiTiA5NcKwMjInMTEuMyJX!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=3600+Galileo+Dr+Suite+104+Trinity+FL+34655&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -96,7 +96,7 @@ export default function ContactMap() {
                   <div className="space-y-1.5 text-sm">
                     <div className="flex justify-between gap-4">
                       <span className="text-gray-500">Monday – Friday</span>
-                      <span className="font-medium text-sunshine-dark whitespace-nowrap">8:00 AM – 5:00 PM</span>
+                      <span className="font-medium text-sunshine-dark whitespace-nowrap">8:00 AM – 2:00 PM</span>
                     </div>
                     <div className="flex justify-between gap-4">
                       <span className="text-gray-500">Saturday – Sunday</span>

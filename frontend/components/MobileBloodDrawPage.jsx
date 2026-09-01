@@ -78,7 +78,7 @@ const WHO_ITEMS = [
   {
     Icon: Home,
     title: 'Homebound and Elderly Patients',
-    body: "If mobility is limited, transportation is unreliable, or a trip to the lab creates unnecessary stress, our team eliminates that barrier completely. We serve seniors throughout Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, and surrounding communities.",
+    body: "If mobility is limited, transportation is unreliable, or a trip to the lab creates unnecessary stress, our team eliminates that barrier completely. We serve seniors throughout Trinity, New Port Richey, Land O' Lakes and surrounding Pasco County communities, as well as Tarpon Springs in Pinellas County.",
   },
   {
     Icon: Heart,
@@ -120,8 +120,8 @@ const STEPS = [
   },
   {
     num: '03',
-    title: 'Fast Results',
-    body: "Your samples are transported back to our Trinity laboratory under proper handling protocols. Results are typically available the next business day for many routine tests — the same timeline as an in-office draw.",
+    title: 'Lab Processing',
+    body: "Your samples are transported back to our Trinity laboratory under proper handling protocols. Turnaround time depends on the tests ordered — our team can give you an expected timeframe when your appointment is scheduled.",
   },
 ];
 
@@ -140,7 +140,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'What areas do you cover for mobile blood draws in Pasco County?',
-    a: "We serve Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, East Lake, and surrounding communities. Call to confirm availability in your specific area.",
+    a: "We serve Trinity, New Port Richey, Land O' Lakes, Holiday, Hudson, Port Richey, Odessa, and surrounding Pasco County communities, as well as Tarpon Springs and East Lake in Pinellas County. Call to confirm availability in your specific area.",
   },
   {
     q: 'Is mobile phlebotomy covered by insurance?',
@@ -152,7 +152,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Can I get TRT blood work done through a mobile blood draw?',
-    a: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more — all drawn at your home with the same fast turnaround.',
+    a: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels including testosterone, estradiol, hematocrit, CBC, CMP, and more — all drawn at your home by the same phlebotomy team.',
   },
 ];
 
@@ -368,9 +368,9 @@ export default function MobileBloodDrawPage() {
                   service where a licensed, experienced phlebotomist travels to a patient's home,
                   office, or care facility to perform blood collection. Sunshine Clinical Lab offers
                   mobile blood draw services throughout Pasco County, including Trinity, New Port
-                  Richey, Land O&apos; Lakes, Tarpon Springs, Holiday, and Hudson. The service is
-                  available for routine blood work, TRT monitoring, hormone panels, and most
-                  physician-ordered tests. Call{' '}
+                  Richey, Land O&apos; Lakes, Holiday, and Hudson, as well as Tarpon Springs in
+                  Pinellas County. The service is available for routine blood work, TRT monitoring,
+                  hormone panels, and most physician-ordered tests. Call{' '}
                   <a
                     href="tel:+17272335223"
                     className="text-sunshine-blue font-semibold hover:underline"
@@ -384,7 +384,7 @@ export default function MobileBloodDrawPage() {
                   {[
                     { icon: MapPin, label: 'All of Pasco County' },
                     { icon: Clock, label: '15–30 Min Draw' },
-                    { icon: CheckCircle, label: 'Next-Day Results' },
+                    { icon: CheckCircle, label: 'Walk-Ins Welcome' },
                   ].map(({ icon: Icon, label }) => (
                     <span
                       key={label}
@@ -612,9 +612,9 @@ export default function MobileBloodDrawPage() {
                 <div className="px-7 pb-7 space-y-4">
                   <p className="text-gray-600 leading-relaxed">
                     Our mobile phlebotomy team currently serves patients in Trinity, New Port Richey,
-                    Land O&apos; Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, Lutz,
-                    East Lake, Elfers, and surrounding communities throughout Pasco County and the
-                    greater Tampa Bay region.
+                    Land O&apos; Lakes, Holiday, Hudson, Port Richey, Odessa, Lutz, Elfers, and
+                    surrounding communities throughout Pasco County, as well as Tarpon Springs and
+                    East Lake in Pinellas County and the greater Tampa Bay region.
                   </p>
                   {/* City pill chips */}
                   <div className="flex flex-wrap gap-2">
@@ -740,8 +740,7 @@ export default function MobileBloodDrawPage() {
               variants={itemVariants}
               className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
             >
-              Same-day and next-day appointments available across Pasco County. Professional,
-              accurate, and convenient.
+              Appointments available across Pasco County. Professional, accurate, and convenient.
             </motion.p>
 
             <motion.div
@@ -767,14 +766,14 @@ export default function MobileBloodDrawPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" />
-                Mon–Fri 8:00am–5:00pm
+                Mon–Fri 8:00am–2:00pm
               </span>
             </motion.div>
           </Section>
         </div>
       </section>
 
-      {/* ══ FAST TURNAROUND ═════════════════════════════════════ */}
+      {/* ══ LAB PROCESSING ══════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
@@ -797,7 +796,7 @@ export default function MobileBloodDrawPage() {
                 Results
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
-                Fast Turnaround — Even for Mobile Draws
+                Reliable Processing — Even for Mobile Draws
               </h2>
             </motion.div>
 
@@ -805,11 +804,11 @@ export default function MobileBloodDrawPage() {
               <MagicCard className="shadow-md hover:shadow-lg">
                 <div className="p-7 text-gray-600 leading-relaxed">
                   One of the biggest concerns patients have about mobile phlebotomy is whether it
-                  slows down results. With Sunshine Clinical Lab, the answer is no. Samples drawn at
-                  your home are processed through the same pipeline as in-office draws at our Trinity
-                  location. For many routine tests, you'll have your results the next business day.
-                  Your provider gets the same fast, accurate data regardless of where the blood was
-                  drawn.
+                  affects their results. With Sunshine Clinical Lab, samples drawn at your home are
+                  processed through the same pipeline as in-office draws at our Trinity location.
+                  Turnaround time depends on the tests ordered — our team can give you an expected
+                  timeframe when your appointment is scheduled. Your provider gets the same accurate
+                  data regardless of where the blood was drawn.
                 </div>
               </MagicCard>
             </motion.div>
@@ -844,10 +843,10 @@ export default function MobileBloodDrawPage() {
                     (727) 233-5223
                   </a>
                   . The lab's mobile phlebotomy service covers Trinity, New Port Richey, Land
-                  O&apos; Lakes, Tarpon Springs, Holiday, Hudson, and surrounding areas. Patients
-                  need a physician's order for most tests. The phlebotomist will travel to the
-                  patient's home, office, or care facility. Results for many routine tests are
-                  available the next business day.
+                  O&apos; Lakes, Holiday, Hudson, and surrounding Pasco County areas, as well as
+                  Tarpon Springs in Pinellas County. Patients need a physician's order for most
+                  tests. The phlebotomist will travel to the patient's home, office, or care
+                  facility. Turnaround time for results depends on the tests ordered.
                 </p>
               </div>
             </div>
@@ -1059,7 +1058,7 @@ export default function MobileBloodDrawPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" />
-                Mon–Fri 8:00am–5:00pm · Walk-Ins Welcome
+                Mon–Fri 8:00am–2:00pm · Walk-Ins Welcome
               </span>
             </motion.div>
           </Section>

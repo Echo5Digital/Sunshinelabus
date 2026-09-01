@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Phone, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 
 const containerVariants = {
@@ -56,7 +56,7 @@ export default function HomeHero() {
           {/* Eyebrow text */}
           <motion.div variants={itemVariants}>
             <p className="text-white/80 text-sm font-semibold tracking-wide mb-4">
-              Trusted Clinical Lab — Trinity, FL
+              TRINITY, FLORIDA
             </p>
           </motion.div>
 
@@ -65,9 +65,7 @@ export default function HomeHero() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4"
           >
-            Trusted Clinical Lab in Trinity, FL —{' '}
-            <span className="text-[#93C5FD]">Fast Results, Walk-Ins Welcome,</span>{' '}
-            No Long Waits
+            Walk-In Lab Testing & <span className="text-[#93C5FD]">Mobile Blood Draws</span> in Trinity, FL
           </motion.h1>
 
           {/* H2 — Subheadline */}
@@ -75,42 +73,42 @@ export default function HomeHero() {
             variants={itemVariants}
             className="text-2xl sm:text-3xl font-bold text-white/90 mb-4"
           >
-            Your Neighborhood Lab. Not a Number on a Clipboard.
+            Lab Testing Made More Convenient
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl">
-            Sunshine Clinical Lab delivers fast, affordable lab testing with next-day results for
-            many services — right here in Trinity, FL, serving New Port Richey, Pasco County, and
-            the greater Tampa Bay region. Walk in today or book a mobile blood draw from the
-            comfort of your home.
+          <motion.p variants={itemVariants} className="text-white/85 text-lg leading-relaxed mb-4 max-w-xl">
+            Visit Sunshine Clinical Labs for walk-in lab testing in Trinity, or schedule a mobile
+            blood draw and have a phlebotomist come to your home, office, or care facility.
           </motion.p>
 
-          {/* 3 CTA buttons */}
+          <motion.p variants={itemVariants} className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl">
+            From routine blood work and TRT monitoring to DNA testing and gender reveal testing, we
+            make it easier to get the testing you need with personal, local service.
+          </motion.p>
+
+          {/* CTA buttons */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row flex-wrap gap-4"
           >
-            <a href="tel:+17272335223" aria-label="Call Sunshine Clinical Lab at (727) 233-5223" className="w-full sm:w-auto">
+            <Link href="/book-appointment" aria-label="Book an appointment" className="w-full sm:w-auto">
               <ShimmerButton className="w-full sm:w-auto bg-white text-sunshine-dark px-7 py-3.5 rounded-full font-bold shadow-xl text-base gap-2">
-                <Phone className="w-5 h-5" aria-hidden="true" />
-                Schedule Your Visit — (727) 233-5223
-              </ShimmerButton>
-            </a>
-
-            <Link href="/mobile-blood-draw-pasco-county" aria-label="Request a mobile blood draw" className="w-full sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base border border-white/20 gap-2">
-                Request a Mobile Blood Draw
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                Book an Appointment
               </ShimmerButton>
             </Link>
 
-            <Link href="/clinical-lab-services-trinity-fl" aria-label="View all our lab services" className="w-full sm:w-auto">
-              <ShimmerButton className="w-full sm:w-auto border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white px-7 py-3.5 rounded-full font-semibold text-base gap-2">
-                View All Services
+            <Link href="/mobile-blood-draw-pasco-county" aria-label="Schedule a mobile blood draw" className="w-full sm:w-auto">
+              <ShimmerButton className="w-full sm:w-auto bg-sunshine-blue text-white px-7 py-3.5 rounded-full font-semibold shadow-lg text-base border border-white/20 gap-2">
+                Schedule a Mobile Blood Draw
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </ShimmerButton>
             </Link>
           </motion.div>
+
+          {/* Walk-in hours */}
+          <motion.p variants={itemVariants} className="text-white/70 text-sm font-medium mt-6">
+            Walk-Ins Welcome • Monday–Friday, 8:00 AM–2:00 PM
+          </motion.p>
         </motion.div>
       </div>
 

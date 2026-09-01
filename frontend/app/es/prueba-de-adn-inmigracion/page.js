@@ -56,15 +56,17 @@ const localBusinessSchema = {
     'Wesley Chapel, FL',
     'New Port Richey, FL',
     "Land O' Lakes, FL",
-    'Tarpon Springs, FL',
-    'Tampa, FL',
     'Pasco County, FL',
+    'Tarpon Springs, FL',
+    'Pinellas County, FL',
+    'Tampa, FL',
+    'Hillsborough County, FL',
   ],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 

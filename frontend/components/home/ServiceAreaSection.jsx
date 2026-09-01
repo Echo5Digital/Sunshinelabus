@@ -79,8 +79,9 @@ export default function ServiceAreaSection() {
 
           <p className="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             Sunshine Clinical Lab is located in Trinity, FL, with easy access from communities
-            across Pasco County and the Tampa Bay area. Whether you visit our office or use our
-            mobile blood draw service, we&apos;re here for you.
+            across Pasco County, as well as select communities in Pinellas County and the Tampa
+            Bay area. Whether you visit our office or use our mobile blood draw service,
+            we&apos;re here for you.
           </p>
         </motion.div>
 

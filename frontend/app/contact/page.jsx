@@ -6,7 +6,7 @@ import ContactCTA from '@/components/contact/ContactCTA';
 export const metadata = {
   title: 'Contact Us | Sunshine Clinical Laboratory',
   description:
-    'Get in touch with Sunshine Clinical Laboratory. Contact us by phone, email, or visit us at our Houston location.',
+    'Get in touch with Sunshine Clinical Laboratory. Contact us by phone, email, or visit us at our Trinity, FL location.',
   alternates: {
     canonical: 'https://www.sunshinelabus.com/contact',
   },

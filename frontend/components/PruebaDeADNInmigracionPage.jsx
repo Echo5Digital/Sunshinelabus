@@ -832,8 +832,8 @@ export default function PruebaDeADNInmigracionPage() {
                   </p>
                   <p className="text-gray-600 leading-relaxed">
                     Fácil acceso desde Zephyrhills, Dade City, Wesley Chapel, New Port Richey,
-                    Land O&apos; Lakes, Tarpon Springs, Tampa y todas las comunidades del
-                    condado de Pasco y la bahía de Tampa.
+                    Land O&apos; Lakes y todas las comunidades del condado de Pasco, así como
+                    Tarpon Springs en el condado de Pinellas y el área de Tampa.
                   </p>
                   <div className="flex items-start gap-3 bg-sunshine-blue/5 border-l-4 border-sunshine-blue rounded-r-xl p-4">
                     <Car className="w-5 h-5 text-sunshine-blue flex-shrink-0 mt-0.5" />
