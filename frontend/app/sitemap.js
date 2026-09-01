@@ -82,6 +82,7 @@ export default function sitemap() {
     'mobile-blood-draw-the-villages',
     'mobile-blood-draw-wesley-chapel',
     'mobile-blood-draw-zephyrhills',
+    'home-blood-draw-tampa-fl',
   ].map((slug) => ({
     url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),
