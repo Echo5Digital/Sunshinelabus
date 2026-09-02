@@ -3,7 +3,7 @@ import TRTBloodTestPage from '@/components/TRTBloodTestPage';
 export const metadata = {
   title: 'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab',
   description:
-    'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Next-day results for many tests. Call (727) 233-5223.',
+    'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Call (727) 233-5223.',
   keywords: [
     'TRT blood test near me',
     'TRT blood test Pasco County',
@@ -20,7 +20,7 @@ export const metadata = {
     title:
       'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab | Sunshine Clinical Lab',
     description:
-      'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Next-day results for many tests. Call (727) 233-5223.',
+      'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Call (727) 233-5223.',
     url: 'https://www.sunshinelabus.com/trt-blood-test-pasco-county',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
@@ -49,20 +49,21 @@ const localBusinessSchema = {
     'Trinity, FL',
     'New Port Richey, FL',
     "Land O' Lakes, FL",
-    'Tarpon Springs, FL',
     'Holiday, FL',
     'Hudson, FL',
     'Port Richey, FL',
     'Odessa, FL',
     'Lutz, FL',
-    'East Lake, FL',
     'Pasco County, FL',
+    'Tarpon Springs, FL',
+    'East Lake, FL',
+    'Pinellas County, FL',
   ],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 
@@ -72,7 +73,7 @@ const serviceSchema = {
   name: 'TRT Blood Testing',
   serviceType: 'Testosterone Replacement Therapy Lab Testing',
   description:
-    "Sunshine Clinical Lab offers comprehensive TRT blood testing panels in Trinity, FL for men on testosterone replacement therapy. Tests include total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and FSH. Walk-ins welcome. Next-day results for many tests.",
+    "Sunshine Clinical Lab offers comprehensive TRT blood testing panels in Trinity, FL for men on testosterone replacement therapy. Tests include total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and FSH. Walk-ins welcome.",
   provider: {
     '@type': 'MedicalBusiness',
     name: 'Sunshine Clinical Lab',
@@ -109,7 +110,7 @@ const faqSchema = {
       name: 'How much does a TRT blood test cost at Sunshine Clinical Lab?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pricing varies depending on the specific panel and tests ordered. Contact us at (727) 233-5223 for current self-pay pricing and insurance verification. Our rates are consistently more affordable than large national chain labs.',
+        text: 'Pricing varies depending on the specific panel and tests ordered. Contact us at (727) 233-5223 for current self-pay pricing and insurance verification.',
       },
     },
     {
@@ -125,7 +126,7 @@ const faqSchema = {
       name: 'How fast will I get my TRT results?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For many common TRT-related blood tests, results are available the next business day. Turnaround may vary for certain specialty markers. Our team will give you a timeline at your visit.',
+        text: 'Turnaround time depends on the tests ordered and can vary for certain specialty markers. Our team will give you an expected timeline at your visit.',
       },
     },
     {

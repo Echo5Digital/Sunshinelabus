@@ -34,7 +34,7 @@ const qaItems = [
   },
   {
     q: 'How fast do TRT blood test results come back?',
-    a: 'At Sunshine Clinical Lab, many results are available within 24 hours, depending on the panel.',
+    a: 'Turnaround time depends on the test being performed — our team can give you an expected timeframe when you visit or schedule.',
   },
 ];
 
@@ -315,8 +315,7 @@ export default function BlogPostTRT() {
                 >
                   Sunshine Clinical Lab in Trinity, FL
                 </Link>
-                , we provide customized TRT panels designed for accurate, fast monitoring — often
-                with next-day results.
+                , we provide customized TRT panels designed for accurate, fast monitoring. Turnaround time depends on the test being performed — our team can give you an expected timeframe when you visit or schedule.
               </p>
             </motion.div>
 

@@ -48,7 +48,7 @@ export default function PhlebotomyPage() {
               comfortable, efficient blood draws for patients of all ages — from pediatric to geriatric populations.
               For patients who are homebound, elderly, or simply prefer the convenience, our mobile phlebotomy service
               brings professional specimen collection directly to you. All specimens are handled under strict
-              chain-of-custody and temperature-control protocols to guarantee integrity from collection to result.
+              chain-of-custody and temperature-control protocols designed to help ensure integrity from collection to result.
             </p>
           </div>
 

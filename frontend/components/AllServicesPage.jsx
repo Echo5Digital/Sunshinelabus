@@ -100,7 +100,7 @@ const allServices = [
   {
     title: 'Gender Reveal Testing',
     description:
-      'Peekaboo early gender reveal blood test with accurate results as early as 7 weeks into pregnancy — fun and reliable.',
+      'Peekaboo early gender reveal blood test. Contact our team to learn when testing can be performed — fun and reliable.',
     href: '/gender-reveal-testing-florida',
     Icon: Heart,
     iconBg: 'bg-pink-50',
@@ -298,7 +298,7 @@ export default function AllServicesPage() {
               className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
             >
               Walk in anytime during business hours, book online, or call us to
-              schedule. Same-day results available for most tests.
+              schedule. Turnaround time depends on the test being performed — our team can give you an expected timeframe when you visit or schedule.
             </motion.p>
 
             <motion.div
@@ -330,7 +330,7 @@ export default function AllServicesPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-white flex-shrink-0" />
-                Mon–Fri 8:00 am – 5:00 pm
+                Mon–Fri 8:00 am – 2:00 pm
               </span>
             </motion.div>
           </Section>

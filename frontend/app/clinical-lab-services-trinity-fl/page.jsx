@@ -1,9 +1,9 @@
 import ClinicalLabServicesPage from '@/components/ClinicalLabServicesPage';
 
 export const metadata = {
-  title: 'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab, Fast Results',
+  title: 'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab',
   description:
-    'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome, next day results for many tests. Call (727) 233-5223.',
+    'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome. Call (727) 233-5223.',
   keywords: [
     'clinical lab services Trinity FL',
     'blood test near me Trinity',
@@ -16,9 +16,9 @@ export const metadata = {
   ],
   openGraph: {
     title:
-      'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab, Fast Results | Sunshine Clinical Lab',
+      'Clinical Lab Services Trinity FL | Blood Tests, Walk-In Lab | Sunshine Clinical Lab',
     description:
-      'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome, next day results for many tests. Call (727) 233-5223.',
+      'Comprehensive clinical lab services in Trinity, FL — CBC, CMP, lipid panels, thyroid, A1C, hormone testing & more. Walk-ins welcome. Call (727) 233-5223.',
     url: 'https://www.sunshinelabus.com/clinical-lab-services-trinity-fl',
     siteName: 'Sunshine Clinical Lab',
     locale: 'en_US',
@@ -49,7 +49,7 @@ const medicalBusinessSchema = {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '08:00',
-      closes: '17:00'
+      closes: '14:00'
     }
   ],
 };
@@ -72,9 +72,10 @@ const localBusinessSchema = {
     'Trinity, FL',
     'New Port Richey, FL',
     "Land O' Lakes, FL",
+    'Pasco County, FL',
     'Tarpon Springs, FL',
+    'Pinellas County, FL',
     'Tampa Bay, FL',
-    'Pasco County, FL'
   ],
 };
 
@@ -137,7 +138,7 @@ const faqSchema = {
       name: 'How fast do I get my results from Sunshine Clinical Lab?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Many routine blood tests — including CBC, CMP, and lipid panels — are available the next business day. Turnaround times vary by test type. Our team will provide a timeline during your visit.',
+        text: 'Turnaround times vary by test type. Our team will provide an expected timeline during your visit.',
       },
     },
     {

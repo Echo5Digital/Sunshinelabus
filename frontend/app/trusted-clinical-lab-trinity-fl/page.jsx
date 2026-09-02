@@ -19,9 +19,9 @@ export default function Page() {
             { "@type": "Question", "name": "What services do you offer at Sunshine Clinical Lab in Trinity?", "acceptedAnswer": { "@type": "Answer", "text": "We offer a range of lab services including blood work and hormone testing." } },
             { "@type": "Question", "name": "How do I schedule a test at Sunshine Clinical Lab?", "acceptedAnswer": { "@type": "Answer", "text": "You can schedule a test by booking online or by calling us." } },
             { "@type": "Question", "name": "Can I have a mobile blood draw at my home?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer mobile blood draw services at your home." } },
-            { "@type": "Question", "name": "What are your operating hours?", "acceptedAnswer": { "@type": "Answer", "text": "We are open Monday through Friday from 8 AM to 5 PM." } },
+            { "@type": "Question", "name": "What are your operating hours?", "acceptedAnswer": { "@type": "Answer", "text": "We are open Monday through Friday from 8 AM to 2 PM." } },
             { "@type": "Question", "name": "Where is Sunshine Clinical Lab located in Trinity?", "acceptedAnswer": { "@type": "Answer", "text": "We are located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655." } },
-            { "@type": "Question", "name": "How quickly do I receive lab results?", "acceptedAnswer": { "@type": "Answer", "text": "Most results are available within 24-48 hours." } }
+            { "@type": "Question", "name": "How quickly do I receive lab results?", "acceptedAnswer": { "@type": "Answer", "text": "Turnaround time depends on the test being performed — our team can give you an expected timeframe when you visit or schedule." } }
           ]
         })}
       </script>

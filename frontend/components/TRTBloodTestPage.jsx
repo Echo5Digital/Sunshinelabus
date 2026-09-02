@@ -121,7 +121,7 @@ const TRT_PANEL_ITEMS = [
 const TRT_FAQ_ITEMS = [
   {
     q: 'How much does a TRT blood test cost at Sunshine Clinical Lab?',
-    a: 'Pricing varies depending on the specific panel and tests ordered. Contact us at (727) 233-5223 for current self-pay pricing and insurance verification. Our rates are consistently more affordable than large national chain labs.',
+    a: 'Pricing varies depending on the specific panel and tests ordered. Contact us at (727) 233-5223 for current self-pay pricing and insurance verification.',
   },
   {
     q: "Do I need a doctor's order for TRT blood work?",
@@ -129,7 +129,7 @@ const TRT_FAQ_ITEMS = [
   },
   {
     q: 'How fast will I get my TRT results?',
-    a: 'For many common TRT-related blood tests, results are available the next business day. Turnaround may vary for certain specialty markers. Our team will give you a timeline at your visit.',
+    a: 'Turnaround time depends on the tests ordered and can vary for certain specialty markers. Our team will give you an expected timeline at your visit.',
   },
   {
     q: 'Do you offer sensitive estradiol (E2) testing for TRT patients?',
@@ -291,8 +291,8 @@ export default function TRTBloodTestPage() {
               className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl mx-auto sm:ml-auto"
             >
               Sunshine Clinical Lab offers complete testosterone replacement therapy blood panels
-              with next-day results for many tests — at prices the chain labs can&apos;t touch.
-              Located in Trinity, FL, serving all of Pasco County.
+              at affordable, transparent pricing. Located in Trinity, FL, serving all of Pasco
+              County.
             </motion.p>
 
             <motion.div
@@ -346,7 +346,7 @@ export default function TRTBloodTestPage() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
                   Sunshine Clinical Lab at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 offers affordable TRT
-                  blood testing with next-day results for many hormone panels. The lab provides total
+                  blood testing for hormone panels. The lab provides total
                   and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and
                   FSH testing. Walk-ins are welcome, and mobile blood draws are available throughout
                   Pasco County. The lab accepts most major insurance plans and offers competitive
@@ -363,8 +363,8 @@ export default function TRTBloodTestPage() {
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   {[
                     { icon: CheckCircle, label: 'Walk-Ins Welcome' },
-                    { icon: Clock, label: 'Next-Day Results' },
-                    { icon: DollarSign, label: 'No Corporate Markup' },
+                    { icon: Clock, label: 'Mobile Draws Available' },
+                    { icon: DollarSign, label: 'Transparent Pricing' },
                   ].map(({ icon: Icon, label }) => (
                     <span
                       key={label}
@@ -409,15 +409,13 @@ export default function TRTBloodTestPage() {
                     where they should be.
                   </p>
                   <p>
-                    What you probably didn&apos;t sign up for is paying $300+ at a chain lab, waiting
-                    an hour to get drawn, and then waiting another five days for results. That&apos;s
-                    the reality for a lot of men on TRT in the Tampa Bay area — and it&apos;s exactly
-                    why Sunshine Clinical Lab exists.
+                    Sunshine Clinical Lab offers a straightforward alternative: transparent pricing
+                    and a phlebotomy team that focuses on TRT monitoring.
                   </p>
                   <p>
-                    Our Trinity, FL location is purpose-built for this — walk in, get drawn by an
-                    experienced phlebotomist, and have results in hand for many tests by the next
-                    business day.
+                    Our Trinity, FL location is purpose-built for this — walk in and get drawn by an
+                    experienced phlebotomist. Our team can give you an expected turnaround timeframe
+                    when your appointment is scheduled.
                   </p>
                   {/* 3 highlight chips */}
                   <div className="flex flex-wrap gap-2 pt-2">
@@ -481,7 +479,7 @@ export default function TRTBloodTestPage() {
         </Section>
       </section>
 
-      {/* ══ NEXT-DAY RESULTS ══════════════════════════════════════ */}
+      {/* ══ LAB PROCESSING ══════════════════════════════════════ */}
       <section className="py-20 relative overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
@@ -500,26 +498,25 @@ export default function TRTBloodTestPage() {
           <Section>
             <motion.div variants={itemVariants} className="mb-8">
               <span className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3 block">
-                Fast Turnaround
+                Lab Processing
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
-                Next-Day Results for Many TRT Tests
+                What to Expect for TRT Test Turnaround
               </h2>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <div className="bg-white/40 backdrop-blur-md rounded-2xl border border-white/50 shadow-lg p-7 leading-relaxed space-y-4">
                 <p className="text-sunshine-dark font-medium">
-                  Here&apos;s where the chain labs really fall behind. At Sunshine Clinical Lab,
-                  results for many of our most common TRT-related blood tests are available the
-                  next business day. That means you&apos;re not sitting around for a week
-                  wondering if your levels are off — you&apos;re getting actionable data fast so
-                  you and your provider can make timely decisions.
+                  At Sunshine Clinical Lab, turnaround time for TRT-related blood tests depends on
+                  the panel ordered. Our team can give you an expected timeframe when your
+                  appointment is scheduled or your sample is collected, so you and your provider
+                  know what to expect.
                 </p>
                 <p className="text-sunshine-dark/80">
-                  Turnaround times vary by test type, but for standard panels including
-                  testosterone, CBC, CMP, and estradiol, next-day results are the norm at our
-                  Trinity lab — not the exception.
+                  Standard panels including testosterone, CBC, CMP, and estradiol are processed at
+                  our Trinity lab — ask our team for current turnaround times for your specific
+                  tests.
                 </p>
               </div>
             </motion.div>
@@ -582,32 +579,17 @@ export default function TRTBloodTestPage() {
                     rates are designed to make regular monitoring sustainable.
                   </p>
 
-                  {/* Comparison grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                    {/* Chain Labs */}
-                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                      <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Chain Labs</p>
-                      <ul className="space-y-2">
-                        {['High prices', 'Long wait times', 'Corporate overhead', '5-day result delays'].map((item) => (
-                          <li key={item} className="flex items-center gap-2 text-sm text-gray-500">
-                            <span className="text-gray-400 font-bold">✕</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    {/* Sunshine Lab */}
-                    <div className="bg-sunshine-blue/5 rounded-xl p-4 border border-sunshine-blue/20">
-                      <p className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3">Sunshine Lab</p>
-                      <ul className="space-y-2">
-                        {['Transparent pricing', 'Faster turnaround', 'Independent & local', 'Next-day results'].map((item) => (
-                          <li key={item} className="flex items-center gap-2 text-sm text-sunshine-dark">
-                            <CheckCircle className="w-4 h-4 text-sunshine-blue flex-shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* Highlights */}
+                  <div className="bg-sunshine-blue/5 rounded-xl p-4 border border-sunshine-blue/20 mt-5">
+                    <p className="text-xs font-bold uppercase tracking-widest text-sunshine-blue mb-3">Sunshine Lab</p>
+                    <ul className="space-y-2">
+                      {['Transparent pricing', 'Independent & local', 'Walk-ins welcome', 'Mobile draws available'].map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-sunshine-dark">
+                          <CheckCircle className="w-4 h-4 text-sunshine-blue flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -713,8 +695,7 @@ export default function TRTBloodTestPage() {
               variants={itemVariants}
               className="text-white/80 text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
             >
-              Next-day results for many tests. Affordable, transparent pricing. Walk-ins welcome.
-              Right here in Trinity, FL.
+              Affordable, transparent pricing. Walk-ins welcome. Right here in Trinity, FL.
             </motion.p>
 
             <motion.div
@@ -740,7 +721,7 @@ export default function TRTBloodTestPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" />
-                Mon–Fri 8:00am–5:00pm
+                Mon–Fri 8:00am–2:00pm
               </span>
             </motion.div>
           </Section>
@@ -771,8 +752,8 @@ export default function TRTBloodTestPage() {
               {[
                 {
                   icon: Zap,
-                  title: 'Speed',
-                  body: 'Next-day results for many tests — no waiting five days to know if your levels are off.',
+                  title: 'Consistency',
+                  body: 'Our team will give you an expected turnaround timeframe when your appointment is scheduled.',
                 },
                 {
                   icon: Microscope,
@@ -925,9 +906,8 @@ export default function TRTBloodTestPage() {
               variants={itemVariants}
               className="text-white/80 text-lg leading-relaxed mb-4 max-w-2xl mx-auto"
             >
-              Sunshine Clinical Lab gives you accurate, affordable TRT blood work with next-day
-              results for many tests — without the chain lab wait or the chain lab price tag. Right
-              here in Trinity, FL.
+              Sunshine Clinical Lab gives you accurate, affordable TRT blood work with transparent
+              pricing. Right here in Trinity, FL.
             </motion.p>
 
             <motion.p variants={itemVariants} className="text-white font-semibold text-lg mb-10">
@@ -963,7 +943,7 @@ export default function TRTBloodTestPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" />
-                Mon–Fri 8:00am–5:00pm · Walk-Ins Welcome
+                Mon–Fri 8:00am–2:00pm · Walk-Ins Welcome
               </span>
             </motion.div>
           </Section>

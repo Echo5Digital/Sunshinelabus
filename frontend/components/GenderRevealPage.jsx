@@ -77,8 +77,8 @@ function Section({ children, className = '' }) {
 const WHY_ITEMS = [
   {
     Icon: Heart,
-    title: "It's Early — Dramatically Early",
-    body: "Knowing your baby's gender at 7 weeks gives you months of extra time to plan, shop, dream, and prepare — long before a standard anatomy ultrasound would provide the same information. That's nearly three additional months of knowing.",
+    title: "Find Out Earlier in Pregnancy",
+    body: "Blood-based gender reveal testing can let you know sooner than a standard anatomy ultrasound — giving you extra time to plan, shop, dream, and prepare. Contact our team to learn when testing can be performed for your pregnancy.",
   },
   {
     Icon: Gift,
@@ -100,11 +100,11 @@ const WHY_ITEMS = [
 const FAQ_ITEMS = [
   {
     q: 'How early can the Peekaboo gender reveal test be done?',
-    a: "The Peekaboo test can determine your baby's gender as early as 7 weeks into pregnancy. This is significantly earlier than a traditional anatomy ultrasound, which typically occurs around 18 to 20 weeks.",
+    a: "Timing depends on the individual pregnancy. Contact our team to learn when testing can be performed and how to schedule your visit.",
   },
   {
     q: 'Is the Peekaboo gender reveal blood test accurate?',
-    a: 'The Peekaboo test is a clinically validated, non-invasive blood test that is widely regarded as one of the most reliable early gender determination methods available in the United States.',
+    a: 'The Peekaboo test is a non-invasive blood test. Contact our team if you have questions about the test methodology.',
   },
   {
     q: 'Is the gender reveal blood test safe for my baby?',
@@ -128,7 +128,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Where is Sunshine Clinical Lab located for the gender reveal test?',
-    a: "Our lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay. Free parking is on site.",
+    a: "Our lab is located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655 — easily accessible from New Port Richey, Land O' Lakes, and communities across Pasco County, as well as Tarpon Springs in Pinellas County and the greater Tampa Bay area. Free parking is on site.",
   },
 ];
 
@@ -257,14 +257,14 @@ export default function GenderRevealPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4"
             >
               Gender Reveal Blood Test in Florida —{' '}
-              <span className="text-[#f9a8d4]">Find Out Your Baby&apos;s Gender as Early as 7 Weeks</span>
+              <span className="text-[#f9a8d4]">Find Out Your Baby&apos;s Gender Earlier in Pregnancy</span>
             </motion.h1>
 
             <motion.h2
               variants={heroItemVariants}
               className="text-2xl sm:text-3xl font-bold text-white/90 mb-4"
             >
-              Boy or Girl? Find Out Weeks Before Your Ultrasound.
+              Boy or Girl? Find Out Before Your Ultrasound.
             </motion.h2>
 
             <motion.p
@@ -272,8 +272,9 @@ export default function GenderRevealPage() {
               className="text-white/85 text-lg leading-relaxed mb-10 max-w-xl ml-auto"
             >
               Sunshine Clinical Lab in Trinity, FL offers the Peekaboo Early Gender Reveal Blood Test —
-              a simple, non-invasive blood draw that can tell you your baby&apos;s gender as early as 7 weeks
-              into pregnancy. Schedule today and start planning.
+              a simple, non-invasive blood draw that can tell you your baby&apos;s gender earlier in
+              pregnancy. Contact our team to learn when testing can be performed and how to schedule
+              your visit.
             </motion.p>
 
             <motion.div
@@ -323,15 +324,15 @@ export default function GenderRevealPage() {
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-sunshine-dark mb-4">
-                  Can I Find Out My Baby&apos;s Gender at 7 Weeks With a Blood Test?
+                  Can I Find Out My Baby&apos;s Gender With a Blood Test?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Yes. The <strong>Peekaboo Early Gender Reveal Blood Test</strong> can determine fetal gender as early as{' '}
-                  <strong>7 weeks</strong> into pregnancy through a simple, non-invasive blood draw from the mother&apos;s arm.
+                  Yes. The <strong>Peekaboo Early Gender Reveal Blood Test</strong> can determine fetal gender
+                  earlier in pregnancy through a simple, non-invasive blood draw from the mother&apos;s arm.
                   The test detects cell-free fetal DNA circulating in the mother&apos;s bloodstream and identifies the presence
                   or absence of Y-chromosome markers. Sunshine Clinical Lab at{' '}
                   <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong> offers this test to expecting families throughout
-                  Pasco County and the Tampa Bay region. Results are typically available within a few business days.{' '}
+                  Pasco County and the Tampa Bay region. Contact our team to learn when testing can be performed.{' '}
                   <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
                     Call (727) 233-5223
                   </a>{' '}
@@ -392,19 +393,18 @@ export default function GenderRevealPage() {
                   </p>
                   <p>
                     Traditionally, most parents wait until the anatomy scan around 18 to 20 weeks to learn their
-                    baby&apos;s gender. But the <strong>Peekaboo Early Gender Reveal Blood Test</strong> — available right
-                    here at Sunshine Clinical Lab in Trinity, FL — can deliver that answer as early as{' '}
-                    <strong>7 weeks</strong> into your pregnancy.
+                    baby&apos;s gender. The <strong>Peekaboo Early Gender Reveal Blood Test</strong> — available right
+                    here at Sunshine Clinical Lab in Trinity, FL — can deliver that answer earlier in your
+                    pregnancy. Contact our team to learn when testing can be performed for you.
                   </p>
                   <p>
-                    That&apos;s not a typo. <strong>Seven weeks.</strong> While you&apos;re still keeping the news between
-                    you and your partner (or maybe just you and your best friend), you can already know whether
-                    it&apos;s pink or blue.
+                    While you&apos;re still keeping the news between you and your partner (or maybe just you
+                    and your best friend), you can already know whether it&apos;s pink or blue.
                   </p>
                   {/* Chip row */}
                   <div className="flex flex-wrap gap-2 pt-2">
                     {[
-                      { icon: Baby, label: 'As Early as 7 Weeks' },
+                      { icon: Baby, label: 'Blood-Based Test' },
                       { icon: Sparkles, label: 'Earlier Than Ultrasound' },
                       { icon: Heart, label: 'Non-Invasive' },
                     ].map(({ icon: Icon, label }) => (
@@ -451,7 +451,7 @@ export default function GenderRevealPage() {
                   the baby, no ultrasound required, and no discomfort beyond a standard blood draw.
                 </p>
                 <p>
-                  Here&apos;s the science: as early as 7 weeks into pregnancy, small fragments of your baby&apos;s DNA
+                  Here&apos;s the science: early in pregnancy, small fragments of your baby&apos;s DNA
                   (called <strong>cell-free fetal DNA</strong>) circulate in the mother&apos;s bloodstream. The Peekaboo test
                   analyzes your blood sample for the presence or absence of <strong>Y-chromosome markers</strong>. If Y-chromosome
                   DNA is detected, you&apos;re having a boy. If it&apos;s absent, you&apos;re having a girl.
@@ -541,16 +541,16 @@ export default function GenderRevealPage() {
                 Why Pasco County Families Choose Us
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark mb-4">
-                Why Expecting Families in Pasco County Love This Test
+                Why Expecting Families Love This Test
               </h2>
               <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
                 Our gender reveal blood test patients are some of our happiest visitors — and we love that energy
                 in our office. Here&apos;s why expecting parents throughout{' '}
                 <Link href="/clinical-lab-trinity-fl" className="text-sunshine-blue font-semibold hover:underline">Trinity</Link>,{' '}
                 <Link href="/clinical-lab-new-port-richey" className="text-sunshine-blue font-semibold hover:underline">New Port Richey</Link>,{' '}
-                <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">Land O&apos; Lakes</Link>,{' '}
-                <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">Tarpon Springs</Link>,{' '}
-                and the wider Tampa Bay region are choosing the Peekaboo test at Sunshine Clinical Lab:
+                <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">Land O&apos; Lakes</Link>, and Pasco County, as well as{' '}
+                <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">Tarpon Springs</Link>{' '}
+                in Pinellas County and the wider Tampa Bay region, are choosing the Peekaboo test at Sunshine Clinical Lab:
               </p>
             </motion.div>
 
@@ -777,15 +777,14 @@ export default function GenderRevealPage() {
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
                   Sunshine Clinical Lab at <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong> offers the{' '}
                   <strong>Peekaboo Early Gender Reveal Blood Test</strong> to expecting families throughout Pasco County
-                  and the Tampa Bay area. The test can determine baby gender as early as <strong>7 weeks</strong> of
-                  pregnancy through a non-invasive blood draw. Results are available within a few business days and
-                  can be provided in a <strong>sealed envelope</strong> for gender reveal parties. The lab serves patients
-                  from{' '}
+                  and the Tampa Bay area through a non-invasive blood draw. Contact our team to learn when testing
+                  can be performed. Results can be provided in a <strong>sealed envelope</strong> for gender reveal
+                  parties. The lab serves patients from{' '}
                   <Link href="/clinical-lab-trinity-fl" className="text-sunshine-blue font-semibold hover:underline">Trinity</Link>,{' '}
                   <Link href="/clinical-lab-new-port-richey" className="text-sunshine-blue font-semibold hover:underline">New Port Richey</Link>,{' '}
-                  <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">Land O&apos; Lakes</Link>,{' '}
-                  <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">Tarpon Springs</Link>,{' '}
-                  and surrounding communities.{' '}
+                  <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">Land O&apos; Lakes</Link>, and surrounding Pasco County communities, as well as{' '}
+                  <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">Tarpon Springs</Link>{' '}
+                  in Pinellas County.{' '}
                   <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
                     Call (727) 233-5223
                   </a>{' '}
@@ -929,7 +928,7 @@ export default function GenderRevealPage() {
             >
               Sunshine Clinical Lab makes one of pregnancy&apos;s most exciting moments happen sooner.
               Schedule your Peekaboo gender reveal blood test at our Trinity, FL location and find out
-              whether you&apos;re expecting a son or daughter — as early as 7 weeks.
+              whether you&apos;re expecting a son or daughter.
             </motion.p>
 
             <motion.p variants={itemVariants} className="text-white font-semibold text-lg mb-10">
@@ -976,7 +975,7 @@ export default function GenderRevealPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-                Mon–Fri 8:00am–5:00pm
+                Mon–Fri 8:00am–2:00pm
               </span>
             </motion.div>
           </Section>

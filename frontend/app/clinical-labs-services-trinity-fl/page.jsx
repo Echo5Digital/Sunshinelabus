@@ -156,14 +156,14 @@ export default function Page() {
             Mobile Phlebotomy and Home Blood Draws
           </h2>
           <p style={{ color: '#374151', fontSize: 16, lineHeight: 1.6 }}>
-            If you prefer a home or workplace draw, book a mobile phlebotomy appointment online or by phone. A licensed phlebotomist will arrive within the scheduled window to collect specimens with the same clinical protocols used in‑lab. Our mobile service covers Trinity, New Port Richey, Land O' Lakes, Tarpon Springs and greater Pasco County to provide local access without the trip to the clinic.
+            If you prefer a home or workplace draw, book a mobile phlebotomy appointment online or by phone. A licensed phlebotomist will arrive within the scheduled window to collect specimens with the same clinical protocols used in‑lab. Our mobile service covers Trinity, New Port Richey, Land O' Lakes and greater Pasco County, as well as Tarpon Springs in Pinellas County, to provide local access without the trip to the clinic.
           </p>
           <p style={{ color: '#374151', fontSize: 16, lineHeight: 1.6, marginTop: 12 }}>
             Mobile collections follow CDC and HIPAA protocols: ID verification, chain‑of‑custody when required, and cooled transport protect specimen integrity. Turnaround for mobile draws matches in‑lab service—most routine panels are reported within 24–48 hours. For urgent needs we can schedule courier pickup to maintain priority processing.
           </p>
           <ul style={{ color: '#374151', marginTop: 12, paddingLeft: 20, lineHeight: 1.7 }}>
             <li>Book online or by phone for licensed phlebotomists to collect at home or workplace.</li>
-            <li>Service area includes Trinity, New Port Richey, Land O' Lakes, Tarpon Springs and greater Pasco County.</li>
+            <li>Service area includes Trinity, New Port Richey, Land O' Lakes and greater Pasco County, plus Tarpon Springs in Pinellas County.</li>
             <li>CDC and HIPAA protocols, ID verification, chain‑of‑custody and cooled transport.</li>
             <li>Same 24–48 hour turnaround as in‑lab testing; courier pickup for urgent tests.</li>
           </ul>
@@ -210,7 +210,7 @@ export default function Page() {
             <details style={{ marginBottom: 10, backgroundColor: '#ffffff', padding: 12, borderRadius: 8 }}>
               <summary style={{ cursor: 'pointer', color: '#0D3047', fontWeight: 700 }}>How long does it take to get my lab results?</summary>
               <p style={{ color: '#374151', marginTop: 8 }}>
-                Most routine tests (CBC, CMP, lipid panels, A1C) are reported within 24–48 hours, with many available same‑day when collected early. Specialty testing, DNA/paternity, and some hormone panels can take several days to a week; mobile draws may add transit time, but we generally deliver faster turnaround than large national chains in Pasco County.
+                Turnaround time depends on the test being performed. Specialty testing, DNA/paternity, and some hormone panels can take longer than routine panels; mobile draws may add transit time. Our team can give you an expected timeframe when you visit or schedule in Pasco County.
               </p>
             </details>
 
@@ -224,7 +224,7 @@ export default function Page() {
             <details style={{ marginBottom: 10, backgroundColor: '#ffffff', padding: 12, borderRadius: 8 }}>
               <summary style={{ cursor: 'pointer', color: '#0D3047', fontWeight: 700 }}>Do you offer mobile blood draws in Trinity and the surrounding area?</summary>
               <p style={{ color: '#374151', marginTop: 8 }}>
-                Yes—mobile phlebotomy/home draws are available throughout Trinity, New Port Richey, Land O’ Lakes, Tarpon Springs, and greater Pasco County, typically with same‑day or next‑day appointments depending on demand. Scheduling and any travel fees are confirmed when you call or book online.
+                Yes—mobile phlebotomy/home draws are available throughout Trinity, New Port Richey, Land O’ Lakes, and greater Pasco County, as well as Tarpon Springs in Pinellas County, with appointment availability depending on demand. Scheduling and any travel fees are confirmed when you call or book online.
               </p>
             </details>
 

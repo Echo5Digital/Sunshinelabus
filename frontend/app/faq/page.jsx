@@ -52,21 +52,22 @@ const localBusinessSchema = {
     'Trinity, FL',
     'New Port Richey, FL',
     "Land O' Lakes, FL",
-    'Tarpon Springs, FL',
     'Holiday, FL',
     'Hudson, FL',
     'Port Richey, FL',
     'Odessa, FL',
     'Lutz, FL',
-    'East Lake, FL',
     'Pasco County, FL',
+    'Tarpon Springs, FL',
+    'East Lake, FL',
+    'Pinellas County, FL',
     'Tampa Bay, FL',
   ],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     opens: '08:00',
-    closes: '17:00',
+    closes: '14:00',
   },
 };
 
@@ -81,7 +82,7 @@ const faqSchema = {
       name: 'Where is Sunshine Clinical Lab located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We're located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. Our office is easily accessible from US-19, the Suncoast Parkway, SR-54, and Little Road, with free parking on-site. We serve patients from Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, and communities across Pasco County and Tampa Bay.",
+        text: "We're located at 3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA. Our office is easily accessible from US-19, the Suncoast Parkway, SR-54, and Little Road, with free parking on-site. We serve patients from Trinity, New Port Richey, Land O' Lakes, and communities across Pasco County, as well as Tarpon Springs in Pinellas County and the greater Tampa Bay area.",
       },
     },
     {
@@ -89,7 +90,7 @@ const faqSchema = {
       name: 'What are your hours of operation?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Please call our office at (727) 233-5223 or visit sunshinelabus.com for current hours. We recommend calling ahead for the most up-to-date schedule, especially around holidays.',
+        text: 'We are open Monday–Friday, 8:00 AM–2:00 PM. We recommend calling (727) 233-5223 ahead for the most up-to-date schedule, especially around holidays.',
       },
     },
     {
@@ -121,7 +122,7 @@ const faqSchema = {
       name: 'What makes Sunshine Clinical Lab different from chain labs?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We're locally owned and operated in Trinity, FL, with over 35 years of combined phlebotomy experience. Our patients experience significantly shorter wait times, personalized care, competitive pricing, specialty services like TRT monitoring and DNA testing, and mobile blood draw convenience — things that large national chain labs simply aren't designed to prioritize.",
+        text: "We're locally owned and operated in Trinity, FL, with over 35 years of combined phlebotomy experience. Patients get personalized care, competitive pricing, specialty services like TRT monitoring and DNA testing, and mobile blood draw convenience.",
       },
     },
     /* Results & Turnaround */
@@ -130,7 +131,7 @@ const faqSchema = {
       name: 'How fast will I get my lab results?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'For many routine blood tests — including CBC, CMP, lipid panels, and A1C — results are available the next business day. Turnaround times vary for specialty tests and certain markers. Our team will provide an estimated timeline during your visit.',
+        text: 'Turnaround times vary by test type and certain markers. Our team will provide an estimated timeline during your visit.',
       },
     },
     {
@@ -163,7 +164,7 @@ const faqSchema = {
       name: "What if I don't have insurance?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We offer competitive self-pay rates on all services. As an independent lab in Trinity, FL, our pricing is often more affordable than large chain labs. Call us for specific pricing.",
+        text: "We offer competitive self-pay rates on all services. Call us for specific pricing.",
       },
     },
     {
@@ -188,7 +189,7 @@ const faqSchema = {
       name: 'Do you offer mobile blood draws near me?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes. Our mobile phlebotomy team provides blood draws at your home, office, or care facility throughout Pasco County, including Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, Holiday, Hudson, and surrounding communities. Call (727) 233-5223 to schedule.",
+        text: "Yes. Our mobile phlebotomy team provides blood draws at your home, office, or care facility throughout Pasco County, including Trinity, New Port Richey, Land O' Lakes, Holiday, Hudson, and surrounding communities, as well as Tarpon Springs in Pinellas County. Call (727) 233-5223 to schedule.",
       },
     },
     {
@@ -204,7 +205,7 @@ const faqSchema = {
       name: 'What areas do you cover for mobile phlebotomy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "We serve communities throughout Pasco County and the greater Tampa Bay region, including Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, Holiday, Hudson, Port Richey, Odessa, East Lake, and more. Call to confirm availability in your specific area.",
+        text: "We serve communities throughout Pasco County, including Trinity, New Port Richey, Land O' Lakes, Holiday, Hudson, Port Richey, and Odessa, as well as Tarpon Springs and East Lake in Pinellas County and the greater Tampa Bay region. Call to confirm availability in your specific area.",
       },
     },
     {
@@ -212,7 +213,7 @@ const faqSchema = {
       name: 'Can I get TRT or hormone blood work done through a mobile draw?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels, hormone testing, and most physician-ordered blood work — all drawn at your location with the same fast turnaround as in-office visits.',
+        text: 'Yes. Our mobile phlebotomy service supports full TRT monitoring panels, hormone testing, and most physician-ordered blood work — all drawn at your location by the same phlebotomy team as in-office visits.',
       },
     },
     /* TRT & Hormone Testing */
@@ -221,7 +222,7 @@ const faqSchema = {
       name: 'Do you offer TRT blood testing at Sunshine Clinical Lab?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. We provide comprehensive TRT monitoring panels including total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and FSH. Results for many TRT-related tests are available the next business day. Walk-ins are welcome at our Trinity, FL location.',
+        text: 'Yes. We provide comprehensive TRT monitoring panels including total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG, LH, and FSH. Walk-ins are welcome at our Trinity, FL location.',
       },
     },
     {
@@ -229,7 +230,7 @@ const faqSchema = {
       name: 'How much does TRT blood work cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pricing depends on the specific panel and your insurance coverage. Contact us at (727) 233-5223 for current self-pay rates and insurance verification. Our TRT panel pricing is competitive — often significantly less than chain labs.',
+        text: 'Pricing depends on the specific panel and your insurance coverage. Contact us at (727) 233-5223 for current self-pay rates and insurance verification.',
       },
     },
     {
@@ -287,7 +288,7 @@ const faqSchema = {
       name: "How early can I find out my baby's gender with a blood test?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "The Peekaboo Early Gender Reveal Blood Test can determine fetal gender as early as 7 weeks into pregnancy through a simple, non-invasive blood draw from the mother's arm. Available at our Trinity, FL location.",
+        text: "The Peekaboo Early Gender Reveal Blood Test can determine fetal gender earlier in pregnancy through a simple, non-invasive blood draw from the mother's arm. Contact our team to learn when testing can be performed. Available at our Trinity, FL location.",
       },
     },
     {

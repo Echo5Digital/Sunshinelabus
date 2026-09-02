@@ -152,11 +152,11 @@ const GENERAL_FAQS = [
         <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">
           Land O&apos; Lakes
         </Link>
-        ,{' '}
+        , and communities across Pasco County, as well as{' '}
         <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">
           Tarpon Springs
         </Link>
-        , and communities across Pasco County and Tampa Bay.
+        {' '}in Pinellas County and the greater Tampa Bay area.
       </>
     ),
   },
@@ -164,12 +164,11 @@ const GENERAL_FAQS = [
     q: 'What are your hours of operation?',
     a: (
       <>
-        Please call our office at{' '}
+        We are open Monday–Friday, 8:00 AM–2:00 PM. We recommend calling{' '}
         <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
           (727) 233-5223
         </a>{' '}
-        or visit sunshinelabus.com for current hours. We recommend calling ahead for the most
-        up-to-date schedule, especially around holidays.
+        ahead for the most up-to-date schedule, especially around holidays.
       </>
     ),
   },
@@ -207,8 +206,8 @@ const GENERAL_FAQS = [
     a: (
       <>
         We&apos;re locally owned and operated in Trinity, FL, with over 35 years of combined
-        phlebotomy experience. Our patients experience significantly shorter wait times,
-        personalized care, competitive pricing, specialty services like{' '}
+        phlebotomy experience. Patients get personalized care, competitive pricing, specialty
+        services like{' '}
         <Link href="/trt-blood-test-pasco-county" className="text-sunshine-blue font-semibold hover:underline">
           TRT monitoring
         </Link>{' '}
@@ -231,7 +230,7 @@ const GENERAL_FAQS = [
 const RESULTS_FAQS = [
   {
     q: 'How fast will I get my lab results?',
-    a: 'For many routine blood tests — including CBC, CMP, lipid panels, and A1C — results are available the next business day. Turnaround times vary for specialty tests and certain markers. Our team will provide an estimated timeline during your visit.',
+    a: 'Turnaround times vary by test type and certain markers. Our team will provide an estimated timeline during your visit.',
   },
   {
     q: 'How do I receive my results?',
@@ -316,8 +315,8 @@ const MOBILE_FAQS = [
           mobile phlebotomy team
         </Link>{' '}
         provides blood draws at your home, office, or care facility throughout Pasco County,
-        including Trinity, New Port Richey, Land O&apos; Lakes, Tarpon Springs, Holiday, Hudson,
-        and surrounding communities. Call{' '}
+        including Trinity, New Port Richey, Land O&apos; Lakes, Holiday, Hudson, and surrounding
+        communities, as well as Tarpon Springs in Pinellas County. Call{' '}
         <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">
           (727) 233-5223
         </a>{' '}
@@ -342,7 +341,7 @@ const MOBILE_FAQS = [
     q: 'What areas do you cover for mobile phlebotomy?',
     a: (
       <>
-        We serve communities throughout Pasco County and the greater Tampa Bay region, including{' '}
+        We serve communities throughout Pasco County, including{' '}
         <Link href="/clinical-lab-trinity-fl" className="text-sunshine-blue font-semibold hover:underline">
           Trinity
         </Link>
@@ -354,11 +353,11 @@ const MOBILE_FAQS = [
         <Link href="/clinical-lab-land-o-lakes-fl" className="text-sunshine-blue font-semibold hover:underline">
           Land O&apos; Lakes
         </Link>
-        ,{' '}
+        , Holiday, Hudson, Port Richey, and Odessa, as well as{' '}
         <Link href="/clinical-lab-tarpon-springs-fl" className="text-sunshine-blue font-semibold hover:underline">
           Tarpon Springs
         </Link>
-        , Holiday, Hudson, Port Richey, Odessa, East Lake, and more. Call to confirm
+        {' '}and East Lake in Pinellas County and the greater Tampa Bay region. Call to confirm
         availability in your specific area.
       </>
     ),
@@ -376,7 +375,7 @@ const MOBILE_FAQS = [
           TRT monitoring panels
         </Link>
         , hormone testing, and most physician-ordered blood work — all drawn at your location
-        with the same fast turnaround as in-office visits.
+        by the same phlebotomy team as in-office visits.
       </>
     ),
   },
@@ -393,8 +392,7 @@ const TRT_FAQS = [
           comprehensive TRT monitoring panels
         </Link>{' '}
         including total and free testosterone, estradiol (E2), hematocrit, CBC, CMP, PSA, SHBG,
-        LH, and FSH. Results for many TRT-related tests are available the next business day.
-        Walk-ins are welcome at our Trinity, FL location.
+        LH, and FSH. Walk-ins are welcome at our Trinity, FL location.
       </>
     ),
   },
@@ -410,7 +408,7 @@ const TRT_FAQS = [
         <Link href="/trt-blood-test-pasco-county" className="text-sunshine-blue font-semibold hover:underline">
           TRT panel pricing
         </Link>{' '}
-        is competitive — often significantly less than chain labs.
+        is competitive and transparent.
       </>
     ),
   },
@@ -503,8 +501,9 @@ const GENDER_FAQS = [
         <Link href="/gender-reveal-testing-florida" className="text-sunshine-blue font-semibold hover:underline">
           Peekaboo Early Gender Reveal Blood Test
         </Link>{' '}
-        can determine fetal gender as early as 7 weeks into pregnancy through a simple,
-        non-invasive blood draw from the mother&apos;s arm. Available at our Trinity, FL location.
+        can determine fetal gender earlier in pregnancy through a simple, non-invasive blood draw
+        from the mother&apos;s arm. Contact our team to learn when testing can be performed.
+        Available at our Trinity, FL location.
       </>
     ),
   },
@@ -986,7 +985,7 @@ export default function FAQPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white flex-shrink-0" aria-hidden="true" />
-                Mon–Fri 8:00am–5:00pm
+                Mon–Fri 8:00am–2:00pm
               </span>
             </motion.div>
           </Section>

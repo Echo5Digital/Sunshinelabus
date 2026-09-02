@@ -195,7 +195,7 @@ export default function Page() {
                 <li>● Walk in weekdays for CBC, CMP, lipid panel, A1C, and thyroid testing — bring a physician order if required</li>
                 <li>● Present photo ID and insurance card at check-in to verify coverage and minimize wait time</li>
                 <li>● Follow fasting or medication-hold instructions provided at check-in or sent via text/email before your draw</li>
-                <li>● Receive printed results and secure electronic access; many routine panels are available same-day or next-business-day</li>
+                <li>● Receive printed results and secure electronic access; our team can give you an expected turnaround timeframe for your specific test</li>
               </ul>
             </section>
 
@@ -277,18 +277,17 @@ export default function Page() {
               <details style={{ background: "#fff", padding: 12, borderRadius: 8, marginBottom: 8 }}>
                 <summary style={{ fontFamily: "Inter,sans-serif", color: "#0D3047", fontWeight: 700 }}>What are your cash-pay or self-pay prices for common tests?</summary>
                 <p style={{ fontFamily: "Inter,sans-serif", color: "#374151", marginTop: 8 }}>
-                  We offer transparent cash-pay pricing for uninsured or self-pay patients and our rates are often lower than large national
-                  chains in the Pasco County area. Contact us by phone or form to get an upfront quote for specific tests such as CBC, CMP,
-                  A1C, lipid panels, or TRT monitoring panels—same-day walk-in cash-pay options are available when scheduled.
+                  We offer transparent cash-pay pricing for uninsured or self-pay patients in the Pasco County area. Contact us by phone or form to get an upfront quote for specific tests such as CBC, CMP,
+                  A1C, lipid panels, or TRT monitoring panels—walk-in cash-pay options are available when scheduled.
                 </p>
               </details>
 
               <details style={{ background: "#fff", padding: 12, borderRadius: 8, marginBottom: 8 }}>
                 <summary style={{ fontFamily: "Inter,sans-serif", color: "#0D3047", fontWeight: 700 }}>How soon will I get my lab results?</summary>
                 <p style={{ fontFamily: "Inter,sans-serif", color: "#374151", marginTop: 8 }}>
-                  Routine tests like CBC, CMP, lipid panels and many hormone panels are typically completed within 24–48 hours and delivered
-                  via secure patient portal or directly to your physician. Specialty tests and DNA/immigration panels can take longer
-                  (often 3–14 business days depending on the assay), and our staff in Trinity will give you an estimated timeline when you
+                  Turnaround time depends on the test being performed and is typically delivered
+                  via secure patient portal or directly to your physician. Specialty tests and DNA/immigration panels can take longer,
+                  and our staff in Trinity will give you an estimated timeline when you
                   check in or schedule a mobile draw.
                 </p>
               </details>
@@ -305,8 +304,8 @@ export default function Page() {
               <details style={{ background: "#fff", padding: 12, borderRadius: 8, marginBottom: 8 }}>
                 <summary style={{ fontFamily: "Inter,sans-serif", color: "#0D3047", fontWeight: 700 }}>Do you provide mobile blood draws and which local areas do you serve?</summary>
                 <p style={{ fontFamily: "Inter,sans-serif", color: "#374151", marginTop: 8 }}>
-                  Yes — we offer mobile phlebotomy/home blood draws across Trinity, New Port Richey, Land O' Lakes, Tarpon Springs, and the greater
-                  Pasco County/Tampa Bay region. Appointments for at-home draws can be booked by phone or online; travel fees and same-day availability
+                  Yes — we offer mobile phlebotomy/home blood draws across Trinity, New Port Richey, Land O' Lakes, and the greater
+                  Pasco County/Tampa Bay region, as well as Tarpon Springs in Pinellas County. Appointments for at-home draws can be booked by phone or online; travel fees and availability
                   depend on distance and schedule.
                 </p>
               </details>
@@ -329,8 +328,7 @@ export default function Page() {
               </h3>
               <p style={{ fontFamily: "Inter,sans-serif", color: "#374151", marginTop: 8, maxWidth: 720 }}>
                 SUNSHINE CLINICAL LAB LLC accepts most insurance plans for lab testing in the Trinity area and delivers fast turnaround on routine blood work,
-                TRT monitoring, and specialty hormone panels. Walk-ins, physician referrals, and mobile blood draws across Pasco County make getting tests convenient
-                without long waits.
+                TRT monitoring, and specialty hormone panels. Walk-ins, physician referrals, and mobile blood draws across Pasco County make getting tests convenient.
               </p>
             </div>
             <div className="flex gap-3">
@@ -368,7 +366,7 @@ export default function Page() {
             <p style={{ margin: 0 }}>
               SUNSHINE CLINICAL LAB LLC — Trinity, FL • <a href="tel:+17272335223" style={{ color: "#0EA5E9", textDecoration: "none" }}>Call: (727) 233-5223</a>
             </p>
-            <p style={{ marginTop: 6, fontSize: 13 }}>Serving Trinity, New Port Richey, Land O' Lakes, Tarpon Springs & greater Pasco County</p>
+            <p style={{ marginTop: 6, fontSize: 13 }}>Serving Trinity, New Port Richey, Land O' Lakes & greater Pasco County, plus Tarpon Springs in Pinellas County</p>
           </footer>
         </div>
       </main>

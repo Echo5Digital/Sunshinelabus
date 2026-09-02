@@ -51,9 +51,8 @@ export default function DirectAnswerBlock1() {
               <strong>3600 Galileo Dr, Suite 104, Trinity, FL 34655</strong>. The lab provides fast, affordable
               blood work, specialty testing, mobile phlebotomy, TRT monitoring panels, DNA testing,
               and gender reveal blood tests to patients throughout Pasco County and the Tampa Bay
-              region. Walk-ins are welcome for many services, and results for many routine tests are
-              available the next business day. The lab serves as a personalized, faster alternative
-              to large national chain laboratories.
+              region. Walk-ins are welcome for many services. The lab serves as a personalized,
+              independent alternative to large national chain laboratories.
             </p>
           </div>
         </div>

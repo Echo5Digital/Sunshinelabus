@@ -148,7 +148,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How fast do I get my results from Sunshine Clinical Lab?',
-    a: 'Many routine blood tests — including CBC, CMP, and lipid panels — are available the next business day. Turnaround times vary by test type. Our team will provide a timeline during your visit.',
+    a: 'Turnaround times vary by test type. Our team will provide an expected timeline during your visit.',
   },
   {
     q: 'Do you accept insurance for lab testing at your Trinity location?',
@@ -289,7 +289,7 @@ export default function ClinicalLabServicesPage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4"
             >
               Clinical Lab Services in Trinity, FL —{' '}
-              <span className="text-[#93C5FD]">Walk-In Blood Work, Fast Results, Experienced Care</span>
+              <span className="text-[#93C5FD]">Walk-In Blood Work, Experienced Care</span>
             </motion.h1>
 
             <motion.h2
@@ -348,12 +348,12 @@ export default function ClinicalLabServicesPage() {
                   What Lab Services Does Sunshine Clinical Lab Offer in Trinity, FL?
                 </h2>
                 <p className="text-gray-700 leading-relaxed text-base mb-7">
-                  Sunshine Clinical Lab at <span className="font-semibold text-sunshine-dark">3600 Galileo Dr, Suite 104, Trinity, FL 34655</span> offers comprehensive clinical laboratory services including CBC, CMP, lipid panels, A1C, thyroid testing, liver and kidney function panels, hormone testing, testosterone panels, TRT monitoring, PSA testing, estradiol, SHBG, LH/FSH, legal and immigration DNA testing, paternity testing, and Peekaboo gender reveal blood tests. Walk-ins are welcome for most routine tests, and results for many services are available the next business day. The lab accepts most major insurance plans and offers competitive self-pay pricing. Call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>.
+                  Sunshine Clinical Lab at <span className="font-semibold text-sunshine-dark">3600 Galileo Dr, Suite 104, Trinity, FL 34655</span> offers comprehensive clinical laboratory services including CBC, CMP, lipid panels, A1C, thyroid testing, liver and kidney function panels, hormone testing, testosterone panels, TRT monitoring, PSA testing, estradiol, SHBG, LH/FSH, legal and immigration DNA testing, paternity testing, and Peekaboo gender reveal blood tests. Walk-ins are welcome for most routine tests. The lab accepts most major insurance plans and offers competitive self-pay pricing. Call <a href="tel:+17272335223" className="text-sunshine-blue font-semibold hover:underline">(727) 233-5223</a>.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {[
                     { icon: CheckCircle2, label: 'Comprehensive Panels' },
-                    { icon: Clock, label: 'Next-Day Results' },
+                    { icon: Clock, label: 'Mobile Draws Available' },
                     { icon: BadgeCheck, label: 'Walk-Ins Welcome' },
                     { icon: ShieldCheck, label: 'Insurance Accepted' },
                   ].map(({ icon: Icon, label }) => (
@@ -530,17 +530,17 @@ export default function ClinicalLabServicesPage() {
                   <Clock className="w-6 h-6 text-sunshine-blue"/>
                 </div>
                 <h2 className="text-2xl font-extrabold text-sunshine-dark mb-4">
-                  Same-Day Blood Draws, Next-Day Results for Many Tests
+                  Walk-In Blood Draws, Clear Turnaround Timelines
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed text-sm">
                   <p>
-                    Speed matters. Whether you're managing a chronic condition, monitoring medications, or completing pre-surgical lab requirements, waiting days for results creates unnecessary anxiety and delays in care.
+                    Speed matters. Whether you're managing a chronic condition, monitoring medications, or completing pre-surgical lab requirements, waiting on results creates unnecessary anxiety and delays in care.
                   </p>
                   <p>
-                    At Sunshine Clinical Lab, results for many routine blood tests — including CBC, CMP, lipid panels, and A1C — are available the next business day. Turnaround for specialty tests varies by marker, but we consistently outperform the timelines that patients experience at high-volume national chain labs.
+                    At Sunshine Clinical Lab, turnaround time for routine blood tests — including CBC, CMP, lipid panels, and A1C — as well as specialty markers, depends on the tests ordered. Our team will give you an expected timeline when your appointment is scheduled.
                   </p>
                   <p className="font-bold text-sunshine-dark pt-2">
-                    We process your blood work with urgency because we understand that behind every test tube is a patient waiting for answers.
+                    We process your blood work with care because we understand that behind every test tube is a patient waiting for answers.
                   </p>
                 </div>
               </motion.div>
@@ -607,7 +607,7 @@ export default function ClinicalLabServicesPage() {
                   Yes. Sunshine Clinical Lab at <strong className="text-sunshine-dark">3600 Galileo Dr, Suite 104, Trinity, FL 34655, USA</strong> is a walk-in clinical laboratory that accepts patients without appointments for most routine blood work.
                 </p>
                 <p className="text-gray-700 leading-relaxed text-sm mb-7">
-                  The lab offers CBC, CMP, lipid panels, thyroid testing, hormone panels, TRT blood tests, and many other services. Results for many tests are available the next business day. The lab <Link className="text-sunshine-blue hover:underline" href="/insurance-accepted">accepts most major insurance plans</Link> and serves patients of all ages from <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-trinity-fl">Trinity</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-new-port-richey">New Port Richey</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-land-o-lakes-fl">Land O' Lakes</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-tarpon-springs-fl">Tarpon Springs</Link>, and surrounding Pasco County communities.
+                  The lab offers CBC, CMP, lipid panels, thyroid testing, hormone panels, TRT blood tests, and many other services. The lab <Link className="text-sunshine-blue hover:underline" href="/insurance-accepted">accepts most major insurance plans</Link> and serves patients of all ages from <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-trinity-fl">Trinity</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-new-port-richey">New Port Richey</Link>, <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-land-o-lakes-fl">Land O' Lakes</Link>, and surrounding Pasco County communities, as well as <Link className="text-sunshine-blue hover:underline" href="/clinical-lab-tarpon-springs-fl">Tarpon Springs</Link> in Pinellas County.
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   <span className="inline-flex items-center gap-1.5 bg-sunshine-soft border border-sunshine-blue/15 text-sunshine-dark text-xs font-semibold px-3 py-1.5 rounded-full">
@@ -774,7 +774,7 @@ export default function ClinicalLabServicesPage() {
               <span className="hidden sm:block text-white/30">|</span>
               <span className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-white/90" />
-                Mon–Fri 8:00am–5:00pm
+                Mon–Fri 8:00am–2:00pm
               </span>
             </motion.div>
           </Section>
