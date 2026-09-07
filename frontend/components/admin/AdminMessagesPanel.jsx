@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import {
-  Search, X, RefreshCw, AlertCircle,
+  Search, X, RefreshCw, AlertCircle, CheckCircle2, Trash2, Check,
   ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
   Phone, MapPin, Mail, Clock,
 } from 'lucide-react';
-import { fetchAdminContacts, markContactAsRead } from '@/lib/api';
+import {
+  fetchAdminContacts, markContactAsRead, deleteContact, bulkDeleteContacts,
+} from '@/lib/api';
 
 const PAGE_SIZE = 20;
 
@@ -37,6 +39,86 @@ const AVATAR_COLORS = [
 
 const avatarColor = (id = '') => AVATAR_COLORS[id.charCodeAt(0) % AVATAR_COLORS.length];
 
+// ── DeleteConfirmModal ────────────────────────────────────────────────────────
+function DeleteConfirmModal({ ids, label, onClose, onDeleted }) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState(null);
+  const isBulk = ids.length > 1;
+
+  const handleDelete = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      if (isBulk) await bulkDeleteContacts(ids);
+      else await deleteContact(ids[0]);
+      onDeleted(ids);
+    } catch (err) {
+      setError(err?.response?.data?.error || `Failed to delete message${isBulk ? 's' : ''}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+      <div className="bg-[#1a2535] border border-white/[0.10] rounded-2xl w-full max-w-sm shadow-2xl">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.07]">
+          <div className="flex items-center gap-2">
+            <Trash2 className="w-5 h-5 text-red-400" />
+            <h2 className="text-base font-semibold text-white">
+              Delete {isBulk ? `${ids.length} Messages` : 'Message'}
+            </h2>
+          </div>
+          <button
+            onClick={onClose}
+            disabled={loading}
+            className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/[0.08] transition-colors disabled:opacity-40"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="px-6 py-5 space-y-4">
+          {error && (
+            <div className="flex items-center gap-2 bg-red-900/20 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-sm">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              {error}
+            </div>
+          )}
+          <p className="text-sm text-white/70">
+            {isBulk ? (
+              <>Are you sure you want to delete these <span className="text-white font-semibold">{ids.length}</span> messages? This action cannot be undone.</>
+            ) : (
+              <>Are you sure you want to delete the message from{' '}
+                <span className="text-white font-semibold">{label}</span>?{' '}
+                This action cannot be undone.</>
+            )}
+          </p>
+
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={onClose}
+              disabled={loading}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm font-medium text-white/60 hover:text-white bg-white/[0.06] hover:bg-white/[0.10] transition-colors disabled:opacity-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={handleDelete}
+              disabled={loading}
+              className="flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              {loading ? 'Deleting…' : 'Delete'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AdminMessagesPanel({ onMarkRead }) {
   const [messages, setMessages]               = useState([]);
   const [total, setTotal]                     = useState(0);
@@ -46,7 +128,11 @@ export default function AdminMessagesPanel({ onMarkRead }) {
   const [search, setSearch]                   = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [expandedId, setExpandedId]           = useState(null);
+  const [selectedIds, setSelectedIds]         = useState(new Set());
+  const [deleteTarget, setDeleteTarget]       = useState(null); // { ids: [...], label }
+  const [success, setSuccess]                 = useState(null);
   const searchTimer = useRef(null);
+  const successTimer = useRef(null);
 
   const onSearchChange = (v) => {
     setSearch(v);
@@ -74,7 +160,7 @@ export default function AdminMessagesPanel({ onMarkRead }) {
   }, [page, debouncedSearch]);
 
   useEffect(() => { load(); }, [load]);
-  useEffect(() => { setExpandedId(null); }, [page]);
+  useEffect(() => { setExpandedId(null); setSelectedIds(new Set()); }, [page]);
 
   // Auto-refresh every 30s — skip when a message is expanded to avoid collapsing it
   useEffect(() => {
@@ -110,8 +196,53 @@ export default function AdminMessagesPanel({ onMarkRead }) {
     }
   };
 
+  const showSuccess = (msg) => {
+    setSuccess(msg);
+    clearTimeout(successTimer.current);
+    successTimer.current = setTimeout(() => setSuccess(null), 3000);
+  };
+
+  useEffect(() => () => clearTimeout(successTimer.current), []);
+
+  const toggleSelect = (id, e) => {
+    e.stopPropagation();
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const allSelected = messages.length > 0 && messages.every((m) => selectedIds.has(m.id));
+
+  const toggleSelectAll = () => {
+    setSelectedIds((prev) => {
+      if (allSelected) return new Set();
+      return new Set(messages.map((m) => m.id));
+    });
+  };
+
+  const clearSelection = () => setSelectedIds(new Set());
+
+  const handleDeleted = (deletedIds) => {
+    const idSet = new Set(deletedIds);
+    setMessages((prev) => prev.filter((m) => !idSet.has(m.id)));
+    setTotal((prev) => Math.max(0, prev - deletedIds.length));
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      deletedIds.forEach((id) => next.delete(id));
+      return next;
+    });
+    if (expandedId && idSet.has(expandedId)) setExpandedId(null);
+    setDeleteTarget(null);
+    showSuccess(deletedIds.length > 1 ? `${deletedIds.length} messages deleted` : 'Message deleted');
+    onMarkRead?.();
+  };
+
   const totalPages  = Math.ceil(total / PAGE_SIZE);
   const unreadCount = messages.filter((m) => !m.is_read).length;
+  const selectedCount = selectedIds.size;
 
   return (
     <div className="space-y-4">
@@ -173,6 +304,38 @@ export default function AdminMessagesPanel({ onMarkRead }) {
         </div>
       </div>
 
+      {/* ── Success banner ───────────────────────────────────────────────────── */}
+      {success && (
+        <div className="flex items-center gap-2 bg-green-900/30 border border-green-500/30 text-green-400 px-4 py-3 rounded-xl text-sm">
+          <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+          {success}
+        </div>
+      )}
+
+      {/* ── Bulk action toolbar ──────────────────────────────────────────────── */}
+      {selectedCount > 0 && (
+        <div className="flex flex-wrap items-center gap-3 bg-sunshine-blue/10 border border-sunshine-blue/20 rounded-2xl px-4 py-3">
+          <span className="text-sm font-medium text-white/80">
+            {selectedCount} selected
+          </span>
+          <div className="flex items-center gap-2 ml-auto">
+            <button
+              onClick={clearSelection}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium text-white/50 hover:text-white hover:bg-white/[0.08] transition-colors"
+            >
+              Clear
+            </button>
+            <button
+              onClick={() => setDeleteTarget({ ids: Array.from(selectedIds), label: null })}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-red-400/70 hover:text-red-400 bg-red-500/10 hover:bg-red-500/20 transition-colors"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              Delete selected
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ── Content ─────────────────────────────────────────────────────────── */}
       <div className="bg-[#1a2535] rounded-2xl border border-white/[0.07] shadow-sm overflow-hidden">
 
@@ -207,38 +370,64 @@ export default function AdminMessagesPanel({ onMarkRead }) {
           </div>
         ) : (
           <div className="divide-y divide-white/[0.05]">
+            {/* ── Select all bar ──────────────────────────────────────────── */}
+            <div className="flex items-center gap-3 px-4 py-2.5 bg-white/[0.02]">
+              <button
+                onClick={toggleSelectAll}
+                className="flex items-center gap-2 text-xs font-medium text-white/45 hover:text-white/75 transition-colors"
+              >
+                <span className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors flex-shrink-0 ${allSelected ? 'bg-sunshine-blue border-sunshine-blue' : 'border-white/25 hover:border-white/50'}`}>
+                  {allSelected && <Check className="w-3 h-3 text-white" />}
+                </span>
+                Select all
+              </button>
+            </div>
+
             {messages.map((msg) => {
               const isExpanded = expandedId === msg.id;
               const isUnread   = !msg.is_read;
+              const isSelected = selectedIds.has(msg.id);
 
               return (
                 <div
                   key={msg.id}
-                  className={`transition-colors ${isUnread ? 'bg-sunshine-blue/[0.04]' : ''}`}
+                  className={`transition-colors ${isUnread ? 'bg-sunshine-blue/[0.04]' : ''} ${isSelected ? 'bg-sunshine-blue/[0.08]' : ''}`}
                 >
                   {/* ── Row ──────────────────────────────────────────────── */}
-                  <button
-                    className="w-full text-left px-4 py-3.5 flex items-start gap-3 hover:bg-white/[0.03] transition-colors"
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className="w-full text-left px-3 sm:px-4 py-3.5 flex items-start gap-2 sm:gap-3 hover:bg-white/[0.03] transition-colors cursor-pointer"
                     onClick={() => handleExpand(msg)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') handleExpand(msg); }}
                   >
-                    {/* Unread dot */}
-                    <div className="flex-shrink-0 flex items-center mt-1.5">
-                      <div className={`w-1.5 h-1.5 rounded-full mr-1 transition-opacity ${isUnread ? 'bg-sunshine-sky opacity-100' : 'opacity-0'}`} />
-                    </div>
+                    {/* Checkbox + unread dot */}
+                    <button
+                      onClick={(e) => toggleSelect(msg.id, e)}
+                      className="flex-shrink-0 mt-1.5 p-0.5 -m-0.5 relative"
+                      aria-label={isSelected ? 'Deselect message' : 'Select message'}
+                    >
+                      <span className={`w-4 h-4 rounded-md border flex items-center justify-center transition-colors ${isSelected ? 'bg-sunshine-blue border-sunshine-blue' : 'border-white/25 hover:border-white/50'}`}>
+                        {isSelected && <Check className="w-3 h-3 text-white" />}
+                      </span>
+                      {isUnread && !isSelected && (
+                        <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-sunshine-sky" />
+                      )}
+                    </button>
 
                     {/* Avatar */}
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 ${avatarColor(msg.id)}`}>
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 ${avatarColor(msg.id)}`}>
                       {getInitials(msg.name)}
                     </div>
 
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2 mb-0.5 flex-wrap">
-                        <span className={`text-sm truncate max-w-[180px] sm:max-w-none ${isUnread ? 'font-semibold text-white' : 'font-medium text-white/85'}`}>
+                        <span className={`text-sm truncate max-w-[140px] sm:max-w-none ${isUnread ? 'font-semibold text-white' : 'font-medium text-white/85'}`}>
                           {msg.name}
                         </span>
                         <div className="flex items-center gap-1.5 text-xs text-white/35 flex-shrink-0">
-                          <Clock className="w-3 h-3" />
+                          <Clock className="w-3 h-3 hidden sm:block" />
                           <span>{formatDate(msg.created_at)}</span>
                           <span className="hidden sm:inline">· {formatTime(msg.created_at)}</span>
                         </div>
@@ -249,14 +438,23 @@ export default function AdminMessagesPanel({ onMarkRead }) {
                       </p>
                     </div>
 
+                    {/* Delete button */}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setDeleteTarget({ ids: [msg.id], label: msg.name }); }}
+                      className="flex-shrink-0 mt-0.5 p-1.5 rounded-lg text-red-400/70 hover:text-red-400 bg-red-500/10 hover:bg-red-500/20 transition-colors"
+                      aria-label="Delete message"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+
                     {/* Expand icon */}
-                    <div className="flex-shrink-0 mt-1">
+                    <div className="flex-shrink-0 mt-1 hidden sm:block">
                       {isExpanded
                         ? <ChevronUp className="w-4 h-4 text-white/30" />
                         : <ChevronDown className="w-4 h-4 text-white/30" />
                       }
                     </div>
-                  </button>
+                  </div>
 
                   {/* ── Expanded detail ──────────────────────────────────── */}
                   {isExpanded && (
@@ -328,6 +526,15 @@ export default function AdminMessagesPanel({ onMarkRead }) {
           </div>
         )}
       </div>
+
+      {deleteTarget && (
+        <DeleteConfirmModal
+          ids={deleteTarget.ids}
+          label={deleteTarget.label}
+          onClose={() => setDeleteTarget(null)}
+          onDeleted={handleDeleted}
+        />
+      )}
     </div>
   );
 }

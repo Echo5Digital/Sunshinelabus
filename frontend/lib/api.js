@@ -190,6 +190,16 @@ export const markContactAsRead = async (id) => {
   return res.data;
 };
 
+export const deleteContact = async (id) => {
+  const res = await adminApi.delete(`/api/admin/contacts/${id}`);
+  return res.data;
+};
+
+export const bulkDeleteContacts = async (ids) => {
+  const res = await adminApi.delete('/api/admin/contacts', { data: { ids } });
+  return res.data;
+};
+
 // ── User management ───────────────────────────────────────────────────────────
 
 export const fetchUsers = async (params = {}) => {

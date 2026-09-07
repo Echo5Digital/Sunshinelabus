@@ -11,10 +11,10 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 const servicesItems = [
   { label: 'All Services', href: '/all-services', isAll: true },
   { label: 'General Testing', href: '/clinical-lab-services-trinity-fl' },
-  { label: 'Mobile Blood Draw', href: '/mobile-blood-draw-pasco-county' },
   { label: 'TRT Blood Testing', href: '/trt-blood-test-pasco-county' },
   { label: 'Gender Reveal Testing', href: '/gender-reveal-testing-florida' },
   { label: 'DNA Testing', href: '/dna-testing-pasco-county' },
+  { label: 'Drug & Toxicology Testing', href: '/drug-and-toxicology-testing-fl' },
 ];
 
 // const moreItems = [
@@ -59,7 +59,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-4 pointer-events-none">
       {/* Glass pill container */}
       <div
-        className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 ease-in-out ${
+        className={`pointer-events-auto w-full max-w-[1400px] transition-all duration-300 ease-in-out ${
           mobileOpen
             ? 'rounded-[2rem] bg-white/80 backdrop-blur-xl shadow-xl border border-white/40'
             : scrolled
@@ -68,14 +68,14 @@ export default function Navbar() {
         }`}
       >
         {/* Header row */}
-        <div className="flex items-center h-[68px] lg:h-[88px] px-5 lg:px-8">
+        <div className="flex items-center h-[68px] 2xl:h-[88px] px-5 2xl:px-8">
           {/* Logo — far left */}
           <Link href="/" className="flex-shrink-0 overflow-hidden">
-            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={48} width={158} className="h-10 lg:h-12 w-auto object-contain [filter:drop-shadow(0_2px_8px_rgba(0,0,0,0.22))_drop-shadow(0_0_6px_rgba(255,255,255,0.5))]" />
+            <Image src="/logo2.webp" alt="Sunshine Clinical Laboratory" height={48} width={158} className="h-10 2xl:h-12 w-auto object-contain [filter:drop-shadow(0_2px_8px_rgba(0,0,0,0.22))_drop-shadow(0_0_6px_rgba(255,255,255,0.5))]" />
           </Link>
 
           {/* Desktop Nav — centered */}
-          <div className="hidden lg:flex flex-1 items-center justify-center gap-0.5">
+          <div className="hidden 2xl:flex flex-1 items-center justify-center gap-0.5">
             <NavLink href="/" label="Home" pathname={pathname} />
             <NavLink href="/about" label="About" pathname={pathname} />
 
@@ -115,7 +115,9 @@ export default function Navbar() {
               </div>
             </DropdownItem>
 
+            <SpecialNavLink href="/mobile-blood-draw-pasco-county" label="Mobile Blood Draw" pathname={pathname} />
             <NavLink href="/insurance-accepted" label="Insurance" pathname={pathname} />
+            <NavLink href="/service-areas" label="Service Areas" pathname={pathname} />
             <NavLink href="/faq" label="FAQ" pathname={pathname} />
             <NavLink href="/blog" label="Blog" pathname={pathname} />
             <NavLink href="/contact" label="Contact" pathname={pathname} />
@@ -144,7 +146,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button — far right */}
-          <div className="hidden lg:flex flex-shrink-0">
+          <div className="hidden 2xl:flex flex-shrink-0">
             <Link href="/book-appointment">
               <ShimmerButton className="bg-gradient-to-r from-[#6BB6E8] to-[#2B7DBF] text-white text-sm px-6 py-3 rounded-full font-semibold whitespace-nowrap shadow-sm uppercase tracking-wider">
                 <span>Book Appointment</span>
@@ -155,7 +157,7 @@ export default function Navbar() {
           {/* Mobile hamburger — far right */}
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="lg:hidden ml-auto p-2 rounded-full text-sunshine-dark hover:bg-white/60 transition-colors duration-200"
+            className="2xl:hidden ml-auto p-2 rounded-full text-sunshine-dark hover:bg-white/60 transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -171,7 +173,7 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="lg:hidden overflow-hidden border-t border-white/30"
+              className="2xl:hidden overflow-hidden border-t border-white/30"
             >
               <div className="px-4 py-3 space-y-0.5">
                 <MobileNavLink href="/" label="Home" onClick={() => setMobileOpen(false)} pathname={pathname} />
@@ -210,7 +212,9 @@ export default function Navbar() {
                   ))}
                 </MobileDropdown>
 
+                <MobileSpecialNavLink href="/mobile-blood-draw-pasco-county" label="Mobile Blood Draw" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/insurance-accepted" label="Insurance" onClick={() => setMobileOpen(false)} pathname={pathname} />
+                <MobileNavLink href="/service-areas" label="Service Areas" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/faq" label="FAQ" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/blog" label="Blog" onClick={() => setMobileOpen(false)} pathname={pathname} />
                 <MobileNavLink href="/contact" label="Contact" onClick={() => setMobileOpen(false)} pathname={pathname} />
@@ -257,10 +261,26 @@ function NavLink({ href, label, pathname }) {
   return (
     <Link
       href={href}
-      className={`px-4 py-2 text-[0.9rem] tracking-wider font-medium rounded-full transition-all duration-200 uppercase ${
+      className={`px-4 py-2 text-[0.9rem] tracking-wider font-medium rounded-full transition-all duration-200 uppercase whitespace-nowrap ${
         isActive
           ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue font-semibold shadow-md shadow-sunshine-blue/25'
           : 'text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-sunshine-sky/15'
+      }`}
+    >
+      {label}
+    </Link>
+  );
+}
+
+function SpecialNavLink({ href, label, pathname }) {
+  const isActive = pathname === href;
+  return (
+    <Link
+      href={href}
+      className={`px-4 py-2 text-[0.9rem] tracking-wider font-semibold rounded-full transition-all duration-200 uppercase whitespace-nowrap ${
+        isActive
+          ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue shadow-md shadow-sunshine-blue/25'
+          : 'text-sunshine-blue bg-sunshine-blue/10 hover:bg-sunshine-blue/15'
       }`}
     >
       {label}
@@ -324,6 +344,23 @@ function MobileNavLink({ href, label, onClick, pathname }) {
         isActive
           ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue font-semibold shadow-sm'
           : 'text-sunshine-dark/80 hover:text-sunshine-blue hover:bg-sunshine-sky/15'
+      }`}
+      onClick={onClick}
+    >
+      {label}
+    </Link>
+  );
+}
+
+function MobileSpecialNavLink({ href, label, onClick, pathname }) {
+  const isActive = pathname === href;
+  return (
+    <Link
+      href={href}
+      className={`block px-3 py-3 text-[0.9rem] font-semibold rounded-xl transition-all duration-200 uppercase tracking-wider ${
+        isActive
+          ? 'text-white bg-gradient-to-r from-sunshine-sky to-sunshine-blue shadow-sm'
+          : 'text-sunshine-blue bg-sunshine-blue/10 hover:bg-sunshine-blue/15'
       }`}
       onClick={onClick}
     >

@@ -19,8 +19,11 @@ export default function IntroSection() {
     if (videoRef.current) {
       videoRef.current.muted = true;
       videoRef.current.volume = 0;
+      if (isInView) {
+        videoRef.current.play().catch(() => {});
+      }
     }
-  }, []);
+  }, [isInView]);
 
   return (
     <section className="py-20 bg-[#EBF5FB] overflow-hidden" ref={ref}>
@@ -37,8 +40,8 @@ export default function IntroSection() {
             <div className="relative h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] rounded-3xl overflow-hidden shadow-2xl shadow-sunshine-blue/10">
               <video
                 ref={videoRef}
-                src="/main-img2.mp4"
-                autoPlay
+                src={isInView ? '/main-img2.mp4' : undefined}
+                preload="none"
                 muted
                 loop
                 playsInline

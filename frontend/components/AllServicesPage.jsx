@@ -10,6 +10,7 @@ import {
   Activity,
   Heart,
   Dna,
+  ShieldAlert,
   Phone,
   CalendarDays,
   ArrowRight,
@@ -118,6 +119,17 @@ const allServices = [
     iconColor: 'text-purple-600',
     tag: 'AABB Accredited',
     tagColor: 'bg-purple-50 text-purple-600',
+  },
+  {
+    title: 'Drug & Toxicology Testing',
+    description:
+      'Screening options for workplace, legal and clinical testing needs.',
+    href: '/drug-and-toxicology-testing-fl',
+    Icon: ShieldAlert,
+    iconBg: 'bg-sunshine-soft',
+    iconColor: 'text-sunshine-dark',
+    tag: 'Screening',
+    tagColor: 'bg-gray-100 text-sunshine-dark',
   },
 ];
 

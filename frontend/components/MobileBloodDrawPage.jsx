@@ -952,7 +952,7 @@ export default function MobileBloodDrawPage() {
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
               {[
                 {
                   href: '/mobile-blood-draw-the-villages',
@@ -968,6 +968,11 @@ export default function MobileBloodDrawPage() {
                   href: '/mobile-blood-draw-zephyrhills',
                   title: 'Mobile Blood Draw — Zephyrhills & Dade City',
                   body: 'Home blood draws for Zephyrhills, Dade City, San Antonio, and eastern Pasco County. Se habla español.',
+                },
+                {
+                  href: '/home-blood-draw-tampa-fl',
+                  title: 'Home Blood Draw — Tampa, FL',
+                  body: 'Home draws for Tampa, Carrollwood, Citrus Park, Westchase, New Tampa, Brandon, and Riverview — Hillsborough County.',
                 },
               ].map(({ href, title, body }, i) => (
                 <motion.div key={href} variants={cardVariants} custom={i}>

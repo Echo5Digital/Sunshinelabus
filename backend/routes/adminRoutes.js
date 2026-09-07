@@ -95,6 +95,57 @@ router.patch(
   }
 );
 
+// DELETE /api/admin/contacts/:id — delete a single message
+router.delete(
+  '/contacts/:id',
+  [param('id').isUUID()],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .delete()
+        .eq('id', req.params.id);
+
+      if (error) throw error;
+      return res.json({ message: 'Message deleted' });
+    } catch (err) {
+      console.error('Contact delete error:', err.message);
+      return res.status(500).json({ error: 'Failed to delete message' });
+    }
+  }
+);
+
+// DELETE /api/admin/contacts — bulk delete messages, body: { ids: [uuid, ...] }
+router.delete(
+  '/contacts',
+  [
+    body('ids')
+      .isArray({ min: 1 })
+      .withMessage('ids must be a non-empty array'),
+    body('ids.*').isUUID().withMessage('Each id must be a valid UUID'),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .delete()
+        .in('id', req.body.ids);
+
+      if (error) throw error;
+      return res.json({ message: 'Messages deleted', count: req.body.ids.length });
+    } catch (err) {
+      console.error('Contacts bulk delete error:', err.message);
+      return res.status(500).json({ error: 'Failed to delete messages' });
+    }
+  }
+);
+
 // GET /api/admin/calendar?date=YYYY-MM-DD — day view appointments
 router.get('/calendar', async (req, res) => {
   try {
