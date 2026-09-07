@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "How Do Home Blood Draws Work? A Guide for Tampa Patients",
+    slug: "how-do-home-blood-draws-work-a-guide-for-tampa-patients",
+    excerpt: "Learn how home blood draws work for Tampa patients. Sunshine Clinical Lab sends a licensed phlebotomist to your door in Hillsborough County. Book today.",
+    image: "/images/blog/how-do-home-blood-draws-work-a-guide-for-tampa-patients/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 7, 2026",
+  },
+  {
     title: "Peekaboo Gender Test vs Ultrasound: Which Is More Accurate?",
     slug: "peekaboo-gender-test-vs-ultrasound-which-is-more-accurate",
     excerpt: "Peekaboo gender test vs ultrasound: compare accuracy, timing, and reliability of each method to find out your baby's sex during pregnancy.",
