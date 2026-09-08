@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Phone } from 'lucide-react';
@@ -73,7 +74,16 @@ export default function ServiceAreasPage() {
     <div className="bg-sunshine-soft min-h-screen">
 
       {/* ══ HERO ═════════════════════════════════════════════════ */}
-      <section className="relative w-full h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-sunshine-dark via-[#1a3a5c] to-sunshine-blue">
+      <section className="relative w-full h-[90vh] min-h-[600px] flex items-center overflow-hidden" aria-label="Hero section">
+        <Image
+          src="/sunshine-lab-service-areas.jpg"
+          alt="Sunshine Clinical Lab service areas across Trinity, FL and Pasco County"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-sunshine-dark/85 via-sunshine-dark/65 to-sunshine-dark/30" />
         {/* Decorative rings */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-white/5" />
@@ -82,29 +92,30 @@ export default function ServiceAreasPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-white/[0.03]" />
         </div>
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-28 pt-36 text-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-28 sm:py-28 sm:pt-36">
           <motion.div
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
+            className="max-w-2xl"
           >
             <motion.p
               variants={heroItemVariants}
-              className="text-white/75 text-sm font-semibold tracking-widest mb-6"
+              className="text-white/80 text-xs sm:text-sm font-semibold tracking-wide mb-3 sm:mb-4"
             >
-              Sunshine Clinical Lab — Trinity, FL &amp; Pasco County
+              TRINITY, FLORIDA &amp; PASCO COUNTY
             </motion.p>
 
             <motion.h1
               variants={heroItemVariants}
-              className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-5"
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 sm:mb-4"
             >
               Proudly Serving Trinity, Pasco County &amp; the Greater Tampa Bay Region
             </motion.h1>
 
             <motion.p
               variants={heroItemVariants}
-              className="text-white/85 text-lg leading-relaxed max-w-2xl mx-auto"
+              className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl"
             >
               Sunshine Clinical Lab is located in Trinity, FL, with easy access from communities
               across Pasco County, as well as select communities in Pinellas County and the Tampa
