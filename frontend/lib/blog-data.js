@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Home Blood Draws for Seniors & Homebound Patients in Tampa",
+    slug: "home-blood-draws-for-seniors-homebound-patients-in-tampa",
+    excerpt: "Sunshine Clinical Lab offers home blood draws for seniors and homebound patients across Tampa and Hillsborough County. Licensed phlebotomists come to you.",
+    image: "/images/blog/home-blood-draws-for-seniors-homebound-patients-in-tampa/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 9, 2026",
+  },
+  {
     title: "How Do Home Blood Draws Work? A Guide for Tampa Patients",
     slug: "how-do-home-blood-draws-work-a-guide-for-tampa-patients",
     excerpt: "Learn how home blood draws work for Tampa patients. Sunshine Clinical Lab sends a licensed phlebotomist to your door in Hillsborough County. Book today.",
