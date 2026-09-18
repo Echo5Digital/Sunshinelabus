@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
+    slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
+    excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
+    image: "/images/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 18, 2026",
+  },
+  {
     title: "Home Blood Draws for Seniors & Homebound Patients in Tampa",
     slug: "home-blood-draws-for-seniors-homebound-patients-in-tampa",
     excerpt: "Sunshine Clinical Lab offers home blood draws for seniors and homebound patients across Tampa and Hillsborough County. Licensed phlebotomists come to you.",
