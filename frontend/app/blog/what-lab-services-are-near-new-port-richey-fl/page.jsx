@@ -40,7 +40,7 @@ export default function Page() {
         </header>
         <div
           className=""
-          dangerouslySetInnerHTML={{ __html: `<div id="echo5-ai-blog" style="font-family:'Poppins', system-ui, sans-serif !important; color:#374151 !important; line-height:1.7 !important;">
+          dangerouslySetInnerHTML={{ __html: `<div id="echo5-ai-blog" style="font-family:'Poppins', system-ui, sans-serif !important; color:#374151 !important; line-height:1.7 !important; background:#ffffff !important;">
 <div style="width:100% !important; background:linear-gradient(135deg, #1E2A38 0%, #2B7DBF 100%) !important; color:#fff !important;">
   <div style="max-width:1140px !important; margin:0 auto !important; padding:48px 32px !important;">
   <span style="display:inline-block !important; background:rgba(255,199,44,0.18) !important; color:#FFC72C !important; font-size:12px !important; font-weight:700 !important; letter-spacing:.05em !important; text-transform:uppercase !important; padding:6px 14px !important; border-radius:9999px !important; margin-bottom:14px !important;">clinical lab New Port Richey FL</span>
