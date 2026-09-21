@@ -1,10 +1,9 @@
 export const metadata = {
-  title: "Clinical Lab New Port Richey FL | Lab Services Near You",
-  description: "Looking for a clinical lab in New Port Richey FL? Sunshine Clinical Lab offers blood work, drug testing, health screenings, and more. Walk-ins welcome.",
-  keywords: ["clinical lab New Port Richey FL"],
+  title: "What Lab Services Are Near New Port Richey FL?",
+  description: "",
   openGraph: {
-    title: "Clinical Lab New Port Richey FL | Lab Services Near You",
-    description: "Looking for a clinical lab in New Port Richey FL? Sunshine Clinical Lab offers blood work, drug testing, health screenings, and more. Walk-ins welcome.",
+    title: "What Lab Services Are Near New Port Richey FL?",
+    description: "",
     url: "https://www.sunshinelabus.com/blog/what-lab-services-are-near-new-port-richey-fl",
     type: 'article',
     publishedTime: "2026-09-21",
@@ -15,7 +14,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: "What Lab Services Are Near New Port Richey FL?",
-  description: "Looking for a clinical lab in New Port Richey FL? Sunshine Clinical Lab offers blood work, drug testing, health screenings, and more. Walk-ins welcome.",
+  description: "",
   author: { '@type': 'Organization', name: "Author" },
   publisher: { '@type': 'Organization', name: "Author" },
   datePublished: "2026-09-21",
@@ -28,9 +27,9 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <article className="max-w-4xl mx-auto px-4 py-10">
-        <img src="/images/blog/what-lab-services-are-near-new-port-richey-fl/featured.jpg" alt="What Lab Services Are Near New Port Richey FL?" className="w-full rounded-xl mb-8 object-cover" />
-        <header className="mb-8">
+      <article className="mx-auto py-10">
+        <img src="/images/blog/what-lab-services-are-near-new-port-richey-fl/featured.jpg" alt="What Lab Services Are Near New Port Richey FL?" className="w-full rounded-xl mb-8 object-cover max-w-4xl mx-auto px-4" />
+        <header className="mb-8 max-w-4xl mx-auto px-4">
           <span className="text-sm font-medium text-blue-600 uppercase tracking-wide">blog</span>
           <h1 className="text-3xl font-bold text-gray-900 mt-2 mb-3">What Lab Services Are Near New Port Richey FL?</h1>
           <div className="flex items-center gap-3 text-sm text-gray-500">
@@ -40,7 +39,7 @@ export default function Page() {
           </div>
         </header>
         <div
-          className="prose prose-lg max-w-none"
+          className=""
           dangerouslySetInnerHTML={{ __html: `<div id="echo5-ai-blog" style="font-family:'Poppins', system-ui, sans-serif !important; color:#374151 !important; line-height:1.7 !important;">
 <div style="width:100% !important; background:linear-gradient(135deg, #1E2A38 0%, #2B7DBF 100%) !important; color:#fff !important;">
   <div style="max-width:1140px !important; margin:0 auto !important; padding:48px 32px !important;">
