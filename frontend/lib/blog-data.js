@@ -1,15 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "What Lab Services Are Near New Port Richey FL?",
-    slug: "what-lab-services-are-near-new-port-richey-fl",
-    excerpt: "Looking for a clinical lab in New Port Richey FL? Sunshine Clinical Lab offers blood work, drug testing, health screenings, and more. Walk-ins welcome.",
-    image: "/images/blog/what-lab-services-are-near-new-port-richey-fl/featured.jpg",
-    category: "blog",
-    author: "Author",
-    readTime: "5 min",
-    date: "September 21, 2026",
-  },
-  {
     title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
     slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
     excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
