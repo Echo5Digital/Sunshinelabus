@@ -1,15 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "Do Urgent Lab Results Cost More in Trinity?",
-    slug: "do-urgent-lab-results-cost-more-in-trinity",
-    excerpt: "Wondering if urgent lab results cost more in Trinity? Learn what drives pricing for same day lab work and how Sunshine Clinical Lab LLC delivers fast, affordable results.",
-    image: "/images/blog/do-urgent-lab-results-cost-more-in-trinity/featured.jpg",
-    category: "blog",
-    author: "Author",
-    readTime: "5 min",
-    date: "September 22, 2026",
-  },
-  {
     title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
     slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
     excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
