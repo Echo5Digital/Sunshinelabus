@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Do Urgent Lab Results Cost More in Trinity?",
+    slug: "do-urgent-lab-results-cost-more-in-trinity",
+    excerpt: "Wondering if urgent lab results cost more in Trinity? Learn what drives pricing for same day lab work and how Sunshine Clinical Lab LLC delivers fast, affordable results.",
+    image: "/images/blog/do-urgent-lab-results-cost-more-in-trinity/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 22, 2026",
+  },
+  {
     title: "Is There a Better Option Than Quest in Trinity?",
     slug: "is-there-a-better-option-than-quest-in-trinity",
     excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers faster service, affordable pricing, and full lab testing near Trinity.",
