@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Is There a Better Option Than Quest in Trinity?",
+    slug: "is-there-a-better-option-than-quest-in-trinity",
+    excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers faster service, affordable pricing, and full lab testing near Trinity.",
+    image: "/images/blog/is-there-a-better-option-than-quest-in-trinity/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 22, 2026",
+  },
+  {
     title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
     slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
     excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
