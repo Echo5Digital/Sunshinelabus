@@ -1,25 +1,5 @@
 export const BLOG_POSTS = [
   {
-    title: "Test Echo5 Sunshine Sidebar Live Check",
-    slug: "test-echo5-sunshine-sidebar-live-check",
-    excerpt: "Verifying the sidebar layout works end-to-end.",
-    image: "/images/blog/test-echo5-sunshine-sidebar-live-check/featured.jpg",
-    category: "blog",
-    author: "Author",
-    readTime: "5 min",
-    date: "September 23, 2026",
-  },
-  {
-    title: "Your Functional Medicine Provider Ordered Blood Tests - What Happens Next?",
-    slug: "your-functional-medicine-provider-ordered-blood-tests-what-happens-next",
-    excerpt: "Got a lab order from your functional medicine provider? Learn what to expect from functional medicine blood tests and how Sunshine Clinical Lab can help.",
-    image: "/images/blog/your-functional-medicine-provider-ordered-blood-tests-what-happens-next/featured.jpg",
-    category: "blog",
-    author: "Author",
-    readTime: "5 min",
-    date: "September 23, 2026",
-  },
-  {
     title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
     slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
     excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
