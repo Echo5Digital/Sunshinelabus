@@ -17,7 +17,7 @@ import { ShimmerButton } from '@/registry/magicui/shimmer-button';
 import MagicCard from '@/components/ui/MagicCard';
 import MissionVisionSection from '@/components/about/MissionVisionSection';
 
-export const metadata = {
+export const metadata = { 
   title: "About Sunshine Clinical Lab | Mobile Blood Draw Pasco County & Trinity FL",
   description:
     "Learn about Sunshine Clinical Lab, a trusted provider of mobile blood draw and home phlebotomy services in Pasco County, Trinity, and New Port Richey.",
