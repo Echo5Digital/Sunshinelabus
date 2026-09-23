@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Where to Save on TRT Blood Work Near You",
+    slug: "where-to-save-on-trt-blood-work-near-you",
+    excerpt: "Find an affordable TRT blood test near you. Compare local labs, telehealth options, and mail-in kits for low cost testosterone blood work and hormone panels.",
+    image: "/images/blog/where-to-save-on-trt-blood-work-near-you/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 23, 2026",
+  },
+  {
     title: "Test Echo5 Sunshine Sidebar Live Check",
     slug: "test-echo5-sunshine-sidebar-live-check",
     excerpt: "Verifying the sidebar layout works end-to-end.",
