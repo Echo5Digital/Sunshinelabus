@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Test Echo5 Sunshine Sidebar Live Check",
+    slug: "test-echo5-sunshine-sidebar-live-check",
+    excerpt: "Verifying the sidebar layout works end-to-end.",
+    image: "/images/blog/test-echo5-sunshine-sidebar-live-check/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 23, 2026",
+  },
+  {
     title: "Your Functional Medicine Provider Ordered Blood Tests - What Happens Next?",
     slug: "your-functional-medicine-provider-ordered-blood-tests-what-happens-next",
     excerpt: "Got a lab order from your functional medicine provider? Learn what to expect from functional medicine blood tests and how Sunshine Clinical Lab can help.",

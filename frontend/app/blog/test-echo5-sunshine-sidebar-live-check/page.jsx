@@ -1,0 +1,139 @@
+export const metadata = {
+  title: "Test Echo5 Sunshine Sidebar Live Check",
+  description: "Verifying the sidebar layout works end-to-end.",
+  keywords: ["paternity test results"],
+  openGraph: {
+    title: "Test Echo5 Sunshine Sidebar Live Check",
+    description: "Verifying the sidebar layout works end-to-end.",
+    url: "https://www.sunshinelabus.com/blog/test-echo5-sunshine-sidebar-live-check",
+    type: 'article',
+    publishedTime: "2026-09-23",
+  },
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: "Test Echo5 Sunshine Sidebar Live Check",
+  description: "Verifying the sidebar layout works end-to-end.",
+  author: { '@type': 'Organization', name: "Author" },
+  publisher: { '@type': 'Organization', name: "Author" },
+  datePublished: "2026-09-23",
+  url: "https://www.sunshinelabus.com/blog/test-echo5-sunshine-sidebar-live-check",
+  mainEntityOfPage: { '@type': 'WebPage', '@id': "https://www.sunshinelabus.com/blog/test-echo5-sunshine-sidebar-live-check" },
+};
+
+
+export default function Page() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <article className="mx-auto py-10">
+        
+        
+        <div
+          className=""
+          dangerouslySetInnerHTML={{ __html: `<div id="echo5-ai-blog" style="font-family:'Poppins', system-ui, sans-serif !important; color:#374151 !important; line-height:1.7 !important; background:#ffffff !important;">
+<div style="width:100% !important; height:50vh !important; min-height:340px !important; background:linear-gradient(135deg, rgba(30,42,56,0.72) 0%, rgba(43,125,191,0.72) 100%), url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200') center/cover no-repeat !important; color:#fff !important; display:flex !important; align-items:center !important; position:relative !important; overflow:hidden !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:32px !important; width:100% !important; position:relative !important; z-index:1 !important;">
+  <span style="display:inline-block !important; background:rgba(255,199,44,0.18) !important; color:#FFC72C !important; font-size:12px !important; font-weight:700 !important; letter-spacing:.05em !important; text-transform:uppercase !important; padding:6px 14px !important; border-radius:9999px !important; margin-bottom:14px !important;">Paternity Test</span>
+  <h1 style="color:#fff !important; font-family:'Poppins', system-ui, sans-serif !important; font-weight:800 !important; font-size:34px !important; line-height:1.3 !important; margin:0 0 12px !important; text-shadow:0 2px 12px rgba(0,0,0,.25) !important;">Test Echo5 Sunshine Sidebar Live Check</h1>
+  <p style="color:rgba(255,255,255,0.92) !important; font-size:16px !important; margin:0 !important; text-shadow:0 1px 8px rgba(0,0,0,.2) !important;">If you've received a lab order for a paternity test, you may be wondering what happens after the sample is collected.</p></div>
+  
+</div>
+
+<div style="width:100% !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:0 !important;">
+  <div class="echo5-sidebar-grid" style="display:grid !important; grid-template-columns:1fr 340px !important; gap:40px !important; align-items:start !important;">
+    <div style="min-width:0 !important;">
+<div style="width:100% !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:0 32px !important;">
+  <div style="background:rgba(255,199,44,0.12) !important; border-radius:16px !important; padding:20px 24px !important; margin:-24px 0 0 !important; display:flex !important; gap:14px !important; align-items:flex-start !important;">
+    <div style="flex-shrink:0 !important; width:32px !important; height:32px !important; border-radius:9999px !important; background:#FFC72C !important; color:#1a1a1a !important; display:flex !important; align-items:center !important; justify-content:center !important; font-size:15px !important;">&#10003;</div>
+    <div>
+      <p style="margin:0 0 4px !important; font-size:11px !important; text-transform:uppercase !important; letter-spacing:.05em !important; color:#1E2A38 !important; font-weight:700 !important; opacity:.7 !important;">Quick Answer</p>
+      <p style="margin:0 !important; font-size:15px !important; color:#374151 !important; font-weight:500 !important;">Once your sample is collected at Sunshine Clinical Lab, it is securely packaged and sent to an accredited testing facility for DNA analysis. Results are typically available within a few business days, and our team will notify you as soon as they're ready.</p>
+    </div>
+  </div></div>
+</div>
+
+<div style="width:100% !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:32px 32px !important;">
+  <h2 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:24px !important; margin:0 0 16px !important;" id="toc-what-happens-after-your-sample-is-collected">What Happens After Your Sample Is Collected</h2>
+  <p style="font-size:16px !important; color:#374151 !important; margin:0 0 16px !important;">Once your sample is collected at Sunshine Clinical Lab, it is securely packaged and sent to an accredited testing facility for DNA analysis.</p><p style="font-size:16px !important; color:#374151 !important; margin:0 0 16px !important;">Results are typically available within a few business days, and our team will notify you as soon as they're ready.</p>
+  </div>
+</div>
+
+<div style="width:100% !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:40px 32px !important;">
+  <h2 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:24px !important; margin:0 0 16px !important;" id="toc-frequently-asked-questions">Frequently Asked Questions</h2>
+  
+    <details style="background:#fff !important; box-shadow: 0 6px 20px rgba(43,125,191,0.12) !important; border: 1px solid rgba(43,125,191,0.15) !important; border-radius: 18px !important; padding:16px 20px !important; margin-bottom:10px !important;">
+      <summary style="font-family:'Poppins', system-ui, sans-serif !important; font-weight:700 !important; color:#1E2A38 !important; font-size:14.5px !important; cursor:pointer !important; list-style:none !important;">How long does a paternity test take?</summary>
+      <p style="margin:10px 0 0 !important; font-size:13.5px !important; color:#374151 !important; opacity:.85 !important;">Most legal paternity tests are processed within 3-5 business days after the lab receives all required samples.</p>
+    </details></div>
+</div></div>
+    <div><div style="display:flex !important; flex-direction:column !important; gap:20px !important; position:sticky !important; top:24px !important;"><div style="background:rgba(43,125,191,0.05) !important; border:1px solid rgba(43,125,191,0.15) !important; border-radius:16px !important; padding:24px !important;">
+  <div style="width:36px !important; height:36px !important; border-radius:10px !important; background:rgba(43,125,191,0.12) !important; color:#2B7DBF !important; display:flex !important; align-items:center !important; justify-content:center !important; font-size:17px !important; margin-bottom:12px !important;">&#128197;</div>
+  <h3 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:18px !important; margin:0 0 8px !important;">Need Support?</h3>
+  <p style="font-size:13.5px !important; color:#374151 !important; margin:0 !important; line-height:1.6 !important;">Have a question about your results or an upcoming appointment? Our team is here to help.</p>
+  <a href="https://www.sunshinelabus.com/book-appointment" style="display:block !important; text-align:center !important; background:#2B7DBF !important; color:#fff !important; font-weight:700 !important; font-size:14px !important; padding:13px 20px !important; border-radius:9999px !important; text-decoration:none !important; margin-top:16px !important;">Schedule an Appointment &rarr;</a></div>
+<div style="background:#fff !important; box-shadow: 0 6px 20px rgba(43,125,191,0.12) !important; border: 1px solid rgba(43,125,191,0.15) !important; border-radius: 18px !important; padding:24px !important;">
+  <h3 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:16px !important; margin:0 0 10px !important; display:flex !important; align-items:center !important; gap:8px !important;">&#128203; On This Page</h3>
+  <div>
+    <a href="#toc-what-happens-after-your-sample-is-collected" style="display:flex !important; align-items:center !important; gap:8px !important; padding:8px 0 !important; color:#374151 !important; font-size:13.5px !important; text-decoration:none !important; border-bottom:1px solid rgba(55,65,81,0.08) !important;">
+      <span style="color:#2B7DBF !important; flex-shrink:0 !important;">&rsaquo;</span>What Happens After Your Sample Is Collected
+    </a>
+    <a href="#toc-frequently-asked-questions" style="display:flex !important; align-items:center !important; gap:8px !important; padding:8px 0 !important; color:#374151 !important; font-size:13.5px !important; text-decoration:none !important; border-bottom:1px solid rgba(55,65,81,0.08) !important;">
+      <span style="color:#2B7DBF !important; flex-shrink:0 !important;">&rsaquo;</span>Frequently Asked Questions
+    </a></div></div>
+<div style="background:#fff !important; box-shadow: 0 6px 20px rgba(43,125,191,0.12) !important; border: 1px solid rgba(43,125,191,0.15) !important; border-radius: 18px !important; padding:24px !important;">
+  <h3 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:16px !important; margin:0 0 14px !important;">Related Posts</h3>
+  <div>
+    <a href="https://www.sunshinelabus.com/blog/your-functional-medicine-provider-ordered-blood-tests-what-happens-next" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
+      <img src="https://www.sunshinelabus.com/images/blog/your-functional-medicine-provider-ordered-blood-tests-what-happens-next/featured.jpg" alt="Your Functional Medicine Provider Ordered Blood Tests - What Happens Next?" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
+      <div>
+        <span style="font-size:10px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.04em !important; color:#2B7DBF !important;">blog</span>
+        <p style="margin:2px 0 0 !important; font-size:13.5px !important; font-weight:700 !important; color:#1E2A38 !important; line-height:1.4 !important;">Your Functional Medicine Provider Ordered Blood Tests - What Happens Next?</p>
+      </div>
+    </a>
+    <a href="https://www.sunshinelabus.com/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
+      <img src="https://www.sunshinelabus.com/images/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl/featured.jpg" alt="Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
+      <div>
+        <span style="font-size:10px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.04em !important; color:#2B7DBF !important;">blog</span>
+        <p style="margin:2px 0 0 !important; font-size:13.5px !important; font-weight:700 !important; color:#1E2A38 !important; line-height:1.4 !important;">Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?</p>
+      </div>
+    </a>
+    <a href="https://www.sunshinelabus.com/blog/home-blood-draws-for-seniors-homebound-patients-in-tampa" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
+      <img src="https://www.sunshinelabus.com/images/blog/home-blood-draws-for-seniors-homebound-patients-in-tampa/featured.jpg" alt="Home Blood Draws for Seniors &amp; Homebound Patients in Tampa" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
+      <div>
+        <span style="font-size:10px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.04em !important; color:#2B7DBF !important;">blog</span>
+        <p style="margin:2px 0 0 !important; font-size:13.5px !important; font-weight:700 !important; color:#1E2A38 !important; line-height:1.4 !important;">Home Blood Draws for Seniors &amp; Homebound Patients in Tampa</p>
+      </div>
+    </a></div></div></div></div>
+  </div>
+  <style>@media (max-width: 900px) { .echo5-sidebar-grid { grid-template-columns: 1fr !important; } }</style>
+  </div>
+</div>
+
+<div style="width:100% !important; background:#2B7DBF !important; margin:24px 0 !important; text-align:center !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:40px 32px !important;">
+  <p style="margin:0 0 8px !important; font-size:11px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.18em !important; color:rgba(255,255,255,0.6) !important;">Service Coverage</p>
+  <p style="color:#fff !important; font-family:'Poppins', system-ui, sans-serif !important; font-weight:800 !important; font-size:21px !important; margin:0 0 22px !important;">Residents served by Sunshine Clinical Lab</p>
+  <p style="color:rgba(255,255,255,0.85) !important; font-size:14px !important; margin:0 0 16px !important;">This information applies to residents served by Sunshine Clinical Lab: samples collected at the lab are packaged and sent to an accredited testing facility for DNA analysis, and results are typically available within a few business days.</p>
+  <div style="display:flex !important; flex-wrap:wrap !important; gap:10px !important; justify-content:center !important;"><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Trinity</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>New Port Richey</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Land O' Lakes</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Tarpon Springs</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Holiday</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Hudson</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Port Richey</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Odessa</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Lutz</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Palm Harbor</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>East Lake</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Elfers</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>The Villages</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Wesley Chapel</span><span style="display:inline-flex !important; align-items:center !important; gap:6px !important; background:rgba(255,255,255,0.1) !important; border:1px solid rgba(255,255,255,0.3) !important; color:#fff !important; font-size:13.5px !important; font-weight:500 !important; padding:8px 16px !important; border-radius:9999px !important;"><span style="font-size:11px !important; flex-shrink:0 !important;">&#128205;</span>Zephyrhills</span></div></div>
+</div>
+
+<div style="width:100% !important;">
+  <div style="max-width:1140px !important; margin:0 auto !important; padding:24px 32px !important;">
+  <div style="background:linear-gradient(135deg, #1E2A38, #2B7DBF) !important; border-radius:22px !important; padding:36px 32px !important; text-align:center !important;">
+    <h2 style="color:#fff !important; font-family:'Poppins', system-ui, sans-serif !important; font-size:22px !important; margin:0 0 8px !important; font-weight:800 !important;">Schedule or get help with your paternity test results</h2>
+    <p style="color:rgba(255,255,255,0.85) !important; font-size:14px !important; margin:0 0 20px !important;">If you need assistance interpreting paternity test results or want to arrange testing with Sunshine Clinical Lab, contact the lab team to discuss sample collection and expected result timing.</p>
+    <div style="display:flex !important; gap:14px !important; justify-content:center !important; flex-wrap:wrap !important;"><a href="https://www.sunshinelabus.com" style="background:#FFC72C !important; color:#1a1a1a !important; font-weight:700 !important; font-size:14.5px !important; padding:13px 26px !important; border-radius:9999px !important; text-decoration:none !important; display:inline-block !important;">Get Started</a></div>
+  </div></div>
+</div></div>` }}
+        />
+      </article>
+    </>
+  );
+}
