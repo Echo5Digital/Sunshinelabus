@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Test Echo5 Verify Layout Fixes",
+    slug: "test-echo5-verify-layout-fixes",
+    excerpt: "Verifying the 4 layout fixes on a real live post.",
+    image: "/images/blog/test-echo5-verify-layout-fixes/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 24, 2026",
+  },
+  {
     title: "How to Find a Budget-Friendly TRT Blood Test",
     slug: "how-to-find-a-budget-friendly-trt-blood-test",
     excerpt: "Looking for an affordable TRT blood test near you? Learn where to find low cost testosterone testing, what panels to order, and how to save on hormone lab work.",
