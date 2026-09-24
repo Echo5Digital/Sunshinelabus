@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Tired of Quest? Try a Local Lab in Trinity FL",
+    slug: "tired-of-quest-try-a-local-lab-in-trinity-fl",
+    excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers fast, affordable lab testing with shorter waits and personal service.",
+    image: "/images/blog/tired-of-quest-try-a-local-lab-in-trinity-fl/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 24, 2026",
+  },
+  {
     title: "How to Find a Budget-Friendly TRT Blood Test",
     slug: "how-to-find-a-budget-friendly-trt-blood-test",
     excerpt: "Looking for an affordable TRT blood test near you? Learn where to find low cost testosterone testing, what panels to order, and how to save on hormone lab work.",
