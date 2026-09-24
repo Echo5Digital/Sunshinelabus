@@ -5,13 +5,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    /* clip (not hidden) — same horizontal-overflow prevention, but hidden
+       makes html/body an ancestor scroll container, which silently breaks
+       position:sticky for anything nested deep inside (e.g. the blog
+       sidebar's sticky CTA/TOC/related-posts column). */
+    overflow-x: clip;
   }
 
   body {
     @apply text-sunshine-dark bg-sunshine-light;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1, h2, h3 {
