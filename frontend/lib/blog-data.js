@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Test Echo5 Verify Sticky Fix V2",
+    slug: "test-echo5-verify-sticky-fix-v2",
+    excerpt: "Verifying the 4 layout fixes on a real live post.",
+    image: "/images/blog/test-echo5-verify-sticky-fix-v2/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 24, 2026",
+  },
+  {
     title: "Test Echo5 Verify Layout Fixes",
     slug: "test-echo5-verify-layout-fixes",
     excerpt: "Verifying the 4 layout fixes on a real live post.",
