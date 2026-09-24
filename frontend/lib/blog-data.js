@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "How to Find a Budget-Friendly TRT Blood Test",
+    slug: "how-to-find-a-budget-friendly-trt-blood-test",
+    excerpt: "Looking for an affordable TRT blood test near you? Learn where to find low cost testosterone testing, what panels to order, and how to save on hormone lab work.",
+    image: "/images/blog/how-to-find-a-budget-friendly-trt-blood-test/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 24, 2026",
+  },
+  {
     title: "Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?",
     slug: "can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl",
     excerpt: "Get your functional medicine blood work done at home in Trinity, FL. Sunshine Clinical Lab offers mobile blood draws, insurance, and self-pay options. Call today.",
