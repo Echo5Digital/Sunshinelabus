@@ -222,20 +222,6 @@ export default function Page() {
 <div style="background:#fff !important; box-shadow: 0 6px 20px rgba(43,125,191,0.12) !important; border: 1px solid rgba(43,125,191,0.15) !important; border-radius: 18px !important; padding:24px !important;">
   <h3 style="font-family:'Poppins', system-ui, sans-serif !important; color:#1E2A38 !important; font-weight:800 !important; font-size:16px !important; margin:0 0 14px !important;">Related Posts</h3>
   <div>
-    <a href="https://www.sunshinelabus.com/blog/tired-of-quest-try-a-local-lab-in-trinity-fl" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
-      <img src="https://www.sunshinelabus.com/images/blog/tired-of-quest-try-a-local-lab-in-trinity-fl/featured.jpg" alt="Tired of Quest? Try a Local Lab in Trinity FL" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
-      <div>
-        <span style="font-size:10px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.04em !important; color:#2B7DBF !important;">blog</span>
-        <p style="margin:2px 0 0 !important; font-size:13.5px !important; font-weight:700 !important; color:#1E2A38 !important; line-height:1.4 !important;">Tired of Quest? Try a Local Lab in Trinity FL</p>
-      </div>
-    </a>
-    <a href="https://www.sunshinelabus.com/blog/how-to-find-a-budget-friendly-trt-blood-test" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
-      <img src="https://www.sunshinelabus.com/images/blog/how-to-find-a-budget-friendly-trt-blood-test/featured.jpg" alt="How to Find a Budget-Friendly TRT Blood Test" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
-      <div>
-        <span style="font-size:10px !important; font-weight:700 !important; text-transform:uppercase !important; letter-spacing:.04em !important; color:#2B7DBF !important;">blog</span>
-        <p style="margin:2px 0 0 !important; font-size:13.5px !important; font-weight:700 !important; color:#1E2A38 !important; line-height:1.4 !important;">How to Find a Budget-Friendly TRT Blood Test</p>
-      </div>
-    </a>
     <a href="https://www.sunshinelabus.com/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl" style="display:flex !important; gap:10px !important; align-items:flex-start !important; text-decoration:none !important; margin-bottom:14px !important;">
       <img src="https://www.sunshinelabus.com/images/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl/featured.jpg" alt="Can You Get Your Functional Medicine Blood Work Done at Home in Trinity, FL?" style="width:64px !important; height:64px !important; border-radius:10px !important; object-fit:cover !important; flex-shrink:0 !important;">
       <div>
