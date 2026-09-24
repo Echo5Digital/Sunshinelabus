@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Quest Diagnostics Wait Too Long? Trinity FL Options",
+    slug: "quest-diagnostics-wait-too-long-trinity-fl-options",
+    excerpt: "Tired of long waits at Quest Diagnostics in Trinity FL? Sunshine Clinical Lab offers faster results, walk-in service, and affordable lab testing locally.",
+    image: "/images/blog/quest-diagnostics-wait-too-long-trinity-fl-options/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "September 24, 2026",
+  },
+  {
     title: "Tired of Quest? Try a Local Lab in Trinity FL",
     slug: "tired-of-quest-try-a-local-lab-in-trinity-fl",
     excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers fast, affordable lab testing with shorter waits and personal service.",
