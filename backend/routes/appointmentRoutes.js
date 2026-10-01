@@ -668,6 +668,37 @@ router.patch(
   }
 );
 
+// GET /api/appointments/admin/field-visits/today — staff field-visit status for the Field Visits panel
+// (check-in/out GPS + timestamps, visit notes, signature — populated by the Sunshine Lab
+// field staff mobile app against this same appointments table via assigned_staff_id/organization_id)
+router.get('/admin/field-visits/today', verifyAdmin, async (req, res) => {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+
+    const { data, error } = await supabase
+      .from('appointments')
+      .select(
+        `id, patient_name, appointment_time, status, location_type, address_street, address_city,
+         assigned_staff_id, check_in_at, check_in_lat, check_in_lng,
+         check_out_at, check_out_lat, check_out_lng, visit_notes, signature_file_url,
+         admin_users:assigned_staff_id(name)`
+      )
+      .eq('appointment_date', today)
+      .order('appointment_time', { ascending: true });
+
+    if (error) throw error;
+
+    const visitsToday = data.length;
+    const completed = data.filter((a) => a.status === 'completed').length;
+    const activeStaff = new Set(data.filter((a) => a.assigned_staff_id).map((a) => a.assigned_staff_id)).size;
+
+    return res.json({ visits_today: visitsToday, completed_today: completed, active_staff: activeStaff, appointments: data });
+  } catch (err) {
+    console.error('Field visits fetch error:', err.message);
+    return res.status(500).json({ error: 'Failed to fetch field visits' });
+  }
+});
+
 // DELETE /api/appointments/admin/:id — delete appointment, email patient if active
 router.delete(
   '/admin/:id',

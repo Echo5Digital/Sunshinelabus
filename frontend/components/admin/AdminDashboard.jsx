@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   LayoutDashboard, CalendarDays, Calendar, Ban, MessageSquare,
-  LogOut, Menu, ChevronRight, Users,
+  LogOut, Menu, ChevronRight, Users, MapPin,
 } from 'lucide-react';
 import { clearAdminToken, fetchAdminStats, getAdminRole } from '@/lib/api';
 import AdminOverviewPanel from './AdminOverviewPanel';
@@ -14,11 +14,13 @@ import AdminCalendarPanel from './AdminCalendarPanel';
 import AdminTimeBlocksPanel from './AdminTimeBlocksPanel';
 import AdminMessagesPanel from './AdminMessagesPanel';
 import AdminUsersPanel from './AdminUsersPanel';
+import AdminFieldVisitsPanel from './AdminFieldVisitsPanel';
 
 const ALL_NAV_ITEMS = [
   { id: 'overview',    label: 'Overview',      icon: LayoutDashboard },
   { id: 'appointments',label: 'Appointments',  icon: CalendarDays },
   { id: 'calendar',    label: 'Calendar',       icon: Calendar },
+  { id: 'field-visits',label: 'Field Visits',  icon: MapPin },
   { id: 'time-blocks', label: 'Time Blocking',  icon: Ban },
   { id: 'messages',    label: 'Messages',       icon: MessageSquare },
   // Visible only to super_admin and admin
@@ -29,6 +31,7 @@ const PANEL_TITLES = {
   overview:      'Overview',
   appointments:  'Appointments',
   calendar:      'Calendar',
+  'field-visits':'Field Visits',
   'time-blocks': 'Time Blocking',
   messages:      'Messages',
   users:         'User Management',
@@ -101,6 +104,7 @@ export default function AdminDashboard() {
     ),
     appointments: <AdminAppointmentsPanel />,
     calendar: <AdminCalendarPanel />,
+    'field-visits': <AdminFieldVisitsPanel />,
     'time-blocks': <AdminTimeBlocksPanel />,
     messages: (
       <AdminMessagesPanel

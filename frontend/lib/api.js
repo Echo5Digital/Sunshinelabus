@@ -151,6 +151,11 @@ export const deleteAppointment = async (id) => {
   return res.data;
 };
 
+export const fetchFieldVisitsToday = async () => {
+  const res = await adminApi.get('/api/appointments/admin/field-visits/today');
+  return res.data;
+};
+
 export const fetchCalendarDay = async (date) => {
   const res = await adminApi.get(`/api/admin/calendar?date=${date}`);
   return res.data;
