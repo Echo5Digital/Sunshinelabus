@@ -1,5 +1,25 @@
 export const BLOG_POSTS = [
   {
+    title: "What Blood Tests Might a Functional Medicine Provider Order?",
+    slug: "what-blood-tests-might-a-functional-medicine-provider-order",
+    excerpt: "Discover which functional medicine blood tests providers order most and how Sunshine Clinical Lab LLC supports advanced blood work for deeper health insights.",
+    image: "/images/blog/what-blood-tests-might-a-functional-medicine-provider-order/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 5, 2026",
+  },
+  {
+    title: "Does Insurance Cover Functional Medicine Blood Tests? What to Know Before Booking",
+    slug: "does-insurance-cover-functional-medicine-blood-tests-what-to-know-before-booking",
+    excerpt: "Find out if insurance covers functional medicine blood tests, what to expect, and how Sunshine Clinical Lab in Trinity offers insurance and self-pay options.",
+    image: "/images/blog/does-insurance-cover-functional-medicine-blood-tests-what-to-know-before-booking/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 1, 2026",
+  },
+  {
     title: "Quest Diagnostics Wait Too Long? Trinity FL Options",
     slug: "quest-diagnostics-wait-too-long-trinity-fl-options",
     excerpt: "Tired of long waits at Quest Diagnostics in Trinity FL? Sunshine Clinical Lab offers faster results, walk-in service, and affordable lab testing locally.",
