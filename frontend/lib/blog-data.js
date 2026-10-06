@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "How to Prepare for Blood Work: Fasting, Supplements, and What to Expect",
+    slug: "how-to-prepare-for-blood-work-fasting-supplements-and-what-to-expect",
+    excerpt: "Learn how to prepare for blood work, including fasting guidelines, supplement advice, and what to expect. Schedule at Sunshine Clinical Lab in Trinity or at home.",
+    image: "/images/blog/how-to-prepare-for-blood-work-fasting-supplements-and-what-to-expect/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 6, 2026",
+  },
+  {
     title: "What Blood Tests Might a Functional Medicine Provider Order?",
     slug: "what-blood-tests-might-a-functional-medicine-provider-order",
     excerpt: "Discover which functional medicine blood tests providers order most and how Sunshine Clinical Lab LLC supports advanced blood work for deeper health insights.",
