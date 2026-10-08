@@ -1,9 +1,9 @@
 import TRTBloodTestPage from '@/components/TRTBloodTestPage';
 
 export const metadata = {
-  title: 'TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab',
+  title: "TRT Blood Test Trinity & New Port Richey FL | Affordable Testosterone Lab",
   description:
-    'Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Call (727) 233-5223.',
+    "Affordable TRT blood testing in Trinity, FL & Pasco County. Testosterone, estradiol, hematocrit, PSA & full hormone panels. Call (727) 233-5223.",
   keywords: [
     'TRT blood test near me',
     'TRT blood test Pasco County',
