@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Thyroid Blood Tests Explained: Understanding TSH, Free T4, and Thyroid Antibodies -",
+    slug: "thyroid-blood-tests-explained-understanding-tsh-free-t4-and-thyroid-antibodies",
+    excerpt: "Learn what thyroid blood tests measure, including TSH, free T4, and thyroid antibodies. Sunshine Clinical Lab in Trinity, FL offers convenient lab and home draw options.",
+    image: "/images/blog/thyroid-blood-tests-explained-understanding-tsh-free-t4-and-thyroid-antibodies/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 8, 2026",
+  },
+  {
     title: "How to Prepare for Blood Work: Fasting, Supplements, and What to Expect",
     slug: "how-to-prepare-for-blood-work-fasting-supplements-and-what-to-expect",
     excerpt: "Learn how to prepare for blood work, including fasting guidelines, supplement advice, and what to expect. Schedule at Sunshine Clinical Lab in Trinity or at home.",
