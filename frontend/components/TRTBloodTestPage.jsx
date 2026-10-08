@@ -275,8 +275,8 @@ export default function TRTBloodTestPage() {
               variants={heroItemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4"
             >
-              TRT Blood Testings in Trinity, FL —{' '}
-              <span className="text-[#93C5FD]">Fast and Affordable Testosterone Monitoring for Pasco County</span>
+              TRT Blood Testing in Trinity, FL —{' '}
+              <span className="text-[#93C5FD]">Fast, Affordable Testosterone Monitoring for Pasco County</span>
             </motion.h1>
 
             <motion.h2
