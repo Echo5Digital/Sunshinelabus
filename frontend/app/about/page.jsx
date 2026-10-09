@@ -181,9 +181,9 @@ export default function AboutPage() {
             <span className="text-sunshine-blue text-xs font-bold uppercase tracking-widest mb-3 block">
               Our Purpose
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-sunshine-dark">
               Mission &amp; Vision
-            </h2>
+            </h3>
             <div className="w-16 h-1 bg-sunshine-blue mx-auto rounded-full mt-4" />
           </div>
 
