@@ -98,9 +98,9 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/70" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight drop-shadow-lg mb-4">
             About <span className="text-sunshine-sky">Us</span>
-          </h1>
+          </h2>
           <div className="w-12 h-0.5 bg-sunshine-sky mx-auto mb-5 rounded-full opacity-80" />
           <p className="text-white/70 text-sm sm:text-base lg:text-lg max-w-lg mx-auto leading-relaxed font-light tracking-wide">
             Discover our legacy of precision healthcare solutions.
