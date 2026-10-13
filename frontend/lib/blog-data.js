@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Feeling Tired All the Time? Blood Tests That May Help Identify the Cause",
+    slug: "feeling-tired-all-the-time-blood-tests-that-may-help-identify-the-cause",
+    excerpt: "Feeling tired all the time? Learn which blood tests for fatigue your provider may order and how Sunshine Clinical Lab in Trinity makes testing easy.",
+    image: "/images/blog/feeling-tired-all-the-time-blood-tests-that-may-help-identify-the-cause/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 13, 2026",
+  },
+  {
     title: "Thyroid Blood Tests Explained: Understanding TSH, Free T4, and Thyroid Antibodies -",
     slug: "thyroid-blood-tests-explained-understanding-tsh-free-t4-and-thyroid-antibodies",
     excerpt: "Learn what thyroid blood tests measure, including TSH, free T4, and thyroid antibodies. Sunshine Clinical Lab in Trinity, FL offers convenient lab and home draw options.",
