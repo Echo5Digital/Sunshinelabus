@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Vitamin and Iron Blood Tests Explained: Understanding Vitamin B12, Vitamin D, and Ferritin",
+    slug: "vitamin-and-iron-blood-tests-explained-understanding-vitamin-b12-vitamin-d-and-ferritin",
+    excerpt: "Learn what vitamin B12, vitamin D, and ferritin blood tests measure and why your provider orders them. Get lab work done at Sunshine Clinical Lab in Trinity, FL.",
+    image: "/images/blog/vitamin-and-iron-blood-tests-explained-understanding-vitamin-b12-vitamin-d-and-ferritin/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 20, 2026",
+  },
+  {
     title: "Feeling Tired All the Time? Blood Tests That May Help Identify the Cause",
     slug: "feeling-tired-all-the-time-blood-tests-that-may-help-identify-the-cause",
     excerpt: "Feeling tired all the time? Learn which blood tests for fatigue your provider may order and how Sunshine Clinical Lab in Trinity makes testing easy.",
