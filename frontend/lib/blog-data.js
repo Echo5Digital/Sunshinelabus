@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Follow-Up Blood Work During Hormone Treatment: What Patients Should Know",
+    slug: "follow-up-blood-work-during-hormone-treatment-what-patients-should-know",
+    excerpt: "Learn why follow-up hormone treatment blood tests matter, what labs your provider may order, and how Sunshine Clinical Lab in Trinity makes monitoring easy.",
+    image: "/images/blog/follow-up-blood-work-during-hormone-treatment-what-patients-should-know/featured.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "October 22, 2026",
+  },
+  {
     title: "Vitamin and Iron Blood Tests Explained: Understanding Vitamin B12, Vitamin D, and Ferritin",
     slug: "vitamin-and-iron-blood-tests-explained-understanding-vitamin-b12-vitamin-d-and-ferritin",
     excerpt: "Learn what vitamin B12, vitamin D, and ferritin blood tests measure and why your provider orders them. Get lab work done at Sunshine Clinical Lab in Trinity, FL.",
