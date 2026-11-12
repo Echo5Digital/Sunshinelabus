@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-09-07",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/how-do-home-blood-draws-work-a-guide-for-tampa-patients',
+  },
 };
 
 const articleSchema = {

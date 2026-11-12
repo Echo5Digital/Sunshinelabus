@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-09-24",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/quest-diagnostics-wait-too-long-trinity-fl-options',
+  },
 };
 
 const articleSchema = {

@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-05",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/what-blood-tests-might-a-functional-medicine-provider-order',
+  },
 };
 
 const articleSchema = {

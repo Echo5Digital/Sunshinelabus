@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-08",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/thyroid-blood-tests-explained-understanding-tsh-free-t4-and-thyroid-antibodies',
+  },
 };
 
 const articleSchema = {

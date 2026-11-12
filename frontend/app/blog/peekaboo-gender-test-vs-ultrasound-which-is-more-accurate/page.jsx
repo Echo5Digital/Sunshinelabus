@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-08-28",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/peekaboo-gender-test-vs-ultrasound-which-is-more-accurate',
+  },
 };
 
 const articleSchema = {

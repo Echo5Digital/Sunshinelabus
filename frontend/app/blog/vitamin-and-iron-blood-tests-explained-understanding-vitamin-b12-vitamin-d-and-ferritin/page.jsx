@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-20",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/vitamin-and-iron-blood-tests-explained-understanding-vitamin-b12-vitamin-d-and-ferritin',
+  },
 };
 
 const articleSchema = {

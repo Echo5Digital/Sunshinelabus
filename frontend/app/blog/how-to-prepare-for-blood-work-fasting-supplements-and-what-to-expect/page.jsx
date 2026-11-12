@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-06",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/how-to-prepare-for-blood-work-fasting-supplements-and-what-to-expect',
+  },
 };
 
 const articleSchema = {

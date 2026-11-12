@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-01",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/does-insurance-cover-functional-medicine-blood-tests-what-to-know-before-booking',
+  },
 };
 
 const articleSchema = {

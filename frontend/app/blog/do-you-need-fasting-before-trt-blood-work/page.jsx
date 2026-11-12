@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-08-12",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/do-you-need-fasting-before-trt-blood-work',
+  },
 };
 
 const articleSchema = {

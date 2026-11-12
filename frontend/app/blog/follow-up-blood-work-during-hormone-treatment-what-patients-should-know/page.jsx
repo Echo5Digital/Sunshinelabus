@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-22",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/follow-up-blood-work-during-hormone-treatment-what-patients-should-know',
+  },
 };
 
 const articleSchema = {

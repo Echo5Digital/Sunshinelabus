@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-06-30",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/blood-testing-options-in-land-o-lakes-fl-what-to-know',
+  },
 };
 
 const articleSchema = {

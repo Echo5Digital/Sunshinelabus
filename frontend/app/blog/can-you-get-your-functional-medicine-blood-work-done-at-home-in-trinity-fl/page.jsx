@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-09-18",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/can-you-get-your-functional-medicine-blood-work-done-at-home-in-trinity-fl',
+  },
 };
 
 const articleSchema = {
@@ -43,7 +46,7 @@ export default function Page() {
           className="prose prose-lg max-w-none"
           dangerouslySetInnerHTML={{ __html: `<div style="max-width: 750px !important; margin: 0 auto !important; font-family: 'Georgia', serif !important; color: #2d3748 !important;">
 
-<h1>Can You Get Your <a href="https://www.sunshinelabus.com/blog/where-to-get-blood-work-done-in-trinity-fl-complete-guide" title="Blood Work in Trinity FL | Where to Get Lab Tests | Sunshine Clinical Lab" style="color:#6366f1 !important;text-decoration:underline !important;font-weight:600 !important;">Functional Medicine Blood Work Done at Home in Trinity</a>, FL?</h1>
+<h2 style="font-size: 26px !important; color: #1a202c !important; font-weight: 800 !important; margin-top: 48px !important; margin-bottom: 16px !important; padding-bottom: 10px !important; border-bottom: 3px solid #3182ce !important; font-family: 'Arial', sans-serif !important;">Can You Get Your <a href="https://www.sunshinelabus.com/blog/where-to-get-blood-work-done-in-trinity-fl-complete-guide" title="Blood Work in Trinity FL | Where to Get Lab Tests | Sunshine Clinical Lab" style="color:#6366f1 !important;text-decoration:underline !important;font-weight:600 !important;">Functional Medicine Blood Work Done at Home in Trinity</a>, FL?</h2>
 
 <p style="font-size: 18px !important; line-height: 1.9 !important; color: #2d3748 !important; margin-bottom: 18px !important; letter-spacing: 0.01em !important;">If your functional medicine provider has ordered lab work, you might be wondering whether you actually need to drive to a lab and sit in a waiting room. For patients in Trinity, FL, the answer is simple: you can get your functional medicine blood work done at home through a <a href="https://www.sunshinelabus.com/mobile-blood-draw-pasco-county" title="Mobile Blood Draw Pasco County & Trinity FL | Home Phlebotomy | Sunshine Clinical Lab" style="color:#6366f1 !important;text-decoration:underline !important;font-weight:600 !important;">mobile blood draw service</a>.</p>
 <p style="font-size: 18px !important; line-height: 1.9 !important; color: #2d3748 !important; margin-bottom: 18px !important; letter-spacing: 0.01em !important;">Sunshine Clinical Lab offers home blood draw services in Trinity and surrounding areas like <a href="https://www.sunshinelabus.com/clinical-lab-new-port-richey" title="Clinical Lab Services New Port Richey | Sunshine Clinical Lab" style="color:#6366f1 !important;text-decoration:underline !important;font-weight:600 !important;">New Port Richey</a>, making it easier to complete the lab testing your provider has ordered without disrupting your day. Whether your practitioner has requested a comprehensive metabolic panel, micronutrient testing, hormone levels, or food sensitivity blood tests, a <a href="https://www.sunshinelabus.com/blog/is-mobile-blood-draw-safe-and-accurate" title="Is Mobile Blood Draw Safe and Accurate? | Pasco County | Sunshine Clinical Lab" style="color:#6366f1 !important;text-decoration:underline !important;font-weight:600 !important;">licensed phlebotomist can come to you</a>.</p>

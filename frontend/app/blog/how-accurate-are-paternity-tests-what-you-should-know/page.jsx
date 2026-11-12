@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-07-30",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/how-accurate-are-paternity-tests-what-you-should-know',
+  },
 };
 
 const articleSchema = {

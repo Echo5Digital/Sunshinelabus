@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-07-09",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/low-testosterone-symptoms-when-to-get-tested-in-trinity-fl',
+  },
 };
 
 const articleSchema = {

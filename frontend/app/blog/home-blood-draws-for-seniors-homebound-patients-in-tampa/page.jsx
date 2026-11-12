@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-09-09",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/home-blood-draws-for-seniors-homebound-patients-in-tampa',
+  },
 };
 
 const articleSchema = {

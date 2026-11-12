@@ -9,6 +9,9 @@ export const metadata = {
     type: 'article',
     publishedTime: "2026-10-13",
   },
+  alternates: {
+    canonical: 'https://www.sunshinelabus.com/blog/feeling-tired-all-the-time-blood-tests-that-may-help-identify-the-cause',
+  },
 };
 
 const articleSchema = {
