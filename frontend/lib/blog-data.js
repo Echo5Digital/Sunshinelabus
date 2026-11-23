@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "TRT Blood Test Near Me: Walk-In Options",
+    slug: "trt-blood-test-near-me-walk-in-options",
+    excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers walk-in TRT blood tests, affordable pricing, and fast results.",
+    image: "/images/blog/trt-blood-test-near-me-walk-in-options/quest-diagnostics-alternative-trinity-fl.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "November 23, 2026",
+  },
+  {
     title: "Follow-Up Blood Work During Hormone Treatment: What Patients Should Know",
     slug: "follow-up-blood-work-during-hormone-treatment-what-patients-should-know",
     excerpt: "Learn why follow-up hormone treatment blood tests matter, what labs your provider may order, and how Sunshine Clinical Lab in Trinity makes monitoring easy.",
