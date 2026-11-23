@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Why Some Patients Skip the Lab for Home Draws",
+    slug: "why-some-patients-skip-the-lab-for-home-draws",
+    excerpt: "Comparing a mobile blood draw vs lab visit? Learn why more patients choose at-home blood testing with Sunshine Clinical Lab LLC for convenience and accuracy.",
+    image: "/images/blog/why-some-patients-skip-the-lab-for-home-draws/mobile-blood-draw-vs-lab-visit.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "November 23, 2026",
+  },
+  {
     title: "TRT Blood Test Near Me: Walk-In Options",
     slug: "trt-blood-test-near-me-walk-in-options",
     excerpt: "Looking for a Quest Diagnostics alternative in Trinity FL? Sunshine Clinical Lab offers walk-in TRT blood tests, affordable pricing, and fast results.",
