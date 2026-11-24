@@ -1,5 +1,15 @@
 export const BLOG_POSTS = [
   {
+    title: "Choosing a Functional Medicine Provider Near Trinity: Important Questions to Ask",
+    slug: "choosing-a-functional-medicine-provider-near-trinity-important-questions-to-ask",
+    excerpt: "Choosing a functional medicine provider near Trinity? Learn the key questions to ask and how Sunshine Clinical Lab supports your provider-ordered blood work.",
+    image: "/images/blog/choosing-a-functional-medicine-provider-near-trinity-important-questions-to-ask/functional-medicine-provider-near-trinity.jpg",
+    category: "blog",
+    author: "Author",
+    readTime: "5 min",
+    date: "November 24, 2026",
+  },
+  {
     title: "Why Some Patients Skip the Lab for Home Draws",
     slug: "why-some-patients-skip-the-lab-for-home-draws",
     excerpt: "Comparing a mobile blood draw vs lab visit? Learn why more patients choose at-home blood testing with Sunshine Clinical Lab LLC for convenience and accuracy.",
